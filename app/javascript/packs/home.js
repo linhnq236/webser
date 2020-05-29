@@ -1,7 +1,7 @@
 $( document ).on('turbolinks:load', function() {
   $(".on").click(function(){
     $.ajax({
-      url: "http://192.168.1.16/LED=ON",
+      url: "https://192.168.1.16/LED=ON",
       headers: {  'Access-Control-Allow-Origin': '*' },
       success: function(){
         alert("ok");
@@ -10,8 +10,9 @@ $( document ).on('turbolinks:load', function() {
   })
   $(".off").click(function(){
     $.ajax({
-      url: "http://192.168.1.16/LED=OFF",
+      url: "https://192.168.1.16/LED=OFF",
       headers: {  'Access-Control-Allow-Origin': '*' },
+      // headers: {  'Content-Security-Policy:': 'block-all-mixed-content' },
       success: function(){
         alert("ok");
       },
