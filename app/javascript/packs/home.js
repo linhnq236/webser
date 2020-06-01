@@ -9,14 +9,14 @@ $( document ).on('turbolinks:load', function() {
           i++;
           html += `
           <div class="col-sm-6">${index}</div>
-          <button class="col-sm-6 led cursor" data-status = "${index}" data-active="${value}">${value}</button>
+          <button class="col-sm-6 led cursor" data-status = "${index}">${value}</button>
 
           `
         })
         $(".firebase_led").append(html);
         $(".led").click(function(){
           var status = $(this).data("status");
-          var active = $(this).data("active");
+          var active = $(this).text();
           api_led_status(status,active);
         })
       },
@@ -35,7 +35,7 @@ $( document ).on('turbolinks:load', function() {
       data: {status: status, active: setactive},
       success: function(rep) {
         // console.log(rep);
-        location.reload();
+        // location.reload();
       },
       error: function(rep) {
         // console.log(rep);

@@ -31,6 +31,8 @@ class HomeController < ApplicationController
     elsif status == "LED_STATUS8"
       response = firebase.update(FIREBASE_URL, {LED_STATUS8: active})
     end
+    ActionCable.server.broadcast 'ledstatus_channel',
+      ledstatus: response.body
     head :no_content
   end
 end
