@@ -8,10 +8,11 @@
     <%# Modernizr is required for Zurb Foundation %>
     <%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
+    <header class="fixed-top">
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">

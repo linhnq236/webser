@@ -13,23 +13,25 @@ class HomeController < ApplicationController
   def updatestatus
     status = params[:status]
     active = params[:active]
+    area = params[:area]
+
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     if status == "LED_STATUS0"
-      response = firebase.update(FIREBASE_URL, {LED_STATUS0: active})
+      response = firebase.update(FIREBASE_URL, {"#{area}/LED_STATUS0": active})
     elsif status == "LED_STATUS1"
-      response = firebase.update(FIREBASE_URL, {LED_STATUS1: active})
+      response = firebase.update(FIREBASE_URL, {"#{area}/LED_STATUS1": active})
     elsif status == "LED_STATUS2"
-      response = firebase.update(FIREBASE_URL, {LED_STATUS2: active})
+      response = firebase.update(FIREBASE_URL, {"#{area}/LED_STATUS2": active})
     elsif status == "LED_STATUS3"
-      response = firebase.update(FIREBASE_URL, {LED_STATUS3: active})
+      response = firebase.update(FIREBASE_URL, {"#{area}/LED_STATUS3": active})
     elsif status == "LED_STATUS5"
-      response = firebase.update(FIREBASE_URL, {LED_STATUS5: active})
+      response = firebase.update(FIREBASE_URL, {"#{area}/LED_STATUS5": active})
     elsif status == "LED_STATUS6"
-      response = firebase.update(FIREBASE_URL, {LED_STATUS6: active})
+      response = firebase.update(FIREBASE_URL, {"#{area}/LED_STATUS6": active})
     elsif status == "LED_STATUS7"
-      response = firebase.update(FIREBASE_URL, {LED_STATUS7: active})
+      response = firebase.update(FIREBASE_URL, {"#{area}/LED_STATUS7": active})
     elsif status == "LED_STATUS8"
-      response = firebase.update(FIREBASE_URL, {LED_STATUS8: active})
+      response = firebase.update(FIREBASE_URL, {"#{area}/LED_STATUS8": active})
     end
     ActionCable.server.broadcast 'ledstatus_channel',
       ledstatus: response.body
