@@ -31,11 +31,17 @@ class HomeController < ApplicationController
     area = params[:area]
     column = params[:column]
     settime = params[:settime]
-    
+
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     response = firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}": settime})
     ActionCable.server.broadcast 'ledstatus_channel',
       ledstatus: response.body
     head :no_content
+  end
+
+  def gettemperature
+    firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+    tmps = firebase.get(FIREBASE_URL).body
+    render json: {data: tmps}
   end
 end

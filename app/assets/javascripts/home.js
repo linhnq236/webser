@@ -13,6 +13,14 @@ $( document ).on('turbolinks:load', function() {
           `
     })
       $(".firebase_led").append(html);
+      // removeClass .led
+      $(".ledKhu").each(function(){
+        var status = $(this).data("area");
+        if (status == "Khu") {
+          console.log();
+          $(this).removeClass("led");
+        }
+      })
       $(".led").click(function(){
         var status = $(this).data("status");
         var active = $(this).text();
@@ -24,6 +32,7 @@ $( document ).on('turbolinks:load', function() {
           api_led_status(status,active,area, column);
         }
       })
+
     },
     error: function(rep) {
     }
