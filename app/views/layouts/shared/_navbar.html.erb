@@ -1,0 +1,74 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <a href="#" class="nav-link">
+        <div class="profile-image">
+          <img class="img-xs rounded-circle" src="/assets/faces/face8.jpg" alt="profile image">
+          <div class="dot-indicator bg-success"></div>
+        </div>
+        <div class="text-wrapper">
+          <p class="profile-name">Allen Moreno</p>
+          <p class="designation">Premium user</p>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item nav-category">Main Menu</li>
+    <% if user_signed_in? %>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= houses_path%>">
+        <i class="menu-icon typcn typcn-document-text"></i>
+        <span class="menu-title">Phòng</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon typcn typcn-coffee"></i>
+        <span class="menu-title">Basic UI Elements</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/forms/basic_elements.html">
+        <i class="menu-icon typcn typcn-shopping-bag"></i>
+        <span class="menu-title">Form elements</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/charts/chartjs.html">
+        <i class="menu-icon typcn typcn-th-large-outline"></i>
+        <span class="menu-title">Charts</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/tables/basic-table.html">
+        <i class="menu-icon typcn typcn-bell"></i>
+        <span class="menu-title">Tables</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="pages/icons/font-awesome.html">
+        <i class="menu-icon typcn typcn-user-outline"></i>
+        <span class="menu-title">Icons</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="" aria-expanded="false" aria-controls="auth">
+        <i class="menu-icon typcn typcn-document-add"></i>
+        <span class="menu-title">User Pages</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= destroy_user_session_path %>" data-method="delete">
+        <i class="menu-icon typcn typcn-document-text"></i>
+        <span class="menu-title"><%= I18n.t('layout.logout') %></span>
+      </a>
+    </li>
+    <% else %>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= new_user_session_path %>">
+        <i class="menu-icon typcn typcn-document-text"></i>
+        <span class="menu-title"><%= I18n.t('layout.login') %></span>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</nav>

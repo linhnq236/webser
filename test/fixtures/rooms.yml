@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cost: MyString
+  length: MyString
+  width: MyString
+  amount: 1
+  allow: 1
+  description: MyText
+
+two:
+  name: MyString
+  cost: MyString
+  length: MyString
+  width: MyString
+  amount: 1
+  allow: 1
+  description: MyText

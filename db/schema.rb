@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_004132) do
+ActiveRecord::Schema.define(version: 2020_06_08_072452) do
 
-  create_table "demos", force: :cascade do |t|
-    t.string "request"
+  create_table "cities", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "kind"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "kind"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_districts_on_city_id"
+  end
+
+  create_table "houses", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "distric"
+    t.string "ward"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.string "cost"
+    t.string "length"
+    t.string "width"
+    t.integer "amount"
+    t.integer "allow"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,4 +64,16 @@ ActiveRecord::Schema.define(version: 2020_06_06_004132) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wards", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "kind"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "district_id"
+    t.index ["district_id"], name: "index_wards_on_district_id"
+  end
+
+  add_foreign_key "districts", "cities"
+  add_foreign_key "wards", "districts"
 end

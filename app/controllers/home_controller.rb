@@ -5,6 +5,9 @@ class HomeController < ApplicationController
   FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   def index
   end
+  def login
+
+  end
   def led_status
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     leds = firebase.get(FIREBASE_URL).body

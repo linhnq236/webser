@@ -1,4 +1,7 @@
 $( document ).on('turbolinks:load', function() {
+  if (gon.user == 0) {
+    return false;
+  }
   var html = '';
   $.ajax({
       type: 'GET',

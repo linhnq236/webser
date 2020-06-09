@@ -1,5 +1,8 @@
 $( document ).on('turbolinks:load', function() {
-  setInterval(tmp, 100);
+  if(gon.user == 0){
+    return false;
+  }
+  setInterval(tmp, 3000);
   function tmp(){
     $.ajax({
       type: 'get',
