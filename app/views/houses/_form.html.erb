@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :city %>
-    <%= form.text_field :city %>
+    <%= collection_select(:city, :city, @cities, :id, :name, {:prompt => 'Select'} ,{onchange:"test();" })%>
   </div>
 
   <div class="field">

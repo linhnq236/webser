@@ -1,45 +1,41 @@
 $( document ).on('turbolinks:load', function() {
+  var html = '';
   if (gon.user == 0) {
     return false;
   }
-  var html = '';
-  $.ajax({
-      type: 'GET',
-      url: "/led_status",
-      success: function(rep) {
-	  $.each(rep["data"], function(index, value){
-	    var i = 0;
+  setInterval(autoget(), 1);
+  function autoget(){
+    console.log(gon.leds);
+    $.each(gon.leds, function(index, value){
+      var i = 0;
       i++;
       html += `
-      	  <div class="col-sm-6">${index}</div>
-    		  ${loadArea(value, index)}
-          `
+      <div class="col-sm-6">${index}</div>
+      ${loadArea(value, index)}
+      `
     })
-      $(".firebase_led").append(html);
-      // removeClass .led
-      $(".ledKhu").each(function(){
-        var status = $(this).data("area");
-        if (status == "Khu") {
-          console.log();
-          $(this).removeClass("led");
-        }
-      })
-      $(".led").click(function(){
-        var status = $(this).data("status");
-        var active = $(this).text();
-        var area = $(this).data("area");
-        var column = $(this).data("column");
-        if (column == "TURNON" || column == "TURNOFF") {
-          setTime(status,area, column);
-        }else {
-          api_led_status(status,active,area, column);
-        }
-      })
+    $(".firebase_led").append(html);
+    // removeClass .led
+    $(".ledKhu").each(function(){
+      var status = $(this).data("area");
+      if (status == "Khu") {
+        console.log();
+        $(this).removeClass("led");
+      }
+    })
+    $(".led").click(function(){
+      var status = $(this).data("status");
+      var active = $(this).text();
+      var area = $(this).data("area");
+      var column = $(this).data("column");
+      if (column == "TURNON" || column == "TURNOFF") {
+        setTime(status,area, column);
+      }else {
+        api_led_status(status,active,area, column);
+      }
+    })
+  }
 
-    },
-    error: function(rep) {
-    }
-  })
   function loadArea(arr, area){
     var html = '';
     $.each(arr, function(index, value){

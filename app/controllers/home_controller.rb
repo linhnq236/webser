@@ -8,11 +8,11 @@ class HomeController < ApplicationController
   def login
 
   end
-  def led_status
-    firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-    leds = firebase.get(FIREBASE_URL).body
-    render json: {data: leds}
-  end
+  # def led_status
+  #   firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+  #   leds = firebase.get(FIREBASE_URL).body
+  #   render json: {data: leds}
+  # end
 
   def updatestatus
     status = params[:status]
@@ -40,11 +40,5 @@ class HomeController < ApplicationController
     ActionCable.server.broadcast 'ledstatus_channel',
       ledstatus: response.body
     head :no_content
-  end
-
-  def gettemperature
-    firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-    tmps = firebase.get(FIREBASE_URL).body
-    render json: {data: tmps}
   end
 end
