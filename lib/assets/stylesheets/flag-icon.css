@@ -19,10 +19,10 @@
   width: 1em;
 }
 .flag-icon-ad {
-  background-image: url(asset_path("flags/4x3/ad.svg");
+  /* background-image: url(asset_path("flags/4x3/ad.svg"); */
 }
 .flag-icon-ad.flag-icon-squared {
-  background-image: url(asset_path("flags/flags/1x1/ad.svg");
+  /* background-image: url(asset_path("flags/flags/1x1/ad.svg"); */
 }
 .flag-icon-ae {
   background-image: url(asset_path("flags/4x3/ae.svg");
