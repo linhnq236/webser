@@ -28,6 +28,9 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # gem devise
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   #websocket
   config.action_cable.url = "ws://localhost:3000/cable"
   # config.action_cable.url = "ws://linhser.herokuapp.com/cable"

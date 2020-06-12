@@ -1,0 +1,55 @@
+<!-- <h2>Log in</h2> -->
+<!-- <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one"> -->
+<div class="content-wrapper d-flex auth auth-bg-1 theme-one">
+  <div class="row w-100">
+    <div class="col-lg-12 mx-auto">
+      <div class="auto-form-wrapper">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <!-- <label class="label">Username</label> -->
+            <%= f.label :email %><br />
+            <div class="input-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              <!-- <input type="text" class="form-control" placeholder="Username"> -->
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="mdi mdi-check-circle-outline"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <!-- <label class="label">Username</label> -->
+            <%= f.label :password %><br />
+            <div class="input-group">
+              <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+              <!-- <input type="text" class="form-control" placeholder="Username"> -->
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="mdi mdi-check-circle-outline"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <!-- <button class="btn btn-primary submit-btn btn-block">Login</button> -->
+              <%= f.submit "Log in", class: "btn btn-primary submit-btn btn-block" %>
+          </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="form-group d-flex justify-content-between">
+              <div class="form-check form-check-flat mt-0">
+                <label class="form-check-label">
+                </label>
+                <%= f.check_box :remember_me, class: "form-check-input mr-3" %><%= f.label :remember_me, class: "ml-3" %>
+                  <!-- <input type="checkbox" class="form-check-input" checked> Keep me signed in </label> -->
+              </div>
+            <% end %>
+            <a href="<%= new_user_password_url%>" class="text-small forgot-password text-black hovernotbackground">Forgot Password</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# <%= render "devise/shared/links" %>

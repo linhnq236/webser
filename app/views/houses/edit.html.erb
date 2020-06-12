@@ -1,0 +1,87 @@
+<div class="col-12 grid-margin">
+  <div class="card">
+    <%= form_tag("/houses/#{@house.id}", method: :put, id: "changePage") do %>
+    <div class="card-body">
+      <div class="row mb-2 line">
+        <div class="col-sm-6">
+          <h4 class="card-title ml-1">Thêm nhà mới</h4>
+        </div>
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-success float-right mr-2">
+            <i class="fa fa-check"></i>
+            Lưu
+          </button>
+          <button type="button" class="btn btn-warning float-right mr-2" onclick="location.href='/houses'">
+            <i class="fa fa-mail-reply"></i>
+            Quay về
+          </button>
+        </div>
+      </div>
+      <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Nhà *</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control name" value = "<%= @house.name%>"name="name" required />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Tỉnh/ Thành phố  *</label>
+              <div class="col-sm-9">
+                <%= select_tag "city_id", options_for_select(@cities.collect{ |u| [u.name, u.id]}, :selected=>@house.city_id), {class: "form-control city", required: "required", include_blank: true } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Quận/ Huyện *</label>
+              <div class="col-sm-9">
+                  <!-- <select class="form-control district" value = "<%= @house.district_id%>"name="district_id" required> -->
+                    <!-- <option value="">Chon</option> -->
+                    <%= select_tag "district_id", options_for_select(@districts.collect{ |u| [u.name, u.id]}, :selected=>@house.district_id), {class: "form-control district", required: "required", include_blank: true } %>
+                  <!-- </select> -->
+                  <%# <%= select("", "district_id", @districts.collect {|u| [ u.name, u.city_id] }, { include_blank: true }, class: "form-control district", required: "required") %>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Phường/ Xã *</label>
+              <div class="col-sm-9">
+                <!-- <select class="form-control ward" name= "ward_id" required>
+                  <option value="">Chon</option>
+                </select> -->
+                <%= select_tag "ward_id", options_for_select(@wards.collect{ |u| [u.name, u.id]}, :selected=>@house.ward_id), {class: "form-control ward", required: "required", include_blank: true } %>
+                <%# <%= select("", "ward_id", @wards.collect {|t| [ t.name, t.district_id]}, { include_blank: true }, class: "form-control ward", required: "required")%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Số *</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value = "<%= convert_address_to_number(@house.address)%>"name="number" required />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Đường *</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value = "<%= convert_address_to_road(@house.address)%>"name="road" required />
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
