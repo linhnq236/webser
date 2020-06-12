@@ -15,10 +15,12 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
+    @houses = House.order("id DESC")
   end
 
   # GET /rooms/1/edit
   def edit
+    @houses = House.order("id DESC")
   end
 
   # POST /rooms
@@ -28,7 +30,7 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        format.html { redirect_to houses_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
@@ -37,12 +39,35 @@ class RoomsController < ApplicationController
     end
   end
 
+  def room_fast
+    @houses = House.order("id DESC")
+
+  end
+  def roomfast
+    start = params[:start]
+    finsh = params[:end]
+    house_id = params[:house_id]
+    amount = params[:amount]
+    width = params[:width]
+    length = params[:length]
+    description = params[:description]
+    cost = params[:cost]
+    for i in start.to_i..finsh.to_i
+      room = Room.new(name: i, amount: amount, cost: cost, width: width, length: length, description: description, house_id: house_id)
+      if room.save
+        flash[:notice] = "Them phong moi thanh cong"
+      else
+        flash[:notice] = "Them phong moi that bai"
+      end
+    end
+    redirect_to houses_path
+  end
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to @room, notice: 'Room was successfully updated.' }
+        format.html { redirect_to houses_path, notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
@@ -69,6 +94,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:name, :cost, :length, :width, :amount, :allow, :description)
+      params.require(:room).permit(:name, :cost, :length, :width, :amount, :allow, :description, :picture, :house_id)
     end
 end

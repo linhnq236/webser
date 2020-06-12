@@ -34,6 +34,7 @@ gem 'material_icons'
 gem 'font-awesome-rails'
 gem 'gon'
 gem 'city-state'
+gem 'carrierwave'
 # gem 'mocha'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

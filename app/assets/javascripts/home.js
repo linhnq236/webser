@@ -3,9 +3,8 @@ $( document ).on('turbolinks:load', function() {
   if (gon.user == 0) {
     return false;
   }
-  setInterval(autoget(), 1);
+  setInterval(autoget(), 1000);
   function autoget(){
-    console.log(gon.leds);
     $.each(gon.leds, function(index, value){
       var i = 0;
       i++;

@@ -1,6 +1,6 @@
 <div class="col-12 grid-margin">
   <div class="card">
-    <%= form_tag("/rooms/#{@room.id}", method: :put, id: "changePage") do %>
+    <%= form_tag('/roomfast', method: :post, id: "changePage") do %>
     <div class="card-body">
       <div class="row mb-2 line">
         <div class="col-sm-6">
@@ -21,17 +21,17 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Phòng số *</label>
+              <label class="col-sm-3 col-form-label">Từ số *</label>
               <div class="col-sm-9">
-                <input type="number" class="form-control name" name="room[name]" value="<%=@room.name%>" required />
+                <input type="number" class="form-control name" name="start" required />
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Nhà *</label>
+              <label class="col-sm-3 col-form-label">Đến số *</label>
               <div class="col-sm-9">
-                <%= select_tag "room[house_id]", options_for_select(@houses.collect{ |u| [u.name, u.id]}, :selected=>@room.house_id), {class: "form-control", required: "required", include_blank: true } %>
+                <input type="number" class="form-control name" name="end" required />
               </div>
             </div>
           </div>
@@ -39,9 +39,9 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Đơn giá *</label>
+              <label class="col-sm-3 col-form-label">Nhà *</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control name" name="room[cost]" value ="<%=@room.cost%>" required />
+                <%= select_tag "house_id", options_for_select(@houses.collect{ |u| [u.name, u.id]}), {class: "form-control", required: "required", include_blank: true } %>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Số lượng người tối đa *</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control name" name="room[amount]" min="0" max="5" value ="<%=@room.amount%>" required />
+                <input type="text" class="form-control name" name="amount" min="0" max="5" required />
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Chiều rộng *</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" name="room[width]" value ="<%=@room.width%>" required />
+                <input type="text" class="form-control" name="width" required />
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Chiều dài *</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" name="room[length]" value ="<%=@room.length%>" required />
+                <input type="text" class="form-control" name="length" required />
               </div>
             </div>
           </div>
@@ -77,18 +77,18 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Mô tả</label>
               <div class="col-sm-9">
-                <textarea class="form-control" name="room[description]"><%=@room.description%></textarea>
+                <textarea class="form-control textarea" name="description"></textarea>
               </div>
             </div>
           </div>
-          <!-- <div class="col-md-6">
+          <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Đăng ảnh *</label>
+              <label class="col-sm-3 col-form-label">Đơn giá *</label>
               <div class="col-sm-9">
-                <input type="file" class="form-control" name="room[picture]" required />
+                  <input type="text" class="form-control name" name="cost" required />
               </div>
             </div>
-          </div> -->
+          </div>
       	</div>
       <% end %>
     </div>

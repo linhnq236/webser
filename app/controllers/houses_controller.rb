@@ -5,6 +5,7 @@ class HousesController < ApplicationController
   # GET /houses.json
   def index
     @houses = House.all
+    @rooms = Room.order("id ASC")
   end
 
   # GET /houses/1
@@ -16,28 +17,45 @@ class HousesController < ApplicationController
   def new
     @house = House.new
     @cities = City.all
+    @districts = District.all
   end
 
   # GET /houses/1/edit
   def edit
+    @cities = City.all
+    @districts = District.all
+    @wards = Ward.all
   end
 
   # POST /houses
   # POST /houses.json
   def create
-    @house = House.new(house_params)
+    name = params[:name]
+    city_id = params[:city_id]
+    district_id = params[:district_id]
+    ward_id = params[:ward_id]
+    number = params[:number]
+    road = params[:road]
 
-    respond_to do |format|
-      if @house.save
-        format.html { redirect_to @house, notice: 'House was successfully created.' }
-        format.json { render :show, status: :created, location: @house }
-      else
-        format.html { render :new }
-        format.json { render json: @house.errors, status: :unprocessable_entity }
-      end
+    @house = House.new(name: name, city_id: city_id, district_id: district_id, ward_id: ward_id, address: "#{number} #{road}")
+    if @house.save
+      flash[:notice] = "Them nha moi"
+      redirect_to "/houses"
+    else
+      flash[:notice] = "Them that bai"
+      redirect_to "/houses/new"
     end
   end
 
+  def deletehouse
+    rooms = Room.where(house_id: params[:id]).pluck(:id)
+    for i in 0..rooms.size
+      Room.delete(rooms[i])
+    end
+    house = House.delete(params[:id])
+    flash[:notice] = "Xóa thành công"
+    redirect_to houses_path
+  end
   # PATCH/PUT /houses/1
   # PATCH/PUT /houses/1.json
   def update
@@ -70,6 +88,6 @@ class HousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def house_params
-      params.require(:house).permit(:name, :city, :distric, :ward, :address)
+      params.permit(:name, :city, :distric, :ward, :address)
     end
 end

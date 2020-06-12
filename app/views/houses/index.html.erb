@@ -1,35 +1,59 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Houses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>City</th>
-      <th>Distric</th>
-      <th>Ward</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<%= render "/houses/shared/search"%>
+<div class="row w-100">
+  <div class="col-sm-2 house">
     <% @houses.each do |house| %>
-      <tr>
-        <td><%= house.name %></td>
-        <td><%= house.city %></td>
-        <td><%= house.distric %></td>
-        <td><%= house.ward %></td>
-        <td><%= house.address %></td>
-        <td><%= link_to 'Show', house %></td>
-        <td><%= link_to 'Edit', edit_house_path(house) %></td>
-        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <a class="hovernotbackground text-decoration-none thishouse" dta-toggle="tab" aria-expanded="true" data-idhouse = "<%=house.id%>">
+      <blockquote class="blockquote blockquotehouse block_house_<%=house.id%> text-danger" data-idhouse = "<%=house.id%>">
+        <%= house.name%>
+      </blockquote>
+    </a>
     <% end %>
-  </tbody>
-</table>
+  </div>
+<blockquote class="blockquote col-sm-10">
+  <div class="row">
+    <% @rooms.each do |room|%>
+      <div class="col-md-3 grid-margin stretch-card tab-pane d-none room <%= room.house_id%>_house" data-idroom = "<%= room.house_id%>">
+        <div class="card">
+          <div class="card-body">
+            <ul class="timeline">
+              <li class="timeline-item">
+                <p class="timeline-content">
+                  <i class="fa fa-home"></i>
+                  <%=room.name%>
+                </p>
+              </li>
+              <li class="timeline-item">
+                <p class="timeline-content">Them khach</p>
+              </li>
+              <li class="timeline-item">
+                <p class="timeline-content">
+                  <i class="fa fa-user"></i>
 
-<br>
-
-<%= link_to 'New House', new_house_path %>
+                </p>
+              </li>
+              <li class="timeline-item">
+                <p class="timeline-content">
+                  <i class="fa fa-money"></i>
+                  <%= room.cost%> VNĐ
+                </p>
+              </li>
+              <li class="timeline-item">
+                <p class="timeline-content">
+                  <a href="<%= edit_room_path(room)%>" class="btn btn-primary btn-sm text-white">
+                    <i class="fa fa-edit"></i>
+                    Sửa
+                  </a>
+                  <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
+                    <i class="fa fa-trash"></i>
+                    Xoá
+                  </a>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</blockquote>
+</div>

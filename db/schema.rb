@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_072452) do
+ActiveRecord::Schema.define(version: 2020_06_11_153557) do
 
   create_table "cities", force: :cascade do |t|
     t.string "code"
@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 2020_06_08_072452) do
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id", null: false
+    t.integer "district_id", null: false
+    t.integer "ward_id", null: false
+    t.index ["city_id"], name: "index_houses_on_city_id"
+    t.index ["district_id"], name: "index_houses_on_district_id"
+    t.index ["ward_id"], name: "index_houses_on_ward_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -50,6 +56,9 @@ ActiveRecord::Schema.define(version: 2020_06_08_072452) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "house_id", null: false
+    t.string "picture"
+    t.index ["house_id"], name: "index_rooms_on_house_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,5 +84,9 @@ ActiveRecord::Schema.define(version: 2020_06_08_072452) do
   end
 
   add_foreign_key "districts", "cities"
+  add_foreign_key "houses", "cities"
+  add_foreign_key "houses", "districts"
+  add_foreign_key "houses", "wards"
+  add_foreign_key "rooms", "houses"
   add_foreign_key "wards", "districts"
 end
