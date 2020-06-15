@@ -49,7 +49,6 @@ $( document ).on('turbolinks:load', function() {
         $(".blockquotehouse").each(function(){
           var notactive = $(this).data("idhouse");
           if (idhouse != notactive) {
-            console.log(notactive);
             $(`.block_house_${notactive}`).removeAttr('style');
           }
         })
@@ -65,5 +64,9 @@ $( document ).on('turbolinks:load', function() {
       location.href = `/deletehouse/${house_active}`;
     }
     return false;
+  })
+  $(".addcustomer").click(function(){
+    var idroom = $(this).data("idroom");
+    location.href = `/addcustomer/${house_active}/${idroom}`;
   })
 })

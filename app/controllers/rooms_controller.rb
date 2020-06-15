@@ -62,6 +62,12 @@ class RoomsController < ApplicationController
     end
     redirect_to houses_path
   end
+
+  def addcustomer
+    @house = House.where(id: params[:house_id])
+    @room = Room.where(id: params[:room_id])
+  end
+
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update

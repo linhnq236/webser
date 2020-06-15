@@ -1,2 +1,3 @@
 class Ward < ApplicationRecord
-end
+  has_many :houses
+ end

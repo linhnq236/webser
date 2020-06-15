@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :information
+  post "/new_information_customer/:house_id/:room_id", to: "information#new_information_customer"
   resources :rooms
   resources :houses
   get "/deletehouse/:id", to: "houses#deletehouse"
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   get "gettemperature", to: "home#gettemperature"
   get "room_fast", to: "rooms#room_fast"
   post "/roomfast", to: "rooms#roomfast"
+  get "/addcustomer/:house_id/:room_id", to: "rooms#addcustomer"
   namespace "api" do
     resources :houses
     get "getdistrict/:city", to: "houses#getdistrict"

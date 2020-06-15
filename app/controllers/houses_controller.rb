@@ -5,7 +5,7 @@ class HousesController < ApplicationController
   # GET /houses.json
   def index
     @houses = House.all
-    @rooms = Room.order("id ASC")
+    @rooms = Room.order("name ASC")
   end
 
   # GET /houses/1
