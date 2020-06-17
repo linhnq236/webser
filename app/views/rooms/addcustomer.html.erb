@@ -1,0 +1,214 @@
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <hr>
+    <%= form_tag("/new_information_customer/#{params[:house_id]}/#{params[:room_id]}", method: :post, id: "inf_1") do %>
+      <%= render "shared/nextback", local: {title: @title = "Thêm khách thuê phòng"}%>
+      <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Thông tin cá nhân</h4>
+            <!-- <p class="card-description">Thông tin cá nhân </p> -->
+          <% @room.each do |r|%>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Họ *</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" required name="firstname" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Tên *</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control"  required name="lastname" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Giới tính *</label>
+                <div class="col-sm-9">
+                  <select class="form-control"  required name="sex">
+                    <option value="0">Nam</option>
+                    <option value="1">Nữ</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Ngày sinh *</label>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" required name="birth" placeholder="dd/mm/yyyy" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">CMND *</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control"  required name="indentifycard" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Ngày cấp *</label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control"  required name="daterange" placeholder="dd/mm/yyyy" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Điện thoại 1</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="phone1" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Nơi cấp *</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control"  required name="placerange" placeholder="CA TP Đà Nẵng" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Điện thoai 2</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control"  name="phone2" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Email *</label>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control"  required name="email" placeholder="nguyenvananh@gmail.com" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Địa chỉ thường trú *</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control"  required name="permanent"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Địa chỉ tạm trú</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" disabled value="<%=get_field_address(@house)%>"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Thuê phòng số *</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" disabled value="<%= get_fild_name_room(@room)%>" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Tiền phòng *</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" disabled value = "<%= number_to_currency_br(get_fild_cost_room(@room))%> VNĐ" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Ngày bắt đầu *</label>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control"  required name="start" value="<%= get_current_date()%>" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Đặt cọc trước</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" name="deposit" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Ghi Chú</label>
+                  <div class="col-sm-9 ml-3">
+                    <textarea  rows="2" class="form-control"  name="note"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+<!-- // services -->
+    <div id="serv_2" class="d-none">
+      <%= form_tag("/information_service", method: :post) do %>
+        <%= render "shared/nextback", local: {title: @title = "Dịch vụ nhà trọ"}%>
+        <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
+        <table class="table table-hover service">
+
+          <thead>
+            <tr>
+              <th class="text-center">STT</th>
+              <th class="text-center">Chọn</th>
+              <th class="text-center">Dịch vụ sử dụng</th>
+              <th class="text-center">Đơn giá (VNĐ)</th>
+              <th class="text-center">Số lượng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @services.each_with_index do |service, i|%>
+            <tr>
+              <td class="text-center"><%=i + 1%></td>
+              <td class="text-center">
+                <% if service.status == 1%>
+                  <input type="checkbox" checked name="checkservice" value="<%=service.id%>" class="form-check-input must" data-status="must">
+                <% else %>
+                  <input type="checkbox" name="checkservice" value="<%=service.id%>" class="form-check-input">
+                <% end %>
+              </td>
+              <td class="text-center"><%=service.name %></td>
+              <td class="text-danger text-center"> <%=service.cost%></td>
+              <td class="text-center">
+                <input type="number" name="service" min="1" value="1" class="form-control text-center"/>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

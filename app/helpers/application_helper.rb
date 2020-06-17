@@ -21,4 +21,14 @@ module ApplicationHelper
   def formatsettime string
     return string.strftime(" %H:%M %d-%m-%Y")
   end
+
+  def number_to_currency_br(number)
+    unit =  number_to_currency(number, unit: "VNĐ", separator: "," , delimiter: ".")
+    subunit = unit.gsub! 'VNĐ', " "
+    return subunit
+  end
+
+  def get_current_date
+     return Time.zone.now.to_date
+  end
 end

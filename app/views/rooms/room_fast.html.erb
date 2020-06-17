@@ -2,21 +2,7 @@
   <div class="card">
     <%= form_tag('/roomfast', method: :post, id: "changePage") do %>
     <div class="card-body">
-      <div class="row mb-2 line">
-        <div class="col-sm-6">
-          <h4 class="card-title ml-1">Thêm phòng</h4>
-        </div>
-        <div class="col-sm-6">
-          <button type="submit" class="btn btn-success float-right mr-2">
-            <i class="fa fa-check"></i>
-            Lưu
-          </button>
-          <button type="button" class="btn btn-warning float-right mr-2" onclick="location.href='/houses'">
-            <i class="fa fa-mail-reply"></i>
-            Quay về
-          </button>
-        </div>
-      </div>
+      <%= render "shared/nextback", local: {title: @title = "Thêm phòng nhanh"}%>
       <hr>
         <div class="row">
           <div class="col-md-6">

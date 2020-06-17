@@ -62,6 +62,24 @@ class RoomsController < ApplicationController
     end
     redirect_to houses_path
   end
+
+  def addcustomer
+    @house = House.where(id: params[:house_id])
+    @room = Room.where(id: params[:room_id])
+    @services = Service.all
+  end
+
+  def listcustomer
+    @house = House.where(id: params[:house_id])
+    @room = Room.where(id: params[:room_id])
+    @information = Information.where(id: params[:information_id])
+    @services = Service.all
+  end
+
+  def information_service
+    byebug
+  end
+
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update
@@ -94,6 +112,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:name, :cost, :length, :width, :amount, :allow, :description, :picture, :house_id)
+      params.require(:room).permit(:name, :cost, :length, :width, :amount, :allow, :description, :picture, :house_id, service_id: [], )
     end
 end

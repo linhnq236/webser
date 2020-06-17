@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  sex: false
+  birth: 2020-06-15
+  indentifycard: MyString
+  daterange: 2020-06-15
+  placerange: MyString
+  phone1: MyString
+  phone2: MyString
+  permanent: MyString
+  start: 2020-06-15
+  deposit: 1.5
+  note: MyText
+
+two:
+  name: MyString
+  sex: false
+  birth: 2020-06-15
+  indentifycard: MyString
+  daterange: 2020-06-15
+  placerange: MyString
+  phone1: MyString
+  phone2: MyString
+  permanent: MyString
+  start: 2020-06-15
+  deposit: 1.5
+  note: MyText
