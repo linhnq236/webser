@@ -69,4 +69,9 @@ $( document ).on('turbolinks:load', function() {
     var idroom = $(this).data("idroom");
     location.href = `/addcustomer/${house_active}/${idroom}`;
   })
+  $(".view_service_customer").click(function(){
+    var idroom = $(this).data("idroom");
+    var idinformation = $(this).data("information_id");
+    location.href = `/listcustomer/${house_active}/${idroom}/${idinformation}`;
+  })
 })

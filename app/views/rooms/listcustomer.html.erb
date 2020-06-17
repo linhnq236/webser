@@ -15,7 +15,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Họ *</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" required name="firstname" />
+                  <input type="text" class="form-control" value="<%= r.information.name%>"  required name="firstname" />
                 </div>
               </div>
             </div>
@@ -23,7 +23,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Tên *</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control"  required name="lastname" />
+                  <input type="text" class="form-control" value="<%= r.information.name%>"  required name="lastname" />
                 </div>
               </div>
             </div>
@@ -34,8 +34,8 @@
                 <label class="col-sm-3 col-form-label">Giới tính *</label>
                 <div class="col-sm-9">
                   <select class="form-control"  required name="sex">
-                    <option value="0">Nam</option>
-                    <option value="1">Nữ</option>
+                    <option value="0" <%= r.information.sex == false ? "selected" : ""%> >Nam</option>
+                    <option value="1" <%= r.information.sex == true ? "selected" : ""%>>Nữ</option>
                   </select>
                 </div>
               </div>
@@ -44,7 +44,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Ngày sinh *</label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control" required name="birth" placeholder="dd/mm/yyyy" />
+                  <input type="date" class="form-control" required name="birth" value="<%= r.information.birth %>" placeholder="dd/mm/yyyy" />
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">CMND *</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control"  required name="indentifycard" />
+                  <input type="text" class="form-control"  required  value="<%= r.information.indentifycard %>" name="indentifycard" />
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Ngày cấp *</label>
                   <div class="col-sm-9">
-                    <input type="date" class="form-control"  required name="daterange" placeholder="dd/mm/yyyy" />
+                    <input type="date" class="form-control"  required value="<%= r.information.daterange %>" name="daterange" placeholder="dd/mm/yyyy" />
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Điện thoại 1</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="phone1" />
+                  <input type="text" class="form-control" value="<%= r.information.phone1 %>" name="phone1" />
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Nơi cấp *</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control"  required name="placerange" placeholder="CA TP Đà Nẵng" />
+                    <input type="text" class="form-control"  required value="<%= r.information.placerange %>" name="placerange" placeholder="CA TP Đà Nẵng" />
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Điện thoai 2</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control"  name="phone2" />
+                  <input type="text" class="form-control" value="<%= r.information.phone2 %>" name="phone2" />
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Email *</label>
                   <div class="col-sm-9">
-                    <input type="email" class="form-control"  required name="email" placeholder="nguyenvananh@gmail.com" />
+                    <input type="email" class="form-control"  required value="<%= r.information.email %>" name="email" placeholder="nguyenvananh@gmail.com" />
                   </div>
                 </div>
               </div>
@@ -108,7 +108,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Địa chỉ thường trú *</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control"  required name="permanent"/>
+                  <input type="text" class="form-control"  required value="<%= r.information.permanent %>" name="permanent"/>
                 </div>
               </div>
             </div>
@@ -144,7 +144,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Ngày bắt đầu *</label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control"  required name="start" value="<%= get_current_date()%>" />
+                  <input type="date" class="form-control"  required name="start"  value="<%= r.information.start.present? ? r.information.start : get_current_date()%>" />
                 </div>
               </div>
             </div>
@@ -152,7 +152,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Đặt cọc trước</label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" name="deposit" />
+                    <input type="number" class="form-control" value="<%= r.information.deposit%>" name="deposit" />
                   </div>
                 </div>
               </div>
@@ -162,13 +162,13 @@
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Ghi Chú</label>
                   <div class="col-sm-9 ml-3">
-                    <textarea  rows="2" class="form-control"  name="note"></textarea>
+                    <textarea  rows="2" class="form-control"  name="note"> <%=r.information.note%></textarea>
                   </div>
                 </div>
               </div>
             </div>
+            <% end %>
           </div>
-          <% end %>
         </div>
       <% end %>
 <!-- // services -->

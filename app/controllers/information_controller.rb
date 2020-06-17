@@ -51,14 +51,26 @@ class InformationController < ApplicationController
     permanent = params[:permanent]
     room_id = params[:room_id]
     house_id = params[:house_id]
+    start = params[:start]
     information = Information.new(name: "#{firstname} #{lastname}", sex: sex, birth: birth, indentifycard: indentifycard,
-       daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent)
+       daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent, start: start)
     if information.save
       last_inf = Information.last.id
       room = Room.find(room_id)
       if room.update(information_id: last_inf)
-        flash[:notice] = "Đã đặt phòng thành công !"
-        redirect_to houses_path
+        # // create account customer
+        user = User.new(email: email, password: "123456")
+        if user.save
+          services = Service.where(status: 1)
+          services.each do |ser|
+            InforServ.new(information_id: last_inf, service_id: ser.id, amount: 1).save
+          end
+          flash[:notice] = "Đã đặt phòng thành công !"
+          redirect_to houses_path
+        else
+          flash[:notice] = "Đã đặt phòng thành công !"
+          redirect_to houses_path
+        end
       else
         flash[:notice] = "Đã đặt phòng thất bại !"
         redirect_to houses_path

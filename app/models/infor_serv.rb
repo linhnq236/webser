@@ -1,0 +1,2 @@
+class InforServ < ApplicationRecord
+end

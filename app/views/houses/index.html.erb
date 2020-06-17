@@ -25,9 +25,9 @@
               <li class="timeline-item">
                 <p class="timeline-content">
                   <% if room.information_id.present?%>
-                    <button class="btn btn-success btn-sm addcustomer"name="button" data-idroom="<%= room.id%>">Trả</button>
-                    <button class="btn btn-dark btn-sm addcustomer"name="button" data-idroom="<%= room.id%>">Xem</button>
-                    <button class="btn btn-info btn-sm addcustomer"name="button" data-idroom="<%= room.id%>">Sửa</button>
+                    <button class="btn btn-success btn-sm service_customer" name="button" data-idroom="<%= room.id%>">Trả</button>
+                    <button class="btn btn-dark btn-sm view_service_customer" name="button" data-idroom="<%= room.id%>" data-information_id="<%=room.information_id%>">Xem</button>
+                    <button class="btn btn-info btn-sm service_customer" name="button" data-idroom="<%= room.id%>">Sửa</button>
                   <% else%>
                     <button class="btn btn-info btn-sm addcustomer"name="button" data-idroom="<%= room.id%>">Thêm khách</button>
                   <% end%>

@@ -1,0 +1,24 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="text-center">STT</th>
+      <th class="text-center">Chọn</th>
+      <th class="text-center">Dịch vụ sử dụng</th>
+      <th class="text-center">Đơn giá (VNĐ)</th>
+      <th class="text-center">Số lượng</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @services.each_with_index do |service, i|%>
+        <tr>
+          <td class="text-center"><%=i + 1%></td>
+          <td class="text-center">Jacob</td>
+          <td class="text-center"><%=service.name %></td>
+          <td class="text-danger text-center"> <%=service.cost%></td>
+          <td class="text-center">
+            <input type="number" name="service" class="w-50"/>
+          </td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
