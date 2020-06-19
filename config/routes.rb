@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :services
   resources :information
   post "/new_information_customer/:house_id/:room_id", to: "information#new_information_customer"
+  put "/update_information_customer/:house_id/:room_id/:information_id", to: "information#update_information_customer"
   resources :houses
   get "/deletehouse/:id", to: "houses#deletehouse"
   devise_for :users

@@ -7,3 +7,8 @@
 // .district option{
 //   display: none;
 // }
+.not-active {
+  // pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}

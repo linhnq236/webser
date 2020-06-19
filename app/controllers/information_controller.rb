@@ -52,8 +52,10 @@ class InformationController < ApplicationController
     room_id = params[:room_id]
     house_id = params[:house_id]
     start = params[:start]
+    deposit = params[:deposit]
+    note = params[:note]
     information = Information.new(name: "#{firstname} #{lastname}", sex: sex, birth: birth, indentifycard: indentifycard,
-       daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent, start: start)
+       daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent, start: start, deposit: deposit, note: note)
     if information.save
       last_inf = Information.last.id
       room = Room.find(room_id)
@@ -82,6 +84,34 @@ class InformationController < ApplicationController
   end
   # PATCH/PUT /information/1
   # PATCH/PUT /information/1.json
+  def update_information_customer
+    firstname = params[:firstname]
+    lastname = params[:lastname]
+    sex = params[:sex]
+    birth = params[:birth]
+    indentifycard = params[:indentifycard]
+    daterange = params[:daterange]
+    placerange = params[:placerange]
+    phone1 = params[:phone1]
+    phone2 = params[:phone2]
+    email = params[:email]
+    permanent = params[:permanent]
+    room_id = params[:room_id]
+    house_id = params[:house_id]
+    start = params[:start]
+    deposit = params[:deposit]
+    note = params[:note]
+    information_id = params[:information_id]
+    information = Information.find(information_id)
+    if information.update(name: "#{firstname} #{lastname}", sex: sex, birth: birth, indentifycard: indentifycard,
+       daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent, start: start, deposit: deposit, note: note)
+       flash[:notice] = "Cập nhật thành công !"
+       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}"
+     else
+       flash[:notice] = "Cập nhật thất bại !"
+       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}"
+    end
+  end
   def update
     respond_to do |format|
       if @information.update(information_params)

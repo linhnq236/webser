@@ -37,7 +37,7 @@
                 <p class="timeline-content">
                   <i class="fa fa-user"></i>
                   <% if room.information_id.present?%>
-                    <%= room.information.name %>
+                    <%= getInfor(@informations, room.information_id) %>
                   <% end%>
                 </p>
               </li>
@@ -53,10 +53,17 @@
                     <i class="fa fa-edit"></i>
                     Sửa
                   </a>
-                  <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
-                    <i class="fa fa-trash"></i>
-                    Xoá
-                  </a>
+                  <% if room.information_id.present?%>
+                    <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white not-active" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
+                      <i class="fa fa-trash"></i>
+                      Xoá
+                    </a>
+                  <% else %>
+                    <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
+                      <i class="fa fa-trash"></i>
+                      Xoá
+                    </a>
+                  <% end %>
                 </p>
               </li>
             </ul>

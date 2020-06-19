@@ -74,4 +74,12 @@ $( document ).on('turbolinks:load', function() {
     var idinformation = $(this).data("information_id");
     location.href = `/listcustomer/${house_active}/${idroom}/${idinformation}`;
   })
+
+  $(".not-active").click(function(){
+    $.alert({
+      title: 'Thông báo !',
+      content: 'Khách hàng chưa trả phòng',
+    });
+    return false;
+  })
 })
