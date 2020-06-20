@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :services
   resources :information
   post "/new_information_customer/:house_id/:room_id", to: "information#new_information_customer"
+  put "/update_information_customer/:house_id/:room_id/:information_id", to: "information#update_information_customer"
   resources :houses
   get "/deletehouse/:id", to: "houses#deletehouse"
   devise_for :users
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   get "/addcustomer/:house_id/:room_id", to: "rooms#addcustomer"
   get "/listcustomer/:house_id/:room_id/:information_id", to: "rooms#listcustomer"
   post "/information_service", to: "rooms#information_service"
+  get "/payroom/:id", to: "rooms#payroom"
   namespace "api" do
     resources :houses
     resources :home

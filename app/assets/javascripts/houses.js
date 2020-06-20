@@ -4,7 +4,6 @@ $( document ).on('turbolinks:load', function() {
   var house_active = 0;
   $('select.city').change(function() {
     var idCity = this.value;
-    console.log(idCity);
     $(".district option").each(function(){
       var cityid = $(this).data("cityid");
       if (idCity == cityid) {
@@ -56,22 +55,63 @@ $( document ).on('turbolinks:load', function() {
     })
   })
   // location
+  // Sua phong
   $(".edithouse").click(function(){
     location.href = `/houses/${house_active}/edit`;
   })
+  // tra phong
+  $(".payroom").click(function(){
+    var room_id = $(this).data("idroom");
+    $.confirm({
+        title: 'Thông báo!',
+        content: 'Bạn có muốn trả phòng không ?',
+        buttons: {
+            Ok: {
+              btnClass: 'btn-primary',
+              action: function(){
+                location.href = `/payroom/${room_id}`;
+              }
+            },
+            Hủy: {
+              btnClass: 'btn-danger',
+            },
+        }
+    });
+  })
+  // xoa phong
   $(".deletehouse").click(function(){
     if (confirm("Các phòng ở ngôi nhà này sẽ bị xóa sạch.")) {
-      location.href = `/deletehouse/${house_active}`;
+      $(".payroom").each(function(){
+        var room_id = $(this).data("idroom");
+        if (room_id != 0) {
+          $.alert({
+            title: 'Thông báo !',
+            content: 'Khách hàng chưa trả phòng. Bạn không thể xóa nhà.',
+          });
+        } else {
+          location.href = `/deletehouse/${house_active}`;
+        }
+      })
     }
     return false;
   })
+  // them khach hang vao phong
   $(".addcustomer").click(function(){
     var idroom = $(this).data("idroom");
     location.href = `/addcustomer/${house_active}/${idroom}`;
   })
+  // xem va chinh sua thong tin khach hang
   $(".view_service_customer").click(function(){
     var idroom = $(this).data("idroom");
     var idinformation = $(this).data("information_id");
     location.href = `/listcustomer/${house_active}/${idroom}/${idinformation}`;
+  })
+  // khi co nguoi dang muon phng thi khong cho pep xoa phong nay.
+  $(".not-active").click(function(){
+    $.alert({
+      title: 'Thông báo !',
+      content: 'Khách hàng chưa trả phòng',
+    });
+    return false;
   })
 })
