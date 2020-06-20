@@ -27,10 +27,11 @@ $( document ).on('turbolinks:load', function() {
       var active = $(this).text();
       var area = $(this).data("area");
       var column = $(this).data("column");
-      if (column == "TURNON" || column == "TURNOFF") {
-        setTime(status,area, column);
+      var subcolumn = $(this).data("subcolumn");
+      if (subcolumn == "TURNON" || subcolumn == "TURNOFF") {
+        setTime(status,area, column, subcolumn);
       }else {
-        api_led_status(status,active,area, column);
+        api_led_status(status,active,area, column, subcolumn);
       }
     })
   }
@@ -39,21 +40,25 @@ $( document ).on('turbolinks:load', function() {
     var html = '';
     $.each(arr, function(index, value){
       $.each(value, function(ind, val){
-        html += `
-        <div class="row">
-        <div class="col-sm-4">${index}</div>
-        <div class="col-sm-4">${ind}</div>
-        <div class="col-sm-4">
-        <button class="col-sm-12 led led${area} led_turn${ind} cursor" data-areapin="${area+index+ind}" data-area="${area}" data-status = "${index}" data-column="${ind}">${val}</button>
-        </div>
-        </div>
-        `
+        $.each(val, function(ind1, val1){
+          html += `
+          <div class="row">
+            <div class="col-sm-3">${index}</div>
+            <div class="col-sm-3">${ind}</div>
+            <div class="col-sm-3">${ind1}</div>
+            <div class="col-sm-3">
+            <button class="col-sm-12 led led${area} led_turn${ind} cursor" data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${val1}</button>
+            </div>
+            <hr>
+          </div>
+          `
+        })
       })
     })
   	return html;
   }
 
-  function api_led_status(status,active, area, column){
+  function api_led_status(status,active, area, column, subcolumn){
     if(active == "ON"){
       setactive = "OFF";
     }else{
@@ -62,7 +67,7 @@ $( document ).on('turbolinks:load', function() {
     $.ajax({
       type: 'post',
       url: "/updatestatus",
-      data: {status: status, active: setactive, area: area, column: column},
+      data: {status: status, active: setactive, area: area, column: column, subcolumn: subcolumn},
       success: function(rep) {
         // console.log(rep);
         // location.reload();
@@ -73,7 +78,7 @@ $( document ).on('turbolinks:load', function() {
     })
   }
   // SETTIME
-  function setTime(status, area, column){
+  function setTime(status, area, column, subcolumn){
     $.confirm({
       title: "SETTIME",
       // columnClass: 'col-md-5 col-md-offset-4',
@@ -98,7 +103,8 @@ $( document ).on('turbolinks:load', function() {
                   settime: resettime,
                   status: status,
                   area: area,
-                  column: column
+                  column: column,
+                  subcolumn: subcolumn,
                 },
                 success: function(repsonse) {
                   console.log("Set timer is successfully.")

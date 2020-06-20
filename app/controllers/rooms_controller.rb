@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :payroom]
   FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   # GET /rooms
@@ -90,6 +90,15 @@ class RoomsController < ApplicationController
     byebug
   end
 
+  def payroom
+    if @room.update(information_id: "")
+      flash[:notice] = "Trả phòng thành công !"
+      redirect_to houses_path
+    else
+      flash[:warning] = "Trả phòng thất bại !"
+      redirect_to houses_path
+    end
+  end
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update

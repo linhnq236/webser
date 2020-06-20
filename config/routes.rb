@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "/addcustomer/:house_id/:room_id", to: "rooms#addcustomer"
   get "/listcustomer/:house_id/:room_id/:information_id", to: "rooms#listcustomer"
   post "/information_service", to: "rooms#information_service"
+  get "/payroom/:id", to: "rooms#payroom"
   namespace "api" do
     resources :houses
     resources :home
