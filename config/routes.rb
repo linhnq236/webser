@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   namespace "api" do
     resources :houses
     resources :home
+    resources :users
+    post "/account", to: "users#account"
     get "getdistrict/:city", to: "houses#getdistrict"
     get "getward/:district", to: "houses#getward"
     get "led_status", to: "home#led_status"
