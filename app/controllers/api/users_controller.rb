@@ -13,9 +13,9 @@ module Api
         infor.each do |n|
           name = n.name
         end
-        render json: {data: name, password: params[:password]}
+        render json: {status: 200, username: name, password: params[:password]}
       else
-        render json: {data: 0}
+        render json: {status: 204}
       end
     end
   end
