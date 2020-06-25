@@ -80,20 +80,32 @@ $( document ).on('turbolinks:load', function() {
   })
   // xoa phong
   $(".deletehouse").click(function(){
-    if (confirm("Các phòng ở ngôi nhà này sẽ bị xóa sạch.")) {
-      $(".payroom").each(function(){
-        var house_id = $(this).data("house_id");
-        if (house_id == house_active) {
-          $.alert({
-            title: 'Thông báo !',
-            content: 'Khách hàng chưa trả phòng. Bạn không thể xóa nhà.',
-          });
-        } else {
-          location.href = `/deletehouse/${house_active}`;
+    $.confirm({
+        title: 'Thông báo!',
+        content: 'Bạn có muốn trả phòng không ?',
+        buttons: {
+            Ok: {
+              btnClass: 'btn-primary',
+              action: function(){
+                location.href = `/deletehouse/${house_active}`;
+                // $(".payroom").each(function(){
+                //   var house_id = $(this).data("house_id");
+                //   if (house_id == house_active) {
+                //     $.alert({
+                //       title: 'Thông báo !',
+                //       content: 'Khách hàng chưa trả phòng. Bạn không thể xóa nhà.',
+                //     });
+                //   } else {
+                //     console.log("a");
+                //   }
+                // })
+              }
+            },
+            Hủy: {
+              btnClass: 'btn-danger',
+            },
         }
-      })
-    }
-    return false;
+    });
   })
   // them khach hang vao phong
   $(".addcustomer").click(function(){
