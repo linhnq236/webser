@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     post "/account", to: "users#account"
     get "getdistrict/:city", to: "houses#getdistrict"
     get "getward/:district", to: "houses#getward"
-    get "led_status", to: "home#led_status"
+    get "led_status/:information_id", to: "home#led_status"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

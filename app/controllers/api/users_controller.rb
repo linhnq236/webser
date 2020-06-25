@@ -6,14 +6,16 @@ module Api
     skip_before_action :verify_authenticity_token
     def account
       name = ''
+      id = ''
       user = User.find_by_email(params[:email])
       user_pass = BCrypt::Password.new(user.encrypted_password)
       if user_pass == params[:password]
         infor = Information.where(email: params[:email])
         infor.each do |n|
           name = n.name
+          id = n.id
         end
-        render json: {status: 200, username: name, password: params[:password]}
+        render json: {status: 200, username: name, password: params[:password], id: id}
       else
         render json: {status: 204}
       end
