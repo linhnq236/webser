@@ -207,8 +207,34 @@
             <% end %>
           </tbody>
         </table>
-      </div>
       <% end %>
     </div>
+    <!-- members  -->
+    <div id="mem_3" class="d-none">
+      <%= form_tag("/information_service", method: :post) do %>
+        <%= render "shared/nextback", local: {title: @title = "Thêm thành viên"}%>
+        <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
+        <table class="table table-hover service">
+
+          <thead>
+            <tr>
+              <th class="text-center">Họ và tên</th>
+              <th class="text-center">Ngày sinh</th>
+              <th class="text-center">Giới tính</th>
+              <th class="text-center">CMND</th>
+              <th class="text-center">Địa chỉ</th>
+              <th class="text-center">Điện thoại</th>
+              <th class="text-center"></th>
+            </tr>
+          </thead>
+          <tbody class="members"></tbody>
+        </table>
+      <% end %>
+      <button name="button" class="btn btn-success pull-right addmember">
+        <i class="fa fa-plus-circle"></i>
+      </button>
+    </div>
+    </div>
+
   </div>
 </div>

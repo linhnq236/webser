@@ -82,8 +82,8 @@ $( document ).on('turbolinks:load', function() {
   $(".deletehouse").click(function(){
     if (confirm("Các phòng ở ngôi nhà này sẽ bị xóa sạch.")) {
       $(".payroom").each(function(){
-        var room_id = $(this).data("idroom");
-        if (room_id != 0) {
+        var house_id = $(this).data("house_id");
+        if (house_id == house_active) {
           $.alert({
             title: 'Thông báo !',
             content: 'Khách hàng chưa trả phòng. Bạn không thể xóa nhà.',

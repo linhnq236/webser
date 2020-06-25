@@ -173,7 +173,7 @@
       <% end %>
 <!-- // services -->
     <div id="serv_2" class="d-none">
-      <%= form_tag("/information_id", method: :post) do %>
+      <%= form_tag("/updated_ser", method: :post) do %>
         <%= render "shared/nextback", local: {title: @title = "Dịch vụ nhà trọ"}%>
         <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
         <table class="table table-hover service">
@@ -207,8 +207,46 @@
             <% end %>
           </tbody>
         </table>
-      </div>
       <% end %>
+      </div>
+      <!-- member -->
+      <div id="mem_3" class="d-none">
+        <%= form_tag("/updated_ser", method: :post) do %>
+          <%= render "shared/nextback", local: {title: @title = "Dịch vụ nhà trọ"}%>
+          <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
+          <table class="table table-hover service">
+
+            <thead>
+              <tr>
+                <th class="text-center">STT</th>
+                <th class="text-center">Chọn</th>
+                <th class="text-center">Dịch vụ sử dụng</th>
+                <th class="text-center">Đơn giá (VNĐ)</th>
+                <th class="text-center">Số lượng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @services.each_with_index do |service, i|%>
+              <tr>
+                <td class="text-center"><%=i + 1%></td>
+                <td class="text-center">
+                  <% if service.status == 1%>
+                    <input type="checkbox" checked name="checkservice" value="<%=service.id%>" class="form-check-input must" data-status="must">
+                  <% else %>
+                    <input type="checkbox" name="checkservice" value="<%=service.id%>" class="form-check-input">
+                  <% end %>
+                </td>
+                <td class="text-center"><%=service.name %></td>
+                <td class="text-danger text-center"> <%=service.cost%></td>
+                <td class="text-center">
+                  <input type="number" name="service" min="1" value="1" class="form-control text-center"/>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
