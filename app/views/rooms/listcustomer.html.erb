@@ -211,7 +211,7 @@
       </div>
       <!-- member -->
       <div id="mem_3" class="d-none">
-        <%= form_tag("/information_service", method: :post) do %>
+        <%= form_tag("/addmembers/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}", method: :post) do %>
           <%= render "shared/nextback", local: {title: @title = "Thêm thành viên"}%>
           <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
           <table class="table table-hover service">
@@ -222,12 +222,58 @@
                 <th class="text-center">Ngày sinh</th>
                 <th class="text-center">Giới tính</th>
                 <th class="text-center">CMND</th>
-                <th class="text-center">Địa chỉ</th>
-                <th class="text-center">Điện thoại</th>
+                <th class="text-center">Điện thoại 1</th>
+                <th class="text-center">Điện thoại 2</th>
                 <th class="text-center"></th>
               </tr>
             </thead>
-            <tbody class="members"></tbody>
+            <tbody class="members">
+              <tr class="RowPerson_${countElements}">
+                <% @member.each do |m|%>
+                  <td class="text-center">
+                    <% m.name.each_with_index do |a, i|%>
+                      <input type="text" name="member[name][]" class="form-control member_<%= i%>" value="<%= a %>">
+                    <% end %>
+                  </td>
+                  <td class="text-center">
+                    <% m.birth.each_with_index do |a, i|%>
+                      <input type="date" name="member[birth][]" class="form-control member_<%= i%>" value="<%= a%>">
+                    <% end %>
+                </td>
+                <td class="text-danger text-center">
+                  <% m.sex.each_with_index do |a, i|%>
+                    <select class="form-control mb-2 member_<%= i%>"  required name="member[sex][]">
+                      <option value="<%=a%>"><%= a == false ? "Nam" : "Nữ"%></option>
+                    </select>
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <% m.indentifycard.each_with_index do |a, i|%>
+                    <input type="text" name="member[indentifycard][]" value="<%=a%>" class="form-control member_<%= i%> text-center"/>
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <% m.phone1.each_with_index do |a, i|%>
+                    <input type="text" name="member[phone1][]" value="<%=a%>" required class="form-control member_<%= i%> text-center"/>
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <% m.phone2.each_with_index do |a, i|%>
+                    <input type="text" name="member[phone2][]" value="<%=a%>" class="form-control member_<%= i%> text-center"/>
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <% m.phone2.each_with_index do |a, i|%>
+                  <div class="">
+                    <a class="btn btn-danger text-white removememberRow" data-deleterow="<%=i%>" name="removefield">
+                      <i class="fa fa-minus-circle"></i>
+                    </a>
+                  </div>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
           </table>
         <% end %>
         <button name="button" class="btn btn-success pull-right addmember">

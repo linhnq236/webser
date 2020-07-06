@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_170356) do
+ActiveRecord::Schema.define(version: 2020_07_04_143459) do
 
   create_table "cities", force: :cascade do |t|
     t.string "code"
@@ -74,6 +74,19 @@ ActiveRecord::Schema.define(version: 2020_06_15_170356) do
     t.string "email"
   end
 
+  create_table "members", force: :cascade do |t|
+    t.json "name"
+    t.json "birth"
+    t.json "sex"
+    t.json "indentifycard"
+    t.json "phone1"
+    t.json "phone2"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "information_id", null: false
+    t.index ["information_id"], name: "index_members_on_information_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.string "cost"
@@ -94,17 +107,8 @@ ActiveRecord::Schema.define(version: 2020_06_15_170356) do
 # Could not dump table "services" because of following StandardError
 #   Unknown type 'bool' for column 'status'
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'bool' for column 'admin'
 
   create_table "wards", force: :cascade do |t|
     t.string "code"
@@ -122,6 +126,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_170356) do
   add_foreign_key "houses", "wards"
   add_foreign_key "infor_servs", "information"
   add_foreign_key "infor_servs", "services"
+  add_foreign_key "members", "information"
   add_foreign_key "rooms", "houses"
   add_foreign_key "rooms", "information"
   add_foreign_key "wards", "districts"

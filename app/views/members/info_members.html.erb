@@ -1,0 +1,50 @@
+<%=@information.name%>
+<% if !@members.nil? %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="text-center">Họ và tên</th>
+        <th class="text-center">Ngày sinh</th>
+        <th class="text-center">Giới tính</th>
+        <th class="text-center">CMND</th>
+        <th class="text-center">Điện thoại 1</th>
+        <th class="text-center">Điện thoại 2</th>
+        <th class="text-center"></th>
+      </tr>
+    </thead>
+    <tbody class="members">
+      <tr class="RowPerson_${countElements}">
+          <td class="text-center">
+            <% @members.name.each_with_index do |a, i|%>
+              <input type="text" name="member[name][]" class="form-control member_<%= i%>" value="<%= a %>">
+            <% end %>
+          </td>
+          <td class="text-center">
+            <% @members.birth.each_with_index do |a, i|%>
+              <input type="text" name="member[birth][]" class="form-control member_<%= i%>" value="<%= a %>">
+            <% end %>
+          </td>
+          <td class="text-center">
+            <% @members.sex.each_with_index do |a, i|%>
+              <input type="text" name="member[birth][]" class="form-control member_<%= i%>" value="<%= a == "0" ? "Nam" : "Nữ"%>">
+            <% end %>
+          </td>
+          <td class="text-center">
+            <% @members.indentifycard.each_with_index do |a, i|%>
+              <input type="text" name="member[indentifycard][]" class="form-control member_<%= i%>" value="<%= a %>">
+            <% end %>
+          </td>
+          <td class="text-center">
+            <% @members.phone1.each_with_index do |a, i|%>
+              <input type="text" name="member[indentifycard][]" class="form-control member_<%= i%>" value="<%= a %>">
+            <% end %>
+          </td>
+          <td class="text-center">
+            <% @members.phone2.each_with_index do |a, i|%>
+              <input type="text" name="member[indentifycard][]" class="form-control member_<%= i%>" value="<%= a %>">
+            <% end %>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

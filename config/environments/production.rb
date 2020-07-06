@@ -15,8 +15,10 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   #Socket
-  config.web_socket_server_url = "ws://linhser.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://linhser.herokuapp.com', 'https://linhser.herokuapp.com']
+  # config.web_socket_server_url = "ws://linhser.herokuapp.com/cable"
+  # config.action_cable.allowed_request_origins = ['https://linhser.herokuapp.com', 'https://linhser.herokuapp.com']
+
+
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
@@ -41,13 +43,13 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Mount Action Cable outside main process or domain.
+  # Mount Action Cable outside mconfig.force_sslain process or domain.
   config.action_cable.mount_path = nil
-  config.action_cable.url = 'wss://linhser.herokuapp.com//cable'
+  config.action_cable.url = 'ws://linhser.herokuapp.com/cable'
   config.action_cable.allowed_request_origins = [ 'https://linhser.herokuapp.com/', /http:\/\/linhser.herokuapp.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.

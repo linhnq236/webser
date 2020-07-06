@@ -1,24 +1,48 @@
-<table class="table table-hover">
+<div class="container">
+  <blockquote class="blockquote">
+    <h3 class="text-center">THÊM DỊCH VỤ MỚI</h3>
+    <%= form_tag('/services', method: :post) do %>
+    <div class="row">
+      <input type="text" required  class="form-control" name="service[name]" placeholder="Nhập tên dịch vụ">
+    </div>
+    <div class="row">
+      <input type="text" required class="form-control" name="service[cost]" placeholder="Nhập giá dịch vụ">
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <input type="radio" name="service[status]" value="1"> Bắt buộc
+      </div>
+      <div class="col-sm-6">
+        <input type="radio" name="service[status]" value="0" checked> Không bắt buộc
+      </div>
+    </div>
+    <input type="submit" value="Gửi">
+    <% end %>
+  </blockquote>
+</div>
+<table class="table table-hover service">
   <thead>
     <tr>
       <th class="text-center">STT</th>
-      <th class="text-center">Chọn</th>
+      <th class="text-center">Trạng thái</th>
       <th class="text-center">Dịch vụ sử dụng</th>
       <th class="text-center">Đơn giá (VNĐ)</th>
-      <th class="text-center">Số lượng</th>
     </tr>
   </thead>
   <tbody>
-      <% @services.each_with_index do |service, i|%>
-        <tr>
-          <td class="text-center"><%=i + 1%></td>
-          <td class="text-center">Jacob</td>
-          <td class="text-center"><%=service.name %></td>
-          <td class="text-danger text-center"> <%=service.cost%></td>
-          <td class="text-center">
-            <input type="number" name="service" class="w-50"/>
-          </td>
-        </tr>
-      <% end %>
+    <% @services.each_with_index do |service, i|%>
+    <tr>
+      <td class="text-center"><%=i + 1%></td>
+      <td class="text-center">
+        <% if service.status == 1%>
+          Bắt buộc
+        <% else %>
+          Không bắt buộc
+        <% end %>
+      </td>
+      <td class="text-center"><%=service.name %></td>
+      <td class="text-danger text-center"> <%=service.cost%></td>
+    </tr>
+    <% end %>
   </tbody>
 </table>

@@ -84,6 +84,7 @@ class RoomsController < ApplicationController
     @room = Room.where(id: params[:room_id])
     @information = Information.where(id: params[:information_id])
     @services = Service.all
+    @member = Member.where(information_id: params[:information_id])
   end
 
   def information_service

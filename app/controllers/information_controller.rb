@@ -10,6 +10,7 @@ class InformationController < ApplicationController
   # GET /information/1
   # GET /information/1.json
   def show
+
   end
 
   # GET /information/new
@@ -61,7 +62,7 @@ class InformationController < ApplicationController
       room = Room.find(room_id)
       if room.update(information_id: last_inf)
         # // create account customer
-        user = User.new(email: email, password: "123456")
+        user = User.new(email: email, password: "123456", admin: "0")
         if user.save
           services = Service.where(status: 1)
           services.each do |ser|

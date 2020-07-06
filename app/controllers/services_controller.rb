@@ -25,16 +25,13 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.new(service_params)
-
-    respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
+        flash[:notice] = 'Dịch vụ mới được thêm.'
+        redirect_to services_path
       else
-        format.html { render :new }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
+       flash[:warn]  = flash_errors(@service.errors)
+       redirect_to services_path
       end
-    end
   end
 
   # PATCH/PUT /services/1
@@ -69,6 +66,6 @@ class ServicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def service_params
-      params.require(:service).permit(:name, :cost)
+      params.require(:service).permit(:name, :cost, :status)
     end
 end

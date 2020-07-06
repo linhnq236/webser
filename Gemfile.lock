@@ -95,6 +95,7 @@ GEM
       rubyzip (>= 1.1)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    custom_error_message (1.1.1)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -291,6 +292,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave
   city-state
+  custom_error_message
   devise
   firebase
   font-awesome-rails
