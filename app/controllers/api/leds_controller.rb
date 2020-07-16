@@ -17,11 +17,7 @@ module Api
 
       response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{name}/#{column}": status})
 
-      reponse_leds = firebase.get(FIREBASE_URL).body
-
-      ActionCable.server.broadcast 'ledstatus_channel',
-      ledstatus: reponse_leds
-        head :no_content
+      render json: {status: 200}
     end
 
   end
