@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get "led_status/:information_id", to: "home#led_status"
     post "app_send/:information_id", to: "leds#app_send_data"
     get "getinfo/:id", to: "information#getinfo"
+    post "updateInfo/:id", to: "information#updateInfo"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
