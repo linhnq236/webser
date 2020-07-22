@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post "/addmembers/:house_id/:room_id/:information_id", to: "members#addmembers"
   get "info_members/:information_id", to: "members#info_members"
   resources :services
+  post "updated_ser", to: "services#updated_ser"
   resources :information
   post "/new_information_customer/:house_id/:room_id", to: "information#new_information_customer"
   put "/update_information_customer/:house_id/:room_id/:information_id", to: "information#update_information_customer"
