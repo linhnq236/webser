@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :members
+  post "/addmembers/:house_id/:room_id/:information_id", to: "members#create"
+  resources :use_services
+  post "use_service/:house_id/:room_id/:information_id", to: "use_services#use_service"
+  resources :members
   post "/addmembers/:house_id/:room_id/:information_id", to: "members#addmembers"
   get "info_members/:information_id", to: "members#info_members"
   resources :services

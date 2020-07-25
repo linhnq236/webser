@@ -1,0 +1,2 @@
+class UseService < ApplicationRecord
+end

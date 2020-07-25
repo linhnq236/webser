@@ -107,6 +107,8 @@ GEM
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     firebase (0.2.8)
       googleauth
       httpclient (>= 2.5.3)
@@ -295,6 +297,7 @@ DEPENDENCIES
   city-state
   custom_error_message
   devise
+  figaro
   firebase
   font-awesome-rails
   gon

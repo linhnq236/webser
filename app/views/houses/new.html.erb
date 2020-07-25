@@ -29,12 +29,7 @@
               <div class="col-sm-9">
                   <select class="form-control district" name="district_id" required>
                     <option value="">Chon</option>
-                    <% @districts.each do |district|%>
-                      <option value="<%=district.id%>" data-cityid="<%=district.city_id%>"><%= district.name%></option>
-                    <% end %>
                   </select>
-                  <%# <%= select("", "district_id", @districts.collect {|u| [ u.name, u.city_id] }, { include_blank: true }, class: "form-control district", required: "required") %>
-
               </div>
             </div>
           </div>

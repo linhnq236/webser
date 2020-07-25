@@ -21,10 +21,10 @@ $( document ).on('turbolinks:load', function() {
           <input type="text" name="member[indentifycard][]" class="form-control text-center"/>
         </td>
         <td class="text-center">
-          <input type="text" name="member[phone1][]" required class="form-control text-center"/>
+          <input type="text" name="member[address][]" required class="form-control text-center"/>
         </td>
         <td class="text-center">
-          <input type="text" name="member[phone2][]" class="form-control text-center"/>
+          <input type="text" name="member[phone][]" class="form-control text-center"/>
         </td>
         <td class="text-center">
           <a class="btn btn-danger text-white removeperson" data-rowremove="${countElements}" name="removefield">
@@ -38,6 +38,10 @@ $( document ).on('turbolinks:load', function() {
       var columnRowRemove = $(this).data("rowremove");
       $(`.RowPerson_${columnRowRemove}`).remove();
     })
+  })
+  $(".removepersonList").click(function(){
+    var columnRowRemove = $(this).data("rowremove");
+    $(`.RowPersonList_${columnRowRemove}`).remove();
   })
   // removefield person
   $(".removememberRow").click(function(){

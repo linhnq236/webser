@@ -3,13 +3,19 @@ $( document ).on('turbolinks:load', function() {
   var html_ward = '';
   var house_active = 0;
   $('select.city').change(function() {
-    var idCity = this.value;
-    $(".district option").each(function(){
-      var cityid = $(this).data("cityid");
-      if (idCity == cityid) {
-        $(this).css({"display": "block"});
-      }else{
-        $(this).css({"display": "none"});
+    console.log(this.value);
+    $.ajax({
+      type: "get",
+      url: "/api/getdistrict/" + this.value,
+      success: function(rep){
+        $.each(rep["data"], function(index, value){
+          html_district += `<option value="${value["id"]}">${value["name"]}</option>`
+        })
+        $(".district").html(html_district);
+        html_district = '';
+      },
+      error: function(rep){
+        console.log(rep);
       }
     })
   })
@@ -23,6 +29,7 @@ $( document ).on('turbolinks:load', function() {
           html_ward += `<option value="${value["id"]}">${value["name"]}</option>`
         })
         $(".ward").html(html_ward);
+        html_ward = '';
       },
       error: function(rep){
         console.log(rep);
@@ -82,7 +89,7 @@ $( document ).on('turbolinks:load', function() {
   $(".deletehouse").click(function(){
     $.confirm({
         title: 'Thông báo!',
-        content: 'Bạn có muốn trả phòng không ?',
+        content: 'Bạn có muốn xóa nhà không (Bao gồm tất cả các phòng)?',
         buttons: {
             Ok: {
               btnClass: 'btn-primary',
