@@ -1,0 +1,2 @@
+class NotifyMailerController < ApplicationController
+end
