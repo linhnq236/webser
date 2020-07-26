@@ -3,6 +3,6 @@ class NoticeMailer < ApplicationMailer
     @info = Information.find(id)
     # byebug
     # mail(to: @info.email ,subject: "Tien dong tro")
-    mail(to: 'lockupin@gmail.com' ,subject: "Tien dong tro")
+    mail(to: '1651120032@sv.ut.edu.vn' ,subject: "Tien dong tro")
   end
 end
