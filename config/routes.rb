@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :notify_mailer
+  get "/send_email", to: "notify_mailer#send_email"
+  post "/send_to_email", to: "notify_mailer#send_to_email"
   resources :members
   post "/addmembers/:house_id/:room_id/:information_id", to: "members#create"
   resources :use_services
@@ -26,8 +29,9 @@ Rails.application.routes.draw do
   get "/addcustomer/:house_id/:room_id", to: "rooms#addcustomer"
   get "/listcustomer/:house_id/:room_id/:information_id", to: "rooms#listcustomer"
   post "/information_service", to: "rooms#information_service"
-  get "/payroom/:id", to: "rooms#payroom"
+  get "/payroom/:id/:information_id", to: "rooms#payroom"
   resources :users
+  get "/account", to: "users#account"
   namespace "api" do
     resources :houses
     resources :home
@@ -41,6 +45,7 @@ Rails.application.routes.draw do
     post "app_send/:information_id", to: "leds#app_send_data"
     get "getinfo/:id", to: "information#getinfo"
     post "updateInfo/:id", to: "information#updateInfo"
+    get "/getOldCustomer", to: "information#getOldCustomer"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

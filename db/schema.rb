@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_061800) do
+ActiveRecord::Schema.define(version: 2020_07_27_151139) do
 
   create_table "cities", force: :cascade do |t|
     t.string "code"
@@ -56,23 +56,8 @@ ActiveRecord::Schema.define(version: 2020_07_25_061800) do
     t.index ["service_id"], name: "index_infor_servs_on_service_id"
   end
 
-  create_table "information", force: :cascade do |t|
-    t.string "name"
-    t.boolean "sex"
-    t.date "birth"
-    t.string "indentifycard"
-    t.date "daterange"
-    t.string "placerange"
-    t.string "phone1"
-    t.string "phone2"
-    t.string "permanent"
-    t.date "start"
-    t.float "deposit"
-    t.text "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "email"
-  end
+# Could not dump table "information" because of following StandardError
+#   Unknown type 'bool' for column 'mark'
 
   create_table "members", force: :cascade do |t|
     t.json "name"
@@ -117,7 +102,7 @@ ActiveRecord::Schema.define(version: 2020_07_25_061800) do
   end
 
 # Could not dump table "users" because of following StandardError
-#   Unknown type 'bool' for column 'admin'
+#   Unknown type '' for column 'admin'
 
   create_table "wards", force: :cascade do |t|
     t.string "code"

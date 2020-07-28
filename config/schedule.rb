@@ -19,7 +19,7 @@ set :environment, "development"
 #   runner "AnotherModel.prune_old_records"
 # end
 # Learn more: http://github.com/javan/whenever
-# every :day, at: '7:55pm' do
-every 1.minute do
+# every 1.minute do
+every :day, at: '10:48pm' do
   rake "custom:auto_send_email"
 end

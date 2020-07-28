@@ -77,6 +77,9 @@ class RoomsController < ApplicationController
     @house = House.where(id: params[:house_id])
     @room = Room.where(id: params[:room_id])
     @services = Service.all.order("status DESC")
+    if params[:information_id].present?
+      @infor = Information.find(params[:information_id])
+    end
   end
 
   def listcustomer
@@ -96,14 +99,16 @@ class RoomsController < ApplicationController
     end
   end
 
-  def information_service
-    byebug
-  end
-
   def payroom
     if @room.update(information_id: "")
-      flash[:notice] = "Trả phòng thành công !"
-      redirect_to houses_path
+      inf = Information.find(params[:information_id])
+      user = User.find_by_email(inf.email)
+      if user.update(disable: 1)
+        if inf.update(mark: 1)
+          flash[:notice] = "Trả phòng thành công !"
+          redirect_to houses_path
+        end
+      end
     else
       flash[:warning] = "Trả phòng thất bại !"
       redirect_to houses_path

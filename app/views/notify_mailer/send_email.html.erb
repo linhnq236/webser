@@ -1,0 +1,37 @@
+<div class="col-sm-12">
+  <%= form_tag("/send_to_email", method: :post) do %>
+    <blockquote class="blockquote">
+      <h1>Thư mới</h1>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3 text-center">Đến</div>
+        <div class="col-sm-9">
+          <select name="email[]" data-placeholder="Chọn người nhận..." multiple class="chosen-select form-control">
+            <% @infors.each do |inf|%>
+              <option value="<%=inf.email%>"><%=inf.name%></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3 text-center">Tiêu đề</div>
+        <div class="col-sm-9">
+          <input type="text" name="title" class="form-control"  placeholder="Nội dung gửi">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3 text-center">Nội dung</div>
+        <div class="col-sm-9 content">
+          <textarea name="content" placeholder="Nội dung gửi" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="text-center col-sm-12">
+          <button type="submit" name="button" class="btn btn-primary"><i class="mdi mdi-send-outline"></i></button>
+        </div>
+      </div>
+    </blockquote>
+  <% end %>
+</div>
