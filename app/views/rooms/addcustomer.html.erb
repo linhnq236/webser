@@ -2,20 +2,20 @@
   <div class="card">
     <div class="card-body">
       <hr>
-    <%= form_tag("/new_information_customer/#{params[:house_id]}/#{params[:room_id]}", method: :post, id: "inf_1") do %>
+    <%= form_tag("/new_information_customer/#{params[:house_id]}/#{params[:room_id]}?information_id=#{params[:information_id]}", method: :post, id: "inf_1") do %>
       <%= render "shared/nextback", local: {title: @title = "Thêm khách thuê phòng"}%>
       <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Thông tin cá nhân</h4>
-            <!-- <p class="card-description">Thông tin cá nhân </p> -->
+          <button class="btn btn-primary mb-4 btn-sm getOldCustomer currsor" data-house_id="<%=params[:house_id]%>" data-room_id="<%=params[:room_id]%>" type="button" name="button">Khách hàng cũ</button>
           <% @room.each do |r|%>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Họ *</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" required name="firstname" />
+                  <input type="text" class="form-control" required name="firstname" value="<%=check_Info_first_name_nil(@infor)%>"/>
                 </div>
               </div>
             </div>
@@ -23,7 +23,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Tên *</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control"  required name="lastname" />
+                  <input type="text" class="form-control"  required name="lastname" value="<%=check_Info_last_name_nil(@infor)%>" />
                 </div>
               </div>
             </div>
@@ -34,8 +34,8 @@
                 <label class="col-sm-3 col-form-label">Giới tính *</label>
                 <div class="col-sm-9">
                   <select class="form-control"  required name="sex">
-                    <option value="0">Nam</option>
-                    <option value="1">Nữ</option>
+                    <option value="0" <%=check_Info_sex_nil(@infor, false)%> >Nam</option>
+                    <option value="1" <%=check_Info_sex_nil(@infor, true)%> >Nữ</option>
                   </select>
                 </div>
               </div>
@@ -44,7 +44,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Ngày sinh *</label>
                 <div class="col-sm-9">
-                  <input type="date" class="form-control" required name="birth" placeholder="dd/mm/yyyy" />
+                  <input type="date" class="form-control" required name="birth" value="<%=check_Info_birth_nil(@infor)%>" placeholder="dd/mm/yyyy" />
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">CMND *</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control"  required name="indentifycard" />
+                  <input type="text" class="form-control"  required name="indentifycard" value="<%=check_Info_indentifycard_nil(@infor)%>"  />
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Ngày cấp *</label>
                   <div class="col-sm-9">
-                    <input type="date" class="form-control"  required name="daterange" placeholder="dd/mm/yyyy" />
+                    <input type="date" class="form-control"  required name="daterange" placeholder="dd/mm/yyyy" value="<%=check_Info_daterange_nil(@infor)%>" />
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Điện thoại 1</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" name="phone1" />
+                  <input type="text" class="form-control" name="phone1" value="<%=check_Info_phone1_nil(@infor)%>"  />
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Nơi cấp *</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control"  required name="placerange" placeholder="CA TP Đà Nẵng" />
+                    <input type="text" class="form-control"  required name="placerange" value="<%=check_Info_placerange_nil(@infor)%>"  placeholder="CA TP Đà Nẵng" />
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Điện thoai 2</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control"  name="phone2" />
+                  <input type="text" class="form-control"  name="phone2" value="<%=check_Info_phone2_nil(@infor)%>" />
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Email *</label>
                   <div class="col-sm-9">
-                    <input type="email" class="form-control"  required name="email" placeholder="nguyenvananh@gmail.com" />
+                    <input type="email" class="form-control"  required name="email" placeholder="nguyenvananh@gmail.com" value="<%=check_Info_email_nil(@infor)%>"  />
                   </div>
                 </div>
               </div>
@@ -108,7 +108,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Địa chỉ thường trú *</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control"  required name="permanent"/>
+                  <input type="text" class="form-control"  required name="permanent" value="<%=check_Info_permanent_nil(@infor)%>" />
                 </div>
               </div>
             </div>
@@ -152,7 +152,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Đặt cọc trước</label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" name="deposit" />
+                    <input type="number" class="form-control" name="deposit"  value="<%=check_Info_deposit_nil(@infor)%>" />
                   </div>
                 </div>
               </div>
@@ -162,7 +162,7 @@
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Ghi Chú</label>
                   <div class="col-sm-9 ml-3">
-                    <textarea  rows="2" class="form-control"  name="note"></textarea>
+                    <textarea  rows="2" class="form-control"  name="note"><%=check_Info_note_nil(@infor)%> </textarea>
                   </div>
                 </div>
               </div>

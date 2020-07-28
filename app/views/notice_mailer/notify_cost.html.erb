@@ -1,0 +1,35 @@
+<h1>BIÊN LAI THANH TOÁN TIỀN TRỌ</h1>
+  <div class="col-sm-3">Họ và tên:<%=@info.name%></div>
+  <div class="col-sm-3">CMND:<%=@info.indentifycard%></div>
+  <div class="col-sm-3">SĐT 1:<%=@info.phone1%></div>
+  <div class="col-sm-3">SĐT 2:<%=@info.phone2%></div>
+  <div class="col-sm-3">Tên nhà trọ:<%=@house.name%></div>
+  <div class="col-sm-3">Phòng số:<%=@room.name%></div>
+  <div class="col-sm-3">Giá phòng:<%=@room.cost%></div>
+<table class="table table-hover service">
+  <thead>
+    <tr>
+      <th class="text-center">STT</th>
+      <th class="text-center">Dịch vụ sử dụng</th>
+      <th class="text-center">Đơn giá (VNĐ)</th>
+      <th class="text-center">Số lượng</th>
+      <th class="text-center">Tổng</th>
+    </tr>
+  </thead>
+  <tbody>
+          <% array_sum = [] %>
+          <% @use_services.service_id.each_with_index do |s, i|%>
+            <tr>
+              <td class="text-center"><%=i + 1%></td>
+              <td class="text-center"><%=getServiceName(@services,s)%></td>
+              <td class="text-center"><%=number_to_currency_br(getServiceCost(@services,s))%></td>
+              <td class="text-center"><%=@use_services.amount[i]%></td>
+              <td class="text-center"><%=number_to_currency_br(sum_amount_cost(getServiceCost(@services,s), s))%></td>
+              <td class="text-center"><%array_sum.push(sum_amount_cost(getServiceCost(@services,s), s))%></td>
+            </tr>
+          <% end %>
+  </tbody>
+</table>
+<div class="text-danger">
+  TỔNG TIỀN = DỊCH VỤ + PHÒNG = <%= number_to_currency_br(array_sum.inject{ |sum,e| sum += e.to_i })%> + <%=number_to_currency_br(@room.cost) %> = <%= number_to_currency_br(array_sum.inject{ |sum,e| sum += e.to_i }.to_i + @room.cost.to_i) %>
+</div>

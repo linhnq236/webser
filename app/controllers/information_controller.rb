@@ -38,6 +38,19 @@ class InformationController < ApplicationController
   end
 
   def new_information_customer
+    if params[:information_id].present?
+      infor = Information.find(params[:information_id])
+      if infor.update(mark: 0)
+        room = Room.find(params[:room_id])
+        if room.update(information_id: params[:information_id])
+          user = User.find_by_email(params[:email])
+          if user.update(disable: 0)
+            flash[:notice] = "Đặt phòng thành công"
+            redirect_to "/houses"
+          end
+        end
+      end
+    else
     firstname = params[:firstname]
     lastname = params[:lastname]
     sex = params[:sex]
@@ -55,31 +68,32 @@ class InformationController < ApplicationController
     deposit = params[:deposit]
     note = params[:note]
     information = Information.new(name: "#{firstname} #{lastname}", sex: sex, birth: birth, indentifycard: indentifycard,
-       daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent, start: start, deposit: deposit, note: note)
-    if information.save
-      last_inf = Information.last.id
-      room = Room.find(room_id)
-      if room.update(information_id: last_inf)
-        # // create account customer
-        user = User.new(email: email, password: "123456")
-        if user.save
-          services = Service.where(status: 1)
-          services.each do |ser|
-            InforServ.new(information_id: last_inf, service_id: ser.id, amount: 1).save
+      daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent, start: start, deposit: deposit, note: note)
+      if information.save
+        last_inf = Information.last.id
+        room = Room.find(room_id)
+        if room.update(information_id: last_inf)
+          # // create account customer
+          user = User.new(email: email, password: "123456", admin: 0)
+          if user.save
+            # services = Service.where(status: 1)
+            # services.each do |ser|
+            #   InforServ.new(information_id: last_inf, service_id: ser.id, amount: 1).save
+            # end
+            flash[:notice] = "Đã đặt phòng thành công !"
+            redirect_to houses_path
+          else
+            flash[:notice] = "Đã đặt phòng thành công !"
+            redirect_to houses_path
           end
-          flash[:notice] = "Đã đặt phòng thành công !"
-          redirect_to houses_path
         else
-          flash[:notice] = "Đã đặt phòng thành công !"
+          flash[:notice] = "Đã đặt phòng thất bại !"
           redirect_to houses_path
         end
       else
-        flash[:notice] = "Đã đặt phòng thất bại !"
-        redirect_to houses_path
+        flash[:notice] = "Thêm thông tin khách hàng thất bại"
+        redirect_to "addcustomer/#{house_id}/#{room_id}"
       end
-    else
-      flash[:notice] = "Thêm thông tin khách hàng thất bại"
-      redirect_to "addcustomer/#{house_id}/#{room_id}"
     end
   end
   # PATCH/PUT /information/1

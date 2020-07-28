@@ -3,13 +3,19 @@ $( document ).on('turbolinks:load', function() {
   var html_ward = '';
   var house_active = 0;
   $('select.city').change(function() {
-    var idCity = this.value;
-    $(".district option").each(function(){
-      var cityid = $(this).data("cityid");
-      if (idCity == cityid) {
-        $(this).css({"display": "block"});
-      }else{
-        $(this).css({"display": "none"});
+    console.log(this.value);
+    $.ajax({
+      type: "get",
+      url: "/api/getdistrict/" + this.value,
+      success: function(rep){
+        $.each(rep["data"], function(index, value){
+          html_district += `<option value="${value["id"]}">${value["name"]}</option>`
+        })
+        $(".district").html(html_district);
+        html_district = '';
+      },
+      error: function(rep){
+        console.log(rep);
       }
     })
   })
@@ -23,6 +29,7 @@ $( document ).on('turbolinks:load', function() {
           html_ward += `<option value="${value["id"]}">${value["name"]}</option>`
         })
         $(".ward").html(html_ward);
+        html_ward = '';
       },
       error: function(rep){
         console.log(rep);
@@ -62,6 +69,7 @@ $( document ).on('turbolinks:load', function() {
   // tra phong
   $(".payroom").click(function(){
     var room_id = $(this).data("idroom");
+    var information_id = $(this).data("information_id");
     $.confirm({
         title: 'Thông báo!',
         content: 'Bạn có muốn trả phòng không ?',
@@ -69,7 +77,7 @@ $( document ).on('turbolinks:load', function() {
             Ok: {
               btnClass: 'btn-primary',
               action: function(){
-                location.href = `/payroom/${room_id}`;
+                location.href = `/payroom/${room_id}/${information_id}`;
               }
             },
             Hủy: {
@@ -82,7 +90,7 @@ $( document ).on('turbolinks:load', function() {
   $(".deletehouse").click(function(){
     $.confirm({
         title: 'Thông báo!',
-        content: 'Bạn có muốn trả phòng không ?',
+        content: 'Bạn có muốn xóa nhà không (Bao gồm tất cả các phòng)?',
         buttons: {
             Ok: {
               btnClass: 'btn-primary',
@@ -126,4 +134,77 @@ $( document ).on('turbolinks:load', function() {
     });
     return false;
   })
+  // get api old customer
+  $(".getOldCustomer").click(function(){
+    var house_id = $(this).data("house_id");
+    var room_id = $(this).data("room_id");
+    getOldCustomer(house_id, room_id);
+  })
+
+  $("table").click (function(){
+    console.log("a");
+  })
+  function getOldCustomer(house_id, room_id){
+    html = '';
+    $.confirm({
+      columnClass: 'col-sm-12',
+      content: function () {
+        var self = this;
+        return $.ajax({
+            url: "/api/getOldCustomer",
+            method: 'get'
+        }).done(function (response) {
+          var i = 0;
+          $.each(response['data'], function(index, value){
+            i ++;
+            html += `
+              <tr class="chosenOldCustomer currsor" data-information_id="${value["id"]}">
+                <td class="text-center test"><input type="radio"  value="${value["id"]}"></td>
+                <td class="text-center">${value["name"]}</td>
+                <td class="text-center">${value["email"]}</td>
+                <td class="text-center">${value["phone1"]}</td>
+              </tr>
+            `;
+          })
+            // self.setConten('<i class="fa fa-user"></i> Thông tin khách hàng ');
+            self.setContentAppend(
+              `
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="text-center">STT</th>
+                    <th class="text-center">Họ và tên</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Số điện thoại</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${html}
+                </tbody>
+              </table>
+              `
+            );
+            self.setTitle('<i class="fa fa-user"></i> Thông tin khách hàng cũ ');
+            // chosenOldCustomer
+        }).fail(function(){
+            self.setContent('Something went wrong.');
+            return false;
+        });
+      },
+      closeIcon: true,
+      buttons: {
+        Ok: {
+          btnClass: 'btn-primary',
+          action: function(){
+            var information_id = this.$content.find("input[type='radio']:checked").val();
+            location.href = `/addcustomer/${house_id}/${room_id}?information_id=${information_id}`;
+          }
+        },
+        Hủy: {
+          btnClass: 'btn-danger',
+
+        }
+      }
+    })
+  }
 })

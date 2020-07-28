@@ -76,24 +76,39 @@ class RoomsController < ApplicationController
   def addcustomer
     @house = House.where(id: params[:house_id])
     @room = Room.where(id: params[:room_id])
-    @services = Service.all
+    @services = Service.all.order("status DESC")
+    if params[:information_id].present?
+      @infor = Information.find(params[:information_id])
+    end
   end
 
   def listcustomer
     @house = House.where(id: params[:house_id])
     @room = Room.where(id: params[:room_id])
     @information = Information.where(id: params[:information_id])
-    @services = Service.all
-  end
-
-  def information_service
-    byebug
+    @check_use_service = UseService.find_by_information_id(params[:information_id])
+    if @check_use_service.nil?
+      @services = Service.all.order("status DESC")
+    else
+      @services = Service.all.order("status DESC")
+      @use_services = UseService.where(information_id: params[:information_id])
+    end
+    check_member = Member.find_by_information_id(params[:information_id])
+    if !check_member.nil?
+      @member = check_member
+    end
   end
 
   def payroom
     if @room.update(information_id: "")
-      flash[:notice] = "Trả phòng thành công !"
-      redirect_to houses_path
+      inf = Information.find(params[:information_id])
+      user = User.find_by_email(inf.email)
+      if user.update(disable: 1)
+        if inf.update(mark: 1)
+          flash[:notice] = "Trả phòng thành công !"
+          redirect_to houses_path
+        end
+      end
     else
       flash[:warning] = "Trả phòng thất bại !"
       redirect_to houses_path

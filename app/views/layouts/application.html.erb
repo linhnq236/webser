@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Webser" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Webser" %>">
-     <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>
+    <link rel="icon" href="<%= asset_url('iconweb')%>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%# Modernizr is required for Zurb Foundation %>
     <%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -15,6 +16,8 @@
     <%= stylesheet_link_tag '/assets/bootstrap.min', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag '/assets/jquery-confirm.min', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag '/assets/off-canvas', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag '/assets/multiselect', 'data-turbolinks-track' => 'reload' %>
+    <%= stylesheet_link_tag '/assets/multiselect', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= stylesheet_link_tag '/assets/ionicons', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= stylesheet_link_tag '/assets/typicons', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= stylesheet_link_tag '/assets/font-awesome', media: 'all', 'data-turbolinks-track' => 'reload' %>
@@ -22,6 +25,7 @@
     <%# <%= stylesheet_link_tag '/assets/flag-icon.min', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%# <%= stylesheet_link_tag '/assets/flag-icon', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css', media: 'all', 'data-turbolinks-track' => 'reload' %>
+
   </head>
   <body>
     <!-- <header class="fixed-top"> -->

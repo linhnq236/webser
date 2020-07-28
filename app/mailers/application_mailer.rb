@@ -1,4 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  helper :services
+  helper :application
+  default from: "#{ENV["USER_MAIL"]}"
   layout 'mailer'
 end

@@ -27,5 +27,10 @@ module Api
       end
     end
 
+    def getOldCustomer
+      info = Information.where(mark: 1)
+      render json: {data: info}
+    end
+
   end
 end
