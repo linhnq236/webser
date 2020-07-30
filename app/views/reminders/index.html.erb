@@ -1,0 +1,11 @@
+<div class="col-sm-12">
+  <%= month_calendar events: @reminders do |date, reminders| %>
+  <%= format_day(date) %>
+
+  <% reminders.each do |reminder| %>
+  <div>
+    <%= reminder.content %>
+  </div>
+  <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+// Place all the styles related to the reminders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.show_reminder{
+  right: 0;
+  z-index: 100;
+  display: none;
+  top: 7%;
+  // background: #3f59f1;
+  background: #001737;
+  color: #f6f7fe;
+  overflow-y: scroll;
+  width: 35%;
+}
+.show_reminder::-webkit-scrollbar{
+  display: none !important;
+}
+.notify-content{
+  // width: 100%;
+  overflow: hidden;
+}
+.searchNotify{
+  width: 83% !important;
+}

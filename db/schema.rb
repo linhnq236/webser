@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_151139) do
+ActiveRecord::Schema.define(version: 2020_07_30_013822) do
 
   create_table "cities", force: :cascade do |t|
     t.string "code"
@@ -46,16 +46,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_151139) do
     t.index ["ward_id"], name: "index_houses_on_ward_id"
   end
 
-  create_table "infor_servs", force: :cascade do |t|
-    t.integer "amount"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "information_id"
-    t.integer "service_id"
-    t.index ["information_id"], name: "index_infor_servs_on_information_id"
-    t.index ["service_id"], name: "index_infor_servs_on_service_id"
-  end
-
 # Could not dump table "information" because of following StandardError
 #   Unknown type 'bool' for column 'mark'
 
@@ -70,6 +60,15 @@ ActiveRecord::Schema.define(version: 2020_07_27_151139) do
     t.integer "information_id"
     t.json "birth"
     t.index ["information_id"], name: "index_members_on_information_id"
+  end
+
+  create_table "reminders", force: :cascade do |t|
+    t.text "content"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -118,8 +117,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_151139) do
   add_foreign_key "houses", "cities"
   add_foreign_key "houses", "districts"
   add_foreign_key "houses", "wards"
-  add_foreign_key "infor_servs", "information"
-  add_foreign_key "infor_servs", "services"
   add_foreign_key "members", "information"
   add_foreign_key "rooms", "houses"
   add_foreign_key "rooms", "information"
