@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :set_locale
   before_action :check_user_login, :led_status, :gettemperature
   # FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   # FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
@@ -45,4 +46,11 @@ class ApplicationController < ActionController::Base
     house = House.find(room.house_id)
     return remove_space_upcase_string(house.name)
   end
+  # // Set I18n
+  def set_locale
+    locale = params[:locale].to_s.strip.to_sym
+    I18n.locale = I18n.available_locales.include?(locale) ?
+      locale : I18n.default_locale
+ end
+ 
 end

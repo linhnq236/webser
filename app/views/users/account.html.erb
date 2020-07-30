@@ -1,22 +1,41 @@
+<div class="row w-100">
+  <div class="col-sm-3">
+  <%= form_tag(`/account?admin=#{params['admin']}&disable=#{params['disable']}`, method: :get, id: "changeDisable") do %>
+    <%= select_tag 'disable',
+      options_for_select([["Đang hoạt động","0"], ["Ngưng hoạt động","1"]], selected: params[:disable]),
+      {onchange: "$('#changeDisable').submit();", class: "form-control" }
+    %>
+  <% end %>
+  </div>
+  <div class="col-sm-3">
+    <input type="text" id="searchaccount" class="form-control search">
+  </div>
+  <div class="col-sm-3">
+    <button type="button" class="btn btn-primary" name="button">
+      <i class="fa fa-search"></i>
+      Tìm kiếm
+    </button>
+  </div>
+</div>
 <table class="table table-hover service">
   <thead>
     <tr>
       <th class="text-center">STT</th>
       <th class="text-center">Email</th>
       <th class="text-center">Loại</th>
-      <th class="text-center">Bắt đầu ở</th>
+      <th class="text-center">Ngày tạo</th>
       <th class="text-center">Tình trạng</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="account">
     <% @users.each_with_index do |user, i|%>
-    <tr>
+    <tr id="account">
       <td class="text-center"><%=i + 1%></td>
       <td class="text-center"><%= user.email%></td>
       <td class="text-center"><%= user.admin == 1 ? "Admin" : "Khách hàng"%></td>
       <td class="text-center"><%= format_datetime(user.created_at)%></td>
       <td class="text-center">
-        <button class="btn btn-sm <%= user.disable == 1 ? "btn-danger" : "btn-primary"%>"><%= user.disable == 1 ? "Khóa" : "mở khóa"%></button>
+        <button class="btn btn-sm <%= user.disable == 1 ? "btn-danger" : "btn-primary"%>"><%= user.disable == 1 ? "Ngưng hoạt động" : "Đang hoạt động"%></button>
       </td>
     </tr>
     <% end %>

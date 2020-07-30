@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reminders
+  get "reminder", to: "reminders#index"
   resources :notify_mailer
   get "/send_email", to: "notify_mailer#send_email"
   post "/send_to_email", to: "notify_mailer#send_to_email"

@@ -121,4 +121,12 @@ $( document ).on('turbolinks:load', function() {
       }
     })
   }
+
+  // click show notify
+  var height = $(window).height();
+  $(".show_reminder").css({"height": `${height-70}`})
+  $(".notify").click(function(){
+    $(".show_reminder").slideToggle({direction: 'right'})
+  })
+
 })

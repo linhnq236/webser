@@ -43,6 +43,10 @@ gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'whenever', require: false
 gem 'figaro'
+gem 'will_paginate', '>= 3.0'
+gem 'will_paginate-bootstrap'
+gem 'simple_calendar', '~> 2.0'
+gem 'rails-i18n'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

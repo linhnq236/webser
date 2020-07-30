@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   def login
 
   end
+
   # def led_status
   #   firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
   #   leds = firebase.get(FIREBASE_URL).body
@@ -43,5 +44,9 @@ class HomeController < ApplicationController
     ActionCable.server.broadcast 'ledstatus_channel',
       ledstatus: response.body
     head :no_content
+  end
+
+  def create_reminder
+
   end
 end
