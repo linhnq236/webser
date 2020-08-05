@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :users
     resources :leds
     resources :information
+    resources :reminders
     post "/account", to: "users#account"
     get "getdistrict/:city", to: "houses#getdistrict"
     get "getward/:district", to: "houses#getward"
@@ -48,6 +49,8 @@ Rails.application.routes.draw do
     get "getinfo/:id", to: "information#getinfo"
     post "updateInfo/:id", to: "information#updateInfo"
     get "/getOldCustomer", to: "information#getOldCustomer"
+    get "/getReminder", to: "reminders#getReminder"
+    put "/check_mark/:id", to: "reminders#check_mark"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

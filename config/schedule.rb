@@ -23,3 +23,7 @@ set :environment, "development"
 every :day, at: '10:48pm' do
   rake "custom:auto_send_email"
 end
+
+every 1.minute do
+  runner "Reminder.test"
+end

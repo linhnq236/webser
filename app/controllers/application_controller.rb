@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     response = firebase.get(FIREBASE_URL).body
     gon.leds = response
+    gon.reminders = Reminder.order("start_time DESC")
   end
 
   def gettemperature
@@ -52,5 +53,5 @@ class ApplicationController < ActionController::Base
     I18n.locale = I18n.available_locales.include?(locale) ?
       locale : I18n.default_locale
  end
- 
+
 end

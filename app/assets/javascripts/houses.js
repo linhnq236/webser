@@ -3,7 +3,6 @@ $( document ).on('turbolinks:load', function() {
   var html_ward = '';
   var house_active = 0;
   $('select.city').change(function() {
-    console.log(this.value);
     $.ajax({
       type: "get",
       url: "/api/getdistrict/" + this.value,
@@ -141,9 +140,6 @@ $( document ).on('turbolinks:load', function() {
     getOldCustomer(house_id, room_id);
   })
 
-  $("table").click (function(){
-    console.log("a");
-  })
   function getOldCustomer(house_id, room_id){
     html = '';
     $.confirm({

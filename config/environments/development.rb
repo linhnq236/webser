@@ -32,7 +32,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   #websocket
-  config.action_cable.url = "ws://localhost:3000/cable"
+  config.action_cable.url = "wss://localhost:3000/cable"
   # config.action_cable.url = "ws://linhser.herokuapp.com/cable"
 
 
