@@ -6,8 +6,21 @@ vn:
   layout:
     logout: "Đăng xuất"
     login: "Đăng nhập"
+  leds:
+    LED_STATUS0: "ĐÈN SỐ  0"
+    LED_STATUS1: "ĐÈN SỐ  1"
+    LED_STATUS2: "ĐÈN SỐ  2"
+    LED_STATUS3: "ĐÈN SỐ  3"
+    LED_STATUS4: "ĐÈN SỐ  5"
+    LED_STATUS5: "ĐÈN SỐ  6"
+    LED_STATUS6: "ĐÈN SỐ  7"
+    LED_STATUS7: "ĐÈN SỐ  8"
+    STATUS: "Trạng thái"
+    TURNON: "Bật"
+    TUNROFF: "Tắt"
   date:
     abbr_day_names: [CN, T2 ,T3,T4 ,T5 ,T6 ,T7]
+    year_names: "Năm"
     month_names: [Tháng 1, Tháng 2, Tháng 3, Tháng 4, Tháng 5, Tháng 6, Tháng 7, Tháng 8, Tháng 9, Tháng 10, Tháng 11, Tháng 12]
     order: [ !ruby/symbol day, !ruby/symbol month, !ruby/symbol year ]
     formats:

@@ -9,6 +9,10 @@ module ApplicationHelper
   def format_day day
       return day.strftime("%d")
   end
+  # // 2020-08-01
+  def format_calendar_date date
+      return date.strftime("%Y-%m-%d")
+  end
 
   def format_datetime timer
     if timer.nil?

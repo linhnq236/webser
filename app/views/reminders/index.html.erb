@@ -1,11 +1,26 @@
 <div class="col-sm-12">
-  <%= month_calendar events: @reminders do |date, reminders| %>
-  <%= format_day(date) %>
-
-  <% reminders.each do |reminder| %>
-  <div>
-    <%= reminder.content %>
+  <div class="w-100">
+    <button type="button" class="btn btn-success float-right create_notify" title="Thêm nhắc nhở" name="button"><i class="fa fa-plus-circle"></i></button>
   </div>
+  <div class="clearfix"></div>
+  <%= month_calendar events: @reminders do |date, reminders| %>
+    <%= format_day(date) %>
+    <% reminders.each_with_index do |reminder, i| %>
+    <div class="reminder_count">
+      <span><%= i+1 %></span>
+       :
+      <span><%= reminder.title.truncate(20, :omission => "...") %></span>
+    </div>
+    <% end %>
   <% end %>
-  <% end %>
+</div>
+<div class="col-sm-12 mt-3">
+  <div class="row">
+    <% @reminders.each_with_index do |reminder, i| %>
+    <div class="reminder_count col-sm-2 position-relative text-center">
+      <button type="button" class="border rounded" title="<%=reminder.content%>" name="button" onclick="window.location.href=`/reminders?start_date=<%=format_calendar_date(reminder.start_time)%>`"><%= reminder.title.truncate(20, :omission => "...")%></button>
+      <i class="fa fa-close position-absolute closeIcon text-danger delete" data-remind_id="<%=reminder.id%>"></i>
+    </div>
+    <% end %>
+  </div>
 </div>

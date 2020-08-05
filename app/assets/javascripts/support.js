@@ -1,5 +1,5 @@
 $( document ).on('turbolinks:load', function() {
-  $(".content").on('change keyup keydown paste cut', 'textarea', function () {
+  $(".content, .formCreateNotify").on('change keyup keydown paste cut', 'textarea', function () {
     $(this).height(0).height(this.scrollHeight);
   }).find('textarea').change();
 
