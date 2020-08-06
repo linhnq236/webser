@@ -14,6 +14,6 @@ class NoticeMailer < ApplicationMailer
 
   def send_to_email_user email, subject, content
     @content = "#{content}"
-    mail(to: "saqibghaffar324@gmail.com" ,subject: "#{subject}")
+    mail(to: "#{email}" ,subject: "#{subject}")
   end
 end
