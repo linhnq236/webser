@@ -80,6 +80,20 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: 'linhser.herokuapp.com' }
+
+  config.action_mailer.delivery_method = :smtp
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :enable_starttls_auto => true,
+    :authentication       => :plain,
+    :user_name            => "1651120032@sv.ut.edu.vn",
+    :password             => "xzotquiiijxojtqe"
+  }
   config.action_cable.url = "wss://linhser.herokuapp.com/cable"
 
   # Inserts middleware to perform automatic connection switching.
@@ -103,17 +117,5 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  config.action_mailer.default_url_options = { host: 'linhser.herokuapp.com' }
 
-  config.action_mailer.delivery_method = :smtp
-
-  # SMTP settings for gmail
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :enable_starttls_auto => true,
-    :authentication       => :plain,
-    :user_name            => "1651120032@sv.ut.edu.vn",
-    :password             => "xzotquiiijxojtqe"
-  }
 end

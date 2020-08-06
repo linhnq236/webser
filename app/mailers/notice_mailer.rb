@@ -1,7 +1,7 @@
 class NoticeMailer < ApplicationMailer
-    default from: "#{ENV["USER_MAIL"]}"
+    default from: "1651120032@sv.ut.edu.vn"
     layout 'mailer'
-    
+
   def notify_cost id
     @info = Information.find(id)
     @use_services = UseService.find(id)
