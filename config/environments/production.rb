@@ -14,9 +14,6 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  #Socket
-  config.web_socket_server_url = "ws://linhser.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://linhser.herokuapp.com', 'https://linhser.herokuapp.com']
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
@@ -122,8 +119,8 @@ Rails.application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'gmail.com',
-    :user_name            => ENV["USER_MAIL"],
-    :password             => ENV["PASSWORD_MAIL"],
+    :user_name            => "linhnq236@gmail.com",
+    :password             => "butgialamday",
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
