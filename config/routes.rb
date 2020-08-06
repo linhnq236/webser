@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount ActionCable.server, at: '/cable'
+  # mount ActionCable.server, at: '/cable'
   resources :reminders
   get "reminder", to: "reminders#index"
   resources :notify_mailer
