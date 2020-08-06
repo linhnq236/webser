@@ -112,16 +112,16 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'https://linhser.herokuapp.com' }
 
-  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :smtp
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
-    :port                 => 587,
+    :port                 => "587",
     :domain               => 'gmail.com',
     :user_name            => "1651120032@sv.ut.edu.vn",
     :password             => "xzotquiiijxojtqe",
-    :authentication       => "plain",
+    :authentication       => :plain,
     :enable_starttls_auto => true
   }
 end
