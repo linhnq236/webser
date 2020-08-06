@@ -37,19 +37,11 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
-
   # Mount Action Cable outside main process or domain.
-  config.action_cable.mount_path = nil
-  config.action_cable.url = 'wss://linhser.herokuapp.com//cable'
-  config.action_cable.allowed_request_origins = [ 'https://linhser.herokuapp.com/', /http:\/\/linhser.herokuapp.*/ ]
-
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
-
-  # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
-
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
@@ -112,7 +104,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'linhser.herokuapp.com' }
 
-  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
