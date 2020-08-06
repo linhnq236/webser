@@ -5,7 +5,7 @@ module Api
 
     def getReminder
       start_time = params[:start_time]
-      reminder = Reminder.where("start_time LIKE ?", start_time)
+      reminder = Reminder.where(start_time: start_time)
       render json: {data: reminder}
     end
 
