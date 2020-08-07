@@ -34,3 +34,17 @@ en:
   layout:
     login: "Login"
     logout: "Logout"
+  leds:
+    LED_STATUS0: "ĐÈN SỐ  0"
+    LED_STATUS1: "ĐÈN SỐ  1"
+    LED_STATUS2: "ĐÈN SỐ  2"
+    LED_STATUS3: "ĐÈN SỐ  3"
+    LED_STATUS4: "ĐÈN SỐ  5"
+    LED_STATUS5: "ĐÈN SỐ  6"
+    LED_STATUS6: "ĐÈN SỐ  7"
+    LED_STATUS7: "ĐÈN SỐ  8"
+    STATUS: "Trạng thái"
+    TURNON: "Bật"
+    TUNROFF: "Tắt"
+    OFF: "Tắt"
+    ON: "Bật"

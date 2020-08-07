@@ -87,14 +87,14 @@ $( document ).on('turbolinks:load', function() {
         type: "PUT",
         data: { send: 'OK'},
         success: function(response){
-          location.href = `/reminders?start_time=${date}`;
+          location.href = `/reminders?start_date=${date}`;
         },
         error: function(repsonse){
 
         }
       })
     }else{
-      location.href = `/reminders?start_time=${date}`;
+      location.href = `/reminders?start_date=${date}`;
     }
   })
   // delete reminder
