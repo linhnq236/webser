@@ -7,6 +7,7 @@ module Api
     def account
       name = ''
       id = ''
+      disable = ''
       user = User.find_by_email(params[:email])
       user_pass = BCrypt::Password.new(user.encrypted_password)
       if user_pass == params[:password]
@@ -14,8 +15,9 @@ module Api
         infor.each do |n|
           name = n.name
           id = n.id
+          disable = n.disable
         end
-        render json: {status: 200, username: name, password: params[:password], id: id}
+        render json: {status: 200, username: name, id: id, disable: disable }
       else
         render json: {status: 204}
       end
