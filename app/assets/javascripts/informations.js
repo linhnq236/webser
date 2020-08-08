@@ -69,7 +69,7 @@ $(document).on("turbolinks:load", function(){
         Thành_viên:{
           btnClass: 'btn-primary',
           action: function(){
-            location.href = "/info_members/" + information_id;
+            location.href = "/show_detail_members/" + information_id;
           }
         },
         Hủy: {

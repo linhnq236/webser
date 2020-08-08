@@ -100,11 +100,13 @@ class RoomsController < ApplicationController
   end
 
   def payroom
-    if @room.update(information_id: "")
+    if @room.update(information_id: "", mark: 0, oldelectric: 0, newelectric: 0, oldwater: 0, newwater: 0)
       inf = Information.find(params[:information_id])
       user = User.find_by_email(inf.email)
       if user.update(disable: 1)
         if inf.update(mark: 1)
+          use_service = UseService.find_by_information_id(params[:information_id])
+          UseService.delete(use_service.id)
           flash[:notice] = "Trả phòng thành công !"
           redirect_to houses_path
         end
@@ -112,6 +114,18 @@ class RoomsController < ApplicationController
     else
       flash[:warning] = "Trả phòng thất bại !"
       redirect_to houses_path
+    end
+  end
+
+  def indexservice
+    oldelectric = params[:oldelectric]
+    newelectric = params[:newelectric]
+    oldwater = params[:oldwater]
+    newwater = params[:newwater]
+    room = Room.find(params[:room_id])
+    if room.update(oldelectric: oldelectric, newelectric: newelectric, oldwater: oldwater, newwater: newwater)
+      flash[:notice] = "Cập nhật thành công"
+      redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
     end
   end
   # PATCH/PUT /rooms/1

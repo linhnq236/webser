@@ -18,6 +18,20 @@
     end
   end
 end
+[
+  {name: 'Điện', cost: 3000, status: 1},
+  {name: 'Nước', cost: 12000, status: 1},
+].each do |attr|
+  server = Service.find_by(id: attr[:id])
+  Service.transaction do
+    unless server
+      server = Service.new(attr)
+      server.save
+    else
+      server.update_attributes attr
+    end
+  end
+end
 
 [
 {id: 1 ,  name: "Thành phố Hà Nội", kind: "Thành phố Trung ương"},

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_162359) do
+ActiveRecord::Schema.define(version: 2020_08_08_164342) do
 
   create_table "cities", force: :cascade do |t|
     t.string "code"
@@ -88,6 +88,11 @@ ActiveRecord::Schema.define(version: 2020_08_02_162359) do
     t.integer "house_id", null: false
     t.string "picture"
     t.integer "information_id"
+    t.integer "mark", default: 0
+    t.float "oldelectric"
+    t.float "newelectric"
+    t.float "oldwater"
+    t.float "newwater"
     t.index ["house_id"], name: "index_rooms_on_house_id"
     t.index ["information_id"], name: "index_rooms_on_information_id"
   end

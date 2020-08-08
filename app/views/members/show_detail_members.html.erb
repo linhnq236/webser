@@ -1,0 +1,41 @@
+<table class="table table-hover service">
+  <thead>
+    <tr>
+      <th class="text-center text-uppercase" colspan="6">Chủ phòng: <span class="text-danger text-uppercase ont-weight-bold"><%=@info.name%></span></th>
+    </tr>
+    <tr>
+      <th class="text-center">Họ và tên</th>
+      <th class="text-center">Ngày sinh</th>
+      <th class="text-center">Giới tính</th>
+      <th class="text-center">CMND</th>
+      <th class="text-center">Địa chỉ</th>
+      <th class="text-center">Điện thoại</th>
+    </tr>
+  </thead>
+  <tbody class="members">
+    <% if !@member.nil? %>
+      <%for i in 0...@member.name.size%>
+      <tr class="RowPersonList_<%=i%>">
+        <td class="text-center">
+          <%=@member.name[i]%>
+        </td>
+        <td class="text-center">
+        <%=@member.birth[i]%>
+        </td>
+        <td class="text-center">
+           <%=@member.sex[i] == 0 ? 'Nam' : 'Nữ'%>
+        </td>
+        <td class="text-center">
+        <%=@member.indentifycard[i]%>
+        </td>
+        <td class="text-center">
+        <%=@member.address[i]%>
+        </td>
+        <td class="text-center">
+          <%=@member.phone[i]%>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

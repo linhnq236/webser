@@ -4,7 +4,7 @@ class NoticeMailer < ApplicationMailer
 
   def notify_cost id
     @info = Information.find(id)
-    @use_services = UseService.find(id)
+    @use_services = UseService.find_by_information_id(id)
     @services = Service.all
     @room = Room.find_by_information_id(id)
     @house = House.find(@room.house_id)

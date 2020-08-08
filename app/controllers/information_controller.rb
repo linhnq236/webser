@@ -42,7 +42,7 @@ class InformationController < ApplicationController
       infor = Information.find(params[:information_id])
       if infor.update(mark: 0)
         room = Room.find(params[:room_id])
-        if room.update(information_id: params[:information_id])
+        if room.update(information_id: params[:information_id], mark: 1)
           user = User.find_by_email(params[:email])
           if user.update(disable: 0)
             flash[:notice] = "Đặt phòng thành công"
@@ -72,7 +72,7 @@ class InformationController < ApplicationController
       if information.save
         last_inf = Information.last.id
         room = Room.find(room_id)
-        if room.update(information_id: last_inf)
+        if room.update(information_id: last_inf, mark: 1)
           # // create account customer
           user = User.new(email: email, password: "123456", password_confirmation: "123456")
           if user.save

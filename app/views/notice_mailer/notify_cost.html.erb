@@ -5,8 +5,11 @@
   <div class="col-sm-3">SĐT 2:<%=@info.phone2%></div>
   <div class="col-sm-3">Tên nhà trọ:<%=@house.name%></div>
   <div class="col-sm-3">Phòng số:<%=@room.name%></div>
-  <div class="col-sm-3">Giá phòng:<%=@room.cost%></div>
-<table class="table table-hover service">
+  <div class="col-sm-3">Giá phòng:<%=number_to_currency_br(@room.cost)%></div>
+  <div class="col-sm-3">Điện sử dụng = số mới - số cũ = <%=@room.newelectric%> - <%=@room.oldelectric%> = <%=number_to_currency_br(use_electric_water(@room.oldelectric, @room.newelectric))%></div>
+  <div class="col-sm-3">Nước sử dụng = số mới - số cũ = <%=@room.newwater%> - <%=@room.oldwater%> = <%=number_to_currency_br(use_electric_water(@room.oldwater, @room.newwater))%></div>
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th class="text-center">STT</th>
@@ -24,8 +27,16 @@
               <td class="text-center"><%=getServiceName(@services,s)%></td>
               <td class="text-center"><%=number_to_currency_br(getServiceCost(@services,s))%></td>
               <td class="text-center"><%=@use_services.amount[i]%></td>
-              <td class="text-center"><%=number_to_currency_br(sum_amount_cost(getServiceCost(@services,s), s))%></td>
-              <td class="text-center"><%array_sum.push(sum_amount_cost(getServiceCost(@services,s), s))%></td>
+              <% if getServiceName(@services,s) == 'Điện'%>
+                <td class="text-center"><%=number_to_currency_br(sum_amount_cost(getServiceCost(@services,s), use_electric_water(@room.oldelectric, @room.newelectric)))%></td>
+                <% array_sum.push(sum_amount_cost(getServiceCost(@services,s), use_electric_water(@room.oldelectric, @room.newelectric)))%>
+              <% elsif getServiceName(@services,s) == 'Nước' %>
+                <td class="text-center"><%=number_to_currency_br(sum_amount_cost(getServiceCost(@services,s),use_electric_water(@room.oldwater, @room.newwater)))%></td>
+                <% array_sum.push(sum_amount_cost(getServiceCost(@services,s),use_electric_water(@room.oldwater, @room.newwater)))%>
+              <% else %>
+                <td class="text-center"><%=number_to_currency_br(sum_amount_cost(getServiceCost(@services,s), @use_services.amount[i]))%></td>
+                <%array_sum.push(sum_amount_cost(getServiceCost(@services,s), @use_services.amount[i]))%>
+              <% end %>
             </tr>
           <% end %>
   </tbody>
@@ -33,3 +44,4 @@
 <div class="text-danger">
   TỔNG TIỀN = DỊCH VỤ + PHÒNG = <%= number_to_currency_br(array_sum.inject{ |sum,e| sum += e.to_i })%> + <%=number_to_currency_br(@room.cost) %> = <%= number_to_currency_br(array_sum.inject{ |sum,e| sum += e.to_i }.to_i + @room.cost.to_i) %>
 </div>
+<small class="text-danger">Note: Tiền điện, tiền nước = (Đơn giá)*(Điên/Nước đã sử dụng)</small>

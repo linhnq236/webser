@@ -1,4 +1,8 @@
 class MembersController < ApplicationController
+  def show_detail_members
+    @info = Information.find(params[:information_id])
+    @member = Member.find_by_information_id(params[:information_id])
+  end
   def create
     member = Member.find_by_information_id(params[:information_id])
     if member.nil?
