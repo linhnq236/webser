@@ -290,7 +290,7 @@
       </div>
       <div id="indexser_4" class="d-none">
         <%= form_tag("/indexservice/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}", method: :post) do %>
-          <%= render "shared/nextback", local: {title: @title = "Thêm thành viên"}%>
+          <%= render "shared/nextback", local: {title: @title = "Chỉ số dịch vụ"}%>
           <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
           <table class="table table-hover">
             <thead>
@@ -311,6 +311,11 @@
                   <td class="text-center">Nước</td>
                   <td class="text-center"><input type="number" name="oldwater" value="<%=room.oldwater%>"></td>
                   <td class="text-center"><input type="number" name="newwater" value="<%=room.newwater%>"></td>
+                </tr>
+                <tr>
+                  <td class="text-center" colspan="3">
+                    <button type="button" name="button" class="costRoom"data-information_id="<%=params[:information_id]%>" data-room_id="<%=params[:room_id]%>" data-house_id="<%=params[:house_id]%>""><i class="fa fa-money bg-success"></i> <span>Gửi tiền trọ</span></button>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

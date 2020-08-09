@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :notify_mailer
   get "/send_email", to: "notify_mailer#send_email"
   post "/send_to_email", to: "notify_mailer#send_to_email"
+  get "/send_mail_cost_room/:house_id/:room_id/:information_id", to: "notify_mailer#send_mail_cost_room"
   resources :members
   post "/addmembers/:house_id/:room_id/:information_id", to: "members#create"
   get "/show_detail_members/:information_id", to: "members#show_detail_members"

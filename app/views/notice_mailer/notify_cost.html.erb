@@ -1,4 +1,4 @@
-<h1>BIÊN LAI THANH TOÁN TIỀN TRỌ</h1>
+<h1>BIÊN LAI THANH TOÁN TIỀN TRỌ THÁNG <%=@month%></h1>
   <div class="col-sm-3">Họ và tên:<%=@info.name%></div>
   <div class="col-sm-3">CMND:<%=@info.indentifycard%></div>
   <div class="col-sm-3">SĐT 1:<%=@info.phone1%></div>
@@ -9,7 +9,7 @@
   <div class="col-sm-3">Điện sử dụng = số mới - số cũ = <%=@room.newelectric%> - <%=@room.oldelectric%> = <%=number_to_currency_br(use_electric_water(@room.oldelectric, @room.newelectric))%></div>
   <div class="col-sm-3">Nước sử dụng = số mới - số cũ = <%=@room.newwater%> - <%=@room.oldwater%> = <%=number_to_currency_br(use_electric_water(@room.oldwater, @room.newwater))%></div>
 
-<table class="table table-hover">
+<table class="table table-hover text-danger">
   <thead>
     <tr>
       <th class="text-center">STT</th>

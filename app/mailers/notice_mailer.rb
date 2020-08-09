@@ -3,11 +3,12 @@ class NoticeMailer < ApplicationMailer
     layout 'mailer'
 
   def notify_cost id
+    @month = DateTime.now.to_date.strftime("%m/%Y")
     @info = Information.find(id)
     @use_services = UseService.find_by_information_id(id)
     @services = Service.all
     @room = Room.find_by_information_id(id)
-    @house = House.find(@room.house_id)
+    @house = House.find(@room.house_id.to_i)
 
     mail(to: "#{@info.email}" ,subject: "Đóng tiền thuê trọ")
   end
