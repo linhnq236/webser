@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   # mount ActionCable.server, at: '/cable'
+  resources :statisticals
   resources :reminders
   get "reminder", to: "reminders#index"
   resources :notify_mailer
   get "/send_email", to: "notify_mailer#send_email"
   post "/send_to_email", to: "notify_mailer#send_to_email"
+  get "/send_mail_cost_room/:house_id/:room_id/:information_id", to: "notify_mailer#send_mail_cost_room"
   resources :members
   post "/addmembers/:house_id/:room_id/:information_id", to: "members#create"
+  get "/show_detail_members/:information_id", to: "members#show_detail_members"
   resources :use_services
   post "use_service/:house_id/:room_id/:information_id", to: "use_services#use_service"
   resources :members
@@ -31,6 +34,7 @@ Rails.application.routes.draw do
   post "/roomfast", to: "rooms#roomfast"
   get "/addcustomer/:house_id/:room_id", to: "rooms#addcustomer"
   get "/listcustomer/:house_id/:room_id/:information_id", to: "rooms#listcustomer"
+  post "/indexservice/:house_id/:room_id/:information_id", to: "rooms#indexservice"
   post "/information_service", to: "rooms#information_service"
   get "/payroom/:id/:information_id", to: "rooms#payroom"
   resources :users

@@ -20,4 +20,11 @@ $( document ).on('turbolinks:load', function() {
       return false;
     }
   })
+  // send_mail_cost_room
+  $(".costRoom").click(function(){
+    var information_id = $(this).data("information_id");
+    var room_id= $(this).data("room_id");
+    var house_id = $(this).data("house_id");
+    window.location.href = `/send_mail_cost_room/${house_id}/${room_id}/${information_id}`;
+  })
 })

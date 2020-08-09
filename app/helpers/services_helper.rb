@@ -14,4 +14,8 @@ module ServicesHelper
     return result
   end
 
+  def use_electric_water old, new
+    result = new.to_i - old.to_i
+    return result
+  end
 end
