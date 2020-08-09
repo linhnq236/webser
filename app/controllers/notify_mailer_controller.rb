@@ -17,8 +17,8 @@ class NotifyMailerController < ApplicationController
   def send_mail_cost_room
     information_id = params[:information_id]
     room = Room.find(params[:room_id])
+    NoticeMailer.notify_cost(information_id).deliver_now!
     if room.update(oldelectric: room.newelectric, newelectric: "", oldwater: room.newwater, newwater: "")
-      NoticeMailer.notify_cost(information_id).deliver_now!
       flash[:notice] = "Gửi biên lai thanh toán tiền trọ thành công"
       redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
     else
