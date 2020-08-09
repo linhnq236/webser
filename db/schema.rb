@@ -56,8 +56,24 @@ ActiveRecord::Schema.define(version: 2020_08_08_164342) do
     t.index ["service_id"], name: "index_infor_servs_on_service_id"
   end
 
-# Could not dump table "information" because of following StandardError
-#   Unknown type 'bool' for column 'mark'
+  create_table "information", force: :cascade do |t|
+    t.string "name"
+    t.boolean "sex"
+    t.date "birth"
+    t.string "indentifycard"
+    t.date "daterange"
+    t.string "placerange"
+    t.string "phone1"
+    t.string "phone2"
+    t.string "permanent"
+    t.date "start"
+    t.float "deposit"
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.integer "mark", default: 0
+  end
 
   create_table "members", force: :cascade do |t|
     t.json "name"
@@ -72,8 +88,15 @@ ActiveRecord::Schema.define(version: 2020_08_08_164342) do
     t.index ["information_id"], name: "index_members_on_information_id"
   end
 
-# Could not dump table "reminders" because of following StandardError
-#   Unknown type 'bool' for column 'mark'
+  create_table "reminders", force: :cascade do |t|
+    t.text "content"
+    t.date "start_time"
+    t.date "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.integer "mark", default: 0
+  end
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
@@ -97,8 +120,13 @@ ActiveRecord::Schema.define(version: 2020_08_08_164342) do
     t.index ["information_id"], name: "index_rooms_on_information_id"
   end
 
-# Could not dump table "services" because of following StandardError
-#   Unknown type 'bool' for column 'status'
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.string "cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
+  end
 
   create_table "use_services", force: :cascade do |t|
     t.json "service_id"
@@ -109,8 +137,19 @@ ActiveRecord::Schema.define(version: 2020_08_08_164342) do
     t.index ["information_id"], name: "index_use_services_on_information_id"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type '' for column 'disable'
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "disable", default: 0
+    t.integer "admin", default: 0
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
 
   create_table "wards", force: :cascade do |t|
     t.string "code"
