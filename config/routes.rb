@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :paytherents
   # mount ActionCable.server, at: '/cable'
   resources :statisticals
   resources :reminders
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
     resources :leds
     resources :information
     resources :reminders
+    resources :paytherents
     post "/account", to: "users#account"
     get "getdistrict/:city", to: "houses#getdistrict"
     get "getward/:district", to: "houses#getward"
@@ -56,6 +58,8 @@ Rails.application.routes.draw do
     get "/getOldCustomer", to: "information#getOldCustomer"
     get "/getReminder", to: "reminders#getReminder"
     put "/check_mark/:id", to: "reminders#check_mark"
+    put "/updatePaytherent/:information_id", to: "paytherents#update"
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

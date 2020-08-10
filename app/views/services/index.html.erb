@@ -27,6 +27,7 @@
       <th class="text-center">Trạng thái</th>
       <th class="text-center">Dịch vụ sử dụng</th>
       <th class="text-center">Đơn giá (VNĐ)</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -42,6 +43,12 @@
       </td>
       <td class="text-center"><%=service.name %></td>
       <td class="text-danger text-center"> <%=service.cost%></td>
+      <td class="text-danger text-center">
+        <a href="/services/<%= service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm="Bạn có muốn xóa ?">
+          <i class="fa fa-trash"></i>
+          Xoá
+        </a>
+      </td>
     </tr>
     <% end %>
   </tbody>

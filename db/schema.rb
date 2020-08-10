@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_164342) do
+ActiveRecord::Schema.define(version: 2020_08_09_153834) do
 
   create_table "cities", force: :cascade do |t|
     t.string "code"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 2020_08_08_164342) do
     t.integer "information_id"
     t.json "birth"
     t.index ["information_id"], name: "index_members_on_information_id"
+  end
+
+  create_table "paytherents", force: :cascade do |t|
+    t.string "senddate"
+    t.string "receivedate"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "information_id"
+    t.index ["information_id"], name: "index_paytherents_on_information_id"
   end
 
   create_table "reminders", force: :cascade do |t|
@@ -168,6 +178,7 @@ ActiveRecord::Schema.define(version: 2020_08_08_164342) do
   add_foreign_key "infor_servs", "information"
   add_foreign_key "infor_servs", "services"
   add_foreign_key "members", "information"
+  add_foreign_key "paytherents", "information"
   add_foreign_key "rooms", "houses"
   add_foreign_key "rooms", "information"
   add_foreign_key "use_services", "information"

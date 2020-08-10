@@ -1,0 +1,32 @@
+<%= form_with(model: paytherent, local: true) do |form| %>
+  <% if paytherent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(paytherent.errors.count, "error") %> prohibited this paytherent from being saved:</h2>
+
+      <ul>
+        <% paytherent.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :senddate %>
+    <%= form.text_field :senddate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :receivedate %>
+    <%= form.text_field :receivedate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

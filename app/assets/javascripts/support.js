@@ -19,6 +19,12 @@ $( document ).on('turbolinks:load', function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
   });
+  $("#search_paytherent").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#paytherent tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    });
+  });
   $("#searchNotify").on("keyup", function() {
     // var value = $(this).val().toLowerCase();
     // $(".notify-content").filter(function() {

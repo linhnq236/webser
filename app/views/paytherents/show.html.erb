@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Senddate:</strong>
+  <%= @paytherent.senddate %>
+</p>
+
+<p>
+  <strong>Receivedate:</strong>
+  <%= @paytherent.receivedate %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @paytherent.status %>
+</p>
+
+<%= link_to 'Edit', edit_paytherent_path(@paytherent) %> |
+<%= link_to 'Back', paytherents_path %>
