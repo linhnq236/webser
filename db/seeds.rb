@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 [
-  {email: 'linh@gmail.com', password: "123456", password_confirmation: "123456"},
+  {email: 'linh@gmail.com', password: "123456", password_confirmation: "123456", admin: 1},
 ].each do |attr|
   user = User.find_by(id: attr[:id])
   User.transaction do

@@ -2,7 +2,10 @@ module Api
   class PaytherentsController < ApplicationController
     skip_before_action :authenticate_user!
     skip_before_action :verify_authenticity_token
-
+    def getPaytheRent
+      paytherent = Paytherent.find_by_information_id(params[:information_id])
+      render json: {data: paytherent}
+    end
     def update
       senddate = params[:senddate]
       paytherent = Paytherent.where(information_id: params[:information_id], senddate: senddate)

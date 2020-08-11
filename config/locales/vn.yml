@@ -1,5 +1,13 @@
 vn:
   hello: "Xin chao"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email Không được để trống"
+              taken: "Email đã tồn tại"
   simple_calendar:
     previous: "Trước"
     next: "Sau"
