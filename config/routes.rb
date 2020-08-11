@@ -43,24 +43,26 @@ Rails.application.routes.draw do
   post "/createaccount", to: "users#createaccount"
   namespace "api" do
     resources :houses
-    resources :home
-    resources :users
-    resources :leds
-    resources :information
-    resources :reminders
-    resources :paytherents
-    post "/account", to: "users#account"
     get "getdistrict/:city", to: "houses#getdistrict"
     get "getward/:district", to: "houses#getward"
+    resources :home
     get "led_status/:information_id", to: "home#led_status"
+    resources :users
+    post "/account", to: "users#account"
+    resources :leds
     post "app_send/:information_id", to: "leds#app_send_data"
-    get "getinfo/:id", to: "information#getinfo"
+    resources :information
     post "updateInfo/:id", to: "information#updateInfo"
     get "/getOldCustomer", to: "information#getOldCustomer"
+    get "getinfo/:id", to: "information#getinfo"
+    resources :reminders
     get "/getReminder", to: "reminders#getReminder"
     put "/check_mark/:id", to: "reminders#check_mark"
+    resources :paytherents
     put "/updatePaytherent/:information_id", to: "paytherents#update"
-
+    get "/getPaytheRent/:information_id", to: "paytherents#getPaytheRent"
+    resources :use_services
+    get "/getUseServices/:information_id", to: "use_services#getUseServices"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
