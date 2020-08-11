@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get "/payroom/:id/:information_id", to: "rooms#payroom"
   resources :users
   get "/account", to: "users#account"
+  post "/createaccount", to: "users#createaccount"
   namespace "api" do
     resources :houses
     resources :home

@@ -4,7 +4,7 @@ class PaytherentsController < ApplicationController
   # GET /paytherents
   # GET /paytherents.json
   def index
-    @paytherents = Paytherent.all
+    @paytherents = Paytherent.all.order("id DESC")
   end
 
   # GET /paytherents/1

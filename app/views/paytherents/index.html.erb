@@ -29,7 +29,7 @@
           <td class="text-center"><%=pay.senddate%></td>
           <td class="text-center"><%=pay.receivedate%></td>
           <td class="text-center"><%=pay.status == 0 ? "Chưa" : "Đã"%></td>
-          <td class="text-center"><button type="button" class="btn-sm checkpaytherent" <%=pay.status == 1 ? "disabled" : ""%> data-paytherent_id= "<%=pay.id%>" name="button" data-senddate="<%=pay.senddate%>">update</button></td>
+          <td class="text-center"><button type="button" class="btn-sm checkpaytherent" <%=pay.status == 1 ? "disabled" : ""%> data-paytherent_id= "<%=pay.information_id%>" title="Đóng tiền trọ tại đây" name="button" data-senddate="<%=pay.senddate%>"><i class="mdi mdi-send-outline"></i></button></td>
       </tr>
     <% end %>
   </tbody>
