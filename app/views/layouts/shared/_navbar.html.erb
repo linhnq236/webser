@@ -7,8 +7,13 @@
           <div class="dot-indicator bg-success"></div>
         </div>
         <div class="text-wrapper">
-          <p class="profile-name"><%=current_user.email%></p>
-          <p class="designation"><%=current_user.admin == 1? "Người quản lý" : "" %></p>
+          <% if user_signed_in? %>
+            <p class="profile-name"><%=current_user.email%></p>
+            <p class="designation"><%=current_user.admin == 1? "Người quản lý" : "" %></p>
+          <% else %>
+            <p class="profile-name">Alex</p>
+            <p class="designation">Chưa đăng nhập</p>
+          <% end %>
         </div>
       </a>
     </li>
