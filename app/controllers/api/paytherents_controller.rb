@@ -3,7 +3,7 @@ module Api
     skip_before_action :authenticate_user!
     skip_before_action :verify_authenticity_token
     def getPaytheRent
-      paytherent = Paytherent.where(information_id: params[:information_id])
+      paytherent = Paytherent.where(information_id: params[:information_id]).order("senddate DESC")
       render json: {data: paytherent}
     end
     def update
