@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ReportsKit::Engine, at: '/'
   resources :paytherents
   # mount ActionCable.server, at: '/cable'
   resources :statisticals

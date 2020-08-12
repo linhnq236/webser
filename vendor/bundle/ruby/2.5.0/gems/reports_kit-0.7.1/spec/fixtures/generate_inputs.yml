@@ -1,0 +1,254 @@
+- series:
+    measure: issue
+    dimensions:
+    - repo
+- series:
+    measure: issue
+    dimensions:
+    - repo
+  chart:
+    options:
+      foo: bar
+- series:
+    measure: issue
+    dimensions:
+    - repo
+  chart:
+    foo: bar
+- series:
+    measure: issue
+    dimensions:
+    - repo
+  chart:
+    type: pie
+- series:
+    measure: issue
+    dimensions:
+    - key: repo
+- series:
+    measure: issue
+    dimensions:
+    - key: opened_at
+- series:
+    measure: issue
+    dimensions:
+    - key: opened_at
+    - key: repo
+- series:
+    measure: issue
+    filters:
+    - key: locked
+    - key: title
+    - key: opened_at
+    dimensions:
+    - key: repo
+- series:
+  - measure: issue
+    dimensions:
+    - repo
+  - measure: label
+    dimensions:
+    - repo
+- series:
+  - measure: issue
+    dimensions:
+    - repo
+  - measure: label
+    dimensions:
+    - repo
+  - measure: tag
+    dimensions:
+    - repo
+- series:
+  - measure:
+      key: issue
+      name: Repo Issues
+    dimensions:
+    - repo
+  - measure: label
+    dimensions:
+    - repo
+- series:
+  - measure:
+      key: issue
+      name: Repo Issues
+    dimensions:
+    - key: repo
+      label:
+  - measure: label
+    dimensions:
+    - repo
+  format: table
+- series:
+  - measure:
+      key: issue
+      name: Repo Issues
+    dimensions:
+    - key: repo
+      label:
+  - measure: label
+    dimensions:
+    - repo
+  format: table
+  report_options:
+    aggregations:
+    - from: columns
+      operator: sum
+      label: Total
+- series:
+  - measure:
+      key: issue
+      name: Repo Issues
+    dimensions:
+    - key: repo
+      label:
+  - measure: label
+    dimensions:
+    - repo
+  format: table
+  report_options:
+    aggregations:
+    - from: rows
+      operator: sum
+      label: Total
+- series:
+  - measure:
+      key: issue
+      name: Repo Issues
+    dimensions:
+    - key: repo
+      label:
+  - measure: label
+    dimensions:
+    - repo
+  format: table
+  report_options:
+    aggregations:
+    - from: columns
+      operator: sum
+      label: Total
+    - from: rows
+      operator: sum
+      label: Total
+- series:
+  - measure:
+      key: issue
+      name: Repo Issues
+    dimensions:
+    - key: repo
+      label:
+  - measure: label
+    dimensions:
+    - repo
+  format: table
+  report_options:
+    head_rows_count: 2
+- series:
+  - measure:
+      key: issue
+      name: Repo Issues
+    dimensions:
+    - key: repo
+      label:
+  - measure: label
+    dimensions:
+    - repo
+  format: table
+  report_options:
+    foot_rows_count: 3
+- series:
+    measure: label
+    dimensions:
+    - repo
+  order: dimension1.label
+- series:
+    measure: label
+    dimensions:
+    - repo
+  order: dimension1.label desc
+- series:
+    measure: label
+    dimensions:
+    - repo
+  order: count
+- series:
+    measure: label
+    dimensions:
+    - repo
+  order: count desc
+- series:
+    measure: issue
+    dimensions:
+    - opened_at
+  order: dimension1
+- series:
+    measure: issue
+    dimensions:
+    - opened_at
+  order: dimension1 desc
+- series:
+    measure: label
+    dimensions:
+    - repo
+  order: 0
+- series:
+    measure: label
+    dimensions:
+    - repo
+  order: 0 desc
+- series:
+    measure: label
+    dimensions:
+    - repo
+  order: 1
+- series:
+    measure: label
+    dimensions:
+    - repo
+  order: 1 desc
+- series:
+    measure: issue
+    dimensions:
+    - key: opened_at
+    - key: repo
+  order: dimension1
+- series:
+    measure: issue
+    dimensions:
+    - key: opened_at
+    - key: repo
+  order: dimension1 desc
+- series:
+    measure: label
+    dimensions:
+    - key: repo
+    - key: created_at
+  order: dimension1.label
+- series:
+    measure: label
+    dimensions:
+    - key: repo
+    - key: created_at
+  order: dimension1.label desc
+- series:
+    measure: issue
+    dimensions:
+    - key: opened_at
+    - key: repo
+  order: count
+- series:
+    measure: issue
+    dimensions:
+    - key: opened_at
+    - key: repo
+  order: count desc
+- data_method: ExampleDataMethods.issues_by_opened_at
+- data_method: ExampleDataMethods.issues_by_opened_at_and_repo
+- data_method: ExampleDataMethods.issues_by_opened_at_with_filters
+- data_method: ExampleDataMethods.issues_by_opened_at_with_filters
+  ui_filters:
+    state: open
+- data_method: ExampleDataMethods.issues_by_opened_at_with_filters
+  ui_filters:
+    state: open
+  format: table
