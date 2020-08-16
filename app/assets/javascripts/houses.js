@@ -151,6 +151,7 @@ $( document ).on('turbolinks:load', function() {
             method: 'get'
         }).done(function (response) {
           var i = 0;
+          console.log(response);
           $.each(response['data'], function(index, value){
             i ++;
             html += `
@@ -168,7 +169,7 @@ $( document ).on('turbolinks:load', function() {
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th class="text-center">STT</th>
+                    <th class="text-center">Chọn</th>
                     <th class="text-center">Họ và tên</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Số điện thoại</th>

@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_admin_login path
+    if user_signed_in?
+      if current_user.admin == 2
+        flash[:warning] = "Admin không có quyền truy cập"
+        redirect_to path
+      end
+    end
+  end
   def led_status
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     response = firebase.get(FIREBASE_URL).body

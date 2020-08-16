@@ -64,6 +64,11 @@
                       Xoá
                     </a>
                   <% end %>
+                  <% if user_signed_in?%>
+                    <% if current_user.admin == 2%>
+                      <button type="button" name="button" data-room_id="<%=room.id%>" class="btn-sm bg-dark mt-2 setup"><i class="fa fa-info"></i> Cài đặt</button>
+                    <% end%>
+                  <% end%>
                 </p>
               </li>
             </ul>

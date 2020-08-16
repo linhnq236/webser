@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   get "/send_email", to: "notify_mailer#send_email"
   post "/send_to_email", to: "notify_mailer#send_to_email"
   get "/send_mail_cost_room/:house_id/:room_id/:information_id", to: "notify_mailer#send_mail_cost_room"
+  get "/getMoneyPerMonth", to: "notify_mailer#getMoneyPerMonth"
   resources :members
   post "/addmembers/:house_id/:room_id/:information_id", to: "members#create"
   get "/show_detail_members/:information_id", to: "members#show_detail_members"
   resources :use_services
   post "use_service/:house_id/:room_id/:information_id", to: "use_services#use_service"
+  get "/show_detail_useservice/:information_id", to: "use_services#show_detail_useservice"
   resources :members
   post "/addmembers/:house_id/:room_id/:information_id", to: "members#addmembers"
   get "info_members/:information_id", to: "members#info_members"
@@ -51,6 +53,7 @@ Rails.application.routes.draw do
     post "/account", to: "users#account"
     resources :leds
     post "app_send/:information_id", to: "leds#app_send_data"
+    get "/setup/:room_id", to: "leds#setup"
     resources :information
     post "updateInfo/:id", to: "information#updateInfo"
     get "/getOldCustomer", to: "information#getOldCustomer"
@@ -61,6 +64,7 @@ Rails.application.routes.draw do
     resources :paytherents
     put "/updatePaytherent/:information_id", to: "paytherents#update"
     get "/getPaytheRent/:information_id", to: "paytherents#getPaytheRent"
+    post "/update_money", to: "paytherents#update_money"
     resources :use_services
     get "/getUseServices/:information_id", to: "use_services#getUseServices"
   end

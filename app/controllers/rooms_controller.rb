@@ -1,5 +1,9 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy, :payroom]
+  before_action  only: [:room_fast, :addcustomer, :listcustomer, :payroom, :edit, :destroy, :new] do
+    check_admin_login("/houses")
+  end
+
   FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   # GET /rooms
@@ -32,15 +36,13 @@ class RoomsController < ApplicationController
     name = house.name
     re_space_house_name = name.gsub(" ","")
     upercase_house_name = re_space_house_name.upcase
-    respond_to do |format|
-      if @room.save
-        create_house_room_firebase(upercase_house_name, @room.name)
-        format.html { redirect_to houses_path, notice: 'Room was successfully created.' }
-        format.json { render :show, status: :created, location: @room }
-      else
-        format.html { render :new }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
-      end
+    if @room.save
+      create_house_room_firebase(upercase_house_name, @room.name)
+      flash[:notice] =  'Thêm phòng thành công.'
+      redirect_to houses_path
+    else
+      flash[:warning] =  flash_errors(@room.errors)
+      redirect_to houses_path
     end
   end
 
@@ -100,20 +102,26 @@ class RoomsController < ApplicationController
   end
 
   def payroom
-    if @room.update(information_id: "", mark: 0, oldelectric: 0, newelectric: 0, oldwater: 0, newwater: 0)
-      inf = Information.find(params[:information_id])
-      user = User.find_by_email(inf.email)
-      if user.update(disable: 1)
-        if inf.update(mark: 1)
-          use_service = UseService.find_by_information_id(params[:information_id])
-          UseService.delete(use_service.id)
-          flash[:notice] = "Trả phòng thành công !"
-          redirect_to houses_path
-        end
-      end
-    else
-      flash[:warning] = "Trả phòng thất bại !"
+    paytherent = Paytherent.where(information_id: params[:information_id], status: 0)
+    if paytherent.size !=0
+      flash[:warning] = "Xin vui lòng trả tiền phòng trước khi trả phòng"
       redirect_to houses_path
+    else
+      if @room.update(information_id: "", mark: 0, oldelectric: 0, newelectric: 0, oldwater: 0, newwater: 0)
+        inf = Information.find(params[:information_id])
+        user = User.find_by_email(inf.email)
+        if user.update(disable: 1)
+          if inf.update(mark: 1)
+            use_service = UseService.find_by_information_id(params[:information_id])
+            UseService.delete(use_service.id)
+            flash[:notice] = "Trả phòng thành công !"
+            redirect_to houses_path
+          end
+        end
+      else
+        flash[:warning] = "Trả phòng thất bại !"
+        redirect_to houses_path
+      end
     end
   end
 
@@ -148,7 +156,7 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     respond_to do |format|
-      format.html { redirect_to houses_path, notice: 'Room was successfully destroyed.' }
+      format.html { redirect_to houses_path, notice: 'Xóa phòng thành công' }
       format.json { head :no_content }
     end
   end

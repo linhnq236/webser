@@ -48,7 +48,7 @@
       <td class="text-center"><%= user.admin == 1 ? "Quản lý" : "Khách hàng"%></td>
       <td class="text-center"><%= format_datetime(user.created_at)%></td>
       <td class="text-center">
-        <button class="btn btn-sm <%= user.disable == 1 ? "btn-danger" : "btn-primary"%>"><%= user.disable == 1 ? "Ngưng hoạt động" : "Đang hoạt động"%></button>
+        <button class="btn btn-sm <%= user.disable == 1 ? "btn-danger enableacc" : "btn-primary disableacc"%>"><%= user.disable == 1 ? "Ngưng hoạt động" : "Đang hoạt động"%></button>
       </td>
     </tr>
     <% end %>
