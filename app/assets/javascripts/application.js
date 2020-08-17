@@ -14,7 +14,6 @@
 //= require rails-ujs
 //= require Chart.bundle
 //= require chartkick
-//= require reports_kit/application
 //= require turbolinks
 //= require foundation
 //= require_tree .
