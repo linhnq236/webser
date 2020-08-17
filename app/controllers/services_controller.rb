@@ -5,6 +5,7 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = Service.all.order("status DESC")
+    @use_services = UseService.all
   end
 
   # GET /services/1

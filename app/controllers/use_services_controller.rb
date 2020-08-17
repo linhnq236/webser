@@ -1,4 +1,5 @@
 class UseServicesController < ApplicationController
+  before_action :set_params, only: [:destroy]
   def use_service
       use_service = UseService.find_by_information_id(params[:information_id])
       if use_service.nil?
@@ -17,8 +18,17 @@ class UseServicesController < ApplicationController
       end
   end
 
+  def destroy
+    @use_service.destroy
+    flash[:notice] = "Xóa thành công"
+    redirect_to services_path
+  end
+
   private
 
+  def set_params
+    @use_service = UseService.find(params[:id])
+  end
   def userser_params
     params.permit(service_id:[], amount:[])
   end

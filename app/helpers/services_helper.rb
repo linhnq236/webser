@@ -18,4 +18,13 @@ module ServicesHelper
     result = new.to_i - old.to_i
     return result
   end
+
+  def getUseService service_id
+    string = ''
+    service_id.each do |ser|
+      a = Service.find(ser)
+      string += " #{a.name}, "
+    end
+    return string[0..(string.size-3)]
+  end
 end
