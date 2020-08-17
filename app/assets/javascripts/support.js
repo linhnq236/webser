@@ -25,6 +25,12 @@ $( document ).on('turbolinks:load', function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
   });
+  $("#searchuseservice").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#useservice tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    });
+  });
   $("#searchNotify").on("keyup", function() {
     // var value = $(this).val().toLowerCase();
     // $(".notify-content").filter(function() {

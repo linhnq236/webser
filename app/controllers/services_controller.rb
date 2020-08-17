@@ -1,10 +1,11 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update]
 
   # GET /services
   # GET /services.json
   def index
     @services = Service.all.order("status DESC")
+    @use_services = UseService.all
   end
 
   # GET /services/1
@@ -51,10 +52,21 @@ class ServicesController < ApplicationController
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
-    @service.destroy
-    respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
-      format.json { head :no_content }
+    result = ''
+    array_result = []
+    service = Service.find(params[:id])
+    use_service = UseService.select(:service_id)
+    use_service.each do |ser|
+      result = (ser.service_id).include?(params[:id])
+      array_result.push(result)
+    end
+    if array_result.include?(true)
+      flash[:warning] = "Bạn không thể xóa dịch vụ này vì dịch vụ này đang sử dụng."
+      redirect_to services_path
+    else
+      service.destroy
+      flash[:notice] = "Xóa dịch vụ thành công"
+      redirect_to services_path
     end
   end
 

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_locale
-  before_action :check_user_login, :led_status, :gettemperature
+  before_action :check_user_login, :led_status, :gettemperature, :check_manager
   # FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   # FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   require "firebase_connect"
@@ -14,6 +14,24 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_manager
+    if user_signed_in?
+      if current_user.admin == 0
+        flash[:warning] = "Bạn không có quyền đăng nhập"
+        sign_out current_user
+        redirect_to root_path
+      end
+    end
+  end
+
+  def check_admin_login path
+    if user_signed_in?
+      if current_user.admin == 2
+        flash[:warning] = "Admin không có quyền truy cập"
+        redirect_to path
+      end
+    end
+  end
   def led_status
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     response = firebase.get(FIREBASE_URL).body

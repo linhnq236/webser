@@ -42,7 +42,7 @@
         <% end %>
       </td>
       <td class="text-center"><%=service.name %></td>
-      <td class="text-danger text-center"> <%=service.cost%></td>
+      <td class="text-danger text-center"> <%=number_to_currency_br(service.cost)%></td>
       <td class="text-danger text-center">
         <a href="/services/<%= service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm="Bạn có muốn xóa ?">
           <i class="fa fa-trash"></i>
@@ -50,6 +50,34 @@
         </a>
       </td>
     </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="col-sm-3">
+  <!-- <input type="text" id="searchuseservice" class="form-control search"> -->
+</div>
+<table class="table table-hover ">
+  <thead>
+    <tr>
+      <th class="text-center">STT</th>
+      <th class="text-center">Dịch vụ đang sử dụng</th>
+      <th class="text-center">Chủ phòng</th>
+      <th class="position-relative"><input type="text" id="searchuseservice" class="searchuseservice search position-absolute" placeholder="Tìm kiếm dịch vụ khách dang sử dụng"></th>
+    </tr>
+  </thead>
+  <tbody id="useservice">
+    <% @use_services.each_with_index do |use_service, i|%>
+      <tr>
+        <td class="text-center"><%= i +=1 %></td>
+        <td class="text-center"><%= getUseService(use_service.service_id)%></td>
+        <td class="text-center"><%= use_service.information&.name %></td>
+        <td class="text-danger text-center">
+          <a href="/use_services/<%= use_service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm="Bạn có muốn xóa ?">
+            <i class="fa fa-trash"></i>
+            Xoá
+          </a>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>

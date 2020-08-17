@@ -1,5 +1,8 @@
 class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update, :destroy]
+  before_action  only: [:new, :show, :deletehouse, :payroom, :edit, :destroy] do
+    check_admin_login("/houses")
+  end
   FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   # GET /houses
@@ -51,19 +54,31 @@ class HousesController < ApplicationController
 
   def deletehouse
     rooms = Room.where(house_id: params[:id]).pluck(:id)
-    for i in 0..rooms.size
-      Room.delete(rooms[i])
+    check = 0
+    rooms.each do |r|
+      check_room = Room.find_by_information_id(r)
+      if !check_room.nil?
+        check += 1
+      end
     end
-    house = House.find(params[:id])
-    name = house.name
-    re_space_house_name = name.gsub(" ","")
-    upercase_house_name = re_space_house_name.upcase
+    if check !=0
+      flash[:warning] = "Khách chưa trả phòng"
+      redirect_to houses_path
+    else
+      for i in 0..rooms.size
+        Room.delete(rooms[i])
+      end
+      house = House.find(params[:id])
+      name = house.name
+      re_space_house_name = name.gsub(" ","")
+      upercase_house_name = re_space_house_name.upcase
 
-    firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-    firebase.delete("#{upercase_house_name}")
-    house = House.delete(params[:id])
-    flash[:notice] = "Xóa thành công"
-    redirect_to houses_path
+      firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+      firebase.delete("#{upercase_house_name}")
+      house = House.delete(params[:id])
+      flash[:notice] = "Xóa thành công"
+      redirect_to houses_path
+    end
   end
   # PATCH/PUT /houses/1
   # PATCH/PUT /houses/1.json

@@ -9,6 +9,7 @@ class NoticeMailer < ApplicationMailer
     @services = Service.all
     @room = Room.find_by_information_id(id)
     @house = House.find(@room.house_id.to_i)
+    @paytherent = Paytherent.where(information_id: id, status: 0 )
 
     mail(to: "#{@info.email}" ,subject: "Đóng tiền thuê trọ")
   end
