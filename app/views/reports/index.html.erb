@@ -1,0 +1,78 @@
+<div class="col-sm-12">
+  <%= form_tag("/reports/1", method: :put, class: "form_reports") do %>
+    <blockquote class="blockquote">
+      <h1>Phản hồi </h1>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3 text-center">Tiêu đề</div>
+        <div class="col-sm-9">
+          <input type="text" name="title" class="form-control report_title"   disabled placeholder="Nội dung gửi">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3 text-center">Nội dung</div>
+        <div class="col-sm-9 content">
+          <textarea name="content"  disabled placeholder="Nội dung gửi" class="form-control report_content"></textarea>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3 text-center">Nội dung phản hồi</div>
+        <div class="col-sm-9 content">
+          <textarea name="rep_content" placeholder="Nội dung gửi" class="form-control report_rep_content"></textarea>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="text-center col-sm-12">
+          <button type="submit" name="button" class="btn btn-primary button_rep_report" disabled><i class="mdi mdi-send-outline"></i></button>
+        </div>
+      </div>
+    </blockquote>
+  <% end %>
+</div>
+<table class="table table-hover report">
+  <thead>
+    <tr>
+      <th class="text-center">STT</th>
+      <th class="text-center">Tiêu đề</th>
+      <th class="text-center">Người gửi</th>
+      <th class="text-center">Thời gian</th>
+      <th class="text-center">Tình trạng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@reports.each_with_index do |report, i|%>
+      <tr>
+        <td class="text-center"><%= i +=1%></td>
+        <td class="text-center"><%= report.title%></td>
+        <td class="text-center"><%= report.information&.name%></td>
+        <td class="text-center"><%= time_ago_in_words(report.created_at)%></td>
+        <td class="text-center">
+          <button type="button" name="button" class="rep_report btn btn-sm bg-primary text-white" data-report_id="<%=report.id%>" class="btn btn-sm btn-primary"><%=report.mark == 0 ? "Chưa phản hồi" : "Đã phản hồi"%></button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<script type="text/javascript">
+//   $(document).ready(function(){
+//     eylem();
+//   })
+//  function eylem(){
+//    var ses = new webkitSpeechRecognition();
+//    ses.onresult = function(e){
+//      if (event.results.length > 0) {
+//        sonuc = event.results[event.results.length -1];
+//        if (sonuc.isFinal) {
+//          var result = sonuc[0].transcript;
+//          console.log(result);
+//          if (result == 'home') {
+//            window.location.href = `/${result}`;
+//          }
+//        }
+//      }
+//    }
+//    ses.start();
+// }
+</script>

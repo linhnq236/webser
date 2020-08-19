@@ -15,7 +15,7 @@ module Webser
     config.i18n.default_locale = :vn
     config.i18n.available_locales = [:en, :vn]
     # test ngrok
-    # Rails.application.config.hosts << "423ed5aa1a3c.ngrok.io"
+    # Rails.application.config.hosts << "b1ffe55f083d.ngrok.io"
 
     # config.active_record.default_timezone = :local
     # Settings in config/environments/* take precedence over those specified here.

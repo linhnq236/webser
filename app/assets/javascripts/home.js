@@ -124,9 +124,15 @@ $( document ).on('turbolinks:load', function() {
 
   // click show notify
   var height = $(window).height();
-  $(".show_reminder").css({"height": `${height-70}`})
+  $(".show_reminder").css({"height": `auto`, "max-height":`${height}px`})
   $(".notify").click(function(){
+    $(".show_report").hide();
     $(".show_reminder").slideToggle({direction: 'right'})
+  })
+  $(".show_report").css({"height": `auto`, "max-height":`${height}px`})
+  $(".icon_report").click(function(){
+    $(".show_reminder").hide();
+    $(".show_report").slideToggle({direction: 'right'})
   })
 
 })

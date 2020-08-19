@@ -26,6 +26,13 @@ vn:
     STATUS: "Trạng thái"
     TURNON: "Bật"
     TUNROFF: "Tắt"
+  datetime:
+    distance_in_words:
+      x_minutes: "%{count} phút trước"
+      about_x_hours: "%{count} phút trước"
+      x_days: "%{count} ngày trước"
+      about_x_months: "%{count} tháng trước"
+      about_x_years: "%{count} năm trước"
   date:
     abbr_day_names: [CN, T2 ,T3,T4 ,T5 ,T6 ,T7]
     year_names: "Năm"

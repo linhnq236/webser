@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
   def check_user_login
     if user_signed_in?
       gon.user = current_user.id
+      gon.reminders = Reminder.order("start_time DESC")
+      gon.reports = Report.order("created_at DESC")
+      gon.supports = Support.all
     else
       gon.user = 0
     end
@@ -36,7 +39,6 @@ class ApplicationController < ActionController::Base
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     response = firebase.get(FIREBASE_URL).body
     gon.leds = response
-    gon.reminders = Reminder.order("start_time DESC")
   end
 
   def gettemperature
