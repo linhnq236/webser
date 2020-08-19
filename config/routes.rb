@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reports
   resources :paytherents
   # mount ActionCable.server, at: '/cable'
   resources :statisticals
@@ -67,6 +68,8 @@ Rails.application.routes.draw do
     post "/update_money", to: "paytherents#update_money"
     resources :use_services
     get "/getUseServices/:information_id", to: "use_services#getUseServices"
+    resources :reports
+    resources :supports
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

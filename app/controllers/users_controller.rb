@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 
   def account
     if params[:disable].present?
-      @users = User.where(disable: params[:disable])
+      @users = User.where("disable = ?  AND  admin < ? ", params[:disable],2)
     else
-      @users = User.all.order("admin DESC")
+      @users = User.where("admin < ? ", 2).order("admin DESC")
       # @infos =Information.order("created_at DESC")
     end
   end

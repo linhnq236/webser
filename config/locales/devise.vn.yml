@@ -34,8 +34,8 @@ vn:
       no_token: "Bạn không thể truy cập trang này mà không đến từ email đặt lại mật khẩu. Nếu bạn đến từ một email đặt lại mật khẩu, vui lòng đảm bảo rằng bạn đã sử dụng URL đầy đủ được cung cấp."
       send_instructions: "Bạn sẽ nhận được email có hướng dẫn về cách đặt lại mật khẩu trong vài phút."
       send_paranoid_instructions: "Nếu địa chỉ email của bạn tồn tại trong cơ sở dữ liệu của chúng tôi, bạn sẽ nhận được một liên kết khôi phục mật khẩu tại địa chỉ email của bạn trong một vài phút."
-      updated: "Your password has been changed successfully. You are now signed in."
-      updated_not_active: "Your password has been changed successfully."
+      updated: "Bạn đã thây đổi mật khẩu và đăng nhập lại thành công."
+      updated_not_active: "Mật khẩu của bạn thây đổi thành công."
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -58,7 +58,7 @@ vn:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"
-      not_found: "not found"
+      not_found: "Không tìm thấy"
       not_locked: "was not locked"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"

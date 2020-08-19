@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_164617) do
+ActiveRecord::Schema.define(version: 2020_08_18_202520) do
 
   create_table "cities", force: :cascade do |t|
     t.string "code"
@@ -109,6 +109,17 @@ ActiveRecord::Schema.define(version: 2020_08_16_164617) do
     t.integer "mark", default: 0
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.text "rep_content"
+    t.integer "mark", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "information_id"
+    t.index ["information_id"], name: "index_reports_on_information_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.string "cost"
@@ -137,6 +148,13 @@ ActiveRecord::Schema.define(version: 2020_08_16_164617) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
+  end
+
+  create_table "supports", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.integer "voice", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "use_services", force: :cascade do |t|
@@ -180,6 +198,7 @@ ActiveRecord::Schema.define(version: 2020_08_16_164617) do
   add_foreign_key "infor_servs", "services"
   add_foreign_key "members", "information"
   add_foreign_key "paytherents", "information"
+  add_foreign_key "reports", "information"
   add_foreign_key "rooms", "houses"
   add_foreign_key "rooms", "information"
   add_foreign_key "use_services", "information"
