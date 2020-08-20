@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   post "settime", to: "home#settime"
   get "login", to: "home#login"
   get "gettemperature", to: "home#gettemperature"
+  post "/voice", to: "home#voice"
   resources :rooms
   get "room_fast", to: "rooms#room_fast"
   post "/roomfast", to: "rooms#roomfast"

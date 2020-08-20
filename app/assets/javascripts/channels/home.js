@@ -13,6 +13,13 @@ $( document ).on('turbolinks:load', function() {
                 setareapin = index + i + ii + iii;
                 if(areapin == setareapin){
                   $(this).text(vvv);
+                  if (vvv == 'ON') {
+                    $(`.${areapin}`).removeClass('bg-primary');
+                    $(`.${areapin}`).addClass('bg-danger');
+                  } else {
+                    $(`.${areapin}`).removeClass('bg-danger');
+                    $(`.${areapin}`).addClass('bg-primary');
+                  }
                 }
               })
             })
