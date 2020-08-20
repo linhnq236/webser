@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
       gon.reminders = Reminder.order("start_time DESC")
       gon.reports = Report.order("created_at DESC")
       gon.supports = Support.all
+      gon.rooms = Room.all
     else
       gon.user = 0
     end
