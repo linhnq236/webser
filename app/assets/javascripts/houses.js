@@ -70,8 +70,8 @@ $( document ).on('turbolinks:load', function() {
     var room_id = $(this).data("idroom");
     var information_id = $(this).data("information_id");
     $.confirm({
-        title: 'Thông báo!',
-        content: 'Bạn có muốn trả phòng không ?',
+        title: I18n.t('js.notice'),
+        content: I18n.t('js.room.pay_room'),
         buttons: {
             Ok: {
               btnClass: 'btn-primary',
@@ -79,7 +79,7 @@ $( document ).on('turbolinks:load', function() {
                 location.href = `/payroom/${room_id}/${information_id}`;
               }
             },
-            Hủy: {
+            Cancel: {
               btnClass: 'btn-danger',
             },
         }
@@ -88,24 +88,13 @@ $( document ).on('turbolinks:load', function() {
   // xoa phong
   $(".deletehouse").click(function(){
     $.confirm({
-        title: 'Thông báo!',
-        content: 'Bạn có muốn xóa nhà không (Bao gồm tất cả các phòng)?',
+        title: I18n.t('js.notice'),
+        content: I18n.t('js.house.delete_room'),
         buttons: {
             Ok: {
               btnClass: 'btn-primary',
               action: function(){
                 location.href = `/deletehouse/${house_active}`;
-                // $(".payroom").each(function(){
-                //   var house_id = $(this).data("house_id");
-                //   if (house_id == house_active) {
-                //     $.alert({
-                //       title: 'Thông báo !',
-                //       content: 'Khách hàng chưa trả phòng. Bạn không thể xóa nhà.',
-                //     });
-                //   } else {
-                //     console.log("a");
-                //   }
-                // })
               }
             },
             Hủy: {
@@ -128,8 +117,8 @@ $( document ).on('turbolinks:load', function() {
   // khi co nguoi dang muon phng thi khong cho pep xoa phong nay.
   $(".not-active").click(function(){
     $.alert({
-      title: 'Thông báo !',
-      content: 'Khách hàng chưa trả phòng',
+      title: I18n.t('js.notice'),
+      content: I18n.t('js.room.delete_room_error'),
     });
     return false;
   })

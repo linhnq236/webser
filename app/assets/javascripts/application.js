@@ -14,6 +14,8 @@
 //= require rails-ujs
 //= require Chart.bundle
 //= require chartkick
+//= require i18n.js
+//= require i18n/translations
 //= require turbolinks
 //= require foundation
 //= require_tree .

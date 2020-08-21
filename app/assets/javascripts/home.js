@@ -9,7 +9,7 @@ $( document ).on('turbolinks:load', function() {
       var i = 0;
       i++;
       html += `
-      <div class="col-sm-6 first" data-first="${index}">Nhà: ${index}</div>
+      <div class="col-sm-6 first" data-first="${index}">${I18n.t('js.house.house_name')}: ${index}</div>
       ${loadArea(value, index)}
       `
     })

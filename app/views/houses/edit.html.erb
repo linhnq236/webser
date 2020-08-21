@@ -2,12 +2,12 @@
   <div class="card">
     <%= form_tag("/houses/#{@house.id}", method: :put, id: "changePage") do %>
     <div class="card-body">
-      <%= render "shared/nextback", local: {title: @title = "Sửa nhà"}%>
+      <%= render "shared/nextback", local: {title: @title = t('house.edit_house')}%>
       <hr>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Nhà *</label>
+              <label class="col-sm-3 col-form-label"><%=t('house.house_name')%> *</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control name" value = "<%= @house.name%>"name="name" required />
               </div>
@@ -15,7 +15,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Tỉnh/ Thành phố  *</label>
+              <label class="col-sm-3 col-form-label"> <%=t('house.province_city')%>*</label>
               <div class="col-sm-9">
                 <%= select_tag "city_id", options_for_select(@cities.collect{ |u| [u.name, u.id]}, :selected=>@house.city_id), {class: "form-control city", required: "required", include_blank: true } %>
               </div>
@@ -25,7 +25,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Quận/ Huyện *</label>
+              <label class="col-sm-3 col-form-label"><%=t('house.district')%> *</label>
               <div class="col-sm-9">
                   <!-- <select class="form-control district" value = "<%= @house.district_id%>"name="district_id" required> -->
                     <!-- <option value="">Chon</option> -->
@@ -38,7 +38,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Phường/ Xã *</label>
+              <label class="col-sm-3 col-form-label"><%=t('house.ward')%> *</label>
               <div class="col-sm-9">
                 <!-- <select class="form-control ward" name= "ward_id" required>
                   <option value="">Chon</option>
@@ -52,7 +52,7 @@
         <div class="row mt-3">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Số *</label>
+              <label class="col-sm-3 col-form-label"><%=t('house.number')%>*</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" value = "<%= convert_address_to_number(@house.address)%>"name="number" required />
               </div>
@@ -60,7 +60,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Đường *</label>
+              <label class="col-sm-3 col-form-label"><%=t('house.road')%> *</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" value = "<%= convert_address_to_road(@house.address)%>"name="road" required />
               </div>

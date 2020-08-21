@@ -16,63 +16,50 @@ $(document).on("turbolinks:load", function(){
             html += `
               <div class="col-sm-12">
                 <div class="row">
-                  <div class="col-sm-3 form-control">Họ và tên</div>
-                  <div class="col-sm-3 form-control">${response["data"]["name"]}</div>
-                  <div class="col-sm-3 form-control">Giới tính</div>
-                  <div class="col-sm-3 form-control">${convert_sex(response["data"]["sex"])}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.fullname')}: ${response["data"]["name"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.sex')}: ${convert_sex(response["data"]["sex"])}</div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3 form-control">Ngày sinh</div>
-                  <div class="col-sm-3 form-control">${response["data"]["birth"]}</div>
-                  <div class="col-sm-3 form-control">Email</div>
-                  <div class="col-sm-3 form-control overflow-hidden">${response["data"]["email"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.birth')}: ${response["data"]["birth"]}</div>
+                  <div class="col-sm-6 form-control overflow-hidden">Email: ${response["data"]["email"]}</div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3 form-control">CMND</div>
-                  <div class="col-sm-3 form-control">${response["data"]["indentifycard"]}</div>
-                  <div class="col-sm-3 form-control">Ngày cấp</div>
-                  <div class="col-sm-3 form-control">${response["data"]["daterange"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.indentifycard')}: ${response["data"]["indentifycard"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.daterange')}: ${response["data"]["daterange"]}</div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3 form-control">Nơi cấp</div>
-                  <div class="col-sm-3 form-control">${response["data"]["placerange"]}</div>
-                  <div class="col-sm-3 form-control">Đ/c thường trú</div>
-                  <div class="col-sm-3 form-control">${response["data"]["permanent"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.placerange')}: ${response["data"]["placerange"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.permanent')}: ${response["data"]["permanent"]}</div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3 form-control">SĐT1 </div>
-                  <div class="col-sm-3 form-control">${response["data"]["phone1"]}</div>
-                  <div class="col-sm-3 form-control">SĐT2</div>
-                  <div class="col-sm-3 form-control">${response["data"]["phone2"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.phone1')}: ${response["data"]["phone1"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.phone2')}: ${response["data"]["phone2"]}</div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3 form-control">Đặt cọc </div>
-                  <div class="col-sm-3 form-control">${response["data"]["deposit"]}</div>
-                  <div class="col-sm-3 form-control">Bắt đầu</div>
-                  <div class="col-sm-3 form-control">${response["data"]["start"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.deposit')}: ${response["data"]["deposit"]}</div>
+                  <div class="col-sm-6 form-control">${I18n.t('users.start')}: ${response["data"]["start"]}</div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3 form-control">Ghi chú</div>
-                  <div class="col-sm-9 form-control">${response["data"]["note"]}</div>
+                  <div class="col-sm-12 form-control">${I18n.t('users.note')}: ${response["data"]["note"]}</div>
                 </div>
               </div>
             `;
             // self.setConten('<i class="fa fa-user"></i> Thông tin khách hàng ');
             self.setContentAppend(html);
-            self.setTitle('<i class="fa fa-user"></i> Thông tin khách hàng ');
+            self.setTitle(`<i class="fa fa-user"></i> ${I18n.t('js.user.customer_information')} `);
         }).fail(function(){
             self.setContent('Something went wrong.');
         });
       },
       closeIcon: true,
       buttons: {
-        Thành_viên:{
+        Members:{
           btnClass: 'btn-primary',
           action: function(){
             location.href = "/show_detail_members/" + information_id;
           }
         },
-        Hủy: {
+        Cancel: {
           btnClass: 'btn-danger'
         }
       }
@@ -110,8 +97,8 @@ $(document).on("turbolinks:load", function(){
   // convert sex
   function convert_sex(sex){
     if(sex == false){
-      return "Nam";
+      return I18n.t('layout.male');
     }
-    return "Nữ";
+    return I18n.t('layout.female');
   }
 })

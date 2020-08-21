@@ -1,21 +1,20 @@
 <div class="container">
-  <h1 class="text-center">ĐIỀU KHIỂN ĐÈN THÔNG QUA FIREBASE</h1>
-  <button type="button" class="check_guild btn btn-sm bg-primary text-white"name="button">Hướng dẫn điều khiển bằng giọng nói</button>
+  <h1 class="text-center text-uppercase"><%=t('home.led_title')%></h1>
+  <button type="button" class="check_guild btn btn-sm bg-primary text-white"name="button"><%=t('home.guild_voice')%></button>
   <div class="guid_voice">
-    <div class="">Cách đọc: <span class="text-danger">Mã phòng + trạng thái (1: ON, 0: OFF)</span></div>
+    <div class=""><%=t('home.read')%>: <span class="text-danger"><%=t('home.code_room')%> + <%=t('home.status')%> (1: <%=t('home.on')%>, 0: <%=t('home.off')%>)</span></div>
     <div class="">
-      Đối với Phòng1: 110
+      <%=t('home.ex')%> Phong1: 110
     </div>
     <div class="">
-      Cách đọc bằng tiếng anh như sau:
       <ul>
         <li>
-          <span class="text-danger">one one zero one </span> là bật đèn
+          <span class="text-danger">one one zero one </span> <%=t('home.turnon')%>
         </li>
         <li>
-          <span class="text-danger">one one zero zero </span> là tắt đèn
+          <span class="text-danger">one one zero zero </span> <%=t('home.turnoff')%>
         </li>
-        <li>Kết quả như hình vẽ <img src="/assets/guild_voice.png" alt="Kết quả hiển thị như hình"> </li>
+        <li><%= t('home.result')%><img src="/assets/guild_voice.png"> </li>
       </ul>
     </div>
     <div class="voice_control_led"></div>

@@ -9,7 +9,7 @@
         <div class="text-wrapper">
           <% if user_signed_in? %>
             <p class="profile-name"><%=current_user.email%></p>
-            <p class="designation"><%=current_user.admin == 1? "Người quản lý" : "" %></p>
+            <p class="designation"><%=current_user.admin == 1?  I18n.t('layout.manager') : "" %></p>
           <% else %>
             <p class="profile-name">Alex</p>
             <p class="designation">Chưa đăng nhập</p>
@@ -17,54 +17,54 @@
         </div>
       </a>
     </li>
-    <li class="nav-item nav-category">Main Menu</li>
+    <li class="nav-item nav-category"><%= I18n.t('layout.menu_main') %></li>
     <% if user_signed_in? %>
     <li class="nav-item">
       <a class="nav-link" href="<%= root_path%>">
         <i class="menu-icon typcn typcn-document-text"></i>
-        <span class="menu-title">Dashboard</span>
+        <span class="menu-title"><%= I18n.t('layout.dashboard') %></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<%= houses_path%>">
         <i class="menu-icon typcn typcn-document-text"></i>
-        <span class="menu-title">Phòng</span>
+        <span class="menu-title"><%= I18n.t('layout.rooms') %></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="<%=services_path%>" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon typcn typcn-coffee"></i>
-        <span class="menu-title">Dịch vụ</span>
+        <span class="menu-title"><%= I18n.t('layout.services') %></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<%=users_path %>">
         <i class="menu-icon typcn typcn-shopping-bag"></i>
-        <span class="menu-title">Thông tin khách thuê</span>
+        <span class="menu-title"><%= I18n.t('layout.informations') %></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/account">
         <i class="menu-icon typcn typcn-th-large-outline"></i>
-        <span class="menu-title">Quản lý tài khoản</span>
+        <span class="menu-title"><%= I18n.t('layout.accounts') %></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<%=reminders_path %>">
         <i class="menu-icon typcn typcn-bell"></i>
-        <span class="menu-title">Lịch nhắc nhở</span>
+        <span class="menu-title"><%= I18n.t('layout.reminders') %></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<%=statisticals_path%>">
         <i class="menu-icon typcn typcn-user-outline"></i>
-        <span class="menu-title">Thống kê</span>
+        <span class="menu-title"><%= I18n.t('layout.statistical') %></span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="<%=paytherents_path %>" aria-expanded="false" aria-controls="auth">
         <i class="menu-icon typcn typcn-document-add"></i>
-        <span class="menu-title">Thu tiền trọ</span>
+        <span class="menu-title"><%= I18n.t('layout.room_rental') %></span>
       </a>
     </li>
     <li class="nav-item">

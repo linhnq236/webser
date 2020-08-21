@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   def check_manager
     if user_signed_in?
       if current_user.admin == 0
-        flash[:warning] = "Bạn không có quyền đăng nhập"
+        flash[:warning] = I18n.t('application_controller.not_permission')
         sign_out current_user
         redirect_to root_path
       end
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   def check_admin_login path
     if user_signed_in?
       if current_user.admin == 2
-        flash[:warning] = "Admin không có quyền truy cập"
+        flash[:warning] = I18n.t('application_controller.not_admin_access')
         redirect_to path
       end
     end

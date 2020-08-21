@@ -27,7 +27,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
       if @service.save
-        flash[:notice] = 'Dịch vụ mới được thêm.'
+        flash[:notice] = I18n.t('mes.add_success', name: I18n.t('services_controller.services_name'))
         redirect_to services_path
       else
        flash[:warn]  = flash_errors(@service.errors)
@@ -61,11 +61,11 @@ class ServicesController < ApplicationController
       array_result.push(result)
     end
     if array_result.include?(true)
-      flash[:warning] = "Bạn không thể xóa dịch vụ này vì dịch vụ này đang sử dụng."
+      flash[:warning] = I18n.t('services_controller.error_delete')
       redirect_to services_path
     else
       service.destroy
-      flash[:notice] = "Xóa dịch vụ thành công"
+      flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_delete'))
       redirect_to services_path
     end
   end

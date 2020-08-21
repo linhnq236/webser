@@ -27,10 +27,10 @@ class RemindersController < ApplicationController
     end_time = params[:end_time]
     reminder = Reminder.new(title: title, content: content, start_time: start_time, end_time: end_time)
     if reminder.save
-      flash[:notice] = "Tạo nhắc nhở thành công."
+      flash[:notice] =  I18n.t('reminders_controller.reminder_action', action: I18n.t('reminders_controller.action_success'))
       redirect_to "/reminders"
     else
-      flash[:danger] = "Lỗi."
+      flash[:danger] = I18n.t('reminders_controller.reminder_action', action: I18n.t('reminders_controller.action_fail'))
       redirect_to "/reminders"
     end
   end
@@ -38,10 +38,10 @@ class RemindersController < ApplicationController
   def destroy
     reminder = Reminder.delete(params[:id])
     if !reminder.nil?
-      flash[:notice] = "Xóa thành công"
+      flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_delete'))
       redirect_to "/reminders"
     else
-      flash[:danger] = "Xóa bị lỗi"
+      flash[:danger] =  I18n.t('mes.action_fail', action: I18n.t('mes.action_delete'))
       redirect_to "/reminders"
     end
   end

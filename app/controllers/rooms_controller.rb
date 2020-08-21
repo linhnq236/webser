@@ -38,7 +38,7 @@ class RoomsController < ApplicationController
     upercase_house_name = re_space_house_name.upcase
     if @room.save
       create_house_room_firebase(upercase_house_name, @room.name)
-      flash[:notice] =  'Thêm phòng thành công.'
+      flash[:notice] =  I18n.t('rooms_controller.new_room')
       redirect_to houses_path
     else
       flash[:warning] =  flash_errors(@room.errors)
@@ -67,9 +67,9 @@ class RoomsController < ApplicationController
       room = Room.new(name: i, amount: amount, cost: cost, width: width, length: length, description: description, house_id: house_id)
       create_house_room_firebase(upercase_house_name, i)
       if room.save
-        flash[:notice] = "Them phong moi thanh cong"
+        flash[:notice] = I18n.t('rooms_controller.new_room')
       else
-        flash[:notice] = "Them phong moi that bai"
+        flash[:notice] = I18n.t('rooms_controller.new_room_fail')
       end
     end
     redirect_to houses_path
@@ -104,7 +104,7 @@ class RoomsController < ApplicationController
   def payroom
     paytherent = Paytherent.where(information_id: params[:information_id], status: 0)
     if paytherent.size !=0
-      flash[:warning] = "Xin vui lòng trả tiền phòng trước khi trả phòng"
+      flash[:warning] = I18n.t('rooms_controller.payroom_before')
       redirect_to houses_path
     else
       if @room.update(information_id: "", mark: 0, oldelectric: 0, newelectric: 0, oldwater: 0, newwater: 0)
@@ -114,12 +114,12 @@ class RoomsController < ApplicationController
           if inf.update(mark: 1)
             use_service = UseService.find_by_information_id(params[:information_id])
             UseService.delete(use_service.id)
-            flash[:notice] = "Trả phòng thành công !"
+            flash[:notice] = I18n.t('rooms_controller.payroom_success')
             redirect_to houses_path
           end
         end
       else
-        flash[:warning] = "Trả phòng thất bại !"
+        flash[:warning] = I18n.t('rooms_controller.payroom_fail')
         redirect_to houses_path
       end
     end
@@ -132,7 +132,7 @@ class RoomsController < ApplicationController
     newwater = params[:newwater]
     room = Room.find(params[:room_id])
     if room.update(oldelectric: oldelectric, newelectric: newelectric, oldwater: oldwater, newwater: newwater)
-      flash[:notice] = "Cập nhật thành công"
+      flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_update'))
       redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
     end
   end
@@ -156,7 +156,7 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     respond_to do |format|
-      format.html { redirect_to houses_path, notice: 'Xóa phòng thành công' }
+      format.html { redirect_to houses_path, notice: I18n.t('mes.action_success', action: I18n.t('mes.action_delete')) }
       format.json { head :no_content }
     end
   end

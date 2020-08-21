@@ -2,7 +2,7 @@
   <div class="col-sm-3">
   <%= form_tag(`/account?admin=#{params['admin']}&disable=#{params['disable']}`, method: :get, id: "changeDisable") do %>
     <%= select_tag 'disable',
-      options_for_select([["Đang hoạt động","0"], ["Ngưng hoạt động","1"]], selected: params[:disable]),
+      options_for_select([[I18n.t('users.active'),"0"], [I18n.t('users.stop'),"1"]], selected: params[:disable]),
       {onchange: "$('#changeDisable').submit();", class: "form-control" }
     %>
   <% end %>
@@ -13,19 +13,19 @@
   <div class="col-sm-3">
     <button type="button" class="btn btn-primary" name="button">
       <i class="fa fa-search"></i>
-      Tìm kiếm
+      <%=t('layout.search')%>
     </button>
   </div>
 </div>
 <div class="row w-100">
   <div class="col-sm-6">
     <%= form_tag("/createaccount", method: :post, id: "changeDisable") do %>
-      <input type="email" name="email" class="form-control" placeholder="Gmail quản trị viên mới">
+      <input type="email" name="email" class="form-control" placeholder="<%=t('users.add_manager')%>">
   </div>
   <div class="col-sm-6">
     <button type="submit" class="btn btn-primary" name="button">
       <i class="mdi mdi-send-outline"></i>
-      Thêm mới
+      <%=t('layout.create')%>
     </button>
   </div>
   <% end %>
@@ -33,11 +33,11 @@
 <table class="table table-hover service">
   <thead>
     <tr>
-      <th class="text-center">STT</th>
-      <th class="text-center">Email</th>
-      <th class="text-center">Loại</th>
-      <th class="text-center">Ngày tạo</th>
-      <th class="text-center">Tình trạng</th>
+      <th class="text-center"><%=t('layout.order')%></th>
+      <th class="text-center"><%=t('users.email')%></th>
+      <th class="text-center"><%=t('users.kind')%></th>
+      <th class="text-center"><%=t('layout.created_at')%></th>
+      <th class="text-center"><%=t('users.status')%></th>
     </tr>
   </thead>
   <tbody id="account">
@@ -45,10 +45,10 @@
     <tr id="account">
       <td class="text-center"><%=i + 1%></td>
       <td class="text-center"><%= user.email%></td>
-      <td class="text-center"><%= user.admin == 1 ? "Quản lý" : "Khách hàng"%></td>
+      <td class="text-center"><%= user.admin == 1 ? t('layout.manager') : t('layout.customer')%></td>
       <td class="text-center"><%= format_datetime(user.created_at)%></td>
       <td class="text-center">
-        <button class="btn btn-sm <%= user.disable == 1 ? "btn-danger enableacc" : "btn-primary disableacc"%>"><%= user.disable == 1 ? "Ngưng hoạt động" : "Đang hoạt động"%></button>
+        <button class="btn btn-sm <%= user.disable == 1 ? "btn-danger enableacc" : "btn-primary disableacc"%>"><%= user.disable == 1 ? t('users.stop') : t('users.active')%></button>
       </td>
     </tr>
     <% end %>

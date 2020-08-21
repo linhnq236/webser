@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def createaccount
     @user = User.new(email: params[:email], password: "123456", password_confirmation: "123456", admin: 1)
     if @user.save
-      flash[:notice] = 'Tạo người quản lý mới.'
+      flash[:notice] =  I18n.t("users_controller.create")
       redirect_to account_path
     else
      flash[:warn]  = flash_errors(@user.errors)

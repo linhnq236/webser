@@ -5,7 +5,7 @@
   <div class="col-sm-3">
     <button type="button" class="btn btn-primary" name="button">
       <i class="fa fa-search"></i>
-      Tìm kiếm
+      <%=t('layout.search')%>
     </button>
   </div>
 </div>
@@ -13,12 +13,12 @@
 
   <thead>
     <tr>
-      <th class="text-center">STT</th>
-      <th class="text-center">Tên chủ phòng</th>
-      <th class="text-center">Tháng</th>
-      <th class="text-center">Tiền (VND)</th>
-      <th class="text-center">Ngày đóng</th>
-      <th class="text-center">Thanh toán</th>
+      <th class="text-center"><%=t('layout.order')%></th>
+      <th class="text-center"><%=t('paytherents.room_master')%></th>
+      <th class="text-center"><%=t('paytherents.month')%></th>
+      <th class="text-center"><%=t('paytherents.money')%></th>
+      <th class="text-center"><%=t('paytherents.date_of_payment')%></th>
+      <th class="text-center"><%=t('paytherents.status')%></th>
       <th class="text-center"></th>
     </tr>
   </thead>
@@ -30,8 +30,8 @@
           <td class="text-center"><%=pay.senddate%></td>
           <td class="text-center"><%=number_to_currency_br(pay.money)%></td>
           <td class="text-center"><%=pay.receivedate%></td>
-          <td class="text-center"><%=pay.status == 0 ? "Chưa" : "Đã"%></td>
-          <td class="text-center"><button type="button" class="btn-sm checkpaytherent" <%=pay.status == 1 ? "disabled" : ""%> data-paytherent_id= "<%=pay.information_id%>" title="Đóng tiền trọ tại đây" name="button" data-senddate="<%=pay.senddate%>"><i class="mdi mdi-send-outline"></i></button></td>
+          <td class="text-center"><%=pay.status == 0 ? t('paytherents.no') : t('paytherents.yes')%></td>
+          <td class="text-center"><button type="button" class="btn-sm checkpaytherent <%=pay.status == 1 ? "bg-danger" : "bg-primary"%>" <%=pay.status == 1 ? "disabled" : ""%> data-paytherent_id= "<%=pay.information_id%>" title="<%=t('paytherents.confirm_paytherent')%>" name="button" data-senddate="<%=pay.senddate%>"><i class="mdi mdi-send-outline"></i></button></td>
       </tr>
     <% end %>
   </tbody>

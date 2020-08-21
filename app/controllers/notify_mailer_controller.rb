@@ -11,7 +11,7 @@ class NotifyMailerController < ApplicationController
     array_email.each do |email|
       NoticeMailer.send_to_email_user(email, title,content).deliver_now!
     end
-    flash[:notice] = "Gửi mail thành công"
+    flash[:notice] = I18n.t('notify_mailer_controller.send_email', action: I18n.t('notify_mailer_controller.success'))
     redirect_to '/send_email'
   end
   def getMoneyPerMonth(id)
@@ -42,11 +42,11 @@ class NotifyMailerController < ApplicationController
     use_service = UseService.find_by_information_id(information_id)
     info = Information.find(information_id)
     if use_service.nil?
-      flash[:danger] = "#{info.name} chưa chọn dịch vụ"
+      flash[:danger] = I18n.t("notify_mailer_controller.not_sersives", user: "#{info.name}")
       redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
     else
       if room.newelectric.nil? && room.newwater.nil?
-        flash[:danger] = "Bạn chưa nhập chỉ số điện/nước giá trị mới"
+        flash[:danger] = I18n.t('notify_mailer_controller.not_elect_warter')
         redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
       else
         check_paytherent = Paytherent.where(senddate: date, information_id: information_id)
@@ -55,15 +55,15 @@ class NotifyMailerController < ApplicationController
           paytherent = Paytherent.new(senddate: date, information_id: information_id, money: getMoneyPerMonth(information_id))
           if paytherent.save
             if room.update(oldelectric: room.newelectric, newelectric: "", oldwater: room.newwater, newwater: "")
-              flash[:notice] = "Gửi biên lai thanh toán tiền trọ thành công"
+              flash[:notice] = I18n.t('notify_mailer_controller.bill_success')
               redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
             else
-              flash[:danger] = "Gửi biên lai thanh toán tiền trọ thất bại"
+              flash[:danger] = I18n.t('notify_mailer_controller.bill_fail')
               redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
             end
           end
         else
-          flash[:waring] = "Mail tháng này đã được gửi đi."
+          flash[:waring] = I18n.t('notify_mailer_controller.mail_exists')
           redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
         end
       end

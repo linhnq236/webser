@@ -42,11 +42,11 @@ class ReportsController < ApplicationController
   def update
     rep_content = params[:rep_content]
     if rep_content.empty?
-      flash[:warning] = "Nội dung phản hồi không được để trống"
+      flash[:warning] = I18n.t('reports_controller.rep_content')
       redirect_to reports_path
     else
-      if @report.update(rep_content: rep_content, mark: 1)
-        flash[:notice] = "Phản hồi thành công"
+      if @report.update(rep_content: re p_content, mark: 1)
+        flash[:notice] = I18n.t('reports_controller.feedback')
         redirect_to reports_path
       else
         flash[:warning] = flash_errors(@report.errors)
