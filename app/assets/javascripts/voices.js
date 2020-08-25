@@ -1,15 +1,30 @@
 $( document ).on('turbolinks:load', function() {
+  document.addEventListener("keypress", function(e) {
+    if (e.keyCode === 122) {
+      toggleFullScreen();
+    }
+  }, false);
+  function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  }
   // redirect_to using voice
   var redirect_name = [
     I18n.t('js.redirects.home'),I18n.t('js.redirects.dashboard'),I18n.t('js.redirects.rooms'),
     I18n.t('js.redirects.services'),I18n.t('js.redirects.informations'),I18n.t('js.redirects.accounts'),
     I18n.t('js.redirects.reminders'),I18n.t('js.redirects.statisticals'),I18n.t('js.redirects.rentals'),
-    I18n.t('js.redirects.logout')
+    I18n.t('js.redirects.logout'),I18n.t('js.redirects.email'),I18n.t('js.redirects.all')
   ];
-
-  var redirect_to_with_redirect_name = ['home', 'home', 'houses', 'services', 'users', 'account', 'reminders', 'statisticals', 'paytherents', 'users/sign_out' ];
-
-  var select_voice = []
+  var redirect_to_with_redirect_name = [
+                                        'home', 'home', 'houses', 'services', 'users', 'account',
+                                        'reminders', 'statisticals', 'paytherents', 'users/sign_out',
+                                         'send_email', 'reports'
+                                       ];
   var com_name = [];
   var html_voice_control_led = '';
   $.each(gon.rooms, function(index, value){
@@ -40,9 +55,7 @@ $( document ).on('turbolinks:load', function() {
     array_name_code_reading.push(com_name[i]);
   }
   $(".column_leds").each(function(index = 0){
-
-    $(this).addClass(`column_${index++}`);
-  $( `.column_${index}`).append(`${array_name_code_reading[index]}`);
+    $(this).addClass(`column_${index+=1}`);
   })
   // voice support
   $(".voice").click(function(){
@@ -59,6 +72,10 @@ $( document ).on('turbolinks:load', function() {
     } else {
       localStorage.removeItem('setmic');
       $(".listening").addClass("d-none");
+      $('.voice').addClass('bg-dark');
+      $(".listening").addClass("d-none");
+      $(".result_voice").css("display","none");
+      location.reload();
     }
   })
   // auto call function autovoice
@@ -73,18 +90,22 @@ $( document ).on('turbolinks:load', function() {
     $('.voice').removeClass('bg-primary');
     $('.voice').addClass('bg-dark');
     $(".listening").addClass("d-none");
+    $(".result_voice").css("display","block");
   }
+
+  // click event using voice
+  var select_voice = ['notify', 'feedback'];
+
   // auto control voice
   function autovoice(){
     var ses = new webkitSpeechRecognition();
-    ses.interimResults = false;
-    // ses.maxAlternatives = 1;
+    ses.interimResults = true;
+    ses.maxAlternatives = 1;
     ses.continuous = true;
     ses.interimResults = true;
     ses.onresult = function(e){
       if (event.results.length > 0) {
         sonuc = event.results[event.results.length -1];
-        console.log(sonuc);
         if (sonuc.isFinal) {
           var result = sonuc[0].transcript;
           $(".listening").attr('value', result);
@@ -102,15 +123,9 @@ $( document ).on('turbolinks:load', function() {
       window.location.href = `/${redirect_to_with_redirect_name[position_redirect_name]}`;
     } else if(find_name_into_com_name(name) != -1) {
         updateVoice(name);
-    } else if(name == 'notify'){
-      $(".result_voice").css("display","none");
-      $(".show_report").hide();
-      $(".show_reminder").slideToggle({direction: 'right'})
-      autovoice();
-    }else if(name == 'no'){
-      $(".result_voice").css("display","none");
-      $(".show_reminder").hide();
-      $(".show_report").slideToggle({direction: 'right'})
+    } else if(find_name_into_select_voice(name) != -1){
+      var class_voice = select_voice[find_name_into_select_voice(name)];
+      $(`.${class_voice}`).trigger('click');
       autovoice();
     } else if(name == 'cancel' || name == 'Cancel') {
         localStorage.removeItem('setmic');
@@ -129,6 +144,11 @@ $( document ).on('turbolinks:load', function() {
   }
   function find_name_into_com_name(name){
     var position_name = com_name.indexOf(name);
+    return position_name;
+  }
+
+  function find_name_into_select_voice(name){
+    var position_name = select_voice.indexOf(name);
     return position_name;
   }
 

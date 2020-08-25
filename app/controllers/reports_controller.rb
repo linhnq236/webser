@@ -45,7 +45,7 @@ class ReportsController < ApplicationController
       flash[:warning] = I18n.t('reports_controller.rep_content')
       redirect_to reports_path
     else
-      if @report.update(rep_content: re p_content, mark: 1)
+      if @report.update(rep_content: rep_content, mark: 1)
         flash[:notice] = I18n.t('reports_controller.feedback')
         redirect_to reports_path
       else

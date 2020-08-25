@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     resources :use_services
     get "/getUseServices/:information_id", to: "use_services#getUseServices"
     resources :reports
+    get "/showpopup/:id", to: "reports#showpopup"
     resources :supports
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

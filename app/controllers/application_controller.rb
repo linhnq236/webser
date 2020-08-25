@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
       gon.reports = Report.order("created_at DESC")
       gon.supports = Support.all
       gon.rooms = Room.all
+      gon.houses = House.all
     else
       gon.user = 0
     end

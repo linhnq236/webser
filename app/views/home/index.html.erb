@@ -1,6 +1,8 @@
 <div class="container">
   <h1 class="text-center text-uppercase"><%=t('home.led_title')%></h1>
-  <button type="button" class="check_guild btn btn-sm bg-primary text-white"name="button"><%=t('home.guild_voice')%></button>
+  <div class="col-sm-12 text-right">
+    <button type="button" class="check_guild btn btn-sm bg-primary text-white"name="button"><%=t('home.guild_voice')%></button>
+  </div>
   <div class="guid_voice">
     <div class=""><%=t('home.read')%>: <span class="text-danger"><%=t('home.code_room')%> + <%=t('home.status')%> (1: <%=t('home.on')%>, 0: <%=t('home.off')%>)</span></div>
     <div class="">
@@ -19,5 +21,8 @@
     </div>
     <div class="voice_control_led"></div>
   </div>
+  <blockquote class="blockquote mt-3">
+    <div class="button_house_with_room"></div>
+  </blockquote>
   <div class="firebase_led"></div>
 </div>
