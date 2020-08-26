@@ -8,7 +8,11 @@ class HousesController < ApplicationController
   # GET /houses
   # GET /houses.json
   def index
-    @houses = House.all
+    if current_user.admin == 1
+      @houses = House.where(id: current_user.house_id)
+    else
+      @houses = House.all
+    end
     @rooms = Room.order("name ASC")
     @informations = Information.all
   end

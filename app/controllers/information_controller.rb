@@ -74,7 +74,7 @@ class InformationController < ApplicationController
         room = Room.find(room_id)
         if room.update(information_id: last_inf, mark: 1)
           # // create account customer
-          user = User.new(email: email, password: "123456", password_confirmation: "123456")
+          user = User.new(email: email, password: "123456", password_confirmation: "123456", house_id: house_id)
           if user.save
             # services = Service.where(status: 1)
             # services.each do |ser|

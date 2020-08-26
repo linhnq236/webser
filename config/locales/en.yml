@@ -210,6 +210,7 @@ en:
   application_controller:
     not_permission: "You do not have permission to login"
     not_admin_access: "Admin does not have access"
+    acc_disable: "This account is disabled"
   houses_controller:
     not_check_out: "Guests have not checked out"
   informations_controller:

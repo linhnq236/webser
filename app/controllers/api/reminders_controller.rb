@@ -5,7 +5,7 @@ module Api
 
     def getReminder
       start_time = params[:start_time]
-      reminder = Reminder.where(start_time: start_time)
+      reminder = Reminder.where(start_time: start_time, user_id: current_user.id)
       render json: {data: reminder}
     end
 

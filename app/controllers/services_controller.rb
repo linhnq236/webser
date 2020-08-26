@@ -5,7 +5,21 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = Service.all.order("status DESC")
-    @use_services = UseService.all
+    if current_user.admin == 1
+      @array_use_services = []
+      @users = User.where(house_id: current_user.house_id, admin: 0)
+      @users.each do |user|
+        info = Information.find_by_email(user.email)
+        @array_use_services.push(info.id)
+      end
+      @array_services = []
+      @array_use_services.each do |ar|
+        @array_services.push(UseService.find_by_information_id(ar))
+      end
+      @use_services = @array_services
+    else
+      @use_services = UseService.all
+    end
   end
 
   # GET /services/1

@@ -163,4 +163,10 @@ $( document ).on('turbolinks:load', function() {
     $(`.${house_name_remove_space}`).slideToggle();
 
   })
+    $(".first").each(function(){
+      var id = $(this).data("first");
+      if (gon.house_name != id) {
+        $(`.${id}`).css({"display": "none"});
+      }
+    })
 })

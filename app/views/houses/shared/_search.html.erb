@@ -21,16 +21,20 @@
     </button>
   </div>
 </div>
-<div class="row w-100">
-  <div class="col-sm-12">
-    <!-- <blockquote class="blockquote"> -->
-    <hr>
-      <button class="btn btn-success" onclick="window.location.href='/houses/new'" id="addArea"><i class="fa fa-university"></i><%=I18n.t('house.addhouse')%></button>
-      <button class="btn btn-info" onclick="window.location.href='/room_fast'" id="addArea"><i class="fa fa-plus"></i><%=I18n.t('room.roomfast')%></button>
-      <button class="btn btn-success" onclick="window.location.href='/rooms/new'" id="addArea"><i class="fa fa-bed"></i><%=I18n.t('room.addroom')%></button>
-      <button class="btn btn-primary edithouse" id="addArea"><i class="fa fa-pencil"></i> <%=I18n.t('house.edit_house')%></button>
-      <button class="btn btn-danger deletehouse" data-method="delete" rel="nofollow" id="addArea"><i class="fa fa-close"></i> <%=I18n.t('house.delete_house')%></button>
-    <!-- </blockquote> -->
-    <hr>
+<% if user_signed_in?%>
+  <% if current_user.admin == 2%>
+  <div class="row w-100">
+    <div class="col-sm-12">
+      <!-- <blockquote class="blockquote"> -->
+      <hr>
+        <button class="btn btn-success" onclick="window.location.href='/houses/new'" id="addArea"><i class="fa fa-university"></i><%=I18n.t('house.addhouse')%></button>
+        <button class="btn btn-info" onclick="window.location.href='/room_fast'" id="addArea"><i class="fa fa-plus"></i><%=I18n.t('room.roomfast')%></button>
+        <button class="btn btn-success" onclick="window.location.href='/rooms/new'" id="addArea"><i class="fa fa-bed"></i><%=I18n.t('room.addroom')%></button>
+        <button class="btn btn-primary edithouse" id="addArea"><i class="fa fa-pencil"></i> <%=I18n.t('house.edit_house')%></button>
+        <button class="btn btn-danger deletehouse" data-method="delete" rel="nofollow" id="addArea"><i class="fa fa-close"></i> <%=I18n.t('house.delete_house')%></button>
+      <!-- </blockquote> -->
+      <hr>
+    </div>
   </div>
-</div>
+  <% end %>
+<% end %>

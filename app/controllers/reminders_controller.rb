@@ -2,8 +2,7 @@ class RemindersController < ApplicationController
   # GET /reminders
   # GET /reminders.json
   def index
-    @reminders = Reminder.all
-    puts "alo"
+    @reminders = Reminder.where(user_id:current_user.id)
   end
 
   # GET /reminders/1
@@ -25,7 +24,7 @@ class RemindersController < ApplicationController
     content = params[:content]
     start_time = params[:start_time]
     end_time = params[:end_time]
-    reminder = Reminder.new(title: title, content: content, start_time: start_time, end_time: end_time)
+    reminder = Reminder.new(title: title, content: content, start_time: start_time, end_time: end_time, user_id: current_user.id)
     if reminder.save
       flash[:notice] =  I18n.t('reminders_controller.reminder_action', action: I18n.t('reminders_controller.action_success'))
       redirect_to "/reminders"

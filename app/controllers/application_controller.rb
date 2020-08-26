@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_locale
-  before_action :check_user_login, :led_status, :gettemperature, :check_manager
+  before_action :check_user_login, :gettemperature, :check_manager
   # FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   # FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   require "firebase_connect"
@@ -9,11 +9,22 @@ class ApplicationController < ActionController::Base
   def check_user_login
     if user_signed_in?
       gon.user = current_user.id
-      gon.reminders = Reminder.order("start_time DESC")
-      gon.reports = Report.order("created_at DESC")
+      gon.reminders = Reminder.where(user_id: current_user.id).order("start_time DESC")
+      gon.reports = Report.where(user_id: current_user.id).order("created_at DESC")
       gon.supports = Support.all
-      gon.rooms = Room.all
-      gon.houses = House.all
+      firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+      response = firebase.get(FIREBASE_URL).body
+      if current_user.admin == 1
+        gon.rooms = Room.where(house_id: current_user.house_id)
+        gon.houses = House.where(id: current_user.house_id)
+        house_name = House.find(current_user.house_id)
+        gon.house_name = remove_space_upcase_string(house_name.name)
+        gon.leds = response
+      else
+        gon.rooms = Room.all
+        gon.houses = House.all
+        gon.leds = response
+      end
     else
       gon.user = 0
     end
@@ -23,6 +34,10 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       if current_user.admin == 0
         flash[:warning] = I18n.t('application_controller.not_permission')
+        sign_out current_user
+        redirect_to root_path
+      elsif current_user.admin == 1 && current_user.disable == 1
+        flash[:warning] = I18n.t('application_controller.acc_disable')
         sign_out current_user
         redirect_to root_path
       end
@@ -36,11 +51,6 @@ class ApplicationController < ActionController::Base
         redirect_to path
       end
     end
-  end
-  def led_status
-    firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-    response = firebase.get(FIREBASE_URL).body
-    gon.leds = response
   end
 
   def gettemperature
