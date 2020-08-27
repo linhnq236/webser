@@ -23,16 +23,18 @@
     </tr>
   </thead>
   <tbody id="paytherent">
-    <% @paytherents.each_with_index do |pay, i|%>
-      <tr>
-          <td class="text-center"><%=i+1%></td>
-          <td class="text-center"><%=pay.information&.name%></td>
-          <td class="text-center"><%=pay.senddate%></td>
-          <td class="text-center"><%=number_to_currency_br(pay.money)%></td>
-          <td class="text-center"><%=pay.receivedate%></td>
-          <td class="text-center"><%=pay.status == 0 ? t('paytherents.no') : t('paytherents.yes')%></td>
-          <td class="text-center"><button type="button" class="btn-sm checkpaytherent <%=pay.status == 1 ? "bg-danger" : "bg-primary"%>" <%=pay.status == 1 ? "disabled" : ""%> data-paytherent_id= "<%=pay.information_id%>" title="<%=t('paytherents.confirm_paytherent')%>" name="button" data-senddate="<%=pay.senddate%>"><i class="mdi mdi-send-outline"></i></button></td>
-      </tr>
+    <% if @paytherents.size != 0%>
+      <% @paytherents.each_with_index do |pay, i|%>
+        <tr>
+            <td class="text-center"><%=i+1%></td>
+            <td class="text-center"><%=pay.information&.name%></td>
+            <td class="text-center"><%=pay.senddate%></td>
+            <td class="text-center"><%=number_to_currency_br(pay.money)%></td>
+            <td class="text-center"><%=pay.receivedate%></td>
+            <td class="text-center"><%=pay.status == 0 ? t('paytherents.no') : t('paytherents.yes')%></td>
+            <td class="text-center"><button type="button" class="btn-sm checkpaytherent <%=pay.status == 1 ? "bg-danger" : "bg-primary"%>" <%=pay.status == 1 ? "disabled" : ""%> data-paytherent_id= "<%=pay.information_id%>" title="<%=t('paytherents.confirm_paytherent')%>" name="button" data-senddate="<%=pay.senddate%>"><i class="mdi mdi-send-outline"></i></button></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

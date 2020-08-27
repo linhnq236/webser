@@ -103,6 +103,13 @@ $( document ).on('turbolinks:load', function() {
     ses.maxAlternatives = 1;
     ses.continuous = true;
     ses.interimResults = true;
+    ses.onstart = true;
+    ses.onend = function() {
+      console.log("Turn on mic again");
+      // ses.start();
+      // autovoice();
+      // location.reload();
+    };
     ses.onresult = function(e){
       if (event.results.length > 0) {
         sonuc = event.results[event.results.length -1];

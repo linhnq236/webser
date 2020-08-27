@@ -20,8 +20,8 @@
   end
 end
 [
-  {name: 'Điện', cost: 3000, status: 1},
-  {name: 'Nước', cost: 12000, status: 1},
+  {name: 'electricity', cost: 3500, status: 1},
+  {name: 'water', cost: 12000, status: 1},
 ].each do |attr|
   server = Service.find_by(id: attr[:id])
   Service.transaction do

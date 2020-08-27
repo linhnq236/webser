@@ -193,4 +193,60 @@ $( document ).on('turbolinks:load', function() {
       }
     })
   }
+  // changed email
+  $(".changed_email").click(function(){
+    var current_email = $(this).find('input').val();
+    var information_id = $(this).data('information_id');
+    $.confirm({
+      title: "CHANGE EMAIL",
+      // columnClass: 'col-md-5 col-md-offset-4',
+      closeIcon: true,
+      content: `
+      <form action='' class='formName'>
+        <div class="form-group">
+          <lebal>Email</lebal>
+          <input type="email" class="current_email form-control" disabled value="${current_email}" required />
+          <lebal>New Email</lebal>
+          <input type="email" class="new_email form-control" required />
+        </div>
+      </form>
+      `,
+      buttons: {
+          formSubmit: {
+            text: 'Submit',
+            btnClass: 'btn-blue',
+            action: function () {
+            var current_email = this.$content.find('.current_email').val();
+            var new_email = this.$content.find('.new_email').val();
+            if (!new_email) {
+              alert("Email is blank");
+              return false;
+            }
+            $.ajax({
+                type: 'post',
+                url: "/api/changed_email/"+information_id,
+                data: {
+                  current_email: current_email,
+                  new_email: new_email,
+                },
+                success: function(repsonse) {
+                  if (repsonse['data'] == 200) {
+                    alert("Update successfully");
+                    location.reload();
+                  } else {
+                    location.reload();
+                  }
+                },
+                error: function(repsonse) {
+                  console.log(repsonse);
+                }
+              })
+            }
+          },
+          cancel: function () {
+              //close
+          }
+      }
+    })
+  })
 })

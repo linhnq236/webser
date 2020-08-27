@@ -193,6 +193,7 @@ en:
     admin: "Admin"
     room_chart: "Room chart"
     user_chart: "User chart"
+    countmoneypermonth: "Money per month"
   paytherents:
     room_master: "Room master"
     month: "Month"
@@ -295,8 +296,15 @@ en:
       reminders: "reminders"
       statisticals: "statisticals"
       rentals: "rentals"
-      logout: "logout"
+      logout: "log out"
       email: "email"
       all: "all"
     reports:
       all: "All"
+    home:
+      LED_STATUS0: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 1 "
+      LED_STATUS3: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 2"
+      LED_STATUS5: "<i class='mdi mdi-fan text-primary'> </i> FAN"
+      LED_STATUS6: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 1"
+      LED_STATUS7: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 2"
+      LED_STATUS8: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 3"

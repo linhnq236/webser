@@ -21,10 +21,10 @@ class NotifyMailerController < ApplicationController
     @room = Room.find_by_information_id(id)
     @house = House.find(@room.house_id.to_i)
     @use_services.service_id.each_with_index do |s, i|
-      if getServiceName(@services,s) == 'Điện'
+      if getServiceName(@services,s) == 'electricity'
         sum_amount_cost(getServiceCost(@services,s), use_electric_water(@room.oldelectric, @room.newelectric))
         array_sum.push(sum_amount_cost(getServiceCost(@services,s), use_electric_water(@room.oldelectric, @room.newelectric)))
-      elsif getServiceName(@services,s) == 'Nước'
+      elsif getServiceName(@services,s) == 'water'
         sum_amount_cost(getServiceCost(@services,s),use_electric_water(@room.oldwater, @room.newwater))
         array_sum.push(sum_amount_cost(getServiceCost(@services,s),use_electric_water(@room.oldwater, @room.newwater)))
       else

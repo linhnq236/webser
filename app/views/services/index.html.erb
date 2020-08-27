@@ -68,18 +68,20 @@
     </tr>
   </thead>
   <tbody id="useservice">
-    <% @use_services.each_with_index do |use_service, i|%>
-      <tr>
-        <td class="text-center"><%= i +=1 %></td>
-        <td class="text-center"><%= getUseService(use_service.service_id)%></td>
-        <td class="text-center"><%= use_service.information&.name %></td>
-        <td class="text-danger text-center">
-          <a href="/use_services/<%= use_service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm="<%=t('layout.confirm_delete')%>">
-            <i class="fa fa-trash"></i>
-            <%=t('layout.delete')%>
-          </a>
-        </td>
-      </tr>
+    <% if !@use_services.nil?%>
+      <% @use_services.each_with_index do |use_service, i|%>
+        <tr>
+          <td class="text-center"><%= i +=1 %></td>
+          <td class="text-center"><%= getUseService(use_service.service_id)%></td>
+          <td class="text-center"><%= use_service.information&.name %></td>
+          <td class="text-danger text-center">
+            <a href="/use_services/<%= use_service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm="<%=t('layout.confirm_delete')%>">
+              <i class="fa fa-trash"></i>
+              <%=t('layout.delete')%>
+            </a>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

@@ -1,13 +1,13 @@
-<h1>BIÊN LAI THANH TOÁN TIỀN TRỌ THÁNG <%=@month%></h1>
-  <div class="col-sm-3">Họ và tên:<%=@info.name%></div>
-  <div class="col-sm-3">CMND:<%=@info.indentifycard%></div>
-  <div class="col-sm-3">SĐT 1:<%=@info.phone1%></div>
-  <div class="col-sm-3">SĐT 2:<%=@info.phone2%></div>
-  <div class="col-sm-3">Tên nhà trọ:<%=@house.name%></div>
-  <div class="col-sm-3">Phòng số:<%=@room.name%></div>
-  <div class="col-sm-3">Giá phòng:<%=number_to_currency_br(@room.cost)%> VNĐ</div>
-  <div class="col-sm-3">Điện sử dụng = số mới - số cũ = <%=@room.newelectric%> - <%=@room.oldelectric%> = <%=number_to_currency_br(use_electric_water(@room.oldelectric, @room.newelectric))%></div>
-  <div class="col-sm-3">Nước sử dụng = số mới - số cũ = <%=@room.newwater%> - <%=@room.oldwater%> = <%=number_to_currency_br(use_electric_water(@room.oldwater, @room.newwater))%></div>
+<h1>PAYMENT OF MONTHLY PAYMENT <%=@month%></h1>
+  <div class="col-sm-3">Full name:<%=@info.name%></div>
+  <div class="col-sm-3">indentify:<%=@info.indentifycard%></div>
+  <div class="col-sm-3">Phone 1:<%=@info.phone1%></div>
+  <div class="col-sm-3">Phone 2:<%=@info.phone2%></div>
+  <div class="col-sm-3">House:<%=@house.name%></div>
+  <div class="col-sm-3">Room:<%=@room.name%></div>
+  <div class="col-sm-3">Cost:<%=number_to_currency_br(@room.cost)%> VNĐ</div>
+  <div class="col-sm-3">Electricity = new value - old value = <%=@room.newelectric%> - <%=@room.oldelectric%> = <%=number_to_currency_br(use_electric_water(@room.oldelectric, @room.newelectric))%></div>
+  <div class="col-sm-3">Water= new value - old value = <%=@room.newwater%> - <%=@room.oldwater%> = <%=number_to_currency_br(use_electric_water(@room.oldwater, @room.newwater))%></div>
   <% if @paytherent.size !=0%>
     <h3 class="col-sm-3 h3">Lưu ý</h3>
     <% @paytherent.each do |p| %>
@@ -17,11 +17,11 @@
 <table class="table table-hover text-danger">
   <thead>
     <tr>
-      <th class="text-center">STT</th>
-      <th class="text-center">Dịch vụ sử dụng</th>
-      <th class="text-center">Đơn giá (VNĐ)</th>
-      <th class="text-center">Số lượng</th>
-      <th class="text-center">Tổng</th>
+      <th class="text-center">Order</th>
+      <th class="text-center">Services</th>
+      <th class="text-center">Price (VNĐ)</th>
+      <th class="text-center">Amount</th>
+      <th class="text-center">Sum</th>
     </tr>
   </thead>
   <tbody>
@@ -32,10 +32,10 @@
         <td class="text-center"><%=getServiceName(@services,s)%></td>
         <td class="text-center"><%=number_to_currency_br(getServiceCost(@services,s))%></td>
         <td class="text-center"><%=@use_services.amount[i]%></td>
-        <% if getServiceName(@services,s) == 'Điện'%>
+        <% if getServiceName(@services,s) == 'electricity'%>
           <td class="text-center"><%=number_to_currency_br(sum_amount_cost(getServiceCost(@services,s), use_electric_water(@room.oldelectric, @room.newelectric)))%></td>
           <% array_sum.push(sum_amount_cost(getServiceCost(@services,s), use_electric_water(@room.oldelectric, @room.newelectric)))%>
-        <% elsif getServiceName(@services,s) == 'Nước' %>
+        <% elsif getServiceName(@services,s) == 'water' %>
           <td class="text-center"><%=number_to_currency_br(sum_amount_cost(getServiceCost(@services,s),use_electric_water(@room.oldwater, @room.newwater)))%></td>
           <% array_sum.push(sum_amount_cost(getServiceCost(@services,s),use_electric_water(@room.oldwater, @room.newwater)))%>
         <% else %>
@@ -47,6 +47,6 @@
   </tbody>
 </table>
 <div class="text-danger">
-  TỔNG TIỀN = DỊCH VỤ + PHÒNG = <%= number_to_currency_br(array_sum.inject{ |sum,e| sum += e.to_i })%> + <%=number_to_currency_br(@room.cost) %> = <%= number_to_currency_br(array_sum.inject{ |sum,e| sum += e.to_i }.to_i + @room.cost.to_i) %>  VNĐ
+  TOTAL = SERVICES + COST = <%= number_to_currency_br(array_sum.inject{ |sum,e| sum += e.to_i })%> + <%=number_to_currency_br(@room.cost) %> = <%= number_to_currency_br(array_sum.inject{ |sum,e| sum += e.to_i }.to_i + @room.cost.to_i) %>  VNĐ
 </div>
-<small class="text-danger">Chú ý: Tiền điện, tiền nước = (Đơn giá)*(Điên/Nước đã sử dụng)</small>
+<small class="text-danger">NOTE: electricity, water = (price)*(electricity/water are used)</small>

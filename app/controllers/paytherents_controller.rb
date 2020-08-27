@@ -9,8 +9,10 @@ class PaytherentsController < ApplicationController
       users = User.where(house_id: current_user.house_id, admin: 0)
       users.each do |user|
         info = Information.find_by_email(user.email)
-        paytherent = Paytherent.find_by_information_id(info.id)
-        paytherents.push(paytherent)
+        paytherent = Paytherent.where(information_id: info.id).order("senddate DESC")
+        paytherent.each do |p|
+          paytherents.push(p)
+        end
       end
       @paytherents = paytherents
     else

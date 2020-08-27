@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     post "updateInfo/:id", to: "information#updateInfo"
     get "/getOldCustomer", to: "information#getOldCustomer"
     get "getinfo/:id", to: "information#getinfo"
+    post "/changed_email/:information_id", to: "information#changed_email"
     resources :reminders
     get "/getReminder", to: "reminders#getReminder"
     put "/check_mark/:id", to: "reminders#check_mark"

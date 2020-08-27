@@ -1,6 +1,7 @@
 $( document ).on('turbolinks:load', function() {
   var html = '';
   if (gon.user == 0) {
+    localStorage.removeItem('setmic');
     return false;
   }
   setInterval(autoget(), 1000);
@@ -9,7 +10,7 @@ $( document ).on('turbolinks:load', function() {
       var i = 0;
       i++;
       html += `
-      <div class="col-sm-6 first ${index}"  data-first="${index}">${I18n.t('js.house.house_name')}: ${index}</div>
+      <div class="col-sm-6 first ${index}"  data-first="${index}"><i class='fa fa-university text-success'></i> ${index}</div>
       ${loadArea(value, index)}
       `
     })
@@ -45,7 +46,7 @@ $( document ).on('turbolinks:load', function() {
           html += `
           <div class="row column_leds position-relative ${area}">
             <div class="col-sm-3 second_${mark}" data-second="${index}">${index}</div>
-            <div class="col-sm-3 third_${mark}" data-third="${ind}">${ind}</div>
+            <div class="col-sm-3 third_${mark}" data-third="${ind}">${I18n.t(`js.home.${ind}`)}</div>
             <div class="col-sm-3">${ind1}</div>
             <div class="col-sm-3 chip_${index+ind}">
             <button class="col-sm-12 led led${area} ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'ON' ? 'bg-danger': 'bg-primary'}" data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${val1}</button>

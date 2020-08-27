@@ -14,7 +14,10 @@ class ServicesController < ApplicationController
       end
       @array_services = []
       @array_use_services.each do |ar|
-        @array_services.push(UseService.find_by_information_id(ar))
+        use_service = UseService.find_by_information_id(ar)
+        if !use_service.nil?
+          @array_services.push(use_service)
+        end
       end
       @use_services = @array_services
     else

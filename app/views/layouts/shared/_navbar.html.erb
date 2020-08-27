@@ -11,8 +11,8 @@
             <p class="profile-name"><%=current_user.email%></p>
             <p class="designation"><%=current_user.admin == 1?  I18n.t('layout.manager') : "" %></p>
           <% else %>
-            <p class="profile-name">Alex</p>
-            <p class="designation">Chưa đăng nhập</p>
+            <p class="profile-name">User</p>
+            <p class="designation">Not login</p>
           <% end %>
         </div>
       </a>

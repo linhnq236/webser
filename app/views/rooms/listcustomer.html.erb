@@ -102,10 +102,10 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group row">
+              <div class="form-group row currsor changed_email" data-information_id="<%=params[:information_id]%>" title="change email click here">
                 <label class="col-sm-3 col-form-label"><%=t('house.show.email')%> *</label>
                   <div class="col-sm-9">
-                    <input type="email" class="form-control"  required value="<%= r.email %>" name="email" placeholder="nguyenvananh@gmail.com" />
+                    <input type="email" class="form-control" disabled required value="<%= r.email %>" name="email" placeholder="nguyenvananh@gmail.com" />
                   </div>
                 </div>
               </div>
