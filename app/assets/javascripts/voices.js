@@ -97,6 +97,7 @@ $( document ).on('turbolinks:load', function() {
   var select_voice = ['notify', 'feedback'];
 
   // auto control voice
+  var ses = new webkitSpeechRecognition();
   function autovoice(){
     var ses = new webkitSpeechRecognition();
     ses.interimResults = true;
@@ -105,10 +106,7 @@ $( document ).on('turbolinks:load', function() {
     ses.interimResults = true;
     ses.onstart = true;
     ses.onend = function() {
-      console.log("Turn on mic again");
-      // ses.start();
-      // autovoice();
-      // location.reload();
+      ses.start();
     };
     ses.onresult = function(e){
       if (event.results.length > 0) {
@@ -118,6 +116,7 @@ $( document ).on('turbolinks:load', function() {
           $(".listening").attr('value', result);
           var listening = $(".listening").val();
           redirect_to(listening);
+
         }
       }
     }
@@ -133,14 +132,15 @@ $( document ).on('turbolinks:load', function() {
     } else if(find_name_into_select_voice(name) != -1){
       var class_voice = select_voice[find_name_into_select_voice(name)];
       $(`.${class_voice}`).trigger('click');
-      autovoice();
+      ses.start();
     } else if(name == 'cancel' || name == 'Cancel') {
         localStorage.removeItem('setmic');
         location.reload();
     } else{
       $(".result_voice").css("display","block");
       $(".result_voice").html(`Not found ${name}`);
-      autovoice();
+      ses.start();
+
     }
   }
 
@@ -166,8 +166,7 @@ $( document ).on('turbolinks:load', function() {
       url: "/voice",
       data: {name: name},
       success: function(rep) {
-        // location.reload();
-        autovoice();
+        ses.start();
       },
       error: function(rep) {
         console.log(rep);

@@ -97,6 +97,7 @@ GEM
       rubyzip (>= 1.1)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    csv (0.0.1)
     custom_error_message (1.1.1)
     devise (4.7.2)
       bcrypt (~> 3.0)
@@ -315,6 +316,7 @@ DEPENDENCIES
   carrierwave
   chartkick
   city-state
+  csv (~> 0.0.1)
   custom_error_message
   devise
   figaro

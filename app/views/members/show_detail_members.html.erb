@@ -1,15 +1,15 @@
-<table class="table table-hover service">
+<table class="table table-hover">
   <thead>
     <tr>
-      <th class="text-center text-uppercase" colspan="6">Chủ phòng: <span class="text-danger text-uppercase ont-weight-bold"><%=@info.name%></span></th>
+      <th class="text-center text-uppercase" colspan="6"><%=t('members.room_master')%>: <span class="text-danger text-uppercase ont-weight-bold"><%=@info.name%></span></th>
     </tr>
     <tr>
-      <th class="text-center">Họ và tên</th>
-      <th class="text-center">Ngày sinh</th>
-      <th class="text-center">Giới tính</th>
-      <th class="text-center">CMND</th>
-      <th class="text-center">Địa chỉ</th>
-      <th class="text-center">Điện thoại</th>
+      <th class="text-center"><%=t('members.fullname')%></th>
+      <th class="text-center"><%=t('members.birth')%></th>
+      <th class="text-center"><%=t('members.sex')%></th>
+      <th class="text-center"><%=t('members.indentify')%></th>
+      <th class="text-center"><%=t('members.address')%></th>
+      <th class="text-center"><%=t('members.phone')%></th>
     </tr>
   </thead>
   <tbody class="members">

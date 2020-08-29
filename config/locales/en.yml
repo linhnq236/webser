@@ -219,6 +219,13 @@ en:
     add_customer: "Customer information added failed"
   members_controller:
     members: "Members"
+    room_master: "Room master"
+    fullname: "Full name"
+    birth: "Birth"
+    sex: "Sex"
+    indentify: "Indentify"
+    address: "Address"
+    phone: "Phone"
   notify_mailer_controller:
     send_email: "Send email ${action}"
     success: "successfully"

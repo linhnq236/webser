@@ -2,7 +2,7 @@ module Api
   class ReportsController < ApplicationController
     skip_before_action :authenticate_user!
     skip_before_action :verify_authenticity_token
-    before_action :set_params, only: [:show]
+    before_action :set_params, only: [:show, :destroy]
 
     def index
       @reports = Report.where(user_id: current_user.id)
@@ -30,6 +30,11 @@ module Api
           render json: {status: report.errors}
         end
       end
+    end
+
+    def destroy
+      @report.destroy
+      render json: {status: 200}
     end
     private
 
