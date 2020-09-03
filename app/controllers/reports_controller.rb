@@ -4,7 +4,11 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.all
+    if current_user.admin == 1
+      @reports = Report.where(user_id: current_user.id)
+    else
+      @reports = Report.all.order("created_at DESC")
+    end
   end
 
   # GET /reports/1
@@ -42,11 +46,11 @@ class ReportsController < ApplicationController
   def update
     rep_content = params[:rep_content]
     if rep_content.empty?
-      flash[:warning] = "Nội dung phản hồi không được để trống"
+      flash[:warning] = I18n.t('reports_controller.rep_content')
       redirect_to reports_path
     else
       if @report.update(rep_content: rep_content, mark: 1)
-        flash[:notice] = "Phản hồi thành công"
+        flash[:notice] = I18n.t('reports_controller.feedback')
         redirect_to reports_path
       else
         flash[:warning] = flash_errors(@report.errors)

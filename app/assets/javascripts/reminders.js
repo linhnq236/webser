@@ -1,7 +1,7 @@
 $( document ).on('turbolinks:load', function() {
   var d = new Date();
   var twoDigitMonth = ((d.getMonth().length+1) === 1)? (d.getMonth()+1) : '0' + (d.getMonth()+1);
-  var twoDigitDay = ((d.getDate()) === 1)? (d.getDate()) : '0' + (d.getDate());
+  var twoDigitDay = ((d.getDate().length+1) === 1)? (d.getDate()) : '0' + (d.getDate());
   var currentDate = d.getFullYear() + '-' + twoDigitMonth + "-" + twoDigitDay;
   var html =  '';
   var count = 0;
@@ -25,24 +25,24 @@ $( document ).on('turbolinks:load', function() {
   $(".note_notify").html(count);
   $(".create_notify").click(function(){
     $.confirm({
-      title: 'Tạo nhắc nhở',
+      title: I18n.t('js.reminders.title'),
       closeIcon: true,
-      content: '' +
-      '<form action="" class="formCreateNotify">' +
-      '<div class="form-group">' +
-      '<label>Tiêu đề</label>' +
-      '<input type="text" placeholder="Tiêu đề" class="title form-control" required />' +
-      '<label>Nội dung</label>' +
-      '<textarea class="content mb-2" cols="20" rows="20"></textarea>' +
-      '<label>Bắt đầu</label>' +
-      '<input type="date" placeholder="Ngày bắt đầu" class="start_time form-control" required />' +
-      '<label>Kết thúc</label>' +
-      '<input type="date" placeholder="Ngày kết thúc" class="end_time form-control" required />' +
-      '</div>' +
-      '</form>',
+      content: `
+      <form action="" class="formCreateNotify">
+        <div class="form-group">
+          <label>${I18n.t('js.reminders.subtitle')}</label>
+          <input type="text" class="title form-control" required />
+          <label>${I18n.t('js.reminders.content')}</label>
+          <textarea class="content mb-2" cols="20" rows="20"></textarea>
+          <label>${I18n.t('js.reminders.start')}</label>
+          <input type="date" placeholder="Ngày bắt đầu" class="start_time form-control" required />
+          <label>${I18n.t('js.reminders.end')}</label>
+          <input type="date" placeholder="Ngày kết thúc" class="end_time form-control" required />
+        </div>
+      </form>`,
       buttons: {
           formSubmit: {
-              text: 'Submit',
+              text: 'OK',
               btnClass: 'btn-blue',
               action: function () {
                   var title = this.$content.find('.title').val();
@@ -71,8 +71,8 @@ $( document ).on('turbolinks:load', function() {
                   })
               }
           },
-          cancel: function () {
-              //close
+          Cancel: {
+            btnClass: 'btn-danger',
           },
       },
     })

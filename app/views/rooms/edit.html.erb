@@ -2,12 +2,12 @@
   <div class="card">
     <%= form_tag("/rooms/#{@room.id}", method: :put, id: "changePage") do %>
     <div class="card-body">
-      <%= render "shared/nextback", local: {title: @title = "Sửa phòng"}%>
+      <%= render "shared/nextback", local: {title: @title = t('house.edit_room')}%>
       <hr>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Phòng số *</label>
+              <label class="col-sm-3 col-form-label"><%=t('room.number_room')%>*</label>
               <div class="col-sm-9">
                 <input type="number" class="form-control name" name="room[name]" value="<%=@room.name%>" required />
               </div>
@@ -15,7 +15,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Nhà *</label>
+              <label class="col-sm-3 col-form-label"><%=t('hose.house_name')%> *</label>
               <div class="col-sm-9">
                 <%= select_tag "room[house_id]", options_for_select(@houses.collect{ |u| [u.name, u.id]}, :selected=>@room.house_id), {class: "form-control", required: "required", include_blank: true } %>
               </div>
@@ -25,7 +25,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Đơn giá *</label>
+              <label class="col-sm-3 col-form-label"><%=t('room.unit_price')%> *</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control name" name="room[cost]" value ="<%=@room.cost%>" required />
               </div>
@@ -33,7 +33,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Số lượng người tối đa *</label>
+              <label class="col-sm-3 col-form-label"><%=t('room.maximum')%>*</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control name" name="room[amount]" min="0" max="5" value ="<%=@room.amount%>" required />
               </div>
@@ -43,7 +43,7 @@
         <div class="row mt-3">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Chiều rộng *</label>
+              <label class="col-sm-3 col-form-label"><%=t('room.width')%>*</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" name="room[width]" value ="<%=@room.width%>" required />
               </div>
@@ -51,7 +51,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Chiều dài *</label>
+              <label class="col-sm-3 col-form-label"><%=t('room.length')%> *</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" name="room[length]" value ="<%=@room.length%>" required />
               </div>
@@ -61,20 +61,12 @@
         <div class="row mt-3">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Mô tả</label>
+              <label class="col-sm-3 col-form-label"><%=t('room.description')%></label>
               <div class="col-sm-9">
                 <textarea class="form-control" name="room[description]"><%=@room.description%></textarea>
               </div>
             </div>
           </div>
-          <!-- <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Đăng ảnh *</label>
-              <div class="col-sm-9">
-                <input type="file" class="form-control" name="room[picture]" required />
-              </div>
-            </div>
-          </div> -->
       	</div>
       <% end %>
     </div>

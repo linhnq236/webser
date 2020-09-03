@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get "login", to: "home#login"
   get "gettemperature", to: "home#gettemperature"
   post "/voice", to: "home#voice"
+  get "/callvideo", to: "home#callvideo"
   resources :rooms
   get "room_fast", to: "rooms#room_fast"
   post "/roomfast", to: "rooms#roomfast"
@@ -60,6 +61,7 @@ Rails.application.routes.draw do
     post "updateInfo/:id", to: "information#updateInfo"
     get "/getOldCustomer", to: "information#getOldCustomer"
     get "getinfo/:id", to: "information#getinfo"
+    post "/changed_email/:information_id", to: "information#changed_email"
     resources :reminders
     get "/getReminder", to: "reminders#getReminder"
     put "/check_mark/:id", to: "reminders#check_mark"
@@ -70,6 +72,7 @@ Rails.application.routes.draw do
     resources :use_services
     get "/getUseServices/:information_id", to: "use_services#getUseServices"
     resources :reports
+    get "/showpopup/:id", to: "reports#showpopup"
     resources :supports
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -48,6 +48,9 @@ gem 'will_paginate-bootstrap'
 gem 'simple_calendar', '~> 2.0'
 gem 'rails-i18n'
 gem 'chartkick'
+gem 'i18n-js'
+gem 'groupdate'
+gem 'csv', '~> 0.0.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

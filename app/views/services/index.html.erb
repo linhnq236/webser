@@ -1,32 +1,34 @@
 <div class="container">
   <blockquote class="blockquote">
-    <h3 class="text-center">THÊM DỊCH VỤ MỚI</h3>
+    <h3 class="text-center text-uppercase"><%=t("services.new_service")%></h3>
     <%= form_tag('/services', method: :post) do %>
     <div class="row">
-      <input type="text" required  class="form-control" name="service[name]" placeholder="Nhập tên dịch vụ">
+      <input type="text" required  class="form-control" name="service[name]" placeholder="<%=t("services.service_name")%>">
     </div>
     <div class="row">
-      <input type="text" required class="form-control" name="service[cost]" placeholder="Nhập giá dịch vụ">
+      <input type="text" required class="form-control" name="service[cost]" placeholder="<%=t('services.service_prices')%>">
     </div>
     <div class="row">
-      <div class="col-sm-6">
-        <input type="radio" name="service[status]" value="1"> Bắt buộc
+      <div class="col-sm-6 text-center">
+        <input type="radio" name="service[status]" value="1"> <%=t('services.compulsory')%>
       </div>
-      <div class="col-sm-6">
-        <input type="radio" name="service[status]" value="0" checked> Không bắt buộc
+      <div class="col-sm-6 text-center">
+        <input type="radio" name="service[status]" value="0" checked> <%=t('services.optional')%>
       </div>
     </div>
-    <input type="submit" value="Gửi">
+    <div class="col-sm-12 text-center">
+      <input type="submit" value="<%=t('layout.send')%>" class="btn btn-primary">
+    </div>
     <% end %>
   </blockquote>
 </div>
 <table class="table table-hover service">
   <thead>
     <tr>
-      <th class="text-center">STT</th>
-      <th class="text-center">Trạng thái</th>
-      <th class="text-center">Dịch vụ sử dụng</th>
-      <th class="text-center">Đơn giá (VNĐ)</th>
+      <th class="text-center"><%=t('layout.order')%></th>
+      <th class="text-center"><%=t('services.status')%></th>
+      <th class="text-center"><%=t('services.service_used')%></th>
+      <th class="text-center"><%=t('services.unit_price')%></th>
       <th></th>
     </tr>
   </thead>
@@ -36,17 +38,17 @@
       <td class="text-center"><%=i + 1%></td>
       <td class="text-center">
         <% if service.status == 1%>
-          Bắt buộc
+          <%=t('services.compulsory')%>
         <% else %>
-          Không bắt buộc
+          <%=t('services.optional')%>
         <% end %>
       </td>
       <td class="text-center"><%=service.name %></td>
       <td class="text-danger text-center"> <%=number_to_currency_br(service.cost)%></td>
       <td class="text-danger text-center">
-        <a href="/services/<%= service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm="Bạn có muốn xóa ?">
+        <a href="/services/<%= service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm=" <%=t('layout.confirm_delete')%>">
           <i class="fa fa-trash"></i>
-          Xoá
+          <%=t('layout.delete')%>
         </a>
       </td>
     </tr>
@@ -59,25 +61,27 @@
 <table class="table table-hover ">
   <thead>
     <tr>
-      <th class="text-center">STT</th>
-      <th class="text-center">Dịch vụ đang sử dụng</th>
-      <th class="text-center">Chủ phòng</th>
-      <th class="position-relative"><input type="text" id="searchuseservice" class="searchuseservice search position-absolute" placeholder="Tìm kiếm dịch vụ khách dang sử dụng"></th>
+      <th class="text-center"><%=t('layout.order')%></th>
+      <th class="text-center"><%=t('services.use_services')%></th>
+      <th class="text-center"><%=t('services.room_master')%></th>
+      <th class="position-relative"><input type="text" id="searchuseservice" class="searchuseservice search position-absolute" placeholder="<%=t("layout.search_name", name: "service")%>"></th>
     </tr>
   </thead>
   <tbody id="useservice">
-    <% @use_services.each_with_index do |use_service, i|%>
-      <tr>
-        <td class="text-center"><%= i +=1 %></td>
-        <td class="text-center"><%= getUseService(use_service.service_id)%></td>
-        <td class="text-center"><%= use_service.information&.name %></td>
-        <td class="text-danger text-center">
-          <a href="/use_services/<%= use_service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm="Bạn có muốn xóa ?">
-            <i class="fa fa-trash"></i>
-            Xoá
-          </a>
-        </td>
-      </tr>
+    <% if !@use_services.nil?%>
+      <% @use_services.each_with_index do |use_service, i|%>
+        <tr>
+          <td class="text-center"><%= i +=1 %></td>
+          <td class="text-center"><%= getUseService(use_service.service_id)%></td>
+          <td class="text-center"><%= use_service.information&.name %></td>
+          <td class="text-danger text-center">
+            <a href="/use_services/<%= use_service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm="<%=t('layout.confirm_delete')%>">
+              <i class="fa fa-trash"></i>
+              <%=t('layout.delete')%>
+            </a>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

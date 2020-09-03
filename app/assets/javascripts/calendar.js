@@ -4,20 +4,20 @@ $( document ).on('turbolinks:load', function() {
     var reminder_count = $(this).find(".reminder_count").length;
     if (reminder_count == 0) {
       $.confirm({
-        title: "Thao tác",
+        title: I18n.t('js.reminders.new_reminder'),
         closeIcon: true,
-        content:
-        '<form action="" class="formCreateNotify">' +
-          '<div class="form-group">' +
-            '<label>Tiêu đề</label>' +
-            '<input type="text" placeholder="Tiêu đề" class="title form-control" required />' +
-            '<label>Nội dung</label>' +
-            '<textarea class="content mb-2" cols="20" rows="20"></textarea>' +
-          '</div>' +
-        '</form>',
+        content:`
+        <form action="" class="formCreateNotify">
+          <div class="form-group">
+            <label>${I18n.t('js.reminders.subtitle')}</label>
+            <input type="text" class="title form-control" required />
+            <label>${I18n.t('js.reminders.content')}</label>
+            <textarea class="content mb-2" cols="20" rows="20"></textarea>
+          </div>
+        </form>`,
         buttons: {
           formSubmit: {
-            text: 'Gửi',
+            text: 'Ok',
             btnClass: 'btn-blue',
             action: function () {
               var title = this.$content.find('.title').val();
@@ -46,7 +46,7 @@ $( document ).on('turbolinks:load', function() {
               })
             }
           },
-          Hủy: {
+          Cancel: {
             btnClass: 'btn-danger',
               //close
           },

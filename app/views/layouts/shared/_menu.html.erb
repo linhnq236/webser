@@ -7,34 +7,35 @@
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center">
     <ul class="navbar-nav">
-      <li class="nav-item font-weight-semibold d-none d-lg-block">Hỗ trợ : 0981 664 050</li>
+      <li class="nav-item font-weight-semibold d-none d-lg-block">Support : +84 981 664 050</li>
     </ul>
     <ul class="navbar-nav ml-auto mr-3 position-relative">
       <% if user_signed_in?%>
-      <li class="nav-item dropdown p-1 ">
-        <input type="text" class="listening m-2" placeholder="Nghe từ mic" disabled>
-      </li>
-      <li class="nav-item dropdown ">
-        <button type="button" class="voice btn btn-sm bg-primary text-center button_mic" data-set_mic="0" name="button" title="Điều khiển bằng giọng nói"><i class="fa fa-microphone text-white" aria-hidden="true"></i></button>
-      </li>
+        <li class="nav-item dropdown p-1 position-relative">
+          <input type="text" class="listening m-2 d-none" placeholder="<%=t("layout.result_mic")%>">
+          <small class="result_voice position-absolute ml-3"></small>
+        </li>
+        <li class="nav-item dropdown ">
+          <button type="button" class="voice btn btn-sm bg-primary text-center button_mic" data-set_mic="0" name="button" title="Điều khiển bằng giọng nói"><i class="fa fa-microphone text-white" aria-hidden="true"></i></button>
+        </li>
+        <li class="nav-item dropdown ">
+          <a class="nav-link count-indicator hovernotbackground notify" title="Nhắc nhở" id="messageDropdown">
+            <i class="mdi mdi-bell-outline"></i>
+            <span class="count note_notify"></span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link count-indicator hovernotbackground feedback" title="thông báo" id="notificationDropdown">
+            <i class="mdi mdi-email-outline"></i>
+            <span class="count bg-success report_notify"></span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link count-indicator hovernotbackground" title="Gửi mail" id="emailDropdown" href="/send_email">
+            <i class="mdi mdi-send-outline"></i>
+          </a>
+        </li>
       <% end %>
-      <li class="nav-item dropdown ">
-        <a class="nav-link count-indicator hovernotbackground notify" title="Nhắc nhở" id="messageDropdown">
-          <i class="mdi mdi-bell-outline"></i>
-          <span class="count note_notify"></span>
-        </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link count-indicator hovernotbackground icon_report" title="thông báo" id="notificationDropdown">
-          <i class="mdi mdi-email-outline"></i>
-          <span class="count bg-success report_notify"></span>
-        </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link count-indicator hovernotbackground" title="Gửi mail" id="emailDropdown" href="/send_email">
-          <i class="mdi mdi-send-outline"></i>
-        </a>
-      </li>
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
       <span class="mdi mdi-menu"></span>

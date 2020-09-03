@@ -8,7 +8,11 @@ class HousesController < ApplicationController
   # GET /houses
   # GET /houses.json
   def index
-    @houses = House.all
+    if current_user.admin == 1
+      @houses = House.where(id: current_user.house_id)
+    else
+      @houses = House.all
+    end
     @rooms = Room.order("name ASC")
     @informations = Information.all
   end
@@ -44,10 +48,10 @@ class HousesController < ApplicationController
 
     @house = House.new(name: name, city_id: city_id, district_id: district_id, ward_id: ward_id, address: "#{number} #{road}")
     if @house.save
-      flash[:notice] = "Them nha moi"
+      flash[:notice] = I18n.t('mes.add_success', name: I18n.t('house.house_name'))
       redirect_to "/houses"
     else
-      flash[:notice] = "Them that bai"
+      flash[:notice] = I18n.t('mes.add_error', name: I18n.t('house.house_name'))
       redirect_to "/houses/new"
     end
   end
@@ -62,7 +66,7 @@ class HousesController < ApplicationController
       end
     end
     if check !=0
-      flash[:warning] = "Khách chưa trả phòng"
+      flash[:warning] = I18n.t('houses_controller.not_check_out')
       redirect_to houses_path
     else
       for i in 0..rooms.size
@@ -76,7 +80,7 @@ class HousesController < ApplicationController
       firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
       firebase.delete("#{upercase_house_name}")
       house = House.delete(params[:id])
-      flash[:notice] = "Xóa thành công"
+      flash[:notice] = I18n.t('mes.delete_success', name: I18n.t('house.house_name'))
       redirect_to houses_path
     end
   end
@@ -85,7 +89,7 @@ class HousesController < ApplicationController
   def update
     respond_to do |format|
       if @house.update(house_params)
-        format.html { redirect_to @house, notice: 'House was successfully updated.' }
+        format.html { redirect_to @house, notice: I18n.t('mes.update_success', name: I18n.t('house.house_name')) }
         format.json { render :show, status: :ok, location: @house }
       else
         format.html { render :edit }

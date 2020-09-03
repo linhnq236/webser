@@ -20,10 +20,17 @@ set :environment, "development"
 # end
 # Learn more: http://github.com/javan/whenever
 # every 1.minute do
-every :day, at: '10:48pm' do
-  rake "custom:auto_send_email"
+# every :day, at: '10:48pm' do
+#   rake "custom:auto_send_email"
+# end
+
+# every 1.minute do
+#   runner "Reminder.test"
+# end
+every 1.minute do
+  rake "auto_ledcontroller:auto_leds"
 end
 
-every 1.minute do
-  runner "Reminder.test"
+every :day, at: '12:57pm' do
+  rake "reminder:reminder_rental"
 end

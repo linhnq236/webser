@@ -8,18 +8,18 @@ class MembersController < ApplicationController
     if member.nil?
       new_member = Member.new(members_params.merge(information_id: params[:information_id]))
       if new_member.save
-        flash[:notice] = "Lưu thành công"
+        flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_create'))
         redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
       else
-        flash[:notice] = "Lưu thất bại"
+        flash[:notice] = I18n.t('mes.action_fail', action: I18n.t('mes.action_create'))
         redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
       end
     else
       if member.update(members_params)
-        flash[:notice] = "Lưu thành công"
+        flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_create'))
         redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
       else
-        flash[:notice] = "Lưu thất bại"
+        flash[:notice] = I18n.t('mes.action_fail', action: I18n.t('mes.action_create'))
         redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
       end
     end

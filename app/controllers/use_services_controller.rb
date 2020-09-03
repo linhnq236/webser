@@ -5,14 +5,14 @@ class UseServicesController < ApplicationController
       if use_service.nil?
         userser = UseService.new(userser_params.merge(information_id: params[:information_id]))
         if userser.save
-          flash[:notice] = "Lưu thành công"
+          flash[:notice] = I18n.t('use_services_controller.create')
           redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
         else
           a = userser.errors
         end
       else
         if use_service.update(userser_params)
-          flash[:notice] = "Cập nhật thành công"
+          flash[:notice] = I18n.t("use_services_controller.update")
           redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
         end
       end
@@ -20,7 +20,7 @@ class UseServicesController < ApplicationController
 
   def destroy
     @use_service.destroy
-    flash[:notice] = "Xóa thành công"
+    flash[:notice] =  I18n.t("use_services_controller.delete")
     redirect_to services_path
   end
 

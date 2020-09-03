@@ -12,7 +12,7 @@
 <blockquote class="blockquote col-sm-10">
   <div class="row">
     <% @rooms.each do |room|%>
-      <div class="col-md-3 grid-margin stretch-card tab-pane d-none room <%= room.house_id%>_house" data-idroom = "<%= room.house_id%>">
+      <div class="col-md-4 grid-margin stretch-card tab-pane d-none room <%= room.house_id%>_house" data-idroom = "<%= room.house_id%>">
         <div class="card">
           <div class="card-body">
             <ul class="timeline">
@@ -25,11 +25,11 @@
               <li class="timeline-item">
                 <p class="timeline-content">
                   <% if room.information_id.present?%>
-                    <button class="btn btn-success btn-sm service_customer payroom" name="button" data-house_id = "<%= room.house_id%>" data-idroom="<%= room.id%>" data-information_id="<%=room.information_id%>">Trả</button>
-                    <button class="btn btn-dark btn-sm view_service_customer" name="button" data-idroom="<%= room.id%>" data-information_id="<%=room.information_id%>">Xem</button>
+                    <button class="btn btn-success btn-sm service_customer payroom" name="button" data-house_id = "<%= room.house_id%>" data-idroom="<%= room.id%>" data-information_id="<%=room.information_id%>"><%=I18n.t('room.pay_room')%></button>
+                    <button class="btn btn-dark btn-sm view_service_customer" name="button" data-idroom="<%= room.id%>" data-information_id="<%=room.information_id%>"><%=I18n.t('room.show_room')%></button>
                     <!-- <button class="btn btn-info btn-sm service_customer" name="button" data-idroom="<%= room.id%>">Sửa</button> -->
                   <% else%>
-                    <button class="btn btn-info btn-sm addcustomer"name="button" data-idroom="<%= room.id%>">Thêm khách</button>
+                    <button class="btn btn-info btn-sm addcustomer"name="button" data-idroom="<%= room.id%>"><%=I18n.t('room.add_customer')%></button>
                   <% end%>
                 </p>
               </li>
@@ -51,22 +51,22 @@
                 <p class="timeline-content">
                   <a href="<%= edit_room_path(room)%>" class="btn btn-primary btn-sm text-white">
                     <i class="fa fa-edit"></i>
-                    Sửa
+                    <%=I18n.t('room.edit_room')%>
                   </a>
                   <% if room.information_id.present?%>
                     <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white not-active" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
                       <i class="fa fa-trash"></i>
-                      Xoá
+                      <%=I18n.t('room.delete_room')%>
                     </a>
                   <% else %>
                     <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
                       <i class="fa fa-trash"></i>
-                      Xoá
+                      <%=I18n.t('room.delete_room')%>
                     </a>
                   <% end %>
                   <% if user_signed_in?%>
                     <% if current_user.admin == 2%>
-                      <button type="button" name="button" data-room_id="<%=room.id%>" class="btn-sm bg-dark mt-2 setup"><i class="fa fa-info"></i> Cài đặt</button>
+                      <button type="button" name="button" data-room_id="<%=room.id%>" class="btn-sm bg-dark mt-2 setup"><i class="fa fa-info"></i> <%=I18n.t('room.setting')%></button>
                     <% end%>
                   <% end%>
                 </p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_202520) do
+ActiveRecord::Schema.define(version: 2020_08_25_122340) do
 
   create_table "cities", force: :cascade do |t|
     t.string "code"
@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(version: 2020_08_18_202520) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.integer "mark", default: 0
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_reminders_on_user_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -117,7 +119,9 @@ ActiveRecord::Schema.define(version: 2020_08_18_202520) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "information_id"
+    t.integer "user_id"
     t.index ["information_id"], name: "index_reports_on_information_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -176,7 +180,9 @@ ActiveRecord::Schema.define(version: 2020_08_18_202520) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "disable", default: 0
     t.integer "admin", default: 0
+    t.integer "house_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["house_id"], name: "index_users_on_house_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -198,9 +204,12 @@ ActiveRecord::Schema.define(version: 2020_08_18_202520) do
   add_foreign_key "infor_servs", "services"
   add_foreign_key "members", "information"
   add_foreign_key "paytherents", "information"
+  add_foreign_key "reminders", "users"
   add_foreign_key "reports", "information"
+  add_foreign_key "reports", "users"
   add_foreign_key "rooms", "houses"
   add_foreign_key "rooms", "information"
   add_foreign_key "use_services", "information"
+  add_foreign_key "users", "houses"
   add_foreign_key "wards", "districts"
 end

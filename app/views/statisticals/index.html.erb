@@ -2,29 +2,39 @@
   <div class="row">
     <div class="col-sm-6">
       <%= pie_chart @rooms.group(:mark).count%>
-      <div class="text-center">Biểu đồ  phòng</div>
+      <div class="text-center"><%=t('Statisticals.room_chart')%></div>
       <div class="notesection">
         <div class="">
-          <small>0: Phòng trống</small>
+          <small>0: <%=t('Statisticals.empty_room')%></small>
         </div>
         <div class="">
-          <small>1: Phòng có khách</small>
+          <small>1: <%=t('Statisticals.customer_room')%></small>
         </div>
       </div>
     </div>
     <div class="col-sm-6">
       <%= pie_chart @users.group(:admin).count%>
       <div>
-        <div class="text-center">Biểu đồ khách hàng thuê</div>
+        <div class="text-center"><%=t('Statisticals.user_chart')%></div>
         <div class="notesection">
           <div class="">
-            <small>0: Khách thuê</small>
+            <small>0: <%=t('Statisticals.customer')%></small>
           </div>
           <div class="">
-            <small>1: Người quản lý</small><br>
+            <small>1: <%=t('Statisticals.manager')%></small><br>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <% if !@paytherent_pays.nil? && !@paytherent_not_pays.nil? %>
+        <%= bar_chart @paytherent_pays.group(:senddate).sum(:money) %>
+        <div class="text-center"><%=t('Statisticals.countmoneypermonth')%></div>
+        <%= bar_chart @paytherent_not_pays.group(:senddate).sum(:money) %>
+        <div class="text-center"><%=t('Statisticals.countmoneypermonth')%></div>
+      <% end %>
     </div>
   </div>
 </div>

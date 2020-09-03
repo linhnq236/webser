@@ -4,7 +4,20 @@ class PaytherentsController < ApplicationController
   # GET /paytherents
   # GET /paytherents.json
   def index
-    @paytherents = Paytherent.all.order("senddate DESC")
+    if current_user.admin == 1
+      paytherents= []
+      users = User.where(house_id: current_user.house_id, admin: 0)
+      users.each do |user|
+        info = Information.find_by_email(user.email)
+        paytherent = Paytherent.where(information_id: info.id).order("senddate DESC")
+        paytherent.each do |p|
+          paytherents.push(p)
+        end
+      end
+      @paytherents = paytherents
+    else
+      @paytherents = Paytherent.all.order("senddate DESC")
+    end
   end
 
   # GET /paytherents/1

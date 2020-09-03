@@ -45,7 +45,7 @@ class InformationController < ApplicationController
         if room.update(information_id: params[:information_id], mark: 1)
           user = User.find_by_email(params[:email])
           if user.update(disable: 0)
-            flash[:notice] = "Đặt phòng thành công"
+            flash[:notice] = I18n.t('informations_controller.book_room')
             redirect_to "/houses"
           end
         end
@@ -74,24 +74,24 @@ class InformationController < ApplicationController
         room = Room.find(room_id)
         if room.update(information_id: last_inf, mark: 1)
           # // create account customer
-          user = User.new(email: email, password: "123456", password_confirmation: "123456")
+          user = User.new(email: email, password: "123456", password_confirmation: "123456", house_id: house_id)
           if user.save
             # services = Service.where(status: 1)
             # services.each do |ser|
             #   InforServ.new(information_id: last_inf, service_id: ser.id, amount: 1).save
             # end
-            flash[:notice] = "Đã đặt phòng thành công !"
+            flash[:notice] = I18n.t('mes.add_success', name: I18n.t('room.room_name'))
             redirect_to houses_path
           else
-            flash[:notice] = "Đã đặt phòng thành công !"
+            flash[:notice] = I18n.t('mes.add_error', name: I18n.t('room.room_name'))
             redirect_to houses_path
           end
         else
-          flash[:notice] = "Đã đặt phòng thất bại !"
+          flash[:notice] = I18n.t('mes.add_error', name: I18n.t('room.room_name'))
           redirect_to houses_path
         end
       else
-        flash[:notice] = "Thêm thông tin khách hàng thất bại"
+        flash[:notice] = I18n.t('informations_controller.add_customer')
         redirect_to "addcustomer/#{house_id}/#{room_id}"
       end
     end
@@ -119,10 +119,10 @@ class InformationController < ApplicationController
     information = Information.find(information_id)
     if information.update(name: "#{firstname} #{lastname}", sex: sex, birth: birth, indentifycard: indentifycard,
        daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent, start: start, deposit: deposit, note: note)
-       flash[:notice] = "Cập nhật thành công !"
+       flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_update'))
        redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}"
      else
-       flash[:notice] = "Cập nhật thất bại !"
+       flash[:notice] =  I18n.t('mes.action_fail', action: I18n.t('mes.action_update'))
        redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}"
     end
   end

@@ -3,16 +3,16 @@
     <div class="card-body">
       <hr>
     <%= form_tag("/update_information_customer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}", method: :put, id: "inf_1") do %>
-      <%= render "shared/nextback", local: {title: @title = "Thêm khách thuê phòng"}%>
-      <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
+      <%= render "shared/nextback", local: {title: @title = t('house.show.addtenantroom')}%>
+      <%= render "shared/addcustomerservices", local: {title: @title = t('house.show.personalinformation')}%>
       <div class="card">
         <div class="card-body">
           <div class="row mb-4">
             <div class="col-sm-6">
-              <h4 class="card-title">Thông tin cá nhân</h4>
+              <h4 class="card-title"><%=t('house.show.personalinformation')%></h4>
             </div>
             <div class="col-sm-6 text-right">
-              <button type="button" name="button" class="costRoom btn-sm" data-information_id="<%=params[:information_id]%>" data-room_id="<%=params[:room_id]%>" data-house_id="<%=params[:house_id]%>""><i class="fa fa-money bg-success"></i> <span>Gửi tiền trọ</span></button>
+              <button type="button" name="button" class="costRoom btn-sm" data-information_id="<%=params[:information_id]%>" data-room_id="<%=params[:room_id]%>" data-house_id="<%=params[:house_id]%>""><i class="fa fa-money bg-success"></i> <span><%=t('house.show.depositmoney')%></span></button>
             </div>
           </div>
             <!-- <p class="card-description">Thông tin cá nhân </p> -->
@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Họ *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.firstname')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" value="<%= get_info_first_name(r.name)%>"  required name="firstname" />
                 </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Tên *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.lastname')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" value="<%= get_inf_last_name( r.name)%>"  required name="lastname" />
                 </div>
@@ -38,18 +38,18 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Giới tính *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.sex')%> *</label>
                 <div class="col-sm-9">
                   <select class="form-control"  required name="sex">
-                    <option value="0" <%= r.sex == false ? "selected" : ""%> >Nam</option>
-                    <option value="1" <%= r.sex == true ? "selected" : ""%>>Nữ</option>
+                    <option value="0" <%= r.sex == false ? "selected" : ""%> ><%=t('layout.male')%></option>
+                    <option value="1" <%= r.sex == true ? "selected" : ""%>><%=t('layout.female')%></option>
                   </select>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Ngày sinh *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.birth')%> *</label>
                 <div class="col-sm-9">
                   <input type="date" class="form-control" required name="birth" value="<%= r.birth %>" placeholder="dd/mm/yyyy" />
                 </div>
@@ -59,7 +59,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">CMND *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.indentifycard')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control"  required  value="<%= r.indentifycard %>" name="indentifycard" />
                 </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Ngày cấp *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.placerange')%>*</label>
                   <div class="col-sm-9">
                     <input type="date" class="form-control"  required value="<%= r.daterange %>" name="daterange" placeholder="dd/mm/yyyy" />
                   </div>
@@ -77,7 +77,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Điện thoại 1</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.phone1')%></label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" value="<%= r.phone1 %>" name="phone1" />
                 </div>
@@ -85,7 +85,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Nơi cấp *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.placerange')%> *</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control"  required value="<%= r.placerange %>" name="placerange" placeholder="CA TP Đà Nẵng" />
                   </div>
@@ -95,17 +95,17 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Điện thoai 2</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.phone2')%></label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" value="<%= r.phone2 %>" name="phone2" />
                 </div>
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Email *</label>
+              <div class="form-group row currsor changed_email" data-information_id="<%=params[:information_id]%>" title="change email click here">
+                <label class="col-sm-3 col-form-label"><%=t('house.show.email')%> *</label>
                   <div class="col-sm-9">
-                    <input type="email" class="form-control"  required value="<%= r.email %>" name="email" placeholder="nguyenvananh@gmail.com" />
+                    <input type="email" class="form-control" disabled required value="<%= r.email %>" name="email" placeholder="nguyenvananh@gmail.com" />
                   </div>
                 </div>
               </div>
@@ -113,7 +113,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Địa chỉ thường trú *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.permanent')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control"  required value="<%= r.permanent %>" name="permanent"/>
                 </div>
@@ -121,7 +121,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Địa chỉ tạm trú</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.temporaryaddress')%></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" disabled value="<%=get_field_address(@house)%>"/>
                   </div>
@@ -131,7 +131,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Thuê phòng số *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.room_name')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" disabled value="<%= get_fild_name_room(@room)%>" />
                 </div>
@@ -139,7 +139,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Tiền phòng *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.money_room')%> *</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" disabled value = "<%= number_to_currency_br(get_fild_cost_room(@room))%> VNĐ" />
                   </div>
@@ -149,7 +149,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Ngày bắt đầu *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.start')%> *</label>
                 <div class="col-sm-9">
                   <input type="date" class="form-control"  required name="start"  value="<%= r.start.present? ? r.start : get_current_date()%>" />
                 </div>
@@ -157,7 +157,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Đặt cọc trước</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.deposit')%></label>
                   <div class="col-sm-9">
                     <input type="number" class="form-control" value="<%= r.deposit%>" name="deposit" />
                   </div>
@@ -167,7 +167,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group row">
-                  <label class="col-sm-2 col-form-label">Ghi Chú</label>
+                  <label class="col-sm-2 col-form-label"><%=t('house.show.note')%></label>
                   <div class="col-sm-9 ml-3">
                     <textarea  rows="2" class="form-control"  name="note"> <%=r.note%></textarea>
                   </div>
@@ -187,11 +187,11 @@
 
           <thead>
             <tr>
-              <th class="text-center">STT</th>
-              <th class="text-center">Chọn</th>
-              <th class="text-center">Dịch vụ sử dụng</th>
-              <th class="text-center">Đơn giá (VNĐ)</th>
-              <th class="text-center">Số lượng</th>
+              <th class="text-center"><%=t('layout.order')%></th>
+              <th class="text-center"><%=t('house.show.choose')%></th>
+              <th class="text-center"><%=t('house.show.serviceused')%></th>
+              <th class="text-center"><%=t('house.show.cost')%></th>
+              <th class="text-center"><%=t('house.show.quantum')%></th>
             </tr>
           </thead>
           <tbody>
@@ -245,12 +245,12 @@
 
             <thead>
               <tr>
-                <th class="text-center">Họ và tên</th>
-                <th class="text-center">Ngày sinh</th>
-                <th class="text-center">Giới tính</th>
-                <th class="text-center">CMND</th>
-                <th class="text-center">Địa chỉ</th>
-                <th class="text-center">Điện thoại</th>
+                <th class="text-center"><%=t('house.show.fullname')%></th>
+                <th class="text-center"><%=t('house.show.birth')%></th>
+                <th class="text-center"><%=t('house.show.sex')%></th>
+                <th class="text-center"><%=t('house.show.indentifycard')%></th>
+                <th class="text-center"><%=t('house.show.address')%></th>
+                <th class="text-center"><%=t('house.show.phone')%></th>
                 <th class="text-center"></th>
               </tr>
             </thead>
@@ -266,8 +266,8 @@
                   </td>
                   <td class="text-center">
                     <select class="form-control"  required name="member[sex][]">
-                      <option value="0" <%=@member.sex[i] == 0 ? 'selected' : ''%>>Nam</option>
-                      <option value="1" <%=@member.sex[i] == 1 ? 'selected' : ''%>>Nữ</option>
+                      <option value="0" <%=@member.sex[i] == 0 ? 'selected' : ''%>><%=t('layout.male')%></option>
+                      <option value="1" <%=@member.sex[i] == 1 ? 'selected' : ''%>><%=t('layout.female')%></option>
                     </select>
 
                   </td>
@@ -302,20 +302,20 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th class="text-center">Chỉ số dịch vụ</th>
-                <th class="text-center">Số cũ</th>
-                <th class="text-center">Số mới</th>
+                <th class="text-center"><%=t('house.show.services_index')%></th>
+                <th class="text-center"><%=t('house.show.oldvalue')%></th>
+                <th class="text-center"><%=t('house.show.newvalue')%></th>
               </tr>
             </thead>
             <tbody class="indexser">
               <% @room.each do |room|%>
                 <tr>
-                  <td class="text-center">Điện</td>
+                  <td class="text-center"><%=t('house.show.electricity')%></td>
                   <td class="text-center"><input type="number" name="oldelectric" value="<%=room.oldelectric%>"></td>
                   <td class="text-center"><input type="number" name="newelectric" value="<%=room.newelectric%>"></td>
                 </tr>
                 <tr>
-                  <td class="text-center">Nước</td>
+                  <td class="text-center"><%=t('house.show.water')%></td>
                   <td class="text-center"><input type="number" name="oldwater" value="<%=room.oldwater%>"></td>
                   <td class="text-center"><input type="number" name="newwater" value="<%=room.newwater%>"></td>
                 </tr>

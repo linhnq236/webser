@@ -5,7 +5,24 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = Service.all.order("status DESC")
-    @use_services = UseService.all
+    if current_user.admin == 1
+      @array_use_services = []
+      @users = User.where(house_id: current_user.house_id, admin: 0)
+      @users.each do |user|
+        info = Information.find_by_email(user.email)
+        @array_use_services.push(info.id)
+      end
+      @array_services = []
+      @array_use_services.each do |ar|
+        use_service = UseService.find_by_information_id(ar)
+        if !use_service.nil?
+          @array_services.push(use_service)
+        end
+      end
+      @use_services = @array_services
+    else
+      @use_services = UseService.all
+    end
   end
 
   # GET /services/1
@@ -27,7 +44,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
       if @service.save
-        flash[:notice] = 'Dịch vụ mới được thêm.'
+        flash[:notice] = I18n.t('mes.add_success', name: I18n.t('services_controller.services_name'))
         redirect_to services_path
       else
        flash[:warn]  = flash_errors(@service.errors)
@@ -61,11 +78,11 @@ class ServicesController < ApplicationController
       array_result.push(result)
     end
     if array_result.include?(true)
-      flash[:warning] = "Bạn không thể xóa dịch vụ này vì dịch vụ này đang sử dụng."
+      flash[:warning] = I18n.t('services_controller.error_delete')
       redirect_to services_path
     else
       service.destroy
-      flash[:notice] = "Xóa dịch vụ thành công"
+      flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_delete'))
       redirect_to services_path
     end
   end

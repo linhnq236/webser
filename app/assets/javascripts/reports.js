@@ -40,7 +40,9 @@ $( document ).on('turbolinks:load', function() {
   $(".show_report").html(
     `
       <div>${html_report}</div>
-      <a href="/reports" class="text-white hovernotbackground">Xem tất cả</a>
+      <div class='text-center'>
+        <a href="/reports" class="text-white hovernotbackground text-decoration-none">${I18n.t('js.reports.all')}</a>
+      </div>
     `
   );
   $(".report_notify").html(count_report);

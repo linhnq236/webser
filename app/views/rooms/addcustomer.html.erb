@@ -3,17 +3,17 @@
     <div class="card-body">
       <hr>
     <%= form_tag("/new_information_customer/#{params[:house_id]}/#{params[:room_id]}?information_id=#{params[:information_id]}", method: :post, id: "inf_1") do %>
-      <%= render "shared/nextback", local: {title: @title = "Thêm khách thuê phòng"}%>
-      <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
+      <%= render "shared/nextback", local: {title: @title = t('house.show.addtenantroom')}%>
+      <%= render "shared/addcustomerservices", local: {title: @title = t('house.show.personalinformation')}%>
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Thông tin cá nhân</h4>
-          <button class="btn btn-primary mb-4 btn-sm getOldCustomer currsor" data-house_id="<%=params[:house_id]%>" data-room_id="<%=params[:room_id]%>" type="button" name="button">Khách hàng cũ</button>
+          <h4 class="card-title"><%=t('house.show.personalinformation')%></h4>
+          <button class="btn btn-primary mb-4 btn-sm getOldCustomer currsor" data-house_id="<%=params[:house_id]%>" data-room_id="<%=params[:room_id]%>" type="button" name="button"><%=t('house.show.oldperson')%></button>
           <% @room.each do |r|%>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Họ *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.firstname')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" required name="firstname" value="<%=check_Info_first_name_nil(@infor)%>"/>
                 </div>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Tên *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.lastname')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control"  required name="lastname" value="<%=check_Info_last_name_nil(@infor)%>" />
                 </div>
@@ -31,18 +31,18 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Giới tính *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.sex')%> *</label>
                 <div class="col-sm-9">
                   <select class="form-control"  required name="sex">
-                    <option value="0" <%=check_Info_sex_nil(@infor, false)%> >Nam</option>
-                    <option value="1" <%=check_Info_sex_nil(@infor, true)%> >Nữ</option>
+                    <option value="0" <%=check_Info_sex_nil(@infor, false)%> ><%=t('layout.male')%></option>
+                    <option value="1" <%=check_Info_sex_nil(@infor, true)%> ><%=t('layout.female')%></option>
                   </select>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Ngày sinh *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.birth')%> *</label>
                 <div class="col-sm-9">
                   <input type="date" class="form-control" required name="birth" value="<%=check_Info_birth_nil(@infor)%>" placeholder="dd/mm/yyyy" />
                 </div>
@@ -52,7 +52,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">CMND *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.indentifycard')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control"  required name="indentifycard" value="<%=check_Info_indentifycard_nil(@infor)%>"  />
                 </div>
@@ -60,7 +60,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Ngày cấp *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.placerange')%> *</label>
                   <div class="col-sm-9">
                     <input type="date" class="form-control"  required name="daterange" placeholder="dd/mm/yyyy" value="<%=check_Info_daterange_nil(@infor)%>" />
                   </div>
@@ -70,7 +70,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Điện thoại 1</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.phone1')%></label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" name="phone1" value="<%=check_Info_phone1_nil(@infor)%>"  />
                 </div>
@@ -78,7 +78,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Nơi cấp *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.placerange')%> *</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control"  required name="placerange" value="<%=check_Info_placerange_nil(@infor)%>"  placeholder="CA TP Đà Nẵng" />
                   </div>
@@ -88,7 +88,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Điện thoai 2</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.phone2')%></label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control"  name="phone2" value="<%=check_Info_phone2_nil(@infor)%>" />
                 </div>
@@ -96,7 +96,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Email *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.email')%> *</label>
                   <div class="col-sm-9">
                     <input type="email" class="form-control"  required name="email" placeholder="nguyenvananh@gmail.com" value="<%=check_Info_email_nil(@infor)%>"  />
                   </div>
@@ -106,7 +106,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Địa chỉ thường trú *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.permanent')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control"  required name="permanent" value="<%=check_Info_permanent_nil(@infor)%>" />
                 </div>
@@ -114,7 +114,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Địa chỉ tạm trú</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.temporaryaddress')%></label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" disabled value="<%=get_field_address(@house)%>"/>
                   </div>
@@ -124,7 +124,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Thuê phòng số *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.room_name')%> *</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" disabled value="<%= get_fild_name_room(@room)%>" />
                 </div>
@@ -132,7 +132,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Tiền phòng *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.money_room')%> *</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" disabled value = "<%= number_to_currency_br(get_fild_cost_room(@room))%> VNĐ" />
                   </div>
@@ -142,7 +142,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Ngày bắt đầu *</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.start')%> *</label>
                 <div class="col-sm-9">
                   <input type="date" class="form-control"  required name="start" value="<%= get_current_date()%>" />
                 </div>
@@ -150,7 +150,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Đặt cọc trước</label>
+                <label class="col-sm-3 col-form-label"><%=t('house.show.deposit')%></label>
                   <div class="col-sm-9">
                     <input type="number" class="form-control" name="deposit"  value="<%=check_Info_deposit_nil(@infor)%>" />
                   </div>
@@ -160,7 +160,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group row">
-                  <label class="col-sm-2 col-form-label">Ghi Chú</label>
+                  <label class="col-sm-2 col-form-label"><%=t('house.show.note')%></label>
                   <div class="col-sm-9 ml-3">
                     <textarea  rows="2" class="form-control"  name="note"><%=check_Info_note_nil(@infor)%> </textarea>
                   </div>

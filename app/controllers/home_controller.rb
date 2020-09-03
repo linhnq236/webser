@@ -71,4 +71,8 @@ class HomeController < ApplicationController
       ledstatus: response.body
     head :no_content
   end
+
+  def callvideo
+
+  end
 end

@@ -32,5 +32,22 @@ module Api
       render json: {data: info}
     end
 
+    def changed_email
+      new_email = params[:new_email]
+      current_email = params[:current_email]
+      information_id = params[:information_id]
+      info = Information.find(information_id)
+      if info.update(email: new_email)
+        user = User.find_by_email(current_email)
+        if user.update(email: new_email)
+          render json: {data: 200}
+        else
+          render json: {data: 202}
+        end
+      else
+        render json: {data: 202}
+      end
+    end
+
   end
 end
