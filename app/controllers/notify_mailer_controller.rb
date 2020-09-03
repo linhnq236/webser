@@ -1,7 +1,7 @@
 class NotifyMailerController < ApplicationController
   include ServicesHelper
   def send_email
-    @infors = Information.all.order("id ASC")
+    @infors = Room.where(house_id: current_user.house_id).order("id ASC")
   end
 
   def send_to_email

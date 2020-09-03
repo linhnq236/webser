@@ -37,4 +37,14 @@ $( document ).on('turbolinks:load', function() {
     //   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     // });
   });
+  // background navbar selected
+  var array_class = ['dashboard', 'dashboard', 'rooms', 'services', 'informations', 'accounts', 'reminders', 'statisticals', 'rentals'];
+  var array_url = ['/', '/home', '/houses', '/services', '/users', '/account', '/reminders', '/statisticals', '/paytherents'];
+  var url = $(location).attr("pathname");
+  if (array_url.indexOf(url) != -1) {
+    var position = array_url.indexOf(url);
+    var class_menu = array_class[position];
+    $(`.${class_menu}`).css({'background': 'repeating-linear-gradient(11deg, black, transparent 123px)'})
+  }
+
 })

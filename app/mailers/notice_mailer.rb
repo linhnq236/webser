@@ -11,11 +11,16 @@ class NoticeMailer < ApplicationMailer
     @house = House.find(@room.house_id.to_i)
     @paytherent = Paytherent.where(information_id: id, status: 0 )
 
-    mail(to: "#{@info.email}" ,subject: "Đóng tiền thuê trọ")
+    mail(to: "#{@info.email}" ,subject: "Pay the rent")
   end
 
   def send_to_email_user email, subject, content
     @content = "#{content}"
     mail(to: "#{email}" ,subject: "#{subject}")
+  end
+
+  def reminder_rental id
+    @paytherent = Paytherent.find(id)
+    mail(to: "#{@paytherent.information&.email}" ,subject: "Overdue for payment of accommodation")
   end
 end

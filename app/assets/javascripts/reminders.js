@@ -1,7 +1,7 @@
 $( document ).on('turbolinks:load', function() {
   var d = new Date();
   var twoDigitMonth = ((d.getMonth().length+1) === 1)? (d.getMonth()+1) : '0' + (d.getMonth()+1);
-  var twoDigitDay = ((d.getDate()) === 1)? (d.getDate()) : '0' + (d.getDate());
+  var twoDigitDay = ((d.getDate().length+1) === 1)? (d.getDate()) : '0' + (d.getDate());
   var currentDate = d.getFullYear() + '-' + twoDigitMonth + "-" + twoDigitDay;
   var html =  '';
   var count = 0;

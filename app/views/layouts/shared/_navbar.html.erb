@@ -19,49 +19,49 @@
     </li>
     <li class="nav-item nav-category"><%= I18n.t('layout.menu_main') %></li>
     <% if user_signed_in? %>
-    <li class="nav-item">
+    <li class="nav-item dashboard">
       <a class="nav-link" href="<%= root_path%>">
         <i class="menu-icon typcn typcn-document-text"></i>
         <span class="menu-title"><%= I18n.t('layout.dashboard') %></span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item rooms">
       <a class="nav-link" href="<%= houses_path%>">
         <i class="menu-icon typcn typcn-document-text"></i>
         <span class="menu-title"><%= I18n.t('layout.rooms') %></span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item services">
       <a class="nav-link" data-toggle="collapse" href="<%=services_path%>" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon typcn typcn-coffee"></i>
         <span class="menu-title"><%= I18n.t('layout.services') %></span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item informations">
       <a class="nav-link" href="<%=users_path %>">
         <i class="menu-icon typcn typcn-shopping-bag"></i>
         <span class="menu-title"><%= I18n.t('layout.informations') %></span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item accounts">
       <a class="nav-link" href="/account">
         <i class="menu-icon typcn typcn-th-large-outline"></i>
         <span class="menu-title"><%= I18n.t('layout.accounts') %></span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item reminders">
       <a class="nav-link" href="<%=reminders_path %>">
         <i class="menu-icon typcn typcn-bell"></i>
         <span class="menu-title"><%= I18n.t('layout.reminders') %></span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item statisticals">
       <a class="nav-link" href="<%=statisticals_path%>">
         <i class="menu-icon typcn typcn-user-outline"></i>
         <span class="menu-title"><%= I18n.t('layout.statistical') %></span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item rentals">
       <a class="nav-link" data-toggle="collapse" href="<%=paytherents_path %>" aria-expanded="false" aria-controls="auth">
         <i class="menu-icon typcn typcn-document-add"></i>
         <span class="menu-title"><%= I18n.t('layout.room_rental') %></span>
