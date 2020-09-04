@@ -5,34 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-[
-  {email: 'admin@gmail.com', password: "admin!@#", password_confirmation: "admin!@#", admin: 2},
-  {email: 'linhnq236@gmail.com', password: "123456", password_confirmation: "123456", admin: 1},
-].each do |attr|
-  user = User.find_by(id: attr[:id])
-  User.transaction do
-    unless user
-      user = User.new(attr)
-      user.save
-    else
-      user.update_attributes attr
-    end
-  end
-end
-[
-  {name: 'electricity', cost: 3500, status: 1},
-  {name: 'water', cost: 12000, status: 1},
-].each do |attr|
-  server = Service.find_by(id: attr[:id])
-  Service.transaction do
-    unless server
-      server = Service.new(attr)
-      server.save
-    else
-      server.update_attributes attr
-    end
-  end
-end
 
 [
 {id: 1 ,  name: "Thành phố Hà Nội", kind: "Thành phố Trung ương"},
@@ -12008,6 +11980,46 @@ end
       ward.save
     else
       ward.update_attributes attr
+    end
+  end
+end
+[
+  {name: 'MyHouse', city_id:48 , district_id: 497, ward_id: 20302},
+].each do |attr|
+  house = House.find_by(id: attr[:id])
+  House.transaction do
+    unless house
+      house = House.new(attr)
+      house.save
+    else
+      house.update_attributes attr
+    end
+  end
+end
+[
+  {email: 'admin@gmail.com', password: "admin!@#", password_confirmation: "admin!@#", admin: 2, house_id: House.first.id},
+].each do |attr|
+  user = User.find_by(id: attr[:id])
+  User.transaction do
+    unless user
+      user = User.new(attr)
+      user.save
+    else
+      user.update_attributes attr
+    end
+  end
+end
+[
+  {name: 'electricity', cost: 3500, status: 1},
+  {name: 'water', cost: 12000, status: 1},
+].each do |attr|
+  server = Service.find_by(id: attr[:id])
+  Service.transaction do
+    unless server
+      server = Service.new(attr)
+      server.save
+    else
+      server.update_attributes attr
     end
   end
 end
