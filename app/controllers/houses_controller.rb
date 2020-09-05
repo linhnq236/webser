@@ -11,7 +11,7 @@ class HousesController < ApplicationController
     if current_user.admin == 1
       @houses = House.where(id: current_user.house_id)
     else
-      @houses = House.all
+      @houses = House.where("name != ?", 'MyHouse')
     end
     @rooms = Room.order("name ASC")
     @informations = Information.all

@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
         gon.leds = response
       else
         gon.rooms = Room.all
-        gon.houses = House.all
+        gon.houses = House.where("name != ?", 'MyHouse')
         gon.leds = response
       end
     else

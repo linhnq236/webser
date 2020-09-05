@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       array_infos = []
       users = User.where(house_id: current_user.house_id, admin: 0)
       users.each do |u|
-        info = Information.where(email: u.email)
+        info = Information.where(email: u.email, mark: 0)
         info.each do |i|
           array_infos.push(i)
         end
