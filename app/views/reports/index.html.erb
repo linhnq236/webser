@@ -1,26 +1,26 @@
 <div class="col-sm-12">
   <%= form_tag("/reports/1", method: :put, class: "form_reports") do %>
     <blockquote class="blockquote">
-      <h1>Phản hồi </h1>
+      <h1><%= t("reports.feedback")%></h1>
       <hr>
       <div class="row">
-        <div class="col-sm-3 text-center">Tiêu đề</div>
+        <div class="col-sm-3 text-center"><%= t("reports.title")%></div>
         <div class="col-sm-9">
-          <input type="text" name="title" class="form-control report_title"   disabled placeholder="Nội dung gửi">
+          <input type="text" name="title" class="form-control report_title"   disabled>
         </div>
       </div>
       <hr>
       <div class="row">
-        <div class="col-sm-3 text-center">Nội dung</div>
+        <div class="col-sm-3 text-center"><%= t("reports.content")%></div>
         <div class="col-sm-9 content">
-          <textarea name="content"  disabled placeholder="Nội dung gửi" class="form-control report_content"></textarea>
+          <textarea name="content"  disabled class="form-control report_content"></textarea>
         </div>
       </div>
       <hr>
       <div class="row">
-        <div class="col-sm-3 text-center">Nội dung phản hồi</div>
+        <div class="col-sm-3 text-center"><%= t("reports.rep_content")%></div>
         <div class="col-sm-9 content">
-          <textarea name="rep_content" placeholder="Nội dung gửi" class="form-control report_rep_content"></textarea>
+          <textarea name="rep_content" class="form-control report_rep_content"></textarea>
         </div>
       </div>
       <div class="row mt-4">
@@ -34,11 +34,11 @@
 <table class="table table-hover report">
   <thead>
     <tr>
-      <th class="text-center">STT</th>
-      <th class="text-center">Tiêu đề</th>
-      <th class="text-center">Người gửi</th>
-      <th class="text-center">Thời gian</th>
-      <th class="text-center">Tình trạng</th>
+      <th class="text-center"><%=t("layout.order")%></th>
+      <th class="text-center"><%=t("reports.title")%></th>
+      <th class="text-center"><%=t("reports.user")%></th>
+      <th class="text-center"><%=t("reports.created_at")%></th>
+      <th class="text-center"><%=t("reports.status")%></th>
     </tr>
   </thead>
   <tbody>
@@ -55,24 +55,3 @@
     <% end %>
   </tbody>
 </table>
-<script type="text/javascript">
-//   $(document).ready(function(){
-//     eylem();
-//   })
-//  function eylem(){
-//    var ses = new webkitSpeechRecognition();
-//    ses.onresult = function(e){
-//      if (event.results.length > 0) {
-//        sonuc = event.results[event.results.length -1];
-//        if (sonuc.isFinal) {
-//          var result = sonuc[0].transcript;
-//          console.log(result);
-//          if (result == 'home') {
-//            window.location.href = `/${result}`;
-//          }
-//        }
-//      }
-//    }
-//    ses.start();
-// }
-</script>

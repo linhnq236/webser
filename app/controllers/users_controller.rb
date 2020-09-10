@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def account
-    @houses = House.all
+    @houses = House.where("name != ?", 'MyHouse')
     if current_user.admin == 1
       if params[:disable].present?
         @users = User.where("disable = ?  AND  admin < ? AND house_id =? ", params[:disable],2, current_user.house_id)
