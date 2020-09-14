@@ -114,6 +114,10 @@ class RoomsController < ApplicationController
           if inf.update(mark: 1)
             use_service = UseService.find_by_information_id(params[:information_id])
             UseService.delete(use_service.id)
+            member = Member.find_by_information_id(params[:information_id])
+            if !member.nil?
+              Member.delete(member.id)
+            end
             flash[:notice] = I18n.t('rooms_controller.payroom_success')
             redirect_to houses_path
           end

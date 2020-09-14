@@ -1,8 +1,8 @@
 $( document ).on('turbolinks:load', function() {
-  var d = new Date();
-  var twoDigitMonth = ((d.getMonth().length+1) === 1)? (d.getMonth()+1) : '0' + (d.getMonth()+1);
-  var twoDigitDay = ((d.getDate()) === 1)? (d.getDate()) : '0' + (d.getDate());
-  var currentDate = d.getFullYear() + '-' + twoDigitMonth + "-" + twoDigitDay;
+  // var d = new Date();
+  // var twoDigitMonth = (d.getMonth() > 9)? (d.getMonth()+1) : '0' + (d.getMonth()+1);
+  // var twoDigitDay = ((d.getDate()) >9)? (d.getDate()) : '0' + (d.getDate());
+  // var currentDate = d.getFullYear() + '-' + twoDigitMonth + "-" + twoDigitDay;
   var html_report =  '';
   var count_report = 0;
   $(".rep_report").click(function(){
