@@ -53,19 +53,19 @@
                     <i class="fa fa-edit"></i>
                     <%=I18n.t('room.edit_room')%>
                   </a>
-                  <% if room.information_id.present?%>
-                    <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white not-active" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
-                      <i class="fa fa-trash"></i>
-                      <%=I18n.t('room.delete_room')%>
-                    </a>
-                  <% else %>
-                    <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
-                      <i class="fa fa-trash"></i>
-                      <%=I18n.t('room.delete_room')%>
-                    </a>
-                  <% end %>
                   <% if user_signed_in?%>
                     <% if current_user.admin == 2%>
+                      <% if room.information_id.present?%>
+                      <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white not-active" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
+                        <i class="fa fa-trash"></i>
+                        <%=I18n.t('room.delete_room')%>
+                      </a>
+                      <% else %>
+                      <a href="/rooms/<%= room.id%>" class="btn btn-danger btn-sm text-white" data-method="delete" rel="nofollow" data-confirm="Are you sure ?">
+                        <i class="fa fa-trash"></i>
+                        <%=I18n.t('room.delete_room')%>
+                      </a>
+                      <% end %>
                       <button type="button" name="button" data-room_id="<%=room.id%>" class="btn-sm bg-dark mt-2 setup"><i class="fa fa-info"></i> <%=I18n.t('room.setting')%></button>
                     <% end%>
                   <% end%>

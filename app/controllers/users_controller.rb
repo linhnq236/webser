@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       array_infos = []
       users = User.where(house_id: current_user.house_id, admin: 0)
       users.each do |u|
-        info = Information.where(email: u.email)
+        info = Information.where(email: u.email, mark: 0)
         info.each do |i|
           array_infos.push(i)
         end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def account
-    @houses = House.all
+    @houses = House.where("name != ?", 'MyHouse')
     if current_user.admin == 1
       if params[:disable].present?
         @users = User.where("disable = ?  AND  admin < ? AND house_id =? ", params[:disable],2, current_user.house_id)

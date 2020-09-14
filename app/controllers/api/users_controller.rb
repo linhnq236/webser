@@ -4,6 +4,7 @@ module Api
   class UsersController < ApplicationController
     skip_before_action :authenticate_user!
     skip_before_action :verify_authenticity_token
+    before_action :set_params, only: [:active_acc]
     def account
       name = ''
       id = ''
@@ -19,6 +20,22 @@ module Api
       else
         render json: {status: 204}
       end
+    end
+
+    def active_acc
+      if @user.update(disable: params[:active])
+        flash[:notice] = t("mes.action_success", action: t("mes.action_update"))
+        redirect_to account_path
+      else
+        flash[:notice] = t("mes.action_fail", action: t("mes.action_update"))
+        redirect_to account_path
+      end
+    end
+
+    private
+
+    def set_params
+      @user = User.find(params[:id])
     end
   end
 end

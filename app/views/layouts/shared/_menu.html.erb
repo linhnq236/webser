@@ -11,9 +11,11 @@
     </ul>
     <ul class="navbar-nav ml-auto mr-3 position-relative">
       <% if user_signed_in?%>
+        <li class="nav-item">
+          <small class="result_voice"></small>
+        </li>
         <li class="nav-item dropdown p-1 position-relative">
           <input type="text" class="listening m-2 d-none" placeholder="<%=t("layout.result_mic")%>">
-          <small class="result_voice position-absolute ml-3"></small>
         </li>
         <li class="nav-item dropdown ">
           <button type="button" class="voice btn btn-sm bg-primary text-center button_mic" data-set_mic="0" name="button" title="Điều khiển bằng giọng nói"><i class="fa fa-microphone text-white" aria-hidden="true"></i></button>

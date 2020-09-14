@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     get "led_status/:information_id", to: "home#led_status"
     resources :users
     post "/account", to: "users#account"
+    post "/active_acc/:id", to: "users#active_acc"
     resources :leds
     post "app_send/:information_id", to: "leds#app_send_data"
     get "/setup/:room_id", to: "leds#setup"
