@@ -4,6 +4,7 @@ class PaytherentsController < ApplicationController
   # GET /paytherents
   # GET /paytherents.json
   def index
+    @selectdates = Paytherent.order("senddate DESC").pluck(:senddate).uniq
     if current_user.admin == 1
       paytherents= []
       users = User.where(house_id: current_user.house_id, admin: 0)

@@ -5,7 +5,8 @@
         <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, class: "hovernotbackground text-decoration-none btn btn-primary text-dark float-left" %>
       </div>
       <div class="col-sm-8  text-center">
-        <span class="calendar-title text-center"><%= t('date.month_names')[start_date.month] %> <%=t('date.year_names') %> <%= start_date.year %></span>
+        <!-- <span class="calendar-title text-center"><%= t('date.month_names')[start_date.month] %> <%=t('date.year_names') %> <%= start_date.year %></span> -->
+        <span class="calendar-title text-center font-weight-bold"><%= start_date.year %></span> 
       </div>
       <div class="col-sm-2  text-right">
         <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, class: "hovernotbackground text-decoration-none btn btn-primary text-dark pl-3 pr-3 float-right" %>

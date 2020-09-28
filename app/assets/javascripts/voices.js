@@ -28,7 +28,7 @@ $( document ).on('turbolinks:load', function() {
   var com_name = [];
   var html_voice_control_led = '';
   $.each(gon.rooms, function(index, value){
-    $.each([0,3,5,6,7,8], function(index1,value1){
+    $.each([0,1,2,3,5,6,7,8], function(index1,value1){
       html_voice_control_led += `
         <div class='col-sm-2'>Phong${value['name']}: ${value['house_id']}${value['name']}${value1}</div>
         <hr>
@@ -43,7 +43,7 @@ $( document ).on('turbolinks:load', function() {
       `
     );
     var string = '';
-    $.each([0,3,5,6,7,8], function(index1,value1){
+    $.each([0,1,2,3,5,6,7,8], function(index1,value1){
       $.each([0,1], function(index2,value2){
         string = `${value["house_id"]+value['name']}`+value1+value2;
         com_name.push(string);

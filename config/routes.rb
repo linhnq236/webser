@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   post "/indexservice/:house_id/:room_id/:information_id", to: "rooms#indexservice"
   post "/information_service", to: "rooms#information_service"
   get "/payroom/:id/:information_id", to: "rooms#payroom"
+  get "/cancel_infor/:information_id", to: "rooms#cancel_infor"
   resources :users
   get "/account", to: "users#account"
   post "/createaccount", to: "users#createaccount"
@@ -70,6 +71,7 @@ Rails.application.routes.draw do
     put "/updatePaytherent/:information_id", to: "paytherents#update"
     get "/getPaytheRent/:information_id", to: "paytherents#getPaytheRent"
     post "/update_money", to: "paytherents#update_money"
+    post "/export", to:"paytherents#export"
     resources :use_services
     get "/getUseServices/:information_id", to: "use_services#getUseServices"
     resources :reports

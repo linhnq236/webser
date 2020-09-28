@@ -13,8 +13,8 @@ $( document ).on('turbolinks:load', function() {
         </td>
         <td class="text-danger text-center">
           <select class="form-control"  required name="member[sex][]">
-            <option value="0">Nam</option>
-            <option value="1">Nữ</option>
+            <option value="0">${I18n.t('layout.male')}</option>
+            <option value="1">${I18n.t('layout.female')}</option>
           </select>
         </td>
         <td class="text-center">

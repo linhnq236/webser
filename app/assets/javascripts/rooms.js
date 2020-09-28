@@ -27,4 +27,23 @@ $( document ).on('turbolinks:load', function() {
     var house_id = $(this).data("house_id");
     window.location.href = `/send_mail_cost_room/${house_id}/${room_id}/${information_id}`;
   })
+
+  // cancel room
+  $(".cancel_room").click(function(){
+    var information_id = $(this).data("information_id");
+    $.confirm({
+    icon: 'fa fa-trash text-danger',
+    title: I18n.t("js.mes.confirm.delete"),
+    closeIcon: true,
+    content: I18n.t("js.room.cancel_room"),
+    buttons: {
+      Delete: {
+        btnClass: 'btn-danger',
+        action: function(){
+          location.href = "/cancel_infor/"+information_id;
+        }
+      },
+    }
+    })
+  })
 })

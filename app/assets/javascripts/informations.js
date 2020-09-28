@@ -69,7 +69,7 @@ $(document).on("turbolinks:load", function(){
   function show_info(html){
     $.confirm({
       icon: 'fa fa-user',
-      title: 'Thông tin khách hàng',
+      title: I18n.t('js.user.customer_information'),
       columnClass: 'col-md-12',
       closeIcon: true,
       closeIconClass: 'fa fa-close',

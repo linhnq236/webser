@@ -1,8 +1,8 @@
 $( document ).on('turbolinks:load', function() {
-  // var d = new Date();
-  // var twoDigitMonth = (d.getMonth() > 9)? (d.getMonth()+1) : '0' + (d.getMonth()+1);
-  // var twoDigitDay = ((d.getDate()) >9)? (d.getDate()) : '0' + (d.getDate());
-  // var currentDate = d.getFullYear() + '-' + twoDigitMonth + "-" + twoDigitDay;
+  var d = new Date();
+  var twoDigitMonth = (d.getMonth() > 9)? (d.getMonth()+1) : '0' + (d.getMonth()+1);
+  var twoDigitDay = ((d.getDate()) >9)? (d.getDate()) : '0' + (d.getDate());
+  var currentDate = d.getFullYear() + '-' + twoDigitMonth + "-" + twoDigitDay;
   var html_report =  '';
   var count_report = 0;
   $(".rep_report").click(function(){
@@ -25,7 +25,10 @@ $( document ).on('turbolinks:load', function() {
 
   //
   $.each(gon.reports, function(index, value){
-    if (Date.parse(value['created_at']) <= Date.parse(currentDate)){
+    var created_at = (value['created_at']);
+    var format_created_at = moment(new Date(created_at)).format('yyyy-MM-D');
+
+    if (Date.parse(format_created_at) <= Date.parse(currentDate)){
       if (value['mark'] == 0) {
         count_report += 1;
       }
@@ -33,7 +36,7 @@ $( document ).on('turbolinks:load', function() {
       `<div class="overflow-hidden report-content m-1" data-id='${value['id']}'  style="color: blue;background: ${value['mark'] == 0 ? '#b0b3b8' : '' }" data-mark='${value['mark']}' data-date='${value['start_time']}'>
         <i class="fa fa-calendar"></i>
         ${value['title']}
-        <div class="ml-4"><small>${moment(new Date()).format('yyyy-MM-dd')}</small></div>
+        <div class="ml-4"><small>${moment(new Date()).format('yyyy-MM-D')}</small></div>
       </div>`
     }
   })

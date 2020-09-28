@@ -26,6 +26,10 @@ module ApplicationHelper
     return string.strftime(" %H:%M %d-%m-%Y")
   end
 
+  def format_month_year date
+    return date.strftime("%m/%d")
+  end
+
   def number_to_currency_br(number)
     unit =  number_to_currency(number, unit: "VNĐ", separator: "," , delimiter: ".")
     subunit = unit.gsub! 'VNĐ', " "
