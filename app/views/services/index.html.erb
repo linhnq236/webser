@@ -4,10 +4,10 @@
       <h3 class="text-center text-uppercase"><%=t("services.new_service")%></h3>
       <%= form_tag('/services', method: :post) do %>
       <div class="row">
-        <input type="text" required  class="form-control" name="service[name]" placeholder="<%=t("services.service_name")%>">
+        <input type="text" required  class="form-control service_name" name="service[name]" placeholder="<%=t("services.service_name")%>">
       </div>
       <div class="row">
-        <input type="text" required class="form-control" name="service[cost]" placeholder="<%=t('services.service_prices')%>">
+        <input type="text" required class="form-control service_cost" name="service[cost]" placeholder="<%=t('services.service_prices')%>">
       </div>
       <div class="row">
         <div class="col-sm-6 text-center">
@@ -52,6 +52,10 @@
           <a href="/services/<%= service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm=" <%=t('layout.confirm_delete')%>">
             <i class="fa fa-trash"></i>
             <%=t('layout.delete')%>
+          </a>
+          <a class="btn btn-info btn-sm service_edit text-white" data-service_id="<%=service.id%>">
+            <i class="fa fa-edit"></i>
+            <%=t('layout.edit')%>
           </a>
         <% end %>
       </td>

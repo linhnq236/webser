@@ -77,6 +77,8 @@ Rails.application.routes.draw do
     resources :reports
     get "/showpopup/:id", to: "reports#showpopup"
     resources :supports
+    resources :services
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

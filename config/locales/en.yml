@@ -65,6 +65,7 @@ en:
     order: "Order"
     send: "Send"
     delete: "Delete"
+    edit: "Edit"
     feedback: "Feedbacks"
     email: "Email"
     search_name: "Search %{name} ..."
