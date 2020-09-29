@@ -112,6 +112,7 @@ GEM
     ffi (1.13.1)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
+    filesaverjs-rails (1.1.20150716)
     firebase (0.2.8)
       googleauth
       httpclient (>= 2.5.3)
@@ -320,6 +321,7 @@ DEPENDENCIES
   custom_error_message
   devise
   figaro
+  filesaverjs-rails
   firebase
   font-awesome-rails
   gon

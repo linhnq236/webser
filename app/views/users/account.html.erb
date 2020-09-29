@@ -25,6 +25,7 @@
     </div>
     <div class="col-sm-3">
       <select class="form-control" name="house_id">
+        <option value="">Chosen</option>
         <%@houses.each do |house| %>
           <option value="<%=house.id%>"><%=house.name%></option>
         <% end %>

@@ -29,11 +29,11 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <% if !@paytherent_pays.nil? && !@paytherent_not_pays.nil? %>
+      <% if !@paytherent_pays.nil? %>
         <%= bar_chart @paytherent_pays.group(:senddate).sum(:money) %>
         <div class="text-center"><%=t('Statisticals.countmoneypermonth')%></div>
-        <%= bar_chart @paytherent_not_pays.group(:senddate).sum(:money) %>
-        <div class="text-center"><%=t('Statisticals.countmoneypermonth')%></div>
+        <%# <%= bar_chart @paytherent_not_pays.group(:senddate).sum(:money) %>
+        <!-- <div class="text-center"><%=t('Statisticals.countmoneypermonth')%></div> -->
       <% end %>
     </div>
   </div>

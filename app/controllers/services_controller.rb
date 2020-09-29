@@ -43,6 +43,13 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.new(service_params)
+    if Service.where(name: @service.name).exists?
+      service = Service.find_by_name(@service.name)
+      if service.update(service_params)
+        flash[:notice] = I18n.t('mes.update_success', name: I18n.t('services_controller.services_name'))
+        redirect_to services_path
+      end
+    else
       if @service.save
         flash[:notice] = I18n.t('mes.add_success', name: I18n.t('services_controller.services_name'))
         redirect_to services_path
@@ -50,6 +57,7 @@ class ServicesController < ApplicationController
        flash[:warn]  = flash_errors(@service.errors)
        redirect_to services_path
       end
+    end
   end
 
   # PATCH/PUT /services/1

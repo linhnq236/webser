@@ -1,4 +1,4 @@
-<%= render "/houses/shared/search"%>
+<%= render "/houses/shared/search" %>
 <div class="row w-100">
   <div class="col-sm-2 house">
     <% @houses.each do |house| %>
@@ -53,6 +53,12 @@
                     <i class="fa fa-edit"></i>
                     <%=I18n.t('room.edit_room')%>
                   </a>
+                  <% if !room.information_id.nil?%>
+                    <a data-information_id="<%=room.information_id%>" class="btn btn-danger btn-sm text-white cancel_room">
+                      <i class="fa fa-edit"></i>
+                      <%=I18n.t('room.cancel_infor')%>
+                    </a>
+                  <% end %>
                   <% if user_signed_in?%>
                     <% if current_user.admin == 2%>
                       <% if room.information_id.present?%>
@@ -66,7 +72,12 @@
                         <%=I18n.t('room.delete_room')%>
                       </a>
                       <% end %>
-                      <button type="button" name="button" data-room_id="<%=room.id%>" class="btn-sm bg-dark mt-2 setup"><i class="fa fa-info"></i> <%=I18n.t('room.setting')%></button>
+                      <%# <button type="button" name="button" %>
+                        <!-- data-room_id="<%=room.id%>"  -->
+                        <!-- class="btn-sm bg-dark mt-2 setup"> -->
+                        <!-- <i class="fa fa-info"></i> -->
+                        <%# <%=I18n.t('room.setting')%>
+                      <!-- </button> -->
                     <% end%>
                   <% end%>
                 </p>

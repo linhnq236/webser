@@ -4,7 +4,7 @@
   </div>
   <div class="clearfix"></div>
   <%= month_calendar events: @reminders do |date, reminders| %>
-    <%= format_day(date) %>
+    <%= format_month_year(date) %>
     <% reminders.each_with_index do |reminder, i| %>
     <div class="reminder_count">
       <span><%= i+1 %></span>

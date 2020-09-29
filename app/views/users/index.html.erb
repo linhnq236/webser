@@ -15,12 +15,12 @@
       <th class="text-center"><%=t('layout.order')%></th>
       <th class="text-center"><%=t('house.house_name')%>/<%=t('room.room_name')%></th>
       <th class="text-center"><%=t('users.fullname')%></th>
-      <th class="text-center"><%=t('users.sex')%></th>
-      <th class="text-center"><%=t('users.indentifycard')%></th>
+      <!-- <th class="text-center"><%=t('users.sex')%></th> -->
+      <!-- <th class="text-center"><%=t('users.indentifycard')%></th> -->
       <th class="text-center"><%=t('users.phone1')%></th>
       <th class="text-center"><%=t('users.phone2')%></th>
       <th class="text-center"><%=t('users.email')%></th>
-      <th class="text-center"><%=t('users.start')%></th>
+      <!-- <th class="text-center"><%=t('users.start')%></th> -->
     </tr>
   </thead>
   <tbody id="user">
@@ -30,15 +30,15 @@
         <td class="text-center"><%=i + 1%></td>
         <td class="text-center"><%= getHouseRoom(user.id)%></td>
         <td class="text-center"><%= user.name%></td>
-        <td class="text-center"><%= user.sex == false ? t('layot.male') : t('layout.female')%></td>
-        <td class="text-center"><%= user.indentifycard%></td>
+        <!-- <td class="text-center"><%= user.sex == false ? t('layot.male') : t('layout.female')%></td> -->
+        <!-- <td class="text-center"><%= user.indentifycard%></td> -->
         <td class="text-center"><%= user.phone1%></td>
         <td class="text-center"><%= user.phone2%></td>
         <td class="text-center"><%= user.email%></td>
-        <td class="text-center"><%= user.start%></td>
+        <!-- <td class="text-center"><%= user.start%></td> -->
       </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
-<%# <%= will_paginate @users, renderer: BootstrapPagination::Rails%> 
+<%# <%= will_paginate @users, renderer: BootstrapPagination::Rails%>

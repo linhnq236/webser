@@ -4,8 +4,10 @@ class RoomsController < ApplicationController
     check_admin_login("/houses")
   end
 
-  FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
-  FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
+  # FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
+  # FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
+  require "firebase_connect"
+  
   # GET /rooms
   # GET /rooms.json
   def index
@@ -20,7 +22,8 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
-    @houses = House.order("id DESC")
+    @houses = House.where("name != ?", 'MyHouse').order("id DESC")
+
   end
 
   # GET /rooms/1/edit
@@ -32,17 +35,22 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
-    house = House.find(@room.house_id)
-    name = house.name
-    re_space_house_name = name.gsub(" ","")
-    upercase_house_name = re_space_house_name.upcase
-    if @room.save
-      create_house_room_firebase(upercase_house_name, @room.name)
-      flash[:notice] =  I18n.t('rooms_controller.new_room')
+    if Room.where(name: @room.name, house_id: @room.house_id).exists?
+      flash[:warn] =  I18n.t('rooms_controller.exist_room')
       redirect_to houses_path
     else
-      flash[:warning] =  flash_errors(@room.errors)
-      redirect_to houses_path
+      house = House.find(@room.house_id)
+      name = house.name
+      re_space_house_name = name.gsub(" ","")
+      upercase_house_name = re_space_house_name.upcase
+      if @room.save
+        create_house_room_firebase(upercase_house_name, @room.name)
+        flash[:notice] =  I18n.t('rooms_controller.new_room')
+        redirect_to houses_path
+      else
+        flash[:warning] =  flash_errors(@room.errors)
+        redirect_to houses_path
+      end
     end
   end
 
@@ -66,10 +74,14 @@ class RoomsController < ApplicationController
     for i in start.to_i..finsh.to_i
       room = Room.new(name: i, amount: amount, cost: cost, width: width, length: length, description: description, house_id: house_id)
       create_house_room_firebase(upercase_house_name, i)
-      if room.save
-        flash[:notice] = I18n.t('rooms_controller.new_room')
+      if Room.where(name: room.name, house_id: room.house_id).exists?
+        flash[:warn] =  I18n.t('rooms_controller.exist_room')
       else
-        flash[:notice] = I18n.t('rooms_controller.new_room_fail')
+        if room.save
+          flash[:notice] = I18n.t('rooms_controller.new_room')
+        else
+          flash[:notice] = I18n.t('rooms_controller.new_room_fail')
+        end
       end
     end
     redirect_to houses_path
@@ -165,6 +177,22 @@ class RoomsController < ApplicationController
     end
   end
 
+  def cancel_infor
+    information_id = params[:information_id]
+    infor = Information.find(information_id)
+    user = User.find_by_email(infor.email)
+    User.delete(user.id)
+    use_service = UseService.find_by_information_id(information_id)
+    if !use_service.nil?
+      UseService.delete(use_service.id)
+    end
+    room = Room.find_by_information_id(information_id)
+    room.update(information_id: "", mark: 0, oldelectric: "", newelectric: "", oldwater: "", newwater: "")
+    Information.delete(information_id)
+    flash[:notice] = t("room.mes_cancel_room")
+    redirect_to houses_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
@@ -181,12 +209,12 @@ class RoomsController < ApplicationController
       firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS0/STATUS": "OFF"})
       firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS0/TURNON": "13:00"})
       firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS0/TURNOFF": "13:00"})
-      # firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS1/STATUS": "OFF"})
-      # firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS1/TURNON": "13:00"})
-      # firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS1/TURNOFF": "13:00"})
-      # firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS2/STATUS": "OFF"})
-      # firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS2/TURNON": "13:00"})
-      # firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS2/TURNOFF": "13:00"})
+      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS1/STATUS": "OFF"})
+      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS1/TURNON": "13:00"})
+      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS1/TURNOFF": "13:00"})
+      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS2/STATUS": "OFF"})
+      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS2/TURNON": "13:00"})
+      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS2/TURNOFF": "13:00"})
       firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS3/STATUS": "OFF"})
       firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS3/TURNON": "13:00"})
       firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/LED_STATUS3/TURNOFF": "13:00"})

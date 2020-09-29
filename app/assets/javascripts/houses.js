@@ -145,7 +145,7 @@ $( document ).on('turbolinks:load', function() {
             i ++;
             html += `
               <tr class="chosenOldCustomer currsor" data-information_id="${value["id"]}">
-                <td class="text-center test"><input type="radio"  value="${value["id"]}"></td>
+                <td class="text-center test"><input type="radio" name='chosen'  value="${value["id"]}"></td>
                 <td class="text-center">${value["name"]}</td>
                 <td class="text-center">${value["email"]}</td>
                 <td class="text-center">${value["phone1"]}</td>
@@ -158,10 +158,10 @@ $( document ).on('turbolinks:load', function() {
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th class="text-center">Chọn</th>
-                    <th class="text-center">Họ và tên</th>
-                    <th class="text-center">Email</th>
-                    <th class="text-center">Số điện thoại</th>
+                    <th class="text-center">${I18n.t('layout.order')}</th>
+                    <th class="text-center">${I18n.t('users.fullname')}</th>
+                    <th class="text-center">${I18n.t('users.email')}</th>
+                    <th class="text-center">${I18n.t('users.phone')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -170,7 +170,7 @@ $( document ).on('turbolinks:load', function() {
               </table>
               `
             );
-            self.setTitle('<i class="fa fa-user"></i> Thông tin khách hàng cũ ');
+            self.setTitle(`<i class="fa fa-user"></i> ${I18n.t('js.user.customer_old_information')} `);
             // chosenOldCustomer
         }).fail(function(){
             self.setContent('Something went wrong.');
@@ -186,7 +186,7 @@ $( document ).on('turbolinks:load', function() {
             location.href = `/addcustomer/${house_id}/${room_id}?information_id=${information_id}`;
           }
         },
-        Hủy: {
+        Cancel: {
           btnClass: 'btn-danger',
 
         }

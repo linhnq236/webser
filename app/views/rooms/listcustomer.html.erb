@@ -188,7 +188,7 @@
           <thead>
             <tr>
               <th class="text-center"><%=t('layout.order')%></th>
-              <th class="text-center"><%=t('house.show.choose')%></th>
+              <!-- <th class="text-center"><%=t('house.show.choose')%></th> -->
               <th class="text-center"><%=t('house.show.serviceused')%></th>
               <th class="text-center"><%=t('house.show.cost')%></th>
               <th class="text-center"><%=t('house.show.quantum')%></th>
@@ -199,13 +199,15 @@
               <% @services.each_with_index do |service, i|%>
               <tr>
                 <td class="text-center"><%=i + 1%></td>
-                <td class="text-center">
-                  <% if service.status == 1%>
-                    <input type="checkbox" checked value="<%=service.id%>" class="form-check-input must" data-status="must">
-                  <% else %>
-                    <input type="checkbox" value="<%=service.id%>" class="form-check-input">
-                  <% end %>
-                </td>
+                <!-- <td class="text-center"> -->
+                  <%# <% if service.status == 1%>
+                    <%# <input type="checkbox" checked value="<%=service.id%>
+                    <%# " class="form-check-input must" data-status="must"> %>
+                  <%# <% else %>
+                    <%# <input type="checkbox" value="<%=service.id%>
+                    <%# " class="form-check-input"> %>
+                  <%# <% end %>
+                <!-- </td> -->
                 <td class="text-center"><%=service.name %></td>
                 <td class="text-danger text-center"> <%=service.cost%></td>
                 <td class="text-center">

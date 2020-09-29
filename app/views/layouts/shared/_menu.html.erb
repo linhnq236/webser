@@ -21,20 +21,20 @@
           <button type="button" class="voice btn btn-sm bg-primary text-center button_mic" data-set_mic="0" name="button" title="Điều khiển bằng giọng nói"><i class="fa fa-microphone text-white" aria-hidden="true"></i></button>
         </li>
         <li class="nav-item dropdown ">
-          <a class="nav-link count-indicator hovernotbackground notify" title="Nhắc nhở" id="messageDropdown">
+          <a class="nav-link count-indicator hovernotbackground notify" title="<%=t('layout.reminders')%>" id="messageDropdown">
             <i class="mdi mdi-bell-outline"></i>
             <span class="count note_notify"></span>
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link count-indicator hovernotbackground feedback" title="thông báo" id="notificationDropdown">
-            <i class="mdi mdi-email-outline"></i>
+          <a class="nav-link count-indicator hovernotbackground feedback" title="<%=t('layout.feedback')%>" id="notificationDropdown">
+            <i class="mdi mdi-comment-multiple-outline"></i>
             <span class="count bg-success report_notify"></span>
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link count-indicator hovernotbackground" title="Gửi mail" id="emailDropdown" href="/send_email">
-            <i class="mdi mdi-send-outline"></i>
+          <a class="nav-link count-indicator hovernotbackground" title="<%=t('layout.email')%>" id="emailDropdown" href="/send_email">
+            <i class="mdi mdi-email-outline"></i>
           </a>
         </li>
       <% end %>

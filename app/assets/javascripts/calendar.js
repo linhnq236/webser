@@ -25,7 +25,7 @@ $( document ).on('turbolinks:load', function() {
               var start_time = date;
               var end_time = date;
               if(!title || !content){
-                  $.alert('Không được để trống');
+                  $.alert(I18n.t('js.mes.blank'));
                   return false;
               }
               $.ajax({
@@ -69,10 +69,10 @@ $( document ).on('turbolinks:load', function() {
             $.each(response['data'], function(index, value){
               html +=`
               <div class="form-group ">
-              <label>Tiêu đề ${index}</label>
-              <input type="text" placeholder="Tiêu đề" class="id form-control d-none" value = "${value['id']}" required />
-              <input type="text" placeholder="Tiêu đề" class="title form-control" value = "${value['title']}" required />
-              <label>Nội dung ${index}</label>
+              <label>${I18n.t('js.reminders.subtitle')} ${index+1}</label>
+              <input type="text" class="id form-control d-none" value = "${value['id']}" required />
+              <input type="text" class="title form-control" value = "${value['title']}" required />
+              <label>${I18n.t('js.reminders.content')} ${index+1}</label>
               <textarea class="content mb-2" cols="20" rows="20"> ${value['content']}</textarea>
               </div>
               `;
@@ -83,14 +83,14 @@ $( document ).on('turbolinks:load', function() {
                     ${html}
                   </form>
                 `);
-              self.setTitle('<i class="fa fa-calendar"></i> Nội dung nhắc nhở  ');
+              self.setTitle(`<i class="fa fa-calendar"></i> ${I18n.t('js.reminders.reminders')}`);
           }).fail(function(){
               self.setContent('Something went wrong.');
           });
         },
         closeIcon: true,
         buttons: {
-          Lưu:{
+          Save:{
             btnClass: 'btn-primary',
             action: function(){
               var title = this.$content.find('.title');
@@ -125,7 +125,7 @@ $( document ).on('turbolinks:load', function() {
                })
             }
           },
-          Hủy: {
+          Cancel: {
             btnClass: 'btn-danger'
           }
         }

@@ -685,7 +685,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  /* width: 100%; */
+  width: 96%;
   padding-bottom: 15px;
   border-bottom: 1px solid #cdd6dc;
   margin-bottom: 15px; }

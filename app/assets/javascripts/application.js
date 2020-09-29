@@ -16,6 +16,7 @@
 //= require chartkick
 //= require i18n.js
 //= require i18n/translations
+//= require FileSaver
 //= require turbolinks
 //= require foundation
 //= require_tree .

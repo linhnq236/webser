@@ -35,9 +35,9 @@ $( document ).on('turbolinks:load', function() {
           <label>${I18n.t('js.reminders.content')}</label>
           <textarea class="content mb-2" cols="20" rows="20"></textarea>
           <label>${I18n.t('js.reminders.start')}</label>
-          <input type="date" placeholder="Ngày bắt đầu" class="start_time form-control" required />
+          <input type="date" class="start_time form-control" required />
           <label>${I18n.t('js.reminders.end')}</label>
-          <input type="date" placeholder="Ngày kết thúc" class="end_time form-control" required />
+          <input type="date" class="end_time form-control" required />
         </div>
       </form>`,
       buttons: {
@@ -50,7 +50,7 @@ $( document ).on('turbolinks:load', function() {
                   var start_time = this.$content.find('.start_time').val();
                   var end_time = this.$content.find('.end_time').val();
                   if(!title || !content || !start_time || !end_time){
-                      $.alert('Không được dể trống');
+                      $.alert('Do not be empty');
                       return false;
                   }
                   $.ajax({
@@ -101,11 +101,11 @@ $( document ).on('turbolinks:load', function() {
   $(".delete").click(function(){
     var remind_id = $(this).data('remind_id');
     $.confirm({
-      icon: 'fa fa-warning text-warning',
-      title: "Thao tác",
-      content: "Bạn có chắc muốn xóa ?",
+      icon: 'fa fa-trash text-danger',
+      title: I18n.t("js.mes.confirm.delete"),
+      content: I18n.t("js.mes.delete"),
       buttons: {
-        Xóa: {
+        Delete: {
           btnClass: 'btn-danger',
           action: function(){
             $.ajax({
@@ -120,7 +120,7 @@ $( document ).on('turbolinks:load', function() {
             })
           }
         },
-        Hủy: {
+        Cancel: {
           btnClass: 'btn-dark'
         }
       }

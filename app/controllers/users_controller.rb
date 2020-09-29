@@ -22,12 +22,16 @@ class UsersController < ApplicationController
     if current_user.admin == 1
       if params[:disable].present?
         @users = User.where("disable = ?  AND  admin < ? AND house_id =? ", params[:disable],2, current_user.house_id)
-      elsif
+      else
         @users = User.where("admin < ? AND house_id = ? ", 2, current_user.house_id).order("admin DESC")
         # @infos =Information.order("created_at DESC")
       end
     else
-      @users = User.where("admin < ?", 2).order("admin DESC")
+      if params[:disable].present?
+        @users = User.where("disable = ?  AND  admin < ?",  params[:disable],2)
+      else
+        @users = User.where("admin < ?", 2).order("admin DESC")
+      end
     end
   end
 
