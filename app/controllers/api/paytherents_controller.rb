@@ -22,7 +22,8 @@ module Api
 
     def export
       array_data = []
-      @rooms = Room.where("house_id=#{current_user.house_id} AND information_id != ''")
+      # @rooms = Room.where("house_id=#{current_user.house_id} AND information_id != ''")
+      @rooms = Room.where("house_id=#{current_user.house_id}")
       @rooms.each do |room|
         @paytherent = Paytherent.where(senddate: params[:senddate], information_id: room.information_id)
         @paytherent.each do |p|

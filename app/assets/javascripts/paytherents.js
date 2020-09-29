@@ -39,7 +39,7 @@ $( document ).on('turbolinks:load', function() {
     }
     $.ajax({
       type: 'post',
-      url: "/api/export.csv",
+      url: "/api/export",
       data: {
         senddate: time
       },

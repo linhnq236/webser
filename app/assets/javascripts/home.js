@@ -72,7 +72,7 @@ $( document ).on('turbolinks:load', function() {
       data: {status: status, active: setactive, area: area, column: column, subcolumn: subcolumn},
       success: function(rep) {
         // console.log(rep);
-        // location.reload();
+        location.reload();
       },
       error: function(rep) {
         // console.log(rep);
@@ -110,6 +110,7 @@ $( document ).on('turbolinks:load', function() {
                 },
                 success: function(repsonse) {
                   console.log("Set timer is successfully.")
+                  location.reload();
                 },
                 error: function(repsonse) {
                   console.log("Set timer on is fails.")
