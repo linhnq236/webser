@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_122340) do
+ActiveRecord::Schema.define(version: 2020_09_30_085410) do
+
+  create_table "apps", force: :cascade do |t|
+    t.string "title"
+    t.text "text"
+    t.string "image"
+    t.string "backgroundColor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "code"

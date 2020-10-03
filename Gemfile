@@ -52,6 +52,7 @@ gem 'i18n-js'
 gem 'groupdate'
 gem 'csv', '~> 0.0.1'
 gem 'filesaverjs-rails'
+gem 'jquery-minicolors-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -1,0 +1,63 @@
+<div class="container">
+  <%= form_with(model: @app, local: true, class: 'border p-3 form_app') do |form| %>
+    <div class="field app_input_id">
+    </div>
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control app_title' %>
+    </div>
+
+    <div class="field">
+      <%= form.label :text %>
+      <%= form.text_area :text, class: 'form-control app_text' %>
+    </div>
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image, class: 'app_image' %>
+    </div>
+    <div class="field">
+      <%= form.label :backgroundColor %>
+      <%= form.text_field :backgroundColor, class: 'form-control app_backgroundColor' %>
+    </div>
+
+    <div class="actions text-center">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th  class="text-center"><%=t('layout.order')%></th>
+        <th  class="text-center"><%=t('apps.title')%></th>
+        <th  class="text-center"><%=t('apps.image')%></th>
+        <th  class="text-center"><%=t('apps.description')%></th>
+        <th  class="text-center"><%=t('apps.backgroundColor')%></th>
+        <th  class="text-center"><%=t('layout.created_at')%></th>
+        <th  class="text-center"><%=t('layout.updated_at')%></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @apps.each_with_index do |app,i|%>
+        <tr class="text-center">
+          <td><%=i+=1%></td>
+          <td><%=app.title%></td>
+          <td><%=image_tag(asset_url(app.image), class: "app_img")%></td>
+          <td><%=app.title%></td>
+          <td><input type="text" name="backgroundColor" class="form-control show_backgroundcolor" value="<%=app.backgroundColor%>"> </td>
+          <td><%=time_ago_in_words(app.created_at)%></td>
+          <td><%=time_ago_in_words(app.updated_at)%></td>
+          <th>
+            <button type="button" class="btn btn-sm btn-danger delete_slider" data-app_id="<%=app.id%>" name="button">
+              <i class="fa fa-trash"></i>
+            </button>
+            <button type="button" class="btn btn-sm btn-info edit_slider" data-app_id="<%=app.id%>" name="button">
+              <i class="fa fa-edit"></i>
+            </button>
+          </th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

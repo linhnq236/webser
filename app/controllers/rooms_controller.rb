@@ -1,13 +1,13 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy, :payroom]
   before_action  only: [:room_fast, :addcustomer, :listcustomer, :payroom, :edit, :destroy, :new] do
-    check_admin_login("/houses")
+    check_manager_access_admin("/houses")
   end
 
   # FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   # FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   require "firebase_connect"
-  
+
   # GET /rooms
   # GET /rooms.json
   def index

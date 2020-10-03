@@ -211,6 +211,11 @@ en:
     yes: "yes"
     no: "No"
     confirm_paytherent: "Payment confirmation here"
+  apps:
+    title: "Title"
+    image: "Image"
+    description: "Description"
+    backgroundColor: "backgroundColor"
   shared:
     informations: "Informations"
     services: "Services"
@@ -220,6 +225,7 @@ en:
     not_permission: "You do not have permission to login"
     not_admin_access: "Admin does not have access"
     acc_disable: "This account is disabled"
+    not_admin: "You are not admin !"
   houses_controller:
     not_check_out: "Guests have not checked out"
   informations_controller:
@@ -267,6 +273,8 @@ en:
   users_controller:
     create: "Create a new manager"
   reports_controller:
+  apps_controller:
+
   reports:
     feedback: "Feedback"
     title: "Title"
@@ -340,9 +348,9 @@ en:
       all: "All"
     home:
       LED_STATUS0: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 1 "
-      LED_STATUS1: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 1 "
-      LED_STATUS2: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 1 "
-      LED_STATUS3: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 2"
+      LED_STATUS1: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 2 "
+      LED_STATUS2: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 3 "
+      LED_STATUS3: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 4"
       LED_STATUS5: "<i class='mdi mdi-fan text-primary'> </i> FAN"
       LED_STATUS6: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 1"
       LED_STATUS7: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 2"

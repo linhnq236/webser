@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :apps
   resources :reports
   resources :paytherents
   # mount ActionCable.server, at: '/cable'
@@ -78,6 +79,11 @@ Rails.application.routes.draw do
     get "/showpopup/:id", to: "reports#showpopup"
     resources :supports
     resources :services
+    resources :apps
+    get "/appSlider", to: "apps#appSlider"
+    get "/delete_slider", to: "apps#delete_slider"
+    get "/edit_slider/:id", to: "apps#edit_slider"
+    patch "/update/:id", to: "apps#update"
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -46,5 +46,6 @@ $( document ).on('turbolinks:load', function() {
     var class_menu = array_class[position];
     $(`.${class_menu}`).css({'background': 'repeating-linear-gradient(11deg, black, transparent 123px)'})
   }
+  $('input[name=backgroundColor]').minicolors();
 
 })

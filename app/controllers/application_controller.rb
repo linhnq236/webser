@@ -46,12 +46,20 @@ class ApplicationController < ActionController::Base
   end
 
   def check_admin_login path
-    # if user_signed_in?
-    #   if current_user.admin == 2
-    #     flash[:warning] = I18n.t('application_controller.not_admin_access')
-    #     redirect_to path
-    #   end
-    # end
+    if user_signed_in?
+      if current_user.admin == 2
+        flash[:warning] = I18n.t('application_controller.not_admin_access')
+        redirect_to path
+      end
+    end
+  end
+  def check_manager_access_admin path
+    if user_signed_in?
+      if current_user.admin == 1
+        flash[:warning] = I18n.t('application_controller.not_admin')
+        redirect_to path
+      end
+    end
   end
 
   def gettemperature

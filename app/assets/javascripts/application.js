@@ -17,6 +17,8 @@
 //= require i18n.js
 //= require i18n/translations
 //= require FileSaver
+//= require jquery.minicolors
+//= require jquery.minicolors.simple_form
 //= require turbolinks
 //= require foundation
 //= require_tree .
