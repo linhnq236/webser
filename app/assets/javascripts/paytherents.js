@@ -55,6 +55,7 @@ $( document ).on('turbolinks:load', function() {
               House   : ${val['house']}
               Room    : ${val['room']}
               Payment : ${val['status'] == 1 ? "Yes" : "No"}
+              Month   : ${val['month']}
               Total   : ${val['total']} VND
 
               (Note: Let's check your email)
