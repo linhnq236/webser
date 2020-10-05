@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy, :payroom]
-  before_action  only: [:room_fast, :addcustomer, :listcustomer, :payroom, :edit, :destroy, :new] do
+  before_action  only: [:room_fast, :destroy, :new] do
     check_manager_access_admin("/houses")
   end
 
