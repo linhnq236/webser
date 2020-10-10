@@ -45,4 +45,8 @@ class UsersController < ApplicationController
      redirect_to account_path
     end
   end
+
+  def change_avata
+
+  end
 end

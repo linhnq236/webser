@@ -2,9 +2,9 @@ class NotifyMailerController < ApplicationController
   include ServicesHelper
   def send_email
     if current_user.admin == 1
-      @infors = Room.where("house_id=  #{current_user.house_id} AND information_id != ''").order("id ASC")
+      @infors = Room.where("house_id=  #{current_user.house_id}").merge(Room.where.not(information_id: nil)).order("id ASC")
     else
-      @infors = Room.where("information_id != ''").order("id ASC")
+      @infors = Room.where.not(information_id: nil).order("id ASC")
     end
   end
 
