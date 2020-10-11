@@ -216,6 +216,8 @@ en:
     image: "Image"
     description: "Description"
     backgroundColor: "backgroundColor"
+    textcolor: "Textcolor"
+    regulation: "Regulation"
   shared:
     informations: "Informations"
     services: "Services"

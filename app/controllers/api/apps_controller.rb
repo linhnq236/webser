@@ -5,7 +5,7 @@ module Api
   skip_before_action :verify_authenticity_token
   before_action :set_params, only: [:show]
     def appSlider
-      apps = App.order("created_at DESC")
+      apps = App.order("created_at ASC")
       render json: {slides: apps}
     end
 
