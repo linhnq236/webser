@@ -2,7 +2,8 @@ module Api
   class ReportsController < ApplicationController
     skip_before_action :authenticate_user!
     skip_before_action :verify_authenticity_token
-    before_action :set_params, only: [:show, :destroy]
+    before_action :set_params, only: [:destroy]
+    before_action :set_params_information, only: [:show]
 
     def index
       @reports = Report.where(user_id: current_user.id)
@@ -40,6 +41,9 @@ module Api
 
     def set_params
       @report = Report.find(params[:id])
+    end
+    def set_params_information
+      @report = Report.find_by_information_id(params[:id])
     end
   end
 end

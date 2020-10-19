@@ -15,7 +15,7 @@ module Webser
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:en, :vn]
     # test ngrok
-    Rails.application.config.hosts << "64f4f5e6cfec.ngrok.io"
+    # Rails.application.config.hosts << "7f00abc4690a.ngrok.io"
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
 
     # config.active_record.default_timezone = :local

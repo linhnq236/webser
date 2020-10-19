@@ -19,7 +19,11 @@ class RegulationsController < ApplicationController
   # GET /regulations/new
   def new
     @regulation = Regulation.new
-    @houses = House.where(id: current_user.house_id)
+    if current_user.admin == 1
+      @houses = House.where(id: current_user.house_id)
+    else
+      @houses = House.where("name != ?", 'MyHouse')
+    end
   end
 
   # GET /regulations/1/edit
