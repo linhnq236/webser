@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_085410) do
+ActiveRecord::Schema.define(version: 2020_10_10_200042) do
 
   create_table "apps", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_085410) do
     t.string "backgroundColor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "textcolor"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -27,6 +28,16 @@ ActiveRecord::Schema.define(version: 2020_09_30_085410) do
     t.string "kind"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "districts", force: :cascade do |t|
@@ -106,6 +117,15 @@ ActiveRecord::Schema.define(version: 2020_09_30_085410) do
     t.integer "information_id"
     t.float "money", default: 0.0
     t.index ["information_id"], name: "index_paytherents_on_information_id"
+  end
+
+  create_table "regulations", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "house_id"
+    t.index ["house_id"], name: "index_regulations_on_house_id"
   end
 
   create_table "reminders", force: :cascade do |t|
@@ -213,6 +233,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_085410) do
   add_foreign_key "infor_servs", "services"
   add_foreign_key "members", "information"
   add_foreign_key "paytherents", "information"
+  add_foreign_key "regulations", "houses"
   add_foreign_key "reminders", "users"
   add_foreign_key "reports", "information"
   add_foreign_key "reports", "users"

@@ -5,6 +5,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Webser" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Webser" %>">
     <%= csrf_meta_tags %>
+    <%= javascript_include_tag Ckeditor.cdn_url %>
     <link rel="icon" href="<%= asset_url('iconweb')%>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%# Modernizr is required for Zurb Foundation %>

@@ -1,0 +1,22 @@
+<div class="container">
+  <%= form_with(model: regulation, local: true) do |form| %>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.cktext_area :description, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' } %>
+    </div>
+    <div class="field">
+      <%= form.label :House %>
+      <%=select_tag 'regulation[house_id]', options_from_collection_for_select(@houses, "id", "name", @regulation.house_id), class: 'forn-control'%>
+    </div>
+    <div class="actions text-center">
+      <%= form.submit class: "btn btn-primary btn-sm" %>
+    </div>
+  <% end %>
+
+</div>

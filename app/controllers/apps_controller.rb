@@ -31,6 +31,6 @@ class AppsController < ApplicationController
   private
 
   def set_params
-    params.permit(:title, :text, :image, :backgroundColor)
+    params.permit(:title, :text, :image, :backgroundColor, :textcolor)
   end
 end

@@ -17,9 +17,9 @@ module Api
       arrayid.each_with_index do |id, index|
         reminder = Reminder.find(id)
         if reminder.update(title: arraytitle[index], content: arraycontent[index])
-          flash[:notice] = "Cập nhật thành công"
+          flash[:notice] = "updated successfully"
         else
-          flash[:notice] = "Cập nhật thất bại"
+          flash[:notice] = "Updated faild"
         end
       end
       redirect_to "/reminders"

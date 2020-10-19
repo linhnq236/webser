@@ -9,7 +9,7 @@
 
     <div class="field">
       <%= form.label :text %>
-      <%= form.text_area :text, class: 'form-control app_text' %>
+      <%= form.cktext_area :text, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' }, class: 'form-control app_text' %>
     </div>
     <div class="field">
       <%= form.label :image %>
@@ -19,7 +19,10 @@
       <%= form.label :backgroundColor %>
       <%= form.text_field :backgroundColor, class: 'form-control app_backgroundColor' %>
     </div>
-
+    <div class="field">
+      <%= form.label :textcolor %>
+      <%= form.text_field :textcolor, class: 'form-control app_textColor' %>
+    </div>
     <div class="actions text-center">
       <%= form.submit class: 'btn btn-primary' %>
     </div>
@@ -33,6 +36,7 @@
         <th  class="text-center"><%=t('apps.image')%></th>
         <th  class="text-center"><%=t('apps.description')%></th>
         <th  class="text-center"><%=t('apps.backgroundColor')%></th>
+        <th  class="text-center"><%=t('apps.textcolor')%></th>
         <th  class="text-center"><%=t('layout.created_at')%></th>
         <th  class="text-center"><%=t('layout.updated_at')%></th>
         <th></th>
@@ -44,8 +48,9 @@
           <td><%=i+=1%></td>
           <td><%=app.title%></td>
           <td><%=image_tag(asset_url(app.image), class: "app_img")%></td>
-          <td><%=app.title%></td>
+          <td><%=app.text.html_safe%></td>
           <td><input type="text" name="backgroundColor" class="form-control show_backgroundcolor" value="<%=app.backgroundColor%>"> </td>
+          <td><input type="text" name="textcolor" class="form-control show_textcolor" value="<%=app.textcolor%>"> </td>
           <td><%=time_ago_in_words(app.created_at)%></td>
           <td><%=time_ago_in_words(app.updated_at)%></td>
           <th>

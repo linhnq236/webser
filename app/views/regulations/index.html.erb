@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Regulations</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>House</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @regulations.each do |regulation| %>
+        <tr>
+          <td><%= regulation.house&.name %></td>
+          <td><%= regulation.title %></td>
+          <td><%= regulation.description.html_safe %></td>
+          <td><%= time_ago_in_words(regulation.created_at) %></td>
+          <td><%= time_ago_in_words(regulation.updated_at) %></td>
+          <!-- <td><%= link_to ('<i class="fa fa-edit"></i>').html_safe, regulation %></td> -->
+          <td><%= link_to ('<i class="fa fa-edit text-primary"></i>').html_safe, edit_regulation_path(regulation), class: "hovernotbackground" %></td>
+          <td><%= link_to ('<i class="fa fa-trash text-danger"></i>').html_safe, regulation, method: :delete, data: { confirm: 'Are you sure?' }, class: "hovernotbackground" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Regulation', new_regulation_path, class: "text-info houvernotbackground" %>
+
+</div>

@@ -9,17 +9,22 @@ module Api
       name = ''
       id = ''
       user = User.find_by_email(params[:email])
-      user_pass = BCrypt::Password.new(user.encrypted_password)
-      if user_pass == params[:password]
-        infor = Information.where(email: params[:email])
-        infor.each do |n|
-          name = n.name
-          id = n.id
-        end
-        render json: {status: 200, username: name, id: id, disable: user.disable }
-      else
+      if user.nil?
         render json: {status: 204}
+      else
+  	user_pass = BCrypt::Password.new(user.encrypted_password)
+        if user_pass == params[:password]
+           infor = Information.where(email: params[:email])
+           infor.each do |n|
+             name = n.name
+             id = n.id
+           end
+           render json: {status: 200, username: name, id: id, disable: user.disable }
+        else
+          render json: {status: 204}
+        end
       end
+    
     end
 
     def active_acc

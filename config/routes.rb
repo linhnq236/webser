@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :regulations
+  mount Ckeditor::Engine => '/ckeditor'
   resources :apps
   resources :reports
   resources :paytherents
@@ -84,6 +86,8 @@ Rails.application.routes.draw do
     get "/delete_slider", to: "apps#delete_slider"
     get "/edit_slider/:id", to: "apps#edit_slider"
     patch "/update/:id", to: "apps#update"
+    resources :regulations
+    get "/getRegulations/:information_id", to: "regulations#getRegulations"
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
