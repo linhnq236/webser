@@ -17,10 +17,11 @@ module Api
       phone1 = params[:phone1]
       phone2 = params[:phone2]
       permanent = params[:permanent]
+      sex= params[:sex]
       # deposit = params[:deposit]
       note = params[:note]
       info = Information.find(params[:id])
-      if info.update(name: name, birth: birth, indentifycard: indentifycard, phone1: phone1, phone2: phone2, note: note)
+      if info.update(name: name, birth: birth, indentifycard: indentifycard, phone1: phone1, phone2: phone2, note: note, sex: sex)
         render json: {status: 200}
       else
         render json: {status: 402}

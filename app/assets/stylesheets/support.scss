@@ -13,6 +13,10 @@ textarea{
   font-weight: bold;
   -webkit-animation: colorchange 20s infinite alternate;
 }
+.welcome_title{
+  width: 67%;
+  padding: 0 4% 0 17%;
+}
 
 @-webkit-keyframes colorchange {
   0% {

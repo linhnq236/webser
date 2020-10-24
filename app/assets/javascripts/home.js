@@ -28,7 +28,7 @@ $( document ).on('turbolinks:load', function() {
       var area = $(this).data("area");
       var column = $(this).data("column");
       var subcolumn = $(this).data("subcolumn");
-      if (subcolumn == "TURNON" || subcolumn == "TURNOFF") {
+      if (subcolumn == "turnon" || subcolumn == "turnoff") {
         setTime(status,area, column, subcolumn);
       }else {
         api_led_status(status,active,area, column, subcolumn);
@@ -49,7 +49,7 @@ $( document ).on('turbolinks:load', function() {
             <div class="col-sm-3 third_${mark}" data-third="${ind}">${I18n.t(`js.home.${ind}`)}</div>
             <div class="col-sm-3">${ind1}</div>
             <div class="col-sm-3 chip_${index+ind}">
-            <button class="col-sm-12 led led${area} ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'ON' ? 'bg-danger': 'bg-primary'}" data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${val1}</button>
+            <button class="col-sm-12 led led${area} ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'on' ? 'bg-danger': 'bg-primary'}" data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${val1}</button>
             </div>
           </div>
           `
@@ -61,10 +61,10 @@ $( document ).on('turbolinks:load', function() {
   }
 
   function api_led_status(status,active, area, column, subcolumn){
-    if(active == "ON"){
-      setactive = "OFF";
+    if(active == "on"){
+      setactive = "off";
     }else{
-      setactive = "ON";
+      setactive = "on";
     }
     $.ajax({
       type: 'post',

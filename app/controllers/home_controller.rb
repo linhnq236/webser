@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   # FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   # FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   require "firebase_connect"
-  
+
   def index
       # NoticeMailer.notify_cost("1").deliver_now!
   end
@@ -25,7 +25,7 @@ class HomeController < ApplicationController
     column = params[:column]
     subcolumn = params[:subcolumn]
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-    if(column == "TURNON" || column == "TURNOFF")
+    if(column == "turnon" || column == "turnoff")
       byebug
     else
       response = firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/#{subcolumn}": active})
@@ -68,7 +68,7 @@ class HomeController < ApplicationController
     room = Room.find(room_id)
 
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-    response = firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/Phong#{room.name}/LED_STATUS#{chip}/STATUS": set_status})
+    response = firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/Phong#{room.name}/led_status#{chip}/status": set_status})
     ActionCable.server.broadcast 'ledstatus_channel',
       ledstatus: response.body
     head :no_content

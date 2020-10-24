@@ -15,7 +15,7 @@ module Webser
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:en, :vn]
     # test ngrok
-    # Rails.application.config.hosts << "7f00abc4690a.ngrok.io"
+    Rails.application.config.hosts << "b0a673693828.ngrok.io"
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
 
     # config.active_record.default_timezone = :local
@@ -23,5 +23,12 @@ module Webser
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+  # Cors
+   config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
   end
 end

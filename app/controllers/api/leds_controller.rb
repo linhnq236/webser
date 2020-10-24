@@ -26,8 +26,8 @@ module Api
       room = Room.find(params[:room_id])
       house = House.find(room.house_id)
       [0,1,2,3,5,6,7,8].each do |k|
-        ["STATUS", "TURNON", "TURNOFF"].each do |p|
-          string = "#{remove_space_upcase_string(house.name)}/Phong#{room.name}/LED_STATUS#{k}/#{p}"
+        ["status", "turnon", "turnoff"].each do |p|
+          string = "#{remove_space_upcase_string(house.name)}/Phong#{room.name}/led_status#{k}/#{p}"
           array_setup.push(string);
         end
       end

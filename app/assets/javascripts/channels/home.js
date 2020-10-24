@@ -13,7 +13,7 @@ $( document ).on('turbolinks:load', function() {
                 setareapin = index + i + ii + iii;
                 if(areapin == setareapin){
                   $(this).text(vvv);
-                  if (vvv == 'ON') {
+                  if (vvv == 'on') {
                     $(`.${areapin}`).removeClass('bg-primary');
                     $(`.${areapin}`).addClass('bg-danger');
                   } else {

@@ -24,7 +24,7 @@ vn:
     LED_STATUS6: "ĐÈN SỐ  7"
     LED_STATUS7: "ĐÈN SỐ  8"
     STATUS: "Trạng thái"
-    TURNON: "Bật"
+    turnon: "Bật"
     TUNROFF: "Tắt"
   datetime:
     distance_in_words:

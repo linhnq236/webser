@@ -54,6 +54,7 @@ gem 'csv', '~> 0.0.1'
 gem 'filesaverjs-rails'
 gem 'jquery-minicolors-rails'
 gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'rack-cors'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

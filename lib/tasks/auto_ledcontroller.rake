@@ -11,11 +11,11 @@ namespace :auto_ledcontroller do
         room_name = re[0]
         re[1].each do |r|
           chip = r[0]
-          if r[1]['TURNOFF'] == date
-            response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/STATUS": "OFF"})
+          if r[1]['turnoff'] == date
+            response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/status": "off"})
           end
-          if r[1]['TURNON'] == date
-            response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/STATUS": "ON"})
+          if r[1]['turnon'] == date
+            response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/status": "on"})
           end
         end
       end
