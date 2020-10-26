@@ -79,6 +79,7 @@ Rails.application.routes.draw do
     get "/getUseServices/:information_id", to: "use_services#getUseServices"
     resources :reports
     get "/showpopup/:id", to: "reports#showpopup"
+    post "/deleteId/:id", to: "reports#deleteId"
     resources :supports
     resources :services
     resources :apps

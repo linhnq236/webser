@@ -33,6 +33,11 @@ module Api
       end
     end
 
+    def deleteId
+      Report.delete(params[:id])
+      render json: {status: 200}
+    end
+
     def destroy
       @report.destroy
       render json: {status: 200}
