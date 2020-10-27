@@ -26,7 +26,6 @@ $( document ).on('turbolinks:load', function() {
   })
 
   //
-  console.log(gon.reports);
   $.each(gon.reports, function(index, value){
     var created_at = (value['created_at']);
     var format_created_at = moment(new Date(created_at)).format('yyyy-MM-D');

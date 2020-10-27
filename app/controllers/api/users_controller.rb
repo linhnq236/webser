@@ -19,12 +19,12 @@ module Api
              name = n.name
              id = n.id
            end
-           render json: {status: 200, username: name, id: id, disable: user.disable }
+           render json: {status: 200, username: name, id: id, disable: user.disable, admin: user.admin }
         else
           render json: {status: 204}
         end
       end
-    
+
     end
 
     def active_acc

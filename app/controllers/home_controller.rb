@@ -60,12 +60,13 @@ class HomeController < ApplicationController
     status = name.slice(3)
     set_status = ''
     if status == '1'
-      set_status = 'ON'
+      set_status = 'on'
     else
-      set_status = 'OFF'
+      set_status = 'off'
     end
     house = House.find(house_id)
-    room = Room.find(room_id)
+    room = Room.find_by_name(room_id)
+
 
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     response = firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/Phong#{room.name}/led_status#{chip}/status": set_status})
