@@ -7,19 +7,13 @@ class ServicesController < ApplicationController
     @services = Service.all.order("status DESC")
     if current_user.admin == 1
       @array_use_services = []
-      @users = User.where(house_id: current_user.house_id, admin: 0)
-      @users.each do |user|
-        info = Information.find_by_email(user.email)
-        @array_use_services.push(info.id)
+      @rooms = Room.where(house_id: current_user.house_id).merge(Room.where.not(information_id: nil)).order("id ASC")
+      @rooms.each do |room|
+        use= UseService.find_by_information_id(room.information_id)
+        @array_use_services.push(use)
       end
-      @array_services = []
-      @array_use_services.each do |ar|
-        use_service = UseService.find_by_information_id(ar)
-        if !use_service.nil?
-          @array_services.push(use_service)
-        end
-      end
-      @use_services = @array_services
+      @use_services = @array_use_services
+      
     else
       @use_services = UseService.all
     end

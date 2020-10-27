@@ -4,11 +4,11 @@ class UsersController < ApplicationController
     # @rooms = Room.all
     if current_user.admin == 1
       array_infos = []
-      users = User.where(house_id: current_user.house_id, admin: 0)
-      users.each do |u|
-        info = Information.where(email: u.email, mark: 0)
-        info.each do |i|
-          array_infos.push(i)
+      @rooms = Room.where(house_id: current_user.house_id).merge(Room.where.not(information_id: nil)).order("id ASC")
+      @rooms.each do |u|
+        infor = Information.where(id: u.information_id, mark: 0)
+        infor.each do |info|
+          array_infos.push(info)
         end
       end
       @users = array_infos
