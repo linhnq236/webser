@@ -24,7 +24,7 @@ module Api
       room = Room.find_by_information_id(information_id)
       user = User.where(house_id: room.house_id, admin: 1)
       user.each do |u|
-        report = Report.new(title: title, content: content, information_id: information_id, house_id: u.house_id)
+        report = Report.new(title: title, content: content, information_id: information_id, house_id: room.house_id)
         if report.save
           render json: {status: 200}
         else
