@@ -22,15 +22,15 @@ module Api
       content = params[:content]
       information_id = params[:information_id]
       room = Room.find_by_information_id(information_id)
-      user = User.where(house_id: room.house_id, admin: 1)
-      user.each do |u|
-        report = Report.new(title: title, content: content, information_id: information_id, user_id: u.id, house_id: room.house_id)
+      # user = User.where(house_id: room.house_id, admin: 1)
+      # user.each do |u|
+        report = Report.new(title: title, content: content, information_id: information_id, house_id: room.house_id)
         if report.save
           render json: {status: 200}
         else
           render json: {status: report.errors}
         end
-      end
+      # end
     end
 
     def deleteId
