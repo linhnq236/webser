@@ -1,8 +1,10 @@
 $( document ).on('turbolinks:load', function() {
   var d = new Date();
-  var twoDigitMonth = (d.getMonth() > 9)? (d.getMonth()+1) : '0' + (d.getMonth()+1);
-  var twoDigitDay = ((d.getDate()) >9)? (d.getDate()) : '0' + (d.getDate());
-  var currentDate = d.getFullYear() + '-' + twoDigitMonth + "-" + twoDigitDay;
+  var month = d.getMonth()+1;
+  var day = d.getDate();
+  var currentDate = d.getFullYear() + '-' +
+      (month<10 ? '0' : '') + month + '-' +
+      (day<10 ? '0' : '') + day;
   var html_report =  '';
   var count_report = 0;
   $(".rep_report").click(function(){
@@ -24,10 +26,10 @@ $( document ).on('turbolinks:load', function() {
   })
 
   //
+  console.log(gon.reports);
   $.each(gon.reports, function(index, value){
     var created_at = (value['created_at']);
     var format_created_at = moment(new Date(created_at)).format('yyyy-MM-D');
-
     if (Date.parse(format_created_at) <= Date.parse(currentDate)){
       if (value['mark'] == 0) {
         count_report += 1;

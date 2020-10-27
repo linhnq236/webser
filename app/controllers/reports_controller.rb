@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
   # GET /reports.json
   def index
     if current_user.admin == 1
-      @reports = Report.where(user_id: current_user.id)
+      @reports = Report.where(house_id: current_user.house_id)
     else
       @reports = Report.all.order("created_at DESC")
     end

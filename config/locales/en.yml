@@ -276,7 +276,6 @@ en:
     delete: "Deleted successfully"
   users_controller:
     create: "Create a new manager"
-  reports_controller:
   apps_controller:
 
   reports:

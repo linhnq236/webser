@@ -9,13 +9,12 @@ class ApplicationController < ActionController::Base
   def check_user_login
     if user_signed_in?
       gon.user = current_user.id
-      gon.reminders = Reminder.where(user_id: current_user.id).order("start_time DESC")
-      gon.reports = Report.where(user_id: current_user.id).order("created_at DESC")
       gon.supports = Support.all
-      gon.callvideos  = User.where("admin = 1 AND id != #{current_user.id}")
       firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
       response = firebase.get(FIREBASE_URL).body
       if current_user.admin == 1
+        gon.reminders = Reminder.where(user_id: current_user.id).order("start_time DESC")
+        gon.reports = Report.where(house_id: current_user.house_id).order("created_at DESC")
         gon.rooms = Room.where(house_id: current_user.house_id)
         gon.houses = House.where(id: current_user.house_id)
         house_name = House.find(current_user.house_id)
@@ -25,6 +24,7 @@ class ApplicationController < ActionController::Base
         gon.rooms = Room.all
         gon.houses = House.where("name != ?", 'MyHouse')
         gon.leds = response
+        gon.reports = Report.all.order("created_at DESC")
       end
     else
       gon.user = 0

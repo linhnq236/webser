@@ -2,8 +2,8 @@ module Api
   class ReportsController < ApplicationController
     skip_before_action :authenticate_user!
     skip_before_action :verify_authenticity_token
-    before_action :set_params, only: [:destroy]
-    before_action :set_params_information, only: [:show]
+    before_action :set_params, only: [:destroy, :show]
+    # before_action :set_params_information, only: [:show]
 
     def index
       @reports = Report.where(user_id: current_user.id)
@@ -24,7 +24,7 @@ module Api
       room = Room.find_by_information_id(information_id)
       user = User.where(house_id: room.house_id, admin: 1)
       user.each do |u|
-        report = Report.new(title: title, content: content, information_id: information_id, user_id: u.id)
+        report = Report.new(title: title, content: content, information_id: information_id, house_id: u.house_id)
         if report.save
           render json: {status: 200}
         else
