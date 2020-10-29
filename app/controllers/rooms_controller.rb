@@ -126,7 +126,7 @@ class RoomsController < ApplicationController
           if inf.update(mark: 1)
             UseService.where(information_id: params[:information_id]).delete_all
             Member.where(information_id: params[:information_id]).delete_all
-            Paytherent.where(information_id: params[:information_id]).delete_all
+            # Paytherent.where(information_id: params[:information_id]).delete_all
             flash[:notice] = I18n.t('rooms_controller.payroom_success')
             redirect_to houses_path
           end
