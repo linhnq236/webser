@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
   def check_user_login
     if user_signed_in?
       gon.user = current_user.id
+      gon.reminders = Reminder.where(user_id: current_user.id).order("start_time DESC")
       gon.supports = Support.all
       firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
       response = firebase.get(FIREBASE_URL).body
       if current_user.admin == 1
-        gon.reminders = Reminder.where(user_id: current_user.id).order("start_time DESC")
         gon.reports = Report.where(house_id: current_user.house_id).order("created_at DESC")
         gon.rooms = Room.where(house_id: current_user.house_id)
         gon.houses = House.where(id: current_user.house_id)

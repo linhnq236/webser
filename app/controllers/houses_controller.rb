@@ -81,6 +81,9 @@ class HousesController < ApplicationController
 
       firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
       firebase.delete("#{upercase_house_name}")
+      user = User.find_by_house_id(params[:id])
+      Reminder.where(user_id: user.id).delete_all
+      User.where(house_id: params[:id]).delete_all
       house = House.delete(params[:id])
       flash[:notice] = I18n.t('mes.delete_success', name: I18n.t('house.house_name'))
       redirect_to houses_path

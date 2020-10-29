@@ -124,12 +124,9 @@ class RoomsController < ApplicationController
         user = User.find_by_email(inf.email)
         if user.update(disable: 1)
           if inf.update(mark: 1)
-            use_service = UseService.find_by_information_id(params[:information_id])
-            UseService.delete(use_service.id)
-            member = Member.find_by_information_id(params[:information_id])
-            if !member.nil?
-              Member.delete(member.id)
-            end
+            UseService.where(information_id: params[:information_id]).delete_all
+            Member.where(information_id: params[:information_id]).delete_all
+            Paytherent.where(information_id: params[:information_id]).delete_all
             flash[:notice] = I18n.t('rooms_controller.payroom_success')
             redirect_to houses_path
           end
