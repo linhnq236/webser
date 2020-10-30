@@ -55,8 +55,7 @@ class RoomsController < ApplicationController
   end
 
   def room_fast
-    @houses = House.order("id DESC")
-
+    @houses = House.where("name != ?", 'MyHouse').order("id DESC")
   end
   def roomfast
     start = params[:start]
