@@ -1,7 +1,5 @@
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.3/ext/websocket-driver
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20200726-1621-1vuwb56.rb extconf.rb
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
+/home/lihn/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20201104-22913-1x9omwr.rb extconf.rb
 creating Makefile
 
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.3/ext/websocket-driver
@@ -14,4 +12,4 @@ linking shared-object websocket_mask.so
 
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.3/ext/websocket-driver
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20200726-1621-1e4rw66
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20201104-22913-1d9sfol

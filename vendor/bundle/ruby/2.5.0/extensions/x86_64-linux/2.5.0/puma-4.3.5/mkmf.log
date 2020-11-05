@@ -1,7 +1,7 @@
 have_library: checking for BIO_read() in -lcrypto... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic     -lruby-2.5  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
-/usr/lib/ruby/2.5.0/mkmf.rb:395: warning: Insecure world writable dir /home/lihn in PATH, mode 040777
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+/home/lihn/.rbenv/versions/2.5.1/lib/ruby/2.5.0/mkmf.rb:395: warning: Insecure world writable dir /home/lihn/.local/bin in PATH, mode 040777
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -12,13 +12,17 @@ checked program was:
 6: }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic     -lruby-2.5 -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:13:57: error: ‘BIO_read’ undeclared (first use in this function); did you mean ‘pread’?
  int t(void) { void ((*volatile p)()); p = (void ((*)()))BIO_read; return !p; }
                                                          ^~~~~~~~
                                                          pread
 conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -36,7 +40,7 @@ checked program was:
 13: int t(void) { void ((*volatile p)()); p = (void ((*)()))BIO_read; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic     -lruby-2.5 -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -59,12 +63,16 @@ checked program was:
 
 have_library: checking for SSL_CTX_new() in -lssl... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic    -lcrypto  -lruby-2.5 -lssl -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lcrypto  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lssl -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:13:57: error: ‘SSL_CTX_new’ undeclared (first use in this function)
  int t(void) { void ((*volatile p)()); p = (void ((*)()))SSL_CTX_new; return !p; }
                                                          ^~~~~~~~~~~
 conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -82,7 +90,7 @@ checked program was:
 13: int t(void) { void ((*volatile p)()); p = (void ((*)()))SSL_CTX_new; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic    -lcrypto  -lruby-2.5 -lssl -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lcrypto  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lssl -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -105,7 +113,7 @@ checked program was:
 
 have_header: checking for openssl/bio.h... -------------------- yes
 
-"gcc -E -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -117,7 +125,7 @@ checked program was:
 
 have_func: checking for DTLS_method() in openssl/ssl.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-2.5 -lssl -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lssl -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -141,7 +149,7 @@ checked program was:
 
 have_func: checking for TLS_server_method() in openssl/ssl.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -lruby-2.5 -lssl -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lssl -lcrypto  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lssl -lcrypto  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -165,7 +173,7 @@ checked program was:
 
 have_macro: checking for SSL_CTX_set_min_proto_version in openssl/ssl.h... -------------------- yes
 
-"gcc -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC   -c conftest.c"
+"gcc -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC   -c conftest.c"
 checked program was:
 /* begin */
 1: #include "ruby.h"

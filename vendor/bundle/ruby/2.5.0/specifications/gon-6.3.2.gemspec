@@ -14,27 +14,39 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/gazay/gon".freeze
   s.licenses = ["MIT".freeze]
   s.required_ruby_version = Gem::Requirement.new(">= 2.2.0".freeze)
-  s.rubygems_version = "3.1.4".freeze
+  s.rubygems_version = "2.7.6".freeze
   s.summary = "Get your Rails variables in your JS".freeze
 
-  s.installed_by_version = "3.1.4" if s.respond_to? :installed_by_version
+  s.installed_by_version = "2.7.6" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
-  end
 
-  if s.respond_to? :add_runtime_dependency then
-    s.add_runtime_dependency(%q<actionpack>.freeze, [">= 3.0.20"])
-    s.add_runtime_dependency(%q<i18n>.freeze, [">= 0.7"])
-    s.add_runtime_dependency(%q<request_store>.freeze, [">= 1.0"])
-    s.add_runtime_dependency(%q<multi_json>.freeze, [">= 0"])
-    s.add_development_dependency(%q<rabl>.freeze, ["= 0.11.3"])
-    s.add_development_dependency(%q<rabl-rails>.freeze, [">= 0"])
-    s.add_development_dependency(%q<rspec>.freeze, [">= 3.0"])
-    s.add_development_dependency(%q<jbuilder>.freeze, [">= 0"])
-    s.add_development_dependency(%q<railties>.freeze, [">= 3.0.20"])
-    s.add_development_dependency(%q<rake>.freeze, [">= 0"])
-    s.add_development_dependency(%q<pry>.freeze, [">= 0"])
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<actionpack>.freeze, [">= 3.0.20"])
+      s.add_runtime_dependency(%q<i18n>.freeze, [">= 0.7"])
+      s.add_runtime_dependency(%q<request_store>.freeze, [">= 1.0"])
+      s.add_runtime_dependency(%q<multi_json>.freeze, [">= 0"])
+      s.add_development_dependency(%q<rabl>.freeze, ["= 0.11.3"])
+      s.add_development_dependency(%q<rabl-rails>.freeze, [">= 0"])
+      s.add_development_dependency(%q<rspec>.freeze, [">= 3.0"])
+      s.add_development_dependency(%q<jbuilder>.freeze, [">= 0"])
+      s.add_development_dependency(%q<railties>.freeze, [">= 3.0.20"])
+      s.add_development_dependency(%q<rake>.freeze, [">= 0"])
+      s.add_development_dependency(%q<pry>.freeze, [">= 0"])
+    else
+      s.add_dependency(%q<actionpack>.freeze, [">= 3.0.20"])
+      s.add_dependency(%q<i18n>.freeze, [">= 0.7"])
+      s.add_dependency(%q<request_store>.freeze, [">= 1.0"])
+      s.add_dependency(%q<multi_json>.freeze, [">= 0"])
+      s.add_dependency(%q<rabl>.freeze, ["= 0.11.3"])
+      s.add_dependency(%q<rabl-rails>.freeze, [">= 0"])
+      s.add_dependency(%q<rspec>.freeze, [">= 3.0"])
+      s.add_dependency(%q<jbuilder>.freeze, [">= 0"])
+      s.add_dependency(%q<railties>.freeze, [">= 3.0.20"])
+      s.add_dependency(%q<rake>.freeze, [">= 0"])
+      s.add_dependency(%q<pry>.freeze, [">= 0"])
+    end
   else
     s.add_dependency(%q<actionpack>.freeze, [">= 3.0.20"])
     s.add_dependency(%q<i18n>.freeze, [">= 0.7"])

@@ -1,7 +1,5 @@
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.3/ext/byebug
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20200726-1621-10fru8z.rb extconf.rb
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
+/home/lihn/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20201104-22913-8wampj.rb extconf.rb
 creating Makefile
 
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.3/ext/byebug
@@ -18,4 +16,4 @@ linking shared-object byebug/byebug.so
 
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/byebug-11.1.3/ext/byebug
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 byebug.so ./.gem.20200726-1621-bvcni0/byebug
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20201104-22913-dusfuw/byebug

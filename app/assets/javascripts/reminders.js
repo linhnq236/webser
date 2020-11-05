@@ -83,13 +83,14 @@ $( document ).on('turbolinks:load', function() {
     var mark = $(this).data("mark");
     var date = $(this).data("date");
     var id = $(this).data("id");
+    location.href = `/reminders?start_date=${date}`;
     if (mark == 0) {
       $.ajax({
         url: "/api/check_mark/"+id,
         type: "PUT",
         data: { send: 'OK'},
         success: function(response){
-          location.href = `/reminders?start_date=${date}`;
+          console.log("OK");
         },
         error: function(repsonse){
 

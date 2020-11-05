@@ -1,12 +1,8 @@
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.10.10/ext/nokogiri
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20200726-1621-x27d6v.rb extconf.rb
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
+/home/lihn/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20201104-22913-14yt1c.rb extconf.rb
 checking if the C compiler accepts ... yes
 Building nokogiri using packaged libraries.
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
 Using mini_portile version 2.4.0
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
 checking for gzdopen() in -lz... yes
 checking for iconv... yes
 ************************************************************************
@@ -116,6 +112,10 @@ xml_node.c:304:15: warning: passing argument 1 of ‘xmlFree’ discards ‘cons
        xmlFree(reparentee->ns->prefix);
                ^~~~~~~~~~
 xml_node.c:304:15: note: expected ‘void *’ but argument is of type ‘const xmlChar * {aka const unsigned char *}’
+xml_node.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 compiling xml_node_set.c
 compiling xml_processing_instruction.c
 compiling xml_reader.c
@@ -131,13 +131,14 @@ compiling xslt_stylesheet.c
 xslt_stylesheet.c:112:13: warning: ‘swallow_superfluous_xml_errors’ defined but not used [-Wunused-function]
  static void swallow_superfluous_xml_errors(void * userdata, xmlErrorPtr error, ...)
              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 linking shared-object nokogiri/nokogiri.so
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
 Cleaning files only used during build.
 rm -rf /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.10.10/ext/nokogiri/tmp/x86_64-pc-linux-gnu/ports
 rm -rf /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.10.10/ports
 
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.10.10/ext/nokogiri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nokogiri.so ./.gem.20200726-1621-1whc9lr/nokogiri
+/usr/bin/install -c -m 0755 nokogiri.so ./.gem.20201104-22913-cruwo1/nokogiri

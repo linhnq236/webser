@@ -1,7 +1,5 @@
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.7/ext/bootsnap
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20200726-1621-1b1fsxc.rb extconf.rb
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
+/home/lihn/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20201104-22913-mnj0g4.rb extconf.rb
 creating Makefile
 
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.7/ext/bootsnap
@@ -15,8 +13,22 @@ bootsnap.c:274:39: warning: format ‘%llx’ expects argument of type ‘long l
    sprintf(*cache_path, "%s/%02x/%014llx", cachedir, first_byte, remainder);
                                  ~~~~~~^
                                  %014lx
+bootsnap.c: In function ‘bs_rb_fetch’:
+bootsnap.c:315:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   char * cachedir = RSTRING_PTR(cachedir_v);
+   ^~~~
+bootsnap.c:666:13: warning: ‘output_data’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     else if (!NIL_P(output_data))             goto succeed; /* fast-path, goal */
+             ^
+bootsnap.c:637:9: note: ‘output_data’ was declared here
+   VALUE output_data;  /* return data, e.g. ruby hash or loaded iseq */
+         ^~~~~~~~~~~
+bootsnap.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 linking shared-object bootsnap/bootsnap.so
 
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/bootsnap-1.4.7/ext/bootsnap
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20200726-1621-1qhf3rs/bootsnap
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20201104-22913-1t1evh7/bootsnap

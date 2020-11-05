@@ -1,7 +1,5 @@
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/pg-1.2.3/ext
-/usr/bin/ruby2.5 -I /usr/local/lib/site_ruby/2.5.0 -r ./siteconf20200726-1621-12mkpww.rb extconf.rb
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
-/usr/lib/ruby/vendor_ruby/rubygems/defaults/operating_system.rb:10: warning: constant Gem::ConfigMap is deprecated
+/home/lihn/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20201104-22913-2oic3w.rb extconf.rb
 checking for pg_config... yes
 Using config values from /usr/bin/pg_config
 checking for libpq-fe.h... yes
@@ -52,4 +50,4 @@ linking shared-object pg_ext.so
 
 current directory: /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/pg-1.2.3/ext
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 pg_ext.so ./.gem.20200726-1621-1rz817h
+/usr/bin/install -c -m 0755 pg_ext.so ./.gem.20201104-22913-g9zaik

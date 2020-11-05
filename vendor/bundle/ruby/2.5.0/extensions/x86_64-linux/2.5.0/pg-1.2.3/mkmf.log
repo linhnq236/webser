@@ -1,9 +1,11 @@
 find_executable: checking for pg_config... -------------------- yes
 
-/usr/lib/ruby/2.5.0/mkmf.rb:1553: warning: Insecure world writable dir /home/lihn in PATH, mode 040777
+/home/lihn/.rbenv/versions/2.5.1/lib/ruby/2.5.0/mkmf.rb:1553: warning: Insecure world writable dir /home/lihn/.local/bin in PATH, mode 040777
 --------------------
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic     -lruby-2.5  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+find_header: checking for libpq-fe.h... -------------------- yes
+
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -14,17 +16,7 @@ checked program was:
 6: }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic     -lruby-2.5  -Wl,-rpath,/usr/lib/x86_64-linux-gnu -lpthread -lgmp -ldl -lcrypt -lm   -lc"
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: int main() {return 0;}
-/* end */
-
-find_header: checking for libpq-fe.h... -------------------- yes
-
-"gcc -E -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -36,7 +28,7 @@ checked program was:
 
 find_header: checking for libpq/libpq-fs.h... -------------------- yes
 
-"gcc -E -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -48,7 +40,7 @@ checked program was:
 
 find_header: checking for pg_config_manual.h... -------------------- yes
 
-"gcc -E -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -60,7 +52,7 @@ checked program was:
 
 have_library: checking for PQconnectdb() in -lpq... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu     -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -84,12 +76,16 @@ checked program was:
 
 have_func: checking for PQsetSingleRowMode()... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:13:57: error: ‘PQsetSingleRowMode’ undeclared (first use in this function)
  int t(void) { void ((*volatile p)()); p = (void ((*)()))PQsetSingleRowMode; return !p; }
                                                          ^~~~~~~~~~~~~~~~~~
 conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -107,7 +103,7 @@ checked program was:
 13: int t(void) { void ((*volatile p)()); p = (void ((*)()))PQsetSingleRowMode; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -130,12 +126,16 @@ checked program was:
 
 have_func: checking for PQconninfo()... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:13:57: error: ‘PQconninfo’ undeclared (first use in this function)
  int t(void) { void ((*volatile p)()); p = (void ((*)()))PQconninfo; return !p; }
                                                          ^~~~~~~~~~
 conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -153,7 +153,7 @@ checked program was:
 13: int t(void) { void ((*volatile p)()); p = (void ((*)()))PQconninfo; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -176,13 +176,17 @@ checked program was:
 
 have_func: checking for PQsslAttribute()... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:13:57: error: ‘PQsslAttribute’ undeclared (first use in this function); did you mean ‘__has_attribute’?
  int t(void) { void ((*volatile p)()); p = (void ((*)()))PQsslAttribute; return !p; }
                                                          ^~~~~~~~~~~~~~
                                                          __has_attribute
 conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -200,7 +204,7 @@ checked program was:
 13: int t(void) { void ((*volatile p)()); p = (void ((*)()))PQsslAttribute; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -223,12 +227,16 @@ checked program was:
 
 have_func: checking for PQresultVerboseErrorMessage()... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:13:57: error: ‘PQresultVerboseErrorMessage’ undeclared (first use in this function)
  int t(void) { void ((*volatile p)()); p = (void ((*)()))PQresultVerboseErrorMessage; return !p; }
                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
 conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -246,7 +254,7 @@ checked program was:
 13: int t(void) { void ((*volatile p)()); p = (void ((*)()))PQresultVerboseErrorMessage; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -269,12 +277,16 @@ checked program was:
 
 have_func: checking for PQencryptPasswordConn()... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:13:57: error: ‘PQencryptPasswordConn’ undeclared (first use in this function)
  int t(void) { void ((*volatile p)()); p = (void ((*)()))PQencryptPasswordConn; return !p; }
                                                          ^~~~~~~~~~~~~~~~~~~~~
 conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -292,7 +304,7 @@ checked program was:
 13: int t(void) { void ((*volatile p)()); p = (void ((*)()))PQencryptPasswordConn; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -315,12 +327,16 @@ checked program was:
 
 have_func: checking for PQresultMemorySize()... -------------------- no
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:13:57: error: ‘PQresultMemorySize’ undeclared (first use in this function)
  int t(void) { void ((*volatile p)()); p = (void ((*)()))PQresultMemorySize; return !p; }
                                                          ^~~~~~~~~~~~~~~~~~
 conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -338,8 +354,8 @@ checked program was:
 13: int t(void) { void ((*volatile p)()); p = (void ((*)()))PQresultMemorySize; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
-/tmp/ccpBxddz.o: In function `t':
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+/tmp/cc6qggJH.o: In function `t':
 /home/lihn/webser/vendor/bundle/ruby/2.5.0/gems/pg-1.2.3/ext/conftest.c:14: undefined reference to `PQresultMemorySize'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -364,13 +380,17 @@ checked program was:
 
 have_func: checking for timegm()... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:13:57: error: ‘timegm’ undeclared (first use in this function); did you mean ‘time_t’?
  int t(void) { void ((*volatile p)()); p = (void ((*)()))timegm; return !p; }
                                                          ^~~~~~
                                                          time_t
 conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -388,7 +408,7 @@ checked program was:
 13: int t(void) { void ((*volatile p)()); p = (void ((*)()))timegm; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -411,7 +431,7 @@ checked program was:
 
 have_func: checking for rb_gc_adjust_memory_usage()... -------------------- yes
 
-"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-rpath,/usr/lib/x86_64-linux-gnu    -lpq  -lruby-2.5 -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC conftest.c  -L. -L/home/lihn/.rbenv/versions/2.5.1/lib -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu -L. -L/home/lihn/.rbenv/versions/2.5.1/lib  -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-rpath,/home/lihn/.rbenv/versions/2.5.1/lib -L/home/lihn/.rbenv/versions/2.5.1/lib -lruby -lpq  -lpthread -lgmp -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -433,7 +453,7 @@ checked program was:
 
 have_header: checking for unistd.h... -------------------- yes
 
-"gcc -E -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -445,7 +465,7 @@ checked program was:
 
 have_header: checking for inttypes.h... -------------------- yes
 
-"gcc -E -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -457,7 +477,15 @@ checked program was:
 
 checking for C99 variable length arrays... -------------------- yes
 
-"gcc -I/usr/include/x86_64-linux-gnu/ruby-2.5.0 -I/usr/include/ruby-2.5.0/ruby/backward -I/usr/include/ruby-2.5.0 -I. -I/usr/include/postgresql -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.5-B0MvC_/ruby2.5-2.5.1=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC   -c conftest.c"
+"gcc -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-linux -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/home/lihn/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/postgresql -I/home/lihn/.rbenv/versions/2.5.1/include    -O3 -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wmisleading-indentation -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wimplicit-fallthrough=0 -Wduplicated-cond -Wrestrict  -fPIC   -c conftest.c"
+conftest.c: In function ‘test_vla’:
+conftest.c:3:27: warning: unused variable ‘vla’ [-Wunused-variable]
+ void test_vla(int l){ int vla[l]; }
+                           ^~~
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 checked program was:
 /* begin */
 1: #include "ruby.h"
