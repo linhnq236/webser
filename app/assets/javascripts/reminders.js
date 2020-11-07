@@ -23,7 +23,14 @@ $( document ).on('turbolinks:load', function() {
   // if (date == default_notify_date) {
   //   $(".mess_notify").html("7");
   // }
-  $(".show_reminder").html(html);
+  $(".show_reminder").html(
+    `
+    ${html}
+    <div class='text-center'>
+      <a href="/reminders" class="text-white hovernotbackground text-decoration-none">${I18n.t('js.reports.all')}</a>
+    </div>
+    `
+  );
   $(".note_notify").html(count);
   $(".create_notify").click(function(){
     $.confirm({
