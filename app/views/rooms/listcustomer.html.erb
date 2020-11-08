@@ -189,7 +189,7 @@
             <tr>
               <th class="text-center"><%=t('layout.order')%></th>
               <!-- <th class="text-center"><%=t('house.show.choose')%></th> -->
-              <th class="text-center"><%=t('house.show.serviceused')%></th>
+              <th class="text-center"><%=t('house.show.name')%></th>
               <th class="text-center"><%=t('house.show.cost')%></th>
               <th class="text-center"><%=t('house.show.quantum')%></th>
             </tr>
@@ -221,11 +221,11 @@
                   <% service.service_id.each_with_index do |s, i|%>
                     <tr>
                       <td class="text-center"><%=i + 1%></td>
-                      <td class="text-center">
+                      <!-- <td class="text-center">
                         <input type="checkbox" checked class="form-check-input must" data-status="must">
-                      </td>
+                      </td> -->
                       <td class="text-center"><%=getServiceName(@services,s)%></td>
-                      <td class="text-center"><%=getServiceCost(@services,s)%></td>
+                      <td class="text-center"><%=number_to_currency_br(getServiceCost(@services,s))%></td>
                       <td class="text-center">
                         <input type="number" name="service_id[]" min="1" value="<%=s%>" class="form-control text-center d-none"/>
                         <input type="number" name="amount[]" min="1" value="<%=service.amount[i]%>" class="form-control text-center"/>
