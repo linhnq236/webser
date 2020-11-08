@@ -55,9 +55,9 @@ class HomeController < ApplicationController
   def voice
     name = params[:name]
     house_id = name.slice(0)
-    room_id = name.slice(1)
-    chip = name.slice(2)
-    status = name.slice(3)
+    room_id = name.slice(1,name.size-3)
+    chip = name.slice(name.size-2)
+    status = name.slice(name.size-1)
     set_status = ''
     if status == '1'
       set_status = 'on'
