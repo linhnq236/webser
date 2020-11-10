@@ -58,8 +58,8 @@
             </div>
           </div>
         </div>
-        <div class="row mt-3">
-          <div class="col-md-6">
+        <!-- <div class="row mt-3">
+          <div class="col-md-12">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label"><%=t('room.description')%></label>
               <div class="col-sm-9">
@@ -67,7 +67,17 @@
               </div>
             </div>
           </div>
-      	</div>
+      	</div> -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label"><%=t('room.description')%></label>
+              <div class="col-sm-9 ml-3">
+                <textarea  rows="2" class="form-control"  name="room[description]"><%=@room.description%></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

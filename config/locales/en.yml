@@ -49,7 +49,7 @@ en:
     dashboard: "Dashboard"
     rooms: "Rooms"
     services: "Services"
-    informations: "Informations"
+    informations: "Customers"
     accounts: "Accounts"
     reminders: "Reminders"
     statistical: "Statisticals"
@@ -98,7 +98,7 @@ en:
       email: "Email"
       permanent: "Permanent"
       temporaryaddress: "Temporary address"
-      room_name: "Number room"
+      room_name: "Room number"
       money_room: "Money"
       start: "Start"
       deposit: "deposit"
@@ -148,7 +148,7 @@ en:
     description: "Description"
     unit_price: "Unit price"
     # create room
-    number_room: "Number room"
+    number_room: "Room number"
     cancel_infor: "Cancel"
     mes_cancel_room: "Room was canceled successfully"
   home:

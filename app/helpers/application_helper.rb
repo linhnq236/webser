@@ -31,7 +31,7 @@ module ApplicationHelper
   end
 
   def number_to_currency_br(number)
-    unit =  number_to_currency(number, unit: "VNĐ", separator: "," , delimiter: ".")
+    unit =  number_to_currency(number, unit: "VNĐ", separator: "," , delimiter: ".", precision: 0)
     subunit = unit.gsub! 'VNĐ', " "
     return subunit
   end
