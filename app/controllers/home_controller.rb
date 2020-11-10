@@ -25,8 +25,8 @@ class HomeController < ApplicationController
     column = params[:column]
     subcolumn = params[:subcolumn]
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-    if(column == "turnon" || column == "turnoff")
-      byebug
+    if(subcolumn == 'active')
+      response = firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/#{subcolumn}": active})
     else
       response = firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/#{subcolumn}": active})
     end
@@ -40,16 +40,12 @@ class HomeController < ApplicationController
     column = params[:column]
     subcolumn = params[:subcolumn]
     settime = params[:settime]
-
+    
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     response = firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/#{subcolumn}": settime})
     ActionCable.server.broadcast 'ledstatus_channel',
       ledstatus: response.body
     head :no_content
-  end
-
-  def create_reminder
-
   end
 
   def voice

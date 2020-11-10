@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get "led_status", to: "home#led_status"
   post "updatestatus", to: "home#updatestatus"
   post "settime", to: "home#settime"
+  post "/disable_endable", to: "home#disable_endable"
   get "login", to: "home#login"
   get "gettemperature", to: "home#gettemperature"
   post "/voice", to: "home#voice"

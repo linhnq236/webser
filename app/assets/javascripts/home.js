@@ -5,13 +5,17 @@ $( document ).on('turbolinks:load', function() {
     return false;
   }
   setInterval(autoget(), 1000);
+
+  // -------------------------------------FUNTION AND EVENT------------------------------------------------
+
   function autoget(){
     $.each(gon.leds, function(index, value){
       var i = 0;
       i++;
       html += `
-      <div class="col-sm-6 first ${index}"  data-first="${index}"><i class='fa fa-university text-success'></i> ${index}</div>
-      ${loadArea(value, index)}
+      <table class="table house ${index.toUpperCase()}" id="tableledshow">
+          ${loadArea(value, index)}
+      </table>
       `
     })
     $(".firebase_led").append(html);
@@ -28,9 +32,30 @@ $( document ).on('turbolinks:load', function() {
       var area = $(this).data("area");
       var column = $(this).data("column");
       var subcolumn = $(this).data("subcolumn");
+      var isDisable = $(`.disable_${column}`).first().hasClass('hasdisable');
       if (subcolumn == "turnon" || subcolumn == "turnoff") {
+        if (isDisable == true) {
+          $.confirm({
+            title: 'Notice',
+            content: "This led is disabled. Please enable and using this function.",
+            closeIcon: true,
+            buttons: false,
+          })
+          return false;
+        }
         setTime(status,area, column, subcolumn);
-      }else {
+      }else if(subcolumn == 'active') {
+        disable_enable(status,area,column,subcolumn,active);
+      }else{
+        if (isDisable == true) {
+          $.confirm({
+            title: 'Notice',
+            content: "This led is disabled. Please enable and using this function.",
+            closeIcon: true,
+            buttons: false,
+          })
+          return false;
+        }
         api_led_status(status,active,area, column, subcolumn);
       }
     })
@@ -40,21 +65,33 @@ $( document ).on('turbolinks:load', function() {
     var html = '';
     var mark = 0;
     $.each(arr, function(index, value){
+      html += `
+        <tr class="housenameRoomname cursor" data-house_room="${area+index}">
+          <td colspan="5" data-second="${index}"><i class='fa fa-university text-success'></i> ${area.toUpperCase()}/${index}</td>
+        </tr>
+        <tr class="chip_${area+index}">
+          <td>Name</td>
+          <td class="text-center">Active</td>
+          <td class="text-center">Status</td>
+          <td class="text-center">Timer</td>
+          <td class="text-center">Time out</td>
+        </tr>
+      `;
       $.each(value, function(ind, val){
+        html+= `
+        <tr class="chip_${area+index} cursor">
+          <td third_${mark} data-third="${ind}">${I18n.t(`js.home.${ind}`)}</td>
+        `;
         $.each(val, function(ind1, val1){
           mark ++;
           html += `
-          <div class="row column_leds position-relative ${area}">
-            <div class="col-sm-3 second_${mark}" data-second="${index}">${index}</div>
-            <div class="col-sm-3 third_${mark}" data-third="${ind}">${I18n.t(`js.home.${ind}`)}</div>
-            <div class="col-sm-3">${ind1}</div>
-            <div class="col-sm-3 chip_${index+ind}">
-            <button class="col-sm-12 led led${area} ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'on' ? 'bg-danger': 'bg-primary'}" data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${val1}</button>
-            </div>
-          </div>
+            <td class="text-center">
+              <button class="led led${area} disable_${ind}  ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'on' ? 'bg-danger': 'bg-primary'} ${val1 == 'disable' ? 'bg-danger hasdisable': 'bg-primary'}"  data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${val1}</button>
+            </td>
           `
         })
-        html += `<hr class="${area}">`;
+        html+= '</tr>';
+        // html += `<hr class="${area}">`;
       })
     })
   	return html;
@@ -97,6 +134,9 @@ $( document ).on('turbolinks:load', function() {
             btnClass: 'btn-blue',
             action: function () {
             var settime = this.$content.find('.settime').val();
+            if(!settime){
+              return false;
+            }
             resettime = settime.replace("T", " ");
             $.ajax({
                 type: 'post',
@@ -121,6 +161,26 @@ $( document ).on('turbolinks:load', function() {
           cancel: function () {
               //close
           }
+      }
+    })
+  }
+  // disable or enable led
+  function disable_enable(status, area, column, subcolumn, active){
+    if(active == "enable"){
+      setactive = "disable";
+    }else{
+      setactive = "enable";
+    }
+    $.ajax({
+      type: 'post',
+      url: "/updatestatus",
+      data: {status: status, active: setactive, area: area, column: column, subcolumn: subcolumn},
+      success: function(rep) {
+        // console.log(rep);
+        // location.reload();
+      },
+      error: function(rep) {
+        // console.log(rep);
       }
     })
   }
@@ -153,7 +213,7 @@ $( document ).on('turbolinks:load', function() {
   var html_button_house_with_room = '';
   $.each(gon.houses, function(index, value){
     html_button_house_with_room += `
-      <button class="house_name" data-house_name="${value['name']}">${value['name']}</button>
+      <button class="house_name" data-house_name="${value['name'].toUpperCase()}">${value['name'].toUpperCase()}</button>
     `;
   })
   $(".button_house_with_room").html(html_button_house_with_room);
@@ -162,13 +222,17 @@ $( document ).on('turbolinks:load', function() {
     var house_name_uppercase = house_name.toUpperCase();
     var house_name_remove_space = house_name_uppercase.replace(/\s+/g, '');
     // $(`.${house_name_remove_space}`).css({"display":'none'});
-    $(`.${house_name_remove_space}`).slideToggle();
+    $(`.${house_name_uppercase}`).slideToggle();
 
   })
-    $(".first").each(function(){
-      var id = $(this).data("first");
-      if (gon.house_name != id) {
-        $(`.${id}`).css({"display": "none"});
-      }
-    })
+  $(".housenameRoomname").click(function(){
+    var house_room = $(this).data('house_room');
+    $(`.chip_${house_room}`).slideToggle();
+  })
+    // $(".house").each(function(){
+    //   var id = $(this).data("first");
+    //   if (gon.house_name != id) {
+    //     $(`.${id}`).css({"display": "none"});
+    //   }
+    // })
 })

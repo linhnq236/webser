@@ -16,10 +16,18 @@ $( document ).on('turbolinks:load', function() {
                   if (vvv == 'on') {
                     $(`.${areapin}`).removeClass('bg-primary');
                     $(`.${areapin}`).addClass('bg-danger');
-                  } else {
+                  }else if(vvv == 'off'){
                     $(`.${areapin}`).removeClass('bg-danger');
                     $(`.${areapin}`).addClass('bg-primary');
                   }
+
+                  if(vvv == 'disable') {
+                   $(`.${areapin}`).removeClass('bg-primary');
+                   $(`.${areapin}`).addClass('bg-danger hasdisable');
+                 }else if(vvv == 'enable'){
+                   $(`.${areapin}`).removeClass('bg-danger hasdisable');
+                   $(`.${areapin}`).addClass('bg-primary');
+                 }
                 }
               })
             })

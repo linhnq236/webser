@@ -4,7 +4,7 @@ $( document ).on('turbolinks:load', function() {
   }).find('textarea').change();
 
   // multi chosen
-  $(".chosen-select").chosen({no_results_text: "Không tìm thấy "});
+  $(".chosen-select").chosen({no_results_text: "Not found "});
 
    // Seach column
   $("#search").on("keyup", function() {
@@ -28,6 +28,12 @@ $( document ).on('turbolinks:load', function() {
   $("#searchuseservice").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#useservice tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    });
+  });
+  $("#searchled").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableledshow tr ").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
   });
