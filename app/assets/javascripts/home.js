@@ -213,7 +213,7 @@ $( document ).on('turbolinks:load', function() {
   var html_button_house_with_room = '';
   $.each(gon.houses, function(index, value){
     html_button_house_with_room += `
-      <button class="house_name" data-house_name="${value['name'].toUpperCase()}">${value['name'].toUpperCase()}</button>
+      <button class="house_name" data-house_name="${value['name'].toUpperCase()}">${value['name'].toUpperCase()} (${value['id']})</button>
     `;
   })
   $(".button_house_with_room").html(html_button_house_with_room);

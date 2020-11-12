@@ -3,6 +3,12 @@ $( document ).on('turbolinks:load', function() {
     $(this).height(0).height(this.scrollHeight);
   }).find('textarea').change();
 
+  $('textarea').each(function () {
+    this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+  }).on('input', function () {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
+  });
   // multi chosen
   $(".chosen-select").chosen({no_results_text: "Not found "});
 
@@ -44,8 +50,8 @@ $( document ).on('turbolinks:load', function() {
     // });
   });
   // background navbar selected
-  var array_class = ['dashboard', 'dashboard', 'rooms', 'services', 'informations', 'accounts', 'reminders', 'statisticals', 'rentals'];
-  var array_url = ['/', '/home', '/houses', '/services', '/users', '/account', '/reminders', '/statisticals', '/paytherents'];
+  var array_class = ['dashboard', 'dashboard', 'rooms', 'services', 'informations', 'accounts', 'reminders', 'statisticals', 'rentals', 'setting', 'apps','apps', 'contact'];
+  var array_url = ['/', '/home', '/houses', '/services', '/users', '/account', '/reminders', '/statisticals', '/paytherents', '/users/edit', '/apps', '/regulations', '/send_email'];
   var url = $(location).attr("pathname");
   if (array_url.indexOf(url) != -1) {
     var position = array_url.indexOf(url);
@@ -55,5 +61,20 @@ $( document ).on('turbolinks:load', function() {
   $('input[name=backgroundColor]').minicolors();
   $('input[name=textcolor]').minicolors();
 
+  // colspase
+  $(".apps").click(function(){
+    $id_app = $(this).data('apps');
+    $($id_app).slideToggle();
+  })
+  $(".room_max").on('change keyup keydown paste cut', function(){
+    var result = $(this).val();
+    if (result < 0) {
+      $(".notice_result").html("<small class='text-danger'>The value should not be less than 0 *</small>");
+      $(".save").addClass('disabled');
+    }else{
+      $(".notice_result").html("");
+      $(".save").removeClass('disabled');
+    }
+  })
 
 })

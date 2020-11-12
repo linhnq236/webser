@@ -78,6 +78,9 @@ en:
     export_csv: "Export"
     changepassword: "Change password"
     welcome: "welcome to my app"
+    setting: "Setting"
+    contact: "Contact"
+    apps: "Apps"
   house:
     house_name: "House"
     addhouse: "Create house"
@@ -287,7 +290,7 @@ en:
     created_at: "Created at"
     status: "Status"
   send_email:
-    new_email: "New email"
+    contact: "Contact"
     to: "To"
     title: "Title"
     content: "Content"
