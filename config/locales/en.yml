@@ -49,7 +49,7 @@ en:
     dashboard: "Dashboard"
     rooms: "Rooms"
     services: "Services"
-    informations: "Informations"
+    informations: "Customers"
     accounts: "Accounts"
     reminders: "Reminders"
     statistical: "Statisticals"
@@ -78,6 +78,9 @@ en:
     export_csv: "Export"
     changepassword: "Change password"
     welcome: "welcome to my app"
+    setting: "Setting"
+    contact: "Contact"
+    apps: "Apps"
   house:
     house_name: "House"
     addhouse: "Create house"
@@ -98,7 +101,7 @@ en:
       email: "Email"
       permanent: "Permanent"
       temporaryaddress: "Temporary address"
-      room_name: "Number room"
+      room_name: "Room number"
       money_room: "Money"
       start: "Start"
       deposit: "deposit"
@@ -148,7 +151,7 @@ en:
     description: "Description"
     unit_price: "Unit price"
     # create room
-    number_room: "Number room"
+    number_room: "Room number"
     cancel_infor: "Cancel"
     mes_cancel_room: "Room was canceled successfully"
   home:
@@ -287,7 +290,7 @@ en:
     created_at: "Created at"
     status: "Status"
   send_email:
-    new_email: "New email"
+    contact: "Contact"
     to: "To"
     title: "Title"
     content: "Content"

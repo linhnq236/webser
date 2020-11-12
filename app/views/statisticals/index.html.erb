@@ -1,7 +1,7 @@
 <div class="col-sm-12">
   <div class="row">
     <div class="col-sm-6">
-      <%= pie_chart @rooms.group(:mark).count%>
+      <%= pie_chart @rooms.group(:mark).count, suffix: "%"%>
       <div class="text-center"><%=t('Statisticals.room_chart')%></div>
       <div class="notesection">
         <div class="">
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="col-sm-6">
-      <%= pie_chart @users.group(:admin).count%>
+      <%= pie_chart @users.group(:admin).count, suffix: "%"%>
       <div>
         <div class="text-center"><%=t('Statisticals.user_chart')%></div>
         <div class="notesection">
@@ -30,8 +30,8 @@
   <div class="row">
     <div class="col-sm-12">
       <% if !@paytherent_pays.nil? %>
-        <%= bar_chart @paytherent_pays.group(:senddate).sum(:money) %>
-        <div class="text-center"><%=t('Statisticals.countmoneypermonth')%></div>
+        <%= bar_chart @paytherent_pays.group(:senddate).sum(:money), thousands: "." %>
+        <div class="text-center"><%=t('Statisticals.countmoneypermonth')%>(milion/month)</div>
         <%# <%= bar_chart @paytherent_not_pays.group(:senddate).sum(:money) %>
         <!-- <div class="text-center"><%=t('Statisticals.countmoneypermonth')%></div> -->
       <% end %>

@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="col-sm-12 text-center">
-        <input type="submit" value="<%=t('layout.send')%>" class="btn btn-primary">
+        <input type="submit" value="<%=t('layout.save')%>" class="btn btn-primary">
       </div>
       <% end %>
     </blockquote>
@@ -27,27 +27,27 @@
 <table class="table table-hover service">
   <thead>
     <tr>
-      <th class="text-center"><%=t('layout.order')%></th>
-      <th class="text-center"><%=t('services.status')%></th>
-      <th class="text-center"><%=t('services.service_used')%></th>
-      <th class="text-center"><%=t('services.unit_price')%></th>
+      <th class=""><%=t('layout.order')%></th>
+      <th class=""><%=t('services.status')%></th>
+      <th class=""><%=t('services.service_used')%></th>
+      <th class=""><%=t('services.unit_price')%></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @services.each_with_index do |service, i|%>
     <tr>
-      <td class="text-center"><%=i + 1%></td>
-      <td class="text-center">
+      <td class=""><%=i + 1%></td>
+      <td class="">
         <% if service.status == 1%>
           <%=t('services.compulsory')%>
         <% else %>
           <%=t('services.optional')%>
         <% end %>
       </td>
-      <td class="text-center"><%=service.name %></td>
-      <td class="text-danger text-center"> <%=number_to_currency_br(service.cost)%></td>
-      <td class="text-danger text-center">
+      <td class=""><%=service.name %></td>
+      <td class="text-danger "> <%=number_to_currency_br(service.cost)%></td>
+      <td class="text-danger ">
         <% if user_signed_in? && current_user.admin == 2%>
           <a href="/services/<%= service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm=" <%=t('layout.confirm_delete')%>">
             <i class="fa fa-trash"></i>
@@ -55,7 +55,7 @@
           </a>
           <a class="btn btn-info btn-sm service_edit text-white" data-service_id="<%=service.id%>">
             <i class="fa fa-edit"></i>
-            <%# <%=t('layout.edit')%> 
+            <%# <%=t('layout.edit')%>
           </a>
         <% end %>
       </td>
