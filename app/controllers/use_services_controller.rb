@@ -6,14 +6,14 @@ class UseServicesController < ApplicationController
         userser = UseService.new(userser_params.merge(information_id: params[:information_id]))
         if userser.save
           flash[:notice] = I18n.t('use_services_controller.create')
-          redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
+          redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}"
         else
           a = userser.errors
         end
       else
         if use_service.update(userser_params)
           flash[:notice] = I18n.t("use_services_controller.update")
-          redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
+          redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}"
         end
       end
   end

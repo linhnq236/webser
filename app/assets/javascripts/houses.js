@@ -63,7 +63,7 @@ $( document ).on('turbolinks:load', function() {
   // location
   // Sua phong
   $(".edithouse").click(function(){
-    location.href = `/houses/${house_active}/edit`;
+    location.href = `/houses/${house_active}/edit?locale=`+gon.locale;
   })
   // tra phong
   $(".payroom").click(function(){
@@ -76,7 +76,7 @@ $( document ).on('turbolinks:load', function() {
             Ok: {
               btnClass: 'btn-primary',
               action: function(){
-                location.href = `/payroom/${room_id}/${information_id}`;
+                location.href = `/payroom/${room_id}/${information_id}?locale=`+gon.locale;
               }
             },
             Cancel: {
@@ -94,7 +94,7 @@ $( document ).on('turbolinks:load', function() {
             Ok: {
               btnClass: 'btn-primary',
               action: function(){
-                location.href = `/deletehouse/${house_active}`;
+                location.href = `/deletehouse/${house_active}?locale=`+gon.locale;
               }
             },
             Hủy: {
@@ -106,13 +106,13 @@ $( document ).on('turbolinks:load', function() {
   // them khach hang vao phong
   $(".addcustomer").click(function(){
     var idroom = $(this).data("idroom");
-    location.href = `/addcustomer/${house_active}/${idroom}`;
+    location.href = `/addcustomer/${house_active}/${idroom}?locale=`+gon.locale;
   })
   // xem va chinh sua thong tin khach hang
   $(".view_service_customer").click(function(){
     var idroom = $(this).data("idroom");
     var idinformation = $(this).data("information_id");
-    location.href = `/listcustomer/${house_active}/${idroom}/${idinformation}`;
+    location.href = `/listcustomer/${house_active}/${idroom}/${idinformation}?locale=`+gon.locale;
   })
   // khi co nguoi dang muon phng thi khong cho pep xoa phong nay.
   $(".not-active").click(function(){
@@ -183,7 +183,7 @@ $( document ).on('turbolinks:load', function() {
           btnClass: 'btn-primary',
           action: function(){
             var information_id = this.$content.find("input[type='radio']:checked").val();
-            location.href = `/addcustomer/${house_id}/${room_id}?information_id=${information_id}`;
+            location.href = `/addcustomer/${house_id}/${room_id}?information_id=${information_id}&locale=${gon.locale}`;
           }
         },
         Cancel: {

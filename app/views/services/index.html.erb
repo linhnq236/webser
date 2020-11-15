@@ -1,6 +1,6 @@
 <div class="container">
   <%if user_signed_in? && current_user.admin == 2%>
-    <blockquote class="blockquote">
+    <blockquote class="blockquote form_new_service">
       <h3 class="text-center text-uppercase"><%=t("services.new_service")%></h3>
       <%= form_tag('/services', method: :post) do %>
       <div class="row">
@@ -24,20 +24,21 @@
     </blockquote>
   <%end%>
 </div>
+<button type="button" class="btn btn-sm btn-success ml-3 button_new_service" title="a new service" name="button"><i class="fa fa-plus-circle"></i></button>
 <table class="table table-hover service">
   <thead>
     <tr>
-      <th class=""><%=t('layout.order')%></th>
+      <th class="text-center"><%=t('layout.order')%></th>
       <th class=""><%=t('services.status')%></th>
       <th class=""><%=t('services.service_used')%></th>
       <th class=""><%=t('services.unit_price')%></th>
-      <th></th>
+      <th class=""></th>
     </tr>
   </thead>
   <tbody>
     <% @services.each_with_index do |service, i|%>
     <tr>
-      <td class=""><%=i + 1%></td>
+      <td class="text-center"><%=i + 1%></td>
       <td class="">
         <% if service.status == 1%>
           <%=t('services.compulsory')%>

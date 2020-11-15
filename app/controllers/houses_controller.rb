@@ -51,10 +51,10 @@ class HousesController < ApplicationController
     @house = House.new(name: name, city_id: city_id, district_id: district_id, ward_id: ward_id, address: "#{number} #{road}")
     if @house.save
       flash[:notice] = I18n.t('mes.add_success', name: I18n.t('house.house_name'))
-      redirect_to "/houses"
+      redirect_to houses_path
     else
       flash[:notice] = I18n.t('mes.add_error', name: I18n.t('house.house_name'))
-      redirect_to "/houses/new"
+      redirect_to new_house_path
     end
   end
 

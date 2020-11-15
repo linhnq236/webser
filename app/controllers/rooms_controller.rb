@@ -145,7 +145,7 @@ class RoomsController < ApplicationController
     room = Room.find(params[:room_id])
     if room.update(oldelectric: oldelectric, newelectric: newelectric, oldwater: oldwater, newwater: newwater)
       flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_update'))
-      redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
+      redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}"
     end
   end
   # PATCH/PUT /rooms/1

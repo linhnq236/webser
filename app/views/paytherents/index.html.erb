@@ -28,12 +28,12 @@
   <thead>
     <tr>
       <th class="text-center"><%=t('layout.order')%></th>
-      <th class="text-center"><%=t('paytherents.room_master')%></th>
+      <th class=""><%=t('paytherents.room_master')%></th>
       <th class="text-center"><%=t('paytherents.month')%></th>
       <th class="text-center"><%=t('paytherents.money')%></th>
       <th class="text-center"><%=t('paytherents.date_of_payment')%></th>
       <th class="text-center"><%=t('paytherents.status')%></th>
-      <th class="text-center"></th>
+      <th class=""></th>
     </tr>
   </thead>
   <tbody id="paytherent">
@@ -41,7 +41,7 @@
       <% @paytherents.each_with_index do |pay, i|%>
         <tr>
             <td class="text-center"><%=i+1%></td>
-            <td class="text-center"><%=pay.information&.name%></td>
+            <td class=""><%=pay.information&.name%></td>
             <td class="text-center"><%=pay.senddate%></td>
             <td class="text-center"><%=number_to_currency_br(pay.money)%></td>
             <td class="text-center"><%=pay.receivedate%></td>
@@ -58,9 +58,10 @@
                </div>
                <% end %>
             </td>
-            <td class="text-center"><button type="button" class="btn-sm checkpaytherent <%=pay.status == 1 ? "bg-danger" : "bg-primary"%>" <%=pay.status == 1 ? "disabled" : ""%> data-paytherent_id= "<%=pay.information_id%>" title="<%=t('paytherents.confirm_paytherent')%>" name="button" data-senddate="<%=pay.senddate%>"><i class="mdi mdi-send-outline"></i></button></td>
+            <td class=""><button type="button" class="btn-sm checkpaytherent <%=pay.status == 1 ? "bg-danger" : "bg-primary"%>" <%=pay.status == 1 ? "disabled" : ""%> data-paytherent_id= "<%=pay.information_id%>" title="<%=t('paytherents.confirm_paytherent')%>" name="button" data-senddate="<%=pay.senddate%>"><i class="mdi mdi-send-outline"></i></button></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @paytherents, renderer: BootstrapPagination::Rails %>

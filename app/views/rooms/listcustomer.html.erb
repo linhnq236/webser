@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <hr>
-    <%= form_tag("/update_information_customer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}", method: :put, id: "inf_1") do %>
+    <%= form_tag("/update_information_customer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}", method: :put, id: "inf_1") do %>
       <%= render "shared/nextback", local: {title: @title = t('house.show.addtenantroom')}%>
       <%= render "shared/addcustomerservices", local: {title: @title = t('house.show.personalinformation')}%>
       <div class="card">
@@ -180,9 +180,9 @@
       <% end %>
 <!-- // services -->
     <div id="serv_2" class="d-none">
-      <%= form_tag("/use_service/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}", method: :post) do %>
-        <%= render "shared/nextback", local: {title: @title = "Dịch vụ nhà trọ"}%>
-        <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
+      <%= form_tag("/use_service/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}", method: :post) do %>
+        <%= render "shared/nextback", local: {title: @title = "Services"}%>
+        <%= render "shared/addcustomerservices", local: {title: @title = "Add a new customer"}%>
         <table class="table table-hover service">
 
           <thead>
@@ -240,9 +240,9 @@
       </div>
       <!-- member -->
       <div id="mem_3" class="d-none">
-        <%= form_tag("/addmembers/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}", method: :post) do %>
-          <%= render "shared/nextback", local: {title: @title = "Thêm thành viên"}%>
-          <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
+        <%= form_tag("/addmembers/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}", method: :post) do %>
+          <%= render "shared/nextback", local: {title: @title = "Add a new Roommates"}%>
+          <%= render "shared/addcustomerservices", local: {title: @title = "Add a new customer"}%>
           <table class="table table-hover service">
 
             <thead>
@@ -298,9 +298,9 @@
         </button>
       </div>
       <div id="indexser_4" class="d-none">
-        <%= form_tag("/indexservice/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}", method: :post) do %>
-          <%= render "shared/nextback", local: {title: @title = "Chỉ số dịch vụ"}%>
-          <%= render "shared/addcustomerservices", local: {title: @title = "Thêm khách"}%>
+        <%= form_tag("/indexservice/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}", method: :post) do %>
+          <%= render "shared/nextback", local: {title: @title = "Services index"}%>
+          <%= render "shared/addcustomerservices", local: {title: @title = "Add a new customer"}%>
           <table class="table table-hover">
             <thead>
               <tr>

@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
+  require 'will_paginate/array'
+  around_action :switch_locale
   before_action :authenticate_user!
   before_action :set_locale
   before_action :check_user_login, :gettemperature, :check_manager
+
   # FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   # FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   require "firebase_connect"
@@ -93,6 +96,16 @@ class ApplicationController < ActionController::Base
     locale = params[:locale].to_s.strip.to_sym
     I18n.locale = I18n.available_locales.include?(locale) ?
       locale : I18n.default_locale
+      gon.locale = params[:locale] || 'en'
+ end
+
+ def switch_locale(&action)
+   locale = params[:locale] || I18n.default_locale
+   I18n.with_locale(locale, &action)
+ end
+
+ def default_url_options
+   {locale: I18n.locale}
  end
 
 end

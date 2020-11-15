@@ -46,7 +46,7 @@ class InformationController < ApplicationController
           user = User.find_by_email(params[:email])
           if user.update(disable: 0)
             flash[:notice] = I18n.t('informations_controller.book_room')
-            redirect_to "/houses"
+            redirect_to houses_path
           end
         end
       end
@@ -92,7 +92,7 @@ class InformationController < ApplicationController
         end
       else
         flash[:notice] = I18n.t('informations_controller.add_customer')
-        redirect_to "addcustomer/#{house_id}/#{room_id}"
+        redirect_to "addcustomer/#{house_id}/#{room_id}?locale=#{params[:locale]}"
       end
     end
   end
@@ -120,10 +120,10 @@ class InformationController < ApplicationController
     if information.update(name: "#{firstname} #{lastname}", sex: sex, birth: birth, indentifycard: indentifycard,
        daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent, start: start, deposit: deposit, note: note)
        flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_update'))
-       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}"
+       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}?locale=#{params[:locale]}"
      else
        flash[:notice] =  I18n.t('mes.action_fail', action: I18n.t('mes.action_update'))
-       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}"
+       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}?locale=#{params[:locale]}"
     end
   end
   def update
