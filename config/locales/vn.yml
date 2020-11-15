@@ -30,6 +30,51 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 vn:
+  will_paginate:
+    previous_label: "Trước"
+    next_label: "Sau"
+  calendar:
+    previous: "Trước"
+    next: "Sau"
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: "Khoảng 1 giờ"
+        other: Khoảng %{count} Giờ
+      about_x_months:
+        one: "Khoảng 1 tháng"
+        other: "Khoảng %{count} tháng"
+      about_x_years:
+        one: "Khoảng 1 năm"
+        other: "Khoảng %{count} năm"
+      almost_x_years:
+        one: "Gần 1 năm"
+        other: "Gần %{count} năm"
+      half_a_minute: "30 giây trước"
+      less_than_x_seconds:
+        one: "Vừa xong"
+        other: "Khoảng %{count} giây trước"
+      less_than_x_minutes:
+        one: "Dưới 1 phút"
+        other: "Dưới %{count} phút"
+      over_x_years:
+        one: "Trên 1 năm"
+        other: "Trên %{count} năm"
+      x_seconds:
+        one: "1 giây"
+        other: "%{count} giây"
+      x_minutes:
+        one: "1 phút"
+        other: "%{count} phút"
+      x_days:
+        one: "1 ngày"
+        other: "%{count} ngày"
+      x_months:
+        one: "1 tháng"
+        other: "%{count} tháng"
+      x_years:
+        one: "1 năm"
+        other: "%{count} năm"
   hello: "Hello world"
   mes:
     add_success: "Tạo %{name} thành công"
@@ -295,7 +340,7 @@ vn:
     title: "Tiêu đề"
     content: "Nội dung"
   date:
-    # abbr_day_names: [CN, T2 ,T3,T4 ,T5 ,T6 ,T7]
+    abbr_day_names: [CN, T2 ,T3,T4 ,T5 ,T6 ,T7]
     year_names: "Năm"
     month_names: [tháng 1, tháng 2, tháng 3, tháng 4, tháng 5, tháng 6, tháng 7, tháng 8, tháng 9, tháng 10, tháng 11, tháng 12]
     order: [ !ruby/symbol day, !ruby/symbol month, !ruby/symbol year ]
@@ -311,7 +356,9 @@ vn:
       long: "%B %d, %Y %H:%M"
     am: "am"
     pm: "pm"
-
+  footer:
+    title: "Luận văn tốt nghiệp"
+    idioms: "Trên con đường thành công không có dấu chân của kẻ lười biếng"
   js:
     mes:
       delete: "Bạn có chắc chắn ?"

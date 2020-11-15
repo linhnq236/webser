@@ -311,7 +311,9 @@ en:
       long: "%B %d, %Y %H:%M"
     am: "am"
     pm: "pm"
-
+  footer:
+    title: "Graduation essay"
+    idioms: "On the way to success, there is no trace of lazy men"
   js:
     mes:
       delete: "Are you sure ?"

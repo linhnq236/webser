@@ -30,10 +30,10 @@ module Api
     def active_acc
       if @user.update(disable: params[:active])
         flash[:notice] = t("mes.action_success", action: t("mes.action_update"))
-        redirect_to account_path
+        redirect_to "/account?locale=#{params[:locale]}"
       else
         flash[:notice] = t("mes.action_fail", action: t("mes.action_update"))
-        redirect_to account_path
+        redirect_to  "/account?locale=#{params[:locale]}"
       end
     end
 

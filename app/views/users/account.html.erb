@@ -45,10 +45,10 @@
   <thead>
     <tr>
       <th class="text-center"><%=t('layout.order')%></th>
-      <th class="text-center"><%=t('users.email')%></th>
-      <th class="text-center"><%=t('users.kind')%></th>
+      <th class=""><%=t('users.email')%></th>
+      <th class=""><%=t('users.kind')%></th>
       <th class="text-center"><%=t('layout.created_at')%></th>
-      <th class="text-center"><%=t('house.house_name')%></th>
+      <th class=""><%=t('house.house_name')%></th>
       <th class="text-center"><%=t('users.status')%></th>
     </tr>
   </thead>
@@ -56,10 +56,10 @@
     <% @users.each_with_index do |user, i|%>
     <tr id="account">
       <td class="text-center"><%=i + 1%></td>
-      <td class="text-center"><%= user.email%></td>
-      <td class="text-center"><%= user.admin == 1 ? t('layout.manager') : t('layout.customer')%></td>
+      <td class=""><%= user.email%></td>
+      <td class=""><%= user.admin == 1 ? t('layout.manager') : t('layout.customer')%></td>
       <td class="text-center"><%= format_datetime(user.created_at)%></td>
-      <td class="text-center"><%= user.house&.name%></td>
+      <td class=""><%= user.house&.name%></td>
       <td class="text-center">
         <button data-user_id="<%=user.id%>" class="btn btn-sm <%= user.disable == 1 ? "btn-danger enableacc" : "btn-primary disableacc"%>"><%= user.disable == 1 ? t('users.stop') : t('users.active')%></button>
       </td>

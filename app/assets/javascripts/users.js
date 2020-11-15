@@ -3,7 +3,7 @@ $( document ).on('turbolinks:load', function() {
     var user_id = $(this).data("user_id");
     $.ajax({
       type: "post",
-      url: "/api/active_acc/"+user_id,
+      url: "/api/active_acc/"+user_id+`?locale=${gon.locale}`,
       data: {
          active: 0
       },
@@ -19,7 +19,7 @@ $( document ).on('turbolinks:load', function() {
     var user_id = $(this).data("user_id");
     $.ajax({
       type: "post",
-      url: "/api/active_acc/"+user_id,
+      url: "/api/active_acc/"+user_id+`?locale=${gon.locale}`,
       data: {
          active: 1
       },

@@ -3,28 +3,28 @@
     <div class="field app_input_id">
     </div>
     <div class="field">
-      <%= form.label :title %>
+      <%= form.label t('apps.title') %>
       <%= form.text_field :title, class: 'form-control app_title' %>
     </div>
 
     <div class="field">
-      <%= form.label :text %>
+      <%= form.label t('apps.description') %>
       <%= form.cktext_area :text, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' }, class: 'form-control app_text' %>
     </div>
     <div class="field">
-      <%= form.label :image %>
+      <%= form.label t('apps.image') %>
       <%= form.file_field :image, class: 'app_image' %>
     </div>
     <div class="field">
-      <%= form.label :backgroundColor %>
+      <%= form.label t('apps.backgroundColor') %>
       <%= form.text_field :backgroundColor, class: 'form-control app_backgroundColor' %>
     </div>
     <div class="field">
-      <%= form.label :textcolor %>
+      <%= form.label t('apps.textcolor') %>
       <%= form.text_field :textcolor, class: 'form-control app_textColor' %>
     </div>
     <div class="actions text-center">
-      <%= form.submit class: 'btn btn-primary' %>
+      <%= form.submit value: t('layout.save'),class: 'btn btn-primary' %>
     </div>
   <% end %>
 
