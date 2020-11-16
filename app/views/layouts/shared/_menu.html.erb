@@ -8,7 +8,34 @@
   <div class="navbar-menu-wrapper d-flex align-items-center">
     <ul class="navbar-nav">
       <li class="nav-item font-weight-semibold d-none d-lg-block">+84 981 664 050</li>
+      <li class="nav-item dropdown language-dropdown">
+        <a class="nav-link  hovernotbackground px-2 d-flex align-items-center" id="LanguageDropdown">
+          <div class="d-inline-flex mr-0 mr-md-3">
+            <div class="flag-icon-holder">
+              <% if locale.to_s == 'en'%>
+                <%=image_tag ('flags/1x1/us.svg')%>
+              <% else %>
+                <%=image_tag ('flags/1x1/vn.svg')%>
+              <% end %>
+            </div>
+          </div>
+          <span class="profile-text font-weight-medium d-none d-md-block"><%=locale%></span>
+        </a>
+        <div class="dropdown-menu dropdown-flags dropdown-menu-left navbar-dropdown py-2" >
+          <a class="dropdown-item" href="?locale=en">
+            <div class="flag-icon-holder">
+              <%=image_tag ('flags/1x1/us.svg')%>
+            </div>English
+          </a>
+          <a class="dropdown-item" href="?locale=vn">
+            <div class="flag-icon-holder">
+              <%=image_tag ('flags/1x1/vn.svg')%>
+            </div>Việt Nam
+          </a>
+        </div>
+      </li>
     </ul>
+
     <% if user_signed_in?%>
     <!-- <div class="row welcome_title">
         <h2 class="welcome text-uppercase text-center"><%=t('layout.welcome')%></h2>

@@ -1,5 +1,17 @@
 <%= render "/houses/shared/search" %>
 <div class="row w-100">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-3">
+    <input type="text" id="search_room" class="form-control search" placeholder="<%= t('layout.search')%>">
+  </div>
+  <div class="col-sm-3">
+    <button type="button" class="btn btn-primary" name="button">
+      <i class="fa fa-search"></i>
+      <%=t('layout.search')%>
+    </button>
+  </div>
+</div>
+<div class="row w-100">
   <div class="col-sm-2 house">
     <% @houses.each do |house| %>
     <a class="hovernotbackground text-decoration-none thishouse" dta-toggle="tab" aria-expanded="true" data-idhouse = "<%=house.id%>">
@@ -10,7 +22,7 @@
     <% end %>
   </div>
 <blockquote class="blockquote col-sm-10">
-  <div class="row">
+  <div class="row"  id="list_search_room">
     <% @rooms.each do |room|%>
       <div class="col-md-4 grid-margin stretch-card tab-pane d-none room <%= room.house_id%>_house" data-idroom = "<%= room.house_id%>">
         <div class="card">

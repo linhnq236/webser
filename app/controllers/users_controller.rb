@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     # @users =Information.where(mark: 0).order("created_at DESC").paginate(:page => params[:page], :per_page => ENV["DEFAULT_USER_PER_PAGE"])
     # @rooms = Room.all
@@ -11,9 +12,9 @@ class UsersController < ApplicationController
           array_infos.push(info)
         end
       end
-      @users = array_infos
+      @users = array_infos.paginate(:page => params[:page], :per_page => ENV["DEFAULT_CUSTOMER_PER_PAGE"])
     else
-      @users =Information.where(mark: 0).order("created_at DESC").paginate(:page => params[:page], :per_page => ENV["DEFAULT_USER_PER_PAGE"])
+      @users =Information.where(mark: 0).order("created_at DESC").paginate(:page => params[:page], :per_page => ENV["DEFAULT_CUSTOMER_PER_PAGE"])
     end
   end
 
@@ -28,9 +29,9 @@ class UsersController < ApplicationController
       end
     else
       if params[:disable].present?
-        @users = User.where("disable = ?  AND  admin < ?",  params[:disable],2)
+        @users = User.where("disable = ?  AND  admin < ?",  params[:disable],2).paginate(:page => params[:page], :per_page => ENV["DEFAULT_USER_PER_PAGE"])
       else
-        @users = User.where("admin < ?", 2).order("admin DESC")
+        @users = User.where("admin < ?", 2).order("admin DESC").paginate(:page => params[:page], :per_page => ENV["DEFAULT_USER_PER_PAGE"])
       end
     end
   end

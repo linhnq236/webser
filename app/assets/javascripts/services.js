@@ -13,4 +13,8 @@ $(document).on("turbolinks:load", function(){
       }
     })
   })
+
+  $(".button_new_service").click(function(){
+    $(".form_new_service").slideToggle();
+  })
 })

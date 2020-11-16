@@ -43,11 +43,11 @@ $( document ).on('turbolinks:load', function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
   });
-  $("#searchNotify").on("keyup", function() {
-    // var value = $(this).val().toLowerCase();
-    // $(".notify-content").filter(function() {
-    //   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-    // });
+  $("#search_room").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#list_search_room div").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    });
   });
   // background navbar selected
   var array_class = ['dashboard', 'dashboard', 'rooms', 'services', 'informations', 'accounts', 'reminders', 'statisticals', 'rentals', 'setting', 'apps','apps', 'contact'];
@@ -76,5 +76,7 @@ $( document ).on('turbolinks:load', function() {
       $(".save").removeClass('disabled');
     }
   })
-
+  $("#LanguageDropdown").click(function(){
+    $(".dropdown-flags").slideToggle();
+  })
 })

@@ -32,7 +32,7 @@ $( document ).on('turbolinks:load', function() {
       var area = $(this).data("area");
       var column = $(this).data("column");
       var subcolumn = $(this).data("subcolumn");
-      var isDisable = $(`.disable_${column}`).first().hasClass('hasdisable');
+      var isDisable = $(`.disable_${area+status+column}`).first().hasClass('hasdisable');
       if (subcolumn == "turnon" || subcolumn == "turnoff") {
         if (isDisable == true) {
           $.confirm({
@@ -86,7 +86,7 @@ $( document ).on('turbolinks:load', function() {
           mark ++;
           html += `
             <td class="text-center">
-              <button class="led led${area} disable_${ind}  ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'on' ? 'bg-danger': 'bg-primary'} ${val1 == 'disable' ? 'bg-danger hasdisable': 'bg-primary'}"  data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${val1}</button>
+              <button class="led led${area} disable_${area+index+ind}  ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'on' ? 'bg-danger': 'bg-primary'} ${val1 == 'disable' ? 'bg-danger hasdisable': 'bg-primary'}"  data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${val1}</button>
             </td>
           `
         })

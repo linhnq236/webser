@@ -1,42 +1,348 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at://guides.rubyonrails.org/i18n.html.
+
 vn:
-  hello: "Xin chao"
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            email:
-              blank: "Email Không được để trống"
-              taken: "Email đã tồn tại"
-  simple_calendar:
+  will_paginate:
+    previous_label: "Trước"
+    next_label: "Sau"
+  calendar:
     previous: "Trước"
     next: "Sau"
-  layout:
-    logout: "Đăng xuất"
-    login: "Đăng nhập"
-  leds:
-    LED_STATUS0: "ĐÈN SỐ  0"
-    LED_STATUS1: "ĐÈN SỐ  1"
-    LED_STATUS2: "ĐÈN SỐ  2"
-    LED_STATUS3: "ĐÈN SỐ  3"
-    LED_STATUS4: "ĐÈN SỐ  5"
-    LED_STATUS5: "ĐÈN SỐ  6"
-    LED_STATUS6: "ĐÈN SỐ  7"
-    LED_STATUS7: "ĐÈN SỐ  8"
-    STATUS: "Trạng thái"
-    turnon: "Bật"
-    TUNROFF: "Tắt"
   datetime:
     distance_in_words:
-      x_minutes: "%{count} phút trước"
-      about_x_hours: "%{count} phút trước"
-      x_days: "%{count} ngày trước"
-      about_x_months: "%{count} tháng trước"
-      about_x_years: "%{count} năm trước"
+      about_x_hours:
+        one: "Khoảng 1 giờ"
+        other: Khoảng %{count} Giờ
+      about_x_months:
+        one: "Khoảng 1 tháng"
+        other: "Khoảng %{count} tháng"
+      about_x_years:
+        one: "Khoảng 1 năm"
+        other: "Khoảng %{count} năm"
+      almost_x_years:
+        one: "Gần 1 năm"
+        other: "Gần %{count} năm"
+      half_a_minute: "30 giây trước"
+      less_than_x_seconds:
+        one: "Vừa xong"
+        other: "Khoảng %{count} giây trước"
+      less_than_x_minutes:
+        one: "Dưới 1 phút"
+        other: "Dưới %{count} phút"
+      over_x_years:
+        one: "Trên 1 năm"
+        other: "Trên %{count} năm"
+      x_seconds:
+        one: "1 giây"
+        other: "%{count} giây"
+      x_minutes:
+        one: "1 phút"
+        other: "%{count} phút"
+      x_days:
+        one: "1 ngày"
+        other: "%{count} ngày"
+      x_months:
+        one: "1 tháng"
+        other: "%{count} tháng"
+      x_years:
+        one: "1 năm"
+        other: "%{count} năm"
+  hello: "Hello world"
+  mes:
+    add_success: "Tạo %{name} thành công"
+    add_error: "Tạo %{name} thất bại"
+    delete_success: "Xóa %{name} Thành công"
+    delete_errror: "Xóa %{name} thất bại"
+    update_success: "%{name} đã cập nhật thành công."
+    action_success: "%{action} thành công"
+    action_fail: "%{action} thất bại"
+    action_update: " Đã cập nhật"
+    action_delete: "Đã xóa"
+    action_create:  "Đã tạo"
+  layout:
+    login: "Đăng nhập"
+    logout: "Đăng xuất"
+    menu_main: "Menu main"
+    dashboard: "Dashboard"
+    rooms: "Phòng"
+    services: "Dịch vụ"
+    informations: "Khách hàng"
+    accounts: "Tài khoản"
+    reminders: "Nhắc nhở"
+    statistical: "Thống kê"
+    room_rental: "Thu chi"
+    manager: "Quản lý"
+    admin: "Admin"
+    customer: "Khách hàng"
+    search: "Tìm kiếm"
+    back: "Trở lại"
+    save: "Lưu"
+    male: "Nam"
+    female: "Nữ"
+    order: "Stt"
+    send: "Gửi"
+    delete: "Xóa"
+    edit: "Sửa"
+    feedback: "Phản hồi"
+    email: "Email"
+    sendemail: "Gửi email"
+    search_name: "Tìm kiếm %{name} ..."
+    confirm_delete: "Bạn đã chắc chắn ?"
+    updated_at: "Cập nhật"
+    created_at: "Tạo"
+    created: "Tạo"
+    result_mic: "Kết quả từ micro"
+    export_csv: "Xuất file"
+    changepassword: "Thay đổi mật khẩu"
+    welcome: "Chào mừng đến với ứng dụng"
+    setting: "Cài đặt"
+    contact: "Liên hệ"
+    apps: "Ứng dụng"
+  house:
+    house_name: "Nhà"
+    addhouse: "Tạo nhà"
+    delete_house: "Xóa nhà"
+    edit_house: "Sửa nhà"
+    show:
+      addtenantroom: "Thêm phòng"
+      personalinformation: "Thông tin cá nhân"
+      firstname: "Họ"
+      lastname: "Tên"
+      sex: "Giới tính"
+      birth: "Ngày sinh"
+      indentifycard: "CMND"
+      daterange: "Ngày cấp"
+      phone1: "SĐT 1"
+      phone2: "SĐT 2"
+      placerange: "Nơi cấp"
+      email: "Email"
+      permanent: "Quê quán"
+      temporaryaddress: "Tạm trú"
+      room_name: "Số phòng"
+      money_room: "Giá phòng"
+      start: "Bắt đầu"
+      deposit: "Đặt cọc"
+      note: "Ghi chú"
+      depositmoney: "Gửi tiền trọ"
+      # service
+      choose: "Chọn"
+      serviceused: "Dịch vụ đang sử dụng"
+      cost: "Giá (VNĐ)"
+      quantum: "Số lượng"
+      # members
+      fullname: "Họ và tên"
+      address: "Đại chỉ"
+      phone: "SĐT"
+      # service index
+      services_index: "Chỉ số dịch vụ"
+      oldvalue: "Giá trị cũ"
+      newvalue: "Giá trị mới"
+      electricity: "Điện"
+      water: "Nước"
+      oldperson: "Khách hàng cũ"
+    new_house: "Tạo nhà mới"
+    province_city: "Tỉnh / Thành phố"
+    district: "Quận"
+    ward: "Huyện"
+    number: "Số"
+    road: "Đường"
+    # edit house
+  room:
+    room_name: "Phòng"
+    roomfast: "Tạo phòng nhanh"
+    addroom: "Tạo phòng"
+    pay_room: "Trả phòng"
+    show_room: "Chi tiết"
+    add_customer: "Mới"
+    edit_room: "Sửa"
+    delete_room: "Xóa"
+    setting: "Cài đặt"
+    empty_room: "Phòng trống"
+    customer_room: "Phòng không trống"
+    # Room fast
+    from: "Từ"
+    to: "Đến"
+    maximum: "Số người tối đa"
+    width: "Chiều rộng"
+    length: "Chiều dài"
+    description: "Mô tả"
+    unit_price: "Giá"
+    # create room
+    number_room: "Phòng số"
+    cancel_infor: "Hủy"
+    mes_cancel_room: "Hủy phòng thành công"
+  home:
+    led_title: "Điều khiển thiết bị"
+    guild_voice: "Hướng dẫn sử dung giọng nói"
+    read: "Phát âm"
+    code_room: "Mã"
+    status: "Trạng thái"
+    on: "Bật"
+    off: "Tắt"
+    turnon: "Bật"
+    turnoff: "Tắt"
+    result: "Kết quả"
+    ex: "Ví dụ"
+  services:
+    new_service: "Tạo mới một dịch vụ "
+    service_name: "Nhập tên dịch vụ"
+    service_prices: "Nhập giá dịch vụ"
+    compulsory: "Bắt buộc"
+    optional: "Không bắt buộc"
+    status: "Trạng thái"
+    service_used: "Tên dịch vụ"
+    unit_price: "Giá"
+    use_services: "Tên dịch vụ"
+    room_master: "Chủ phòng"
+  users:
+    active: "Hoạt động"
+    stop: "Dừng"
+    fullname: "Họ và tên"
+    sex: "Giới tính"
+    birth: "Ngày sinh"
+    indentifycard: "CMND"
+    phone1: "SĐT 1"
+    phone2: "SĐT 2"
+    email: "Email"
+    start: "Bắt đầu"
+    daterange: "Ngày cấp"
+    placerange: "Nơi cấp"
+    permanent: "Quê quán"
+    temporaryaddress: "Địa chỉ tạm trú"
+    deposit: "Đặt cọc"
+    note: "Ghi chú"
+    add_manager: "Tạo một email mới"
+    status: "Trạng thái"
+    kind: "Loại"
+    phone: "SĐT"
+  Statisticals:
+    empty_room: "Phòng trống"
+    customer_room: "Phòng không trống"
+    customer: "Khách hàng"
+    manager: "Người quản lý"
+    admin: "Admin"
+    room_chart: "Biểu đồ phòng"
+    user_chart: "Biểu đồ người quản lý và khách hàng"
+    countmoneypermonth: "Tiền/Tháng"
+  paytherents:
+    room_master: "Chủ phòng"
+    month: "Tháng"
+    money: "Tiền (VND)"
+    date_of_payment: "Ngày thanh toán"
+    status: "Trạng thái"
+    yes: "Đã"
+    no: "Chưa"
+    confirm_paytherent: "Xác nhận thanh toán tại đây."
+  apps:
+    title: "Tiêu đề"
+    image: "Ảnh"
+    description: "Mô tả"
+    backgroundColor: "Màu nền"
+    textcolor: "Màu chữ"
+    regulation: "Quy định"
+  shared:
+    informations: "Thông tin"
+    services: "Dịch vụ"
+    members: "Thành viên"
+    services_index: "Chỉ số dịch vụ"
+  application_controller:
+    not_permission: "Bạn không có quyền đăng nhập"
+    not_admin_access: "Admin không có quyền truy cập"
+    acc_disable: "Tài khoản này đã bị khóa"
+    not_admin: "Bạn không phải là admin!"
+  houses_controller:
+    not_check_out: "Khách hàng chưa trả phòng"
+  informations_controller:
+    book_room: "Đặt phòng thành công"
+    add_customer: "Thêm thông tin khách hàng thất bại"
+  members_controller:
+    members: "Thành viên"
+    room_master: "Chủ phòng"
+    fullname: "Họ và tên"
+    birth: "Ngày sinh"
+    sex: "Giới tính"
+    indentify: "CMND"
+    address: "Địa chỉ"
+    phone: "SĐT"
+  notify_mailer_controller:
+    send_email: "Gủi email ${action}"
+    success: "Thành công"
+    fail: "thất bại"
+    not_sersives: "%{user} Chưa chọn dịch vụ."
+    not_elect_warter: "Bạn phải nhập giá trị mới của chỉ số điện/nước"
+    bill_success: "Gửi biên lai thanh toán tiền chỗ ở thành công"
+    bill_fail: "Gửi biên lai thanh toán tiền chỗ ở thất bại"
+    mail_exists: "Email tháng này đã được gửi đi"
+  reminders_controller:
+    reminder_action: "Tạo nhắc nhở %{action}"
+    action_success: "Thành công"
+    action_fail: "thất bại"
+  reports_controller:
+    rep_content: "Nội dung phản hồi không được để trống"
+    feedback: "Phản hồi thành công"
+  rooms_controller:
+    new_room: "Tạo một phòng mới"
+    new_room_fail: "Tạo một phòng mới thất bại"
+    payroom_before: "Xin vui lòng thanh toán tiền trọ trước khi trả phòng"
+    payroom_success: "Trả phòng Thành công"
+    payroom_fail: "Trả phòng thất bại"
+    exist_room: "Phòng đã tồn tại"
+  services_controller:
+    services_name: "Dịch vụ"
+    error_delete: "Bạn không thể xóa dịch vụ này vì có người đang sử dụng"
+  use_services_controller:
+    create: "Lưu thành công"
+    update: "Cập nhật thành công"
+    delete: "Xóa thành công"
+  users_controller:
+    create: "Tạo mới một người quản lý"
+  apps_controller:
+
+  reports:
+    feedback: "Phản hồi"
+    title: "Tiêu đề"
+    content: "Nội dung"
+    rep_content: "Nội dung phản hồi"
+    user_send: "Họ và tên"
+    created_at: "Tạo ngày"
+    status: "Trạng thái"
+  send_email:
+    contact: "Liên hệ"
+    to: "Đến"
+    title: "Tiêu đề"
+    content: "Nội dung"
   date:
     abbr_day_names: [CN, T2 ,T3,T4 ,T5 ,T6 ,T7]
     year_names: "Năm"
-    month_names: [Tháng 1, Tháng 2, Tháng 3, Tháng 4, Tháng 5, Tháng 6, Tháng 7, Tháng 8, Tháng 9, Tháng 10, Tháng 11, Tháng 12]
+    month_names: [tháng 1, tháng 2, tháng 3, tháng 4, tháng 5, tháng 6, tháng 7, tháng 8, tháng 9, tháng 10, tháng 11, tháng 12]
     order: [ !ruby/symbol day, !ruby/symbol month, !ruby/symbol year ]
     formats:
       Octorber: "Tháng 10"
@@ -50,3 +356,55 @@ vn:
       long: "%B %d, %Y %H:%M"
     am: "am"
     pm: "pm"
+  footer:
+    title: "Luận văn tốt nghiệp"
+    idioms: "Trên con đường thành công không có dấu chân của kẻ lười biếng"
+  js:
+    mes:
+      delete: "Bạn có chắc chắn ?"
+      blank: "Không được để trống"
+      confirm:
+        delete: "Xóa"
+    notice: "Thông báo !"
+    house:
+      house_name: "Nhà"
+      delete_room: "Bạn có muốn xóa nhà này bao gồm cả các phòng?"
+    room:
+      pay_room: "Bạn muốn trả phòng ?"
+      delete_room_error: "Bạn không thể trả phòng"
+      cancel_room: "Bạn có muốn hủy phòng?"
+    user:
+      customer_information: "Thông tin khách hàng"
+      customer_old_information: "Thông tin khách hàng cũ"
+    reminders:
+      title: "Tạo mới một nhắc nhở"
+      reminders: "Nhắc nhở"
+      subtitle: "Tiêu đề"
+      content: "Nội dung"
+      start: "Bắt đầu"
+      end: "Kết thúc"
+      new_reminder: "Nhắc nhở mới"
+    redirects:
+      home: "Nhà"
+      dashboard: "dashboard"
+      rooms: "Phòng"
+      services: "dịch vụ"
+      informations: "Khách hàng"
+      accounts: "Tài khoản"
+      reminders: "Nhắc nhở"
+      statisticals: "Thống kê"
+      rentals: "Thu chi"
+      logout: "Đăng xuât"
+      email: "email"
+      all: "Tất cả"
+    reports:
+      all: "Tất cả"
+    home:
+      led_status0: "<i class='mdi mdi-lamp text-warning'> </i> CỬA "
+      led_status1: "<i class='mdi mdi-lamp text-warning'> </i> ĐÈN 1 "
+      led_status2: "<i class='mdi mdi-lamp text-warning'> </i> Ổ CẮM "
+      led_status3: "<i class='mdi mdi-lamp text-warning'> </i> ĐÈN 2"
+      led_status5: "<i class='mdi mdi-fan text-primary'> </i> QUẠT"
+      led_status6: "<i class='mdi mdi-power-socket-us  text-info'> </i> Ổ CẮM 1"
+      led_status7: "<i class='mdi mdi-power-socket-us  text-info'> </i> Ổ CẮM 2"
+      led_status8: "<i class='mdi mdi-power-socket-us  text-info'> </i> Ổ CẮM 3"

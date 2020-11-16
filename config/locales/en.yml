@@ -134,7 +134,7 @@ en:
     room_name: "Room"
     roomfast: "Create Room fast"
     addroom: "Create room"
-    pay_room: "Pay"
+    pay_room: "Checkout"
     show_room: "Show"
     add_customer: "New"
     edit_room: "Edit"
@@ -311,7 +311,9 @@ en:
       long: "%B %d, %Y %H:%M"
     am: "am"
     pm: "pm"
-
+  footer:
+    title: "Graduation essay"
+    idioms: "On the way to success, there is no trace of lazy men"
   js:
     mes:
       delete: "Are you sure ?"
@@ -353,10 +355,10 @@ en:
     reports:
       all: "All"
     home:
-      led_status0: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 1 "
-      led_status1: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 2 "
-      led_status2: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 3 "
-      led_status3: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 4"
+      led_status0: "<i class='mdi mdi-lamp text-warning'> </i> DOOR "
+      led_status1: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 1 "
+      led_status2: "<i class='mdi mdi-lamp text-warning'> </i> POWER SOCKET "
+      led_status3: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 2"
       led_status5: "<i class='mdi mdi-fan text-primary'> </i> FAN"
       led_status6: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 1"
       led_status7: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 2"

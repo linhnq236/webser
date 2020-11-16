@@ -27,7 +27,7 @@ $( document ).on('turbolinks:load', function() {
     `
     ${html}
     <div class='text-center'>
-      <a href="/reminders" class="text-white hovernotbackground text-decoration-none">${I18n.t('js.reports.all')}</a>
+      <a href="/reminders?locale=${gon.locale}" class="text-white hovernotbackground text-decoration-none">${I18n.t('js.reports.all')}</a>
     </div>
     `
   );
@@ -64,7 +64,7 @@ $( document ).on('turbolinks:load', function() {
                   }
                   $.ajax({
                     type: 'post',
-                    url: "/reminders",
+                    url: `/reminders?locale=${gon.locale}`,
                     data: {
                       title: title,
                       content: content,
@@ -104,7 +104,7 @@ $( document ).on('turbolinks:load', function() {
         }
       })
     }else{
-      location.href = `/reminders?start_date=${date}`;
+      location.href = `/reminders?start_date=${date}?locale=${gon.locale}`;
     }
   })
   // delete reminder
