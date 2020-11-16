@@ -27,7 +27,7 @@
 #   'true': 'foo'
 #
 # To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
+# available at://guides.rubyonrails.org/i18n.html.
 
 vn:
   will_paginate:
@@ -151,7 +151,7 @@ vn:
       start: "Bắt đầu"
       deposit: "Đặt cọc"
       note: "Ghi chú"
-      depositmoney: "Tiền đặt cọc"
+      depositmoney: "Gửi tiền trọ"
       # service
       choose: "Chọn"
       serviceused: "Dịch vụ đang sử dụng"

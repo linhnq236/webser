@@ -67,6 +67,13 @@ class HomeController < ApplicationController
 
 
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+    leds = firebase.get(FIREBASE_URL).body
+    checkled_disable = leds[remove_space_upcase_string(house.name)]["Phong#{room.name}"]["led_status#{chip}"]['active']
+    if checkled_disable == 'disable'
+      render json: {status: 402}
+      return false
+    end
+
     response = firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/Phong#{room.name}/led_status#{chip}/status": set_status})
     ActionCable.server.broadcast 'ledstatus_channel',
       ledstatus: response.body

@@ -166,6 +166,9 @@ $( document ).on('turbolinks:load', function() {
       url: "/voice",
       data: {name: name},
       success: function(rep) {
+        if (rep['status'] == 402) {
+          alert('This led is disabled');
+        }
         ses.start();
       },
       error: function(rep) {

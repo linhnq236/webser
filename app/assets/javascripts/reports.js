@@ -45,7 +45,7 @@ $( document ).on('turbolinks:load', function() {
     `
       <div>${html_report}</div>
       <div class='text-center'>
-        <a href="/reports" class="text-white hovernotbackground text-decoration-none">${I18n.t('js.reports.all')}</a>
+        <a href="/reports?locale=${gon.locale}" class="text-white hovernotbackground text-decoration-none">${I18n.t('js.reports.all')}</a>
       </div>
     `
   );
