@@ -12,10 +12,10 @@ class ServicesController < ApplicationController
         use= UseService.find_by_information_id(room.information_id)
         @array_use_services.push(use)
       end
-      @use_services = @array_use_services
-      
+      @use_services = @array_use_services.paginate(:page => params[:page], :per_page => ENV["DEFAULT_SERVICE_PER_PAGE"])
+
     else
-      @use_services = UseService.all
+      @use_services = UseService.all.paginate(:page => params[:page], :per_page => ENV["DEFAULT_SERVICE_PER_PAGE"])
     end
   end
 

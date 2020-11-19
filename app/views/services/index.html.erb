@@ -71,8 +71,8 @@
   <thead>
     <tr>
       <th class="text-center"><%=t('layout.order')%></th>
-      <th class="text-center"><%=t('services.use_services')%></th>
-      <th class="text-center"><%=t('services.room_master')%></th>
+      <th class=""><%=t('services.use_services')%></th>
+      <th class=""><%=t('services.room_master')%></th>
       <th class="position-relative"><input type="text" id="searchuseservice" class="searchuseservice search position-absolute" placeholder="<%=t("layout.search_name", name: "service")%>"></th>
     </tr>
   </thead>
@@ -81,8 +81,8 @@
       <% @use_services.each_with_index do |use_service, i|%>
         <tr>
           <td class="text-center"><%= i +=1 %></td>
-          <td class="text-center"><%= getUseService(use_service.service_id)%></td>
-          <td class="text-center"><%= use_service.information&.name %></td>
+          <td class=""><%= getUseService(use_service.service_id)%></td>
+          <td class=""><%= use_service.information&.name %></td>
           <td class="text-danger text-center">
             <a href="/use_services/<%= use_service.id%>" class="btn btn-danger btn-sm text-white" data-method="delete"  data-confirm="<%=t('layout.confirm_delete')%>">
               <i class="fa fa-trash"></i>
@@ -94,3 +94,4 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @use_services, renderer: BootstrapPagination::Rails %>

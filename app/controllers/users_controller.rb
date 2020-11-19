@@ -22,9 +22,9 @@ class UsersController < ApplicationController
     @houses = House.where("name != ?", 'MyHouse')
     if current_user.admin == 1
       if params[:disable].present?
-        @users = User.where("disable = ?  AND  admin < ? AND house_id =? ", params[:disable],2, current_user.house_id)
+        @users = User.where("disable = ?  AND  admin < ? AND house_id =? ", params[:disable],2, current_user.house_id).paginate(:page => params[:page], :per_page => ENV["DEFAULT_USER_PER_PAGE"])
       else
-        @users = User.where("admin < ? AND house_id = ? ", 2, current_user.house_id).order("admin DESC")
+        @users = User.where("admin < ? AND house_id = ? ", 2, current_user.house_id).order("admin DESC").paginate(:page => params[:page], :per_page => ENV["DEFAULT_USER_PER_PAGE"])
         # @infos =Information.order("created_at DESC")
       end
     else

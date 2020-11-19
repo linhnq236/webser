@@ -15,7 +15,7 @@ class PaytherentsController < ApplicationController
           paytherents.push(p)
         end
       end
-      @paytherents = paytherents
+      @paytherents = paytherents.paginate(:page => params[:page], :per_page => ENV["DEFAULT_RENTAL_PER_PAGE"])
     else
       @paytherents = Paytherent.all.order("senddate DESC").paginate(:page => params[:page], :per_page => ENV["DEFAULT_RENTAL_PER_PAGE"])
     end
