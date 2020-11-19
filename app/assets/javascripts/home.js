@@ -13,7 +13,7 @@ $( document ).on('turbolinks:load', function() {
       var i = 0;
       i++;
       html += `
-      <table class="table house ${index.toUpperCase()}" id="tableledshow">
+      <table class="table tablehouse house ${index.toUpperCase()}" id="tableledshow">
           ${loadArea(value, index)}
       </table>
       `
@@ -229,6 +229,12 @@ $( document ).on('turbolinks:load', function() {
     var house_room = $(this).data('house_room');
     $(`.chip_${house_room}`).slideToggle();
   })
+  if (gon.house_name != undefined) {
+    $(".tablehouse").hide();
+    $(`.${gon.house_name}`).show();
+  }else{
+    $(".tablehouse").show();
+  }
     // $(".house").each(function(){
     //   var id = $(this).data("first");
     //   if (gon.house_name != id) {
