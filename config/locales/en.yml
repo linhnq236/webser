@@ -166,6 +166,8 @@ en:
     turnoff: "Turn off"
     result: "Result"
     ex: "Example"
+    chose_house: "Select the house"
+    chose_room: "Select the room"
   services:
     new_service: "Create new service "
     service_name: "Enter service name"
@@ -355,11 +357,11 @@ en:
     reports:
       all: "All"
     home:
-      led_status0: "<i class='mdi mdi-lamp text-warning'> </i> DOOR "
-      led_status1: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 1 "
-      led_status2: "<i class='mdi mdi-lamp text-warning'> </i> POWER SOCKET "
-      led_status3: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 2"
+      led_status0: "<i class='mdi mdi-key text-warning'> </i> DOOR "
+      led_status1: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH "
+      led_status2: "<i class='mdi mdi-power-socket-us text-info'> </i> POWER SOCKET "
+      led_status3: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 1"
       led_status5: "<i class='mdi mdi-fan text-primary'> </i> FAN"
-      led_status6: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 1"
-      led_status7: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 2"
-      led_status8: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 3"
+      led_status6: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 2 "
+      led_status7: "<i class='mdi mdi-lamp text-warning'> </i> LIGTH 3 "
+      led_status8: "<i class='mdi mdi-power-socket-us  text-info'> </i> POWER SOCKET 1"

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
   # FIREBASE_SECRET = 'F4mMmNXp1CPYvJYX5KwtrLifqw6UvVO4fyCUKhoj'
   require "firebase_connect"
-
+  $houses = House.where("name != ?", 'MyHouse')
   def check_user_login
     if user_signed_in?
       gon.user = current_user.id
