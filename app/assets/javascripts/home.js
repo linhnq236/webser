@@ -324,7 +324,9 @@ $( document ).on('turbolinks:load', function() {
         equiment_status: equiment_name
       },
       success: function(rep) {
-        location.reload();
+        if (rep['status'] == 200) {
+          location.reload();
+        }
       },
       error: function(rep) {
         console.log(rep);
