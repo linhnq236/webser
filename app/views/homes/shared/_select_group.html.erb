@@ -1,0 +1,16 @@
+<div class="col-sm-3">
+  <%= form_tag(homes_path, method: :get, id: "changeHouse") do %>
+    <%=select_tag 'house_id', options_from_collection_for_select(@houses, "id", "name", params[:house_id]), {onchange: "$('#changeHouse').submit();", class: 'form-control', include_blank: t('home.chose_house'), } %>
+  <% end %>
+</div>
+<div class="col-sm-3">
+  <select class="form-control chose_room" name="chose_room" data-house_id="<%=params[:house_id].present? ? params[:house_id] : '0'%>">
+    <option value=""><%=t('home.chose_room')%></option>
+  </select>
+</div>
+<div class="col-sm-3 equiment">
+  <select class="form-control equiment_name" name="equiment_name">
+    <option value=""><%=t('home.chose_option')%></option>
+  </select>
+</div>
+<div class="col-sm-3"><button type="button" name="button" class="btn-sm btn-primary btn_group_equiment">Save</button></div>

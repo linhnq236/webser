@@ -12,7 +12,7 @@
     </div>
     <div class="field">
       <%= form.label :House %>
-      <%=select_tag 'regulation[house_id]', options_from_collection_for_select(@houses, "id", "name", @regulation.house_id), class: 'forn-control'%>
+      <%=select_tag 'regulation[house_id]', options_from_collection_for_select(@houses, "id", "name", @regulation.house_id), class: 'form-control'%>
     </div>
     <div class="actions text-center">
       <%= form.submit class: "btn btn-primary btn-sm" %>

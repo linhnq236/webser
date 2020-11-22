@@ -24,10 +24,12 @@ $( document ).on('turbolinks:load', function() {
                   if(vvv == 'disable') {
                     var changeturnon = areapin.replace('active', 'turnon');
                     var changeturnoff = areapin.replace('active', 'turnoff');
+                    var changetime = areapin.replace('active', 'time');
                    $(`.${areapin}`).removeClass('bg-primary');
                    $(`.${areapin}`).addClass('bg-danger hasdisable');
                    $(`.${changeturnon}`).text('0000-00-00 00:00');
                    $(`.${changeturnoff}`).text('0000-00-00 00:00');
+                   $(`.${changetime}`).text('00:00');
                  }else if(vvv == 'enable'){
                    $(`.${areapin}`).removeClass('bg-danger hasdisable');
                    $(`.${areapin}`).addClass('bg-primary');

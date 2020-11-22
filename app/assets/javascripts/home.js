@@ -13,7 +13,7 @@ $( document ).on('turbolinks:load', function() {
       var i = 0;
       i++;
       html += `
-      <table class="table house ${index.toUpperCase()}" id="tableledshow">
+      <table class="table tablehouse house ${index.toUpperCase()}" id="tableledshow">
           ${loadArea(value, index)}
       </table>
       `
@@ -46,6 +46,17 @@ $( document ).on('turbolinks:load', function() {
         setTime(status,area, column, subcolumn);
       }else if(subcolumn == 'active') {
         disable_enable(status,area,column,subcolumn,active);
+      }else if(subcolumn == 'time'){
+        if (isDisable == true) {
+          $.confirm({
+            title: 'Notice',
+            content: "This led is disabled. Please enable and using this function.",
+            closeIcon: true,
+            buttons: false,
+          })
+          return false;
+        }
+        setTime(status,area, column, subcolumn);
       }else{
         if (isDisable == true) {
           $.confirm({
@@ -73,6 +84,7 @@ $( document ).on('turbolinks:load', function() {
           <td>Name</td>
           <td class="text-center">Active</td>
           <td class="text-center">Status</td>
+          <td class="text-center">Auto</td>
           <td class="text-center">Timer</td>
           <td class="text-center">Time out</td>
         </tr>
@@ -118,16 +130,30 @@ $( document ).on('turbolinks:load', function() {
   }
   // SETTIME
   function setTime(status, area, column, subcolumn){
+    var content =  '';
+    if (subcolumn == 'time') {
+      content = `
+        <form action='' class='formName'>
+          <div class="form-group">
+            test<input type="time" class="settime form-control" required />
+          </div>
+        </form>
+      `;
+    }else{
+      content += `
+        <form action='' class='formName'>
+          <div class="form-group">
+            <input type="datetime-local" class="settime form-control" required />
+          </div>
+        </form>
+      `
+    }
+
     $.confirm({
       title: "SETTIME",
       // columnClass: 'col-md-5 col-md-offset-4',
       closeIcon: true,
-      content: '' +
-      "<form action='' class='formName'>" +
-      '<div class="form-group">' +
-      '<input type="datetime-local" class="settime form-control" required />' +
-      '</div>' +
-      '</form>',
+      content: content,
       buttons: {
           formSubmit: {
             text: 'Submit',
@@ -229,10 +255,82 @@ $( document ).on('turbolinks:load', function() {
     var house_room = $(this).data('house_room');
     $(`.chip_${house_room}`).slideToggle();
   })
-    // $(".house").each(function(){
-    //   var id = $(this).data("first");
-    //   if (gon.house_name != id) {
-    //     $(`.${id}`).css({"display": "none"});
-    //   }
-    // })
+  if (gon.house_name != undefined) {
+    $(".tablehouse").hide();
+    $(`.${gon.house_name}`).show();
+  }else{
+    $(".tablehouse").show();
+  }
+  // chose room group select
+  if (gon.chose_rooms != undefined) {
+    var html = '';
+    html += `
+      <option>Select</option>
+      <option value='all'>all</option>
+    `;
+    $.each(gon.chose_rooms, function(key,value){
+      html += `
+        <option value='${key}'>${key}</option>
+      `;
+    })
+    $(".chose_room").html(html);
+  }
+  var room_name = '';
+  var group_house_id = '';
+  var equiment_name = '';
+  $(".chose_room").change(function(){
+    room_name = this.value;
+    group_house_id = $(this).data('house_id');
+    if (room_name == 0) {
+      console.log("all");
+    }else{
+      var html_equiment = '';
+      html_equiment += `
+      <option>Select</option>
+      `;
+      $.each(['ENABLE','DISABLE', 'LIGTH ON', 'LIGTH OFF', 'POWER SOCKET ON', 'POWER SOCKET OFF'], function(key,value){
+        html_equiment += `
+          <option value='${key}'>${value}</option>
+        `;
+      })
+      $(".equiment").show();
+      $(".equiment_name").html(html_equiment);
+    }
+  })
+  $(".equiment_name").change(function(){
+    equiment_name = this.value;
+  })
+
+  $(".btn_group_equiment").click(function(){
+    if (room_name == 'Select' || !equiment_name) {
+      $.confirm({
+        title: "Notice",
+        content: 'Select the house or equiment',
+        iconClose: true,
+        buttons: {
+          Ok: {
+            btnClass: 'btn-primary'
+          }
+        }
+      })
+      return false;
+    }
+    $.ajax({
+      type: 'post',
+      url: "/api/group_leds",
+      data: {
+        group_house_id: group_house_id,
+        room_name: room_name,
+        equiment_status: equiment_name
+      },
+      success: function(rep) {
+        if (rep['status'] == 200) {
+          location.reload();
+        }
+      },
+      error: function(rep) {
+        console.log(rep);
+      }
+    })
+  })
 })

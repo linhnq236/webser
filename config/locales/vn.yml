@@ -211,6 +211,9 @@ vn:
     turnoff: "Tắt"
     result: "Kết quả"
     ex: "Ví dụ"
+    chose_house: "Chọn tất cả các nhà"
+    chose_room: "Chọn tất cả các phòng"
+    chose_option: "Chọn thiết bị phòng"
   services:
     new_service: "Tạo mới một dịch vụ "
     service_name: "Nhập tên dịch vụ"
@@ -402,7 +405,7 @@ vn:
     home:
       led_status0: "<i class='mdi mdi-lamp text-warning'> </i> CỬA "
       led_status1: "<i class='mdi mdi-lamp text-warning'> </i> ĐÈN 1 "
-      led_status2: "<i class='mdi mdi-lamp text-warning'> </i> Ổ CẮM "
+      led_status2: "<i class='mdi  mdi-power-socket-us  text-info'> </i> Ổ CẮM "
       led_status3: "<i class='mdi mdi-lamp text-warning'> </i> ĐÈN 2"
       led_status5: "<i class='mdi mdi-fan text-primary'> </i> QUẠT"
       led_status6: "<i class='mdi mdi-power-socket-us  text-info'> </i> Ổ CẮM 1"

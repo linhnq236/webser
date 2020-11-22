@@ -30,16 +30,16 @@ Rails.application.routes.draw do
     put "/update_information_customer/:house_id/:room_id/:information_id", to: "information#update_information_customer"
     resources :houses
     get "/deletehouse/:id", to: "houses#deletehouse"
-    resources :home
-    root "home#index"
-    get "led_status", to: "home#led_status"
-    post "updatestatus", to: "home#updatestatus"
-    post "settime", to: "home#settime"
-    post "/disable_endable", to: "home#disable_endable"
-    get "login", to: "home#login"
-    get "gettemperature", to: "home#gettemperature"
-    post "/voice", to: "home#voice"
-    get "/callvideo", to: "home#callvideo"
+    resources :homes
+    root "homes#index"
+    get "led_status", to: "homes#led_status"
+    post "updatestatus", to: "homes#updatestatus"
+    post "settime", to: "homes#settime"
+    post "/disable_endable", to: "homes#disable_endable"
+    get "login", to: "homes#login"
+    get "gettemperature", to: "homes#gettemperature"
+    post "/voice", to: "homes#voice"
+    get "/callvideo", to: "homes#callvideo"
     resources :rooms
     get "room_fast", to: "rooms#room_fast"
     post "/roomfast", to: "rooms#roomfast"
@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     get "getward/:district", to: "houses#getward"
     resources :home
     get "led_status/:information_id", to: "home#led_status"
+    post "/group_leds", to: 'home#group_leds'
     resources :users
     post "/account", to: "users#account"
     post "/active_acc/:id", to: "users#active_acc"

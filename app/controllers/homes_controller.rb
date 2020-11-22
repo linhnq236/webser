@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomesController < ApplicationController
   include ApplicationHelper
   skip_before_action :verify_authenticity_token
   # FIREBASE_URL    = 'https://iotpro-58c44.firebaseio.com/'
@@ -6,17 +6,19 @@ class HomeController < ApplicationController
   require "firebase_connect"
 
   def index
-      # NoticeMailer.notify_cost("1").deliver_now!
+    firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+    response = firebase.get(FIREBASE_URL).body
+    if current_user.admin == 1
+      @houses = House.where(id: current_user.house_id)
+    else
+      @houses = $houses
+    end
+    if params['house_id'].present?
+      house= House.find(params[:house_id])
+      house_name = remove_space_upcase_string(house.name)
+      gon.chose_rooms = response[house_name]
+    end
   end
-  def login
-
-  end
-
-  # def led_status
-  #   firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-  #   leds = firebase.get(FIREBASE_URL).body
-  #   render json: {data: leds}
-  # end
 
   def updatestatus
     status = params[:status]
@@ -29,6 +31,7 @@ class HomeController < ApplicationController
       response = firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/#{subcolumn}": active})
                  firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/turnon": '0000-00-00 00:00'})
                  firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/turnoff": '0000-00-00 00:00'})
+                 firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/time": '00:00'})
     else
       response = firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/#{subcolumn}": active})
     end

@@ -27,5 +27,10 @@
   <div class="col-sm-6">
     <input type="text" id="searchled" placeholder="<%=t('layout.search')%>" class="form-control search">
   </div>
+  <div class="col-sm-12">
+    <div class="row">
+      <%=render 'homes/shared/select_group', :locals => { :houses => @houses }%>
+    </div>
+  </div>
   <div class="firebase_led"></div>
 </div>
