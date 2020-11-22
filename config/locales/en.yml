@@ -168,6 +168,7 @@ en:
     ex: "Example"
     chose_house: "Select the house"
     chose_room: "Select the room"
+    chose_option: "Select the option"
   services:
     new_service: "Create new service "
     service_name: "Enter service name"

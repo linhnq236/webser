@@ -213,6 +213,7 @@ vn:
     ex: "Ví dụ"
     chose_house: "Chọn tất cả các nhà"
     chose_room: "Chọn tất cả các phòng"
+    chose_option: "Chọn thiết bị phòng"
   services:
     new_service: "Tạo mới một dịch vụ "
     service_name: "Nhập tên dịch vụ"

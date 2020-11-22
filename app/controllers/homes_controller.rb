@@ -8,7 +8,11 @@ class HomesController < ApplicationController
   def index
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     response = firebase.get(FIREBASE_URL).body
-    @houses = $houses
+    if current_user.admin == 1
+      @houses = House.where(id: current_user.house_id)
+    else
+      @houses = $houses
+    end
     if params['house_id'].present?
       house= House.find(params[:house_id])
       house_name = remove_space_upcase_string(house.name)
