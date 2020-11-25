@@ -25,9 +25,9 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label"><%=t('room.unit_price')%> *</label>
+              <label class="col-sm-5 col-form-label"><%=t('room.unit_price')%> (VND)*</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control name" name="room[cost]" value ="<%=@room.cost%>" required />
+                <input type="text" class="form-control name" name="room[cost]" value ="<%=number_to_currency_br(@room.cost)%>" required />
               </div>
             </div>
           </div>

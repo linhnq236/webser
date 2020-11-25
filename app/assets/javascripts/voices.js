@@ -16,14 +16,15 @@ $( document ).on('turbolinks:load', function() {
   // redirect_to using voice
   var redirect_name = [
     I18n.t('js.redirects.home'),I18n.t('js.redirects.dashboard'),I18n.t('js.redirects.rooms'),
-    I18n.t('js.redirects.services'),I18n.t('js.redirects.informations'),I18n.t('js.redirects.accounts'),
+    I18n.t('js.redirects.services'),I18n.t('js.redirects.customers'),I18n.t('js.redirects.accounts'),
     I18n.t('js.redirects.reminders'),I18n.t('js.redirects.statisticals'),I18n.t('js.redirects.rentals'),
-    I18n.t('js.redirects.logout'),I18n.t('js.redirects.email'),I18n.t('js.redirects.all')
+    I18n.t('js.redirects.logout'),I18n.t('js.redirects.contact'),I18n.t('js.redirects.all'),I18n.t('js.redirects.apps_slides'),
+    I18n.t('js.redirects.apps_regulations'),I18n.t('js.redirects.changepassword')
   ];
   var redirect_to_with_redirect_name = [
-                                        'home', 'home', 'houses', 'services', 'users', 'account',
+                                        'homes', 'homes', 'houses', 'services', 'users', 'account',
                                         'reminders', 'statisticals', 'paytherents', 'users/sign_out',
-                                         'send_email', 'reports'
+                                         'send_email', 'reports', 'slides', 'regulations', 'users/edit'
                                        ];
   var com_name = [];
   var html_voice_control_led = '';
@@ -115,6 +116,13 @@ $( document ).on('turbolinks:load', function() {
           var result = sonuc[0].transcript;
           $(".listening").attr('value', result);
           var listening = $(".listening").val();
+          if(result == 'apps'){
+            $(".apps").trigger('click');
+            return false;
+          }else if(result == 'setting'){
+            $(".settings").trigger('click');
+            return false;
+          }
           redirect_to(listening);
 
         }

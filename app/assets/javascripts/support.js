@@ -66,6 +66,10 @@ $( document ).on('turbolinks:load', function() {
     $id_app = $(this).data('apps');
     $($id_app).slideToggle();
   })
+  $(".settings").click(function(){
+    $id_setting = $(this).data('setting');
+    $($id_setting).slideToggle();
+  })
   $(".room_max").on('change keyup keydown paste cut', function(){
     var result = $(this).val();
     if (result < 0) {

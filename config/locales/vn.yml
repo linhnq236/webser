@@ -126,6 +126,10 @@ vn:
     setting: "Cài đặt"
     contact: "Liên hệ"
     apps: "Ứng dụng"
+    apps_sliders: "Trình chiếu"
+    apps_regulations: "Quy định"
+    changepassword: "Thay đổi mật khẩu"
+
   house:
     house_name: "Nhà"
     addhouse: "Tạo nhà"
@@ -400,6 +404,10 @@ vn:
       logout: "Đăng xuât"
       email: "email"
       all: "Tất cả"
+      apps_sliders: "Trình chiếu"
+      apps_regulations: "Quy định"
+      changepassword: "thay đổi mật khẩu"
+
     reports:
       all: "Tất cả"
     home:
