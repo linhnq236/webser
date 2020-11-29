@@ -85,8 +85,8 @@ $( document ).on('turbolinks:load', function() {
           <td class="text-center">Active</td>
           <td class="text-center">Status</td>
           <td class="text-center">Auto</td>
-          <td class="text-center">Timer</td>
           <td class="text-center">Time out</td>
+          <td class="text-center">Timer</td>
         </tr>
       `;
       $.each(value, function(ind, val){
