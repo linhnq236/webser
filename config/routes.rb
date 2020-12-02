@@ -66,6 +66,7 @@ Rails.application.routes.draw do
     resources :leds
     post "app_send/:information_id", to: "leds#app_send_data"
     get "/setup/:room_id", to: "leds#setup"
+    post "/groupleds/:information_id", to: "leds#groupleds"
     resources :information
     post "updateInfo/:id", to: "information#updateInfo"
     get "/getOldCustomer", to: "information#getOldCustomer"

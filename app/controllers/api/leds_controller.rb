@@ -33,5 +33,30 @@ module Api
       end
       render json: {data: array_setup}
     end
+
+    def groupleds
+      firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+      information_id = params[:information_id]
+      valueselect = params[:valueselect]
+      room = Room.find_by_information_id(information_id)
+      if valueselect == "1"
+        ['led_status1','led_status3','led_status6','led_status7'].each do |p|
+          firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(room.house.name)}/Phong#{room.name}/#{p}/status": 'on'})
+        end
+      elsif valueselect == "2"
+        ['led_status1','led_status3','led_status6','led_status7'].each do |p|
+          firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(room.house.name)}/Phong#{room.name}/#{p}/status": 'off'})
+        end
+      elsif valueselect == "3"
+        ['led_status2','led_status8'].each do |p|
+          firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(room.house.name)}/Phong#{room.name}/#{p}/status": 'on'})
+        end
+      elsif valueselect == "4"
+        ['led_status2','led_status8'].each do |p|
+          firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(room.house.name)}/Phong#{room.name}/#{p}/status": 'off'})
+        end
+      end
+      render json: {status: 200}
+    end
   end
 end
