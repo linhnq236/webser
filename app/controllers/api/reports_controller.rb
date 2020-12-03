@@ -33,6 +33,17 @@ module Api
       # end
     end
 
+    def status_feedback
+      report_id = params[:report_id]
+      status = params[:status]
+      @report = Report.find(report_id)
+      if @report.update(mark: status)
+        render json: {status: 200}
+      else
+        render json: {status: 402}
+      end
+    end
+
     def deleteId
       Report.delete(params[:id])
       render json: {status: 200}

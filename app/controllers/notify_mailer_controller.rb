@@ -47,11 +47,11 @@ class NotifyMailerController < ApplicationController
     info = Information.find(information_id)
     if use_service.nil?
       flash[:danger] = I18n.t("notify_mailer_controller.not_sersives", user: "#{info.name}")
-      redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}"
+      redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
     else
       if room.newelectric.nil? && room.newwater.nil?
         flash[:danger] = I18n.t('notify_mailer_controller.not_elect_warter')
-        redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}"
+        redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
       else
         check_paytherent = Paytherent.where(senddate: date, information_id: information_id)
         if check_paytherent.size == 0
@@ -60,15 +60,15 @@ class NotifyMailerController < ApplicationController
           if paytherent.save
             if room.update(oldelectric: room.newelectric, newelectric: "", oldwater: room.newwater, newwater: "")
               flash[:notice] = I18n.t('notify_mailer_controller.bill_success')
-              redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}"
+              redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
             else
               flash[:danger] = I18n.t('notify_mailer_controller.bill_fail')
-              redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}"
+              redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
             end
           end
         else
           flash[:waring] = I18n.t('notify_mailer_controller.mail_exists')
-          redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}"
+          redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
         end
       end
     end

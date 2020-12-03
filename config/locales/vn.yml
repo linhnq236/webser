@@ -180,6 +180,13 @@ vn:
     road: "Đường"
     # edit house
   room:
+    total_devices: "Tổng các thiết bị: 8"
+    device: "Các thiết bị"
+    door: "Cửa"
+    ligth: "Đèn"
+    fan: "Quạt"
+    powersocket: "Ổ cắm"
+    amount: "Số lượng"
     room_name: "Phòng"
     roomfast: "Tạo phòng nhanh"
     addroom: "Tạo phòng"
@@ -341,6 +348,11 @@ vn:
     user_send: "Họ và tên"
     created_at: "Tạo ngày"
     status: "Trạng thái"
+    select: "Chọn"
+    level0: "Mới"
+    level1: "Đang xử lý"
+    level2: "Hoàn thành"
+    level3: "Đóng"
   send_email:
     contact: "Liên hệ"
     to: "Đến"

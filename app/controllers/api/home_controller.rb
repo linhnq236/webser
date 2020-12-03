@@ -18,67 +18,30 @@ module Api
 
     def group_leds
       # equiment_status
-      # ENABLE ,     'DISABLE', 'DOOR OPEN', 'DOOR CLOSE', 'LIGTH ON', 'LIGTH OFF', 'FAN ON', 'FAN OFF', 'POWER SOCKET ON', 'POWER SOCKET OFF']
-          # 0           1             2             3           4           5         6           7                   8             9
+      # ENABLE ,     'DISABLE', 'LIGTH ON', 'LIGTH OFF', 'FAN ON', 'FAN OFF', 'POWER SOCKET ON', 'POWER SOCKET OFF']
+          # 0           1             2             3           4           5         6           7
       firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
       house_id = params[:group_house_id]
       house = House.find(house_id)
       room_name = params[:room_name]
       equiment_status = params[:equiment_status]
-      if room_name != 'all'
-        if equiment_status == "0"
-          ['led_status0','led_status1','led_status2','led_status3','led_status5','led_status6','led_status7','led_status8'].each do |p|
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/#{room_name}/#{p}/active": 'enable'})
-          end
-        elsif equiment_status == '1'
-          ['led_status0','led_status1','led_status2','led_status3','led_status5','led_status6','led_status7','led_status8'].each do |p|
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/#{room_name}/#{p}/active": 'disable'})
-          end
-        elsif equiment_status == '2'
-          ['led_status1','led_status3','led_status6','led_status7'].each do |p|
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/#{room_name}/#{p}/status": 'on'})
-          end
-        elsif equiment_status == '3'
-          ['led_status1','led_status3','led_status6','led_status7'].each do |p|
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/#{room_name}/#{p}/status": 'off'})
-          end
-        elsif equiment_status == '4'
-          ['led_status2','led_status8'].each do |p|
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/#{room_name}/#{p}/status": 'on'})
-          end
-        elsif equiment_status == '5'
-          ['led_status2', 'led_status8'].each do |p|
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(house.name)}/#{room_name}/#{p}/status": 'off'})
-          end
-        end
-      else
-        @rooms = Room.where(house_id: house_id)
-        @rooms.each do |f|
-          if equiment_status == "0"
-            ['led_status0','led_status1','led_status2','led_status3','led_status5','led_status6','led_status7','led_status8'].each do |p|
-              firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(f.house.name)}/Phong#{f.name}/#{p}/active": 'enable'})
-            end
-          elsif equiment_status == '1'
-            ['led_status0','led_status1','led_status2','led_status3','led_status5','led_status6','led_status7','led_status8'].each do |p|
-              firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(f.house.name)}/Phong#{f.name}/#{p}/active": 'disable'})
-            end
-          elsif equiment_status == '2'
-            ['led_status1','led_status3','led_status6','led_status7'].each do |p|
-              firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(f.house.name)}/Phong#{f.name}/#{p}/status": 'on'})
-            end
-          elsif equiment_status == '3'
-            ['led_status1','led_status3','led_status6','led_status7'].each do |p|
-              firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(f.house.name)}/Phong#{f.name}/#{p}/status": 'off'})
-            end
-          elsif equiment_status == '4'
-            ['led_status2','led_status8'].each do |p|
-              firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(f.house.name)}/Phong#{f.name}/#{p}/status": 'on'})
-            end
-          elsif equiment_status == '5'
-            ['led_status2', 'led_status8'].each do |p|
-              firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(f.house.name)}/Phong#{f.name}/#{p}/status": 'off'})
-            end
-          end
+      firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+      responses = firebase.get(FIREBASE_URL).body
+      house_name = remove_space_upcase_string(house.name)
+      leds = responses[house_name][room_name]
+      leds.each do |res|
+        if res[1]['kind'] == "1" && equiment_status == "2" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
+        elsif res[1]['kind'] == "1" && equiment_status == "3" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
+        elsif res[1]['kind'] == "2" && equiment_status == "4" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
+        elsif res[1]['kind'] == "2" && equiment_status == "5" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
+        elsif res[1]['kind'] == "3" && equiment_status == "6" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
+        elsif res[1]['kind'] == "3" && equiment_status == "7" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
         end
       end
       render json: {status: 200}

@@ -13,15 +13,15 @@ $( document ).on('turbolinks:load', function() {
                 setareapin = index + i + ii + iii;
                 if(areapin == setareapin){
                   $(this).text(vvv);
-                  if (vvv == 'on') {
+                  if (vvv == 'On') {
                     $(`.${areapin}`).removeClass('bg-primary');
                     $(`.${areapin}`).addClass('bg-danger');
-                  }else if(vvv == 'off'){
+                  }else if(vvv == 'Off'){
                     $(`.${areapin}`).removeClass('bg-danger');
                     $(`.${areapin}`).addClass('bg-primary');
                   }
 
-                  if(vvv == 'disable') {
+                  if(vvv == 'Disable') {
                     var changeturnon = areapin.replace('active', 'turnon');
                     var changeturnoff = areapin.replace('active', 'turnoff');
                     var changetime = areapin.replace('active', 'time');
@@ -30,7 +30,7 @@ $( document ).on('turbolinks:load', function() {
                    $(`.${changeturnon}`).text('0000-00-00 00:00');
                    $(`.${changeturnoff}`).text('0000-00-00 00:00');
                    $(`.${changetime}`).text('00:00');
-                 }else if(vvv == 'enable'){
+                 }else if(vvv == 'Enable'){
                    $(`.${areapin}`).removeClass('bg-danger hasdisable');
                    $(`.${areapin}`).addClass('bg-primary');
                  }

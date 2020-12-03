@@ -35,34 +35,27 @@ module Api
     end
 
     def groupleds
-      firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-      leds = firebase.get(FIREBASE_URL).body
       information_id = params[:information_id]
       valueselect = params[:valueselect]
       room = Room.find_by_information_id(information_id)
-      if valueselect == "1"
-        ['led_status1','led_status3','led_status6','led_status7'].each do |p|
-          if leds[remove_space_upcase_string(room.house.name)]["Phong#{room.name}"][p]['active'] != 'disable'
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(room.house.name)}/Phong#{room.name}/#{p}/status": 'on'})
-          end
-        end
-      elsif valueselect == "2"
-        ['led_status1','led_status3','led_status6','led_status7'].each do |p|
-          if leds[remove_space_upcase_string(room.house.name)]["Phong#{room.name}"][p]['active'] != 'disable'
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(room.house.name)}/Phong#{room.name}/#{p}/status": 'off'})
-          end
-        end
-      elsif valueselect == "3"
-        ['led_status2','led_status8'].each do |p|
-          if leds[remove_space_upcase_string(room.house.name)]["Phong#{room.name}"][p]['active'] != 'disable'
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(room.house.name)}/Phong#{room.name}/#{p}/status": 'on'})
-          end
-        end
-      elsif valueselect == "4"
-        ['led_status2','led_status8'].each do |p|
-          if leds[remove_space_upcase_string(room.house.name)]["Phong#{room.name}"][p]['active'] != 'disable'
-            firebase.update(FIREBASE_URL, {"#{remove_space_upcase_string(room.house.name)}/Phong#{room.name}/#{p}/status": 'off'})
-          end
+      firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+      responses = firebase.get(FIREBASE_URL).body
+      house_name = remove_space_upcase_string(room.house.name)
+      room_name = "Phong#{room.name}"
+      leds = responses[house_name][room_name]
+      leds.each do |res|
+        if res[1]['kind'] == "1" && valueselect == "2" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
+        elsif res[1]['kind'] == "1" && valueselect == "3" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
+        elsif res[1]['kind'] == "2" && valueselect == "4" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
+        elsif res[1]['kind'] == "2" && valueselect == "5" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
+        elsif res[1]['kind'] == "3" && valueselect == "6" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
+        elsif res[1]['kind'] == "3" && valueselect == "7" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
         end
       end
       render json: {status: 200}

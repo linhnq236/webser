@@ -134,6 +134,13 @@ en:
     road: "Road"
     # edit house
   room:
+    total_devices: "Total devices: 8"
+    device: "Devices"
+    door: "Door"
+    ligth: "Ligth"
+    fan: "Fan"
+    powersocket: "Power socket"
+    amount: "Amount"
     room_name: "Room"
     roomfast: "Create Room fast"
     addroom: "Create room"
@@ -295,6 +302,11 @@ en:
     user_send: "Full name"
     created_at: "Created at"
     status: "Status"
+    select: "Select"
+    level0: "New"
+    level1: "Inprogress"
+    level2: "Done"
+    level3: "Close"
   send_email:
     contact: "Contact"
     to: "To"

@@ -50,4 +50,32 @@ $( document ).on('turbolinks:load', function() {
     `
   );
   $(".report_notify").html(count_report);
+  // ===========================4 status feddback===========================================
+  $(".report_status").change(function(){
+    $value = this.value;
+    $report_id = $(this).data('report_id');
+    $.ajax({
+      type: 'post',
+      url: '/api/status_feedback/'+$report_id + "/" + $value,
+      success: function(response){
+        if(response['status'] == 200){
+          $.alert({
+            title: "Notice",
+            content: "Update successfully",
+            iconClose: true,
+          })
+        }else{
+          $.alert({
+            title: "Notice",
+            content: "Update failed",
+            iconClose: true,
+          })
+
+        }
+      },
+      error: function(response){
+        console.log(response);
+      }
+    })
+  })
 })
