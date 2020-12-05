@@ -98,7 +98,7 @@ $( document ).on('turbolinks:load', function() {
           mark ++;
           html += `
             <td class="text-center">
-              <button class="led led${area} disable_${area+index+ind}  ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'on' ? 'bg-danger': 'bg-primary'} ${val1 == 'Disable' ? 'bg-danger hasdisable': 'bg-primary'}"  data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${capitalizeFirstLetters(kindLed(val1))}</button>
+              <button class="led led${area} disable_${area+index+ind}  ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'On' ? 'bg-danger': 'bg-primary'} ${val1 == 'Disable' ? 'bg-danger hasdisable': 'bg-primary'}"  data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${capitalizeFirstLetters(kindLed(val1))}</button>
             </td>
           `
         })
