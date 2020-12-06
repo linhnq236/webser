@@ -219,6 +219,10 @@ en:
     admin: "Admin"
     room_chart: "Room chart"
     user_chart: "User chart"
+    unpaidchart: "Unpaid chart"
+    paidchart: "Paid chart"
+    paid: "Paid"
+    unpaid: "Unpaid"
     countmoneypermonth: "Money per month"
   paytherents:
     room_master: "Room master"

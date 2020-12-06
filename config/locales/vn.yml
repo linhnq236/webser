@@ -266,6 +266,10 @@ vn:
     room_chart: "Biểu đồ phòng"
     user_chart: "Biểu đồ người quản lý và khách hàng"
     countmoneypermonth: "Tiền/Tháng"
+    unpaidchart: "Biểu đồ chưa trả chi phí"
+    paidchart: "Biểu đồ đã trả chi phí"
+    paid: "Đã trả"
+    unpaid: "Chưa trả"
   paytherents:
     room_master: "Chủ phòng"
     month: "Tháng"

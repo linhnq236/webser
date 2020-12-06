@@ -12,6 +12,7 @@ module Api
       paytherent = Paytherent.where(information_id: params[:information_id], senddate: senddate)
       receivedate = DateTime.now.strftime("%Y-%m-%d %H:%M")
       if paytherent.update(receivedate: receivedate, status: 1)
+        NoticeMailer.paytherent_success(params[:information_id]).deliver_now!
         flash[:notice] = "Successful payment of accommodation"
         redirect_to paytherents_path
       else
