@@ -34,21 +34,39 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room = Room.new(room_params)
-    if Room.where(name: @room.name, house_id: @room.house_id).exists?
-      flash[:warn] =  I18n.t('rooms_controller.exist_room')
-      redirect_to houses_path
+    @quantum = params[:quantum]
+    @name = params[:name]
+    house_id = params[:house_id]
+    cost = params[:cost]
+    amount = params[:amount]
+    width = params[:width]
+    length = params[:length]
+    description = params[:description]
+    ligth = params[:ligth]
+    fan = params[:fan]
+    powersocket = params[:powersocket]
+    @room = Room.new(name: @name, cost: cost, house_id: house_id, width: width, length: length, description: description)
+    if (ligth.to_i + fan.to_i + powersocket.to_i + 1) != 8
+        flash[:warning] =  "Total devices are 8, please !"
+        redirect_to houses_path
     else
-      house = House.find(@room.house_id)
-      name = house.name
-      re_space_house_name = name.gsub(" ","")
-      upercase_house_name = re_space_house_name.upcase
-      if @room.save
-        create_house_room_firebase(upercase_house_name, @room.name)
-        flash[:notice] =  I18n.t('rooms_controller.new_room')
+      if Room.where(name: @room.name, house_id: @room.house_id).exists?
+        flash[:warn] =  I18n.t('rooms_controller.exist_room')
         redirect_to houses_path
       else
-        flash[:warning] =  flash_errors(@room.errors)
+        for i in 0...@quantum.to_i
+          house = House.find(@room.house_id)
+          name = house.name
+          re_space_house_name = name.gsub(" ","")
+          upercase_house_name = re_space_house_name.upcase
+          @room = Room.new(name: (@name.to_i+i), cost: cost, house_id: house_id, width: width, length: length, description: description)
+          if @room.save
+            create_house_room_firebase(upercase_house_name, @room.name, ligth, fan, powersocket)
+            flash[:notice] =  I18n.t('rooms_controller.new_room')
+          else
+            flash[:warning] =  flash_errors(@room.errors)
+          end
+        end
         redirect_to houses_path
       end
     end
@@ -145,7 +163,7 @@ class RoomsController < ApplicationController
     room = Room.find(params[:room_id])
     if room.update(oldelectric: oldelectric, newelectric: newelectric, oldwater: oldwater, newwater: newwater)
       flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_update'))
-      redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}?locale=#{params[:locale]}"
+      redirect_to "/listcustomer/#{params[:house_id]}/#{params[:room_id]}/#{params[:information_id]}"
     end
   end
   # PATCH/PUT /rooms/1
@@ -200,40 +218,51 @@ class RoomsController < ApplicationController
       params.require(:room).permit(:name, :cost, :length, :width, :amount, :allow, :description, :picture, :house_id, service_id: [], )
     end
 
-    def create_house_room_firebase house_name, room_name
+    def create_house_room_firebase house_name, room_name, ligth, fan, powersocket
       datetime = "0000-00-00 00:00"
       firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status0/status": "off"})
+      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status0/kind": "0"})
+      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status0/status": "Off"})
       firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status0/turnon": "#{datetime}"})
       firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status0/turnoff": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status0/active": "enable"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status1/status": "off"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status1/turnon": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status1/turnoff": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status1/active": "enable"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status2/status": "off"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status2/turnon": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status2/turnoff": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status2/active": "enable"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status3/status": "off"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status3/turnon": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status3/turnoff": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status3/active": "enable"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status5/status": "off"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status5/turnon": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status5/turnoff": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status5/active": "enable"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status6/status": "off"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status6/turnon": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status6/turnoff": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status6/active": "enable"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status7/status": "off"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status7/turnon": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status7/turnoff": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status7/active": "enable"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status8/status": "off"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status8/turnon": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status8/turnoff": "#{datetime}"})
-      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status8/active": "enable"})
+      firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/led_status0/active": "Enable"})
+      # -------------------------------------------------------------------------------------------------------
+      elseleds = ['led_status1', 'led_status2', 'led_status3', 'led_status5', 'led_status6', 'led_status7', 'led_status8']
+      array_lights = []
+      array_fans = []
+      array_powersockets = []
+      for i in 0...ligth.to_i
+        array_lights.push(elseleds[i])
+      end
+      for i in ligth.to_i...(ligth.to_i + fan.to_i)
+        array_fans.push(elseleds[i])
+      end
+      for i in (ligth.to_i+fan.to_i)...elseleds.size
+        array_powersockets.push(elseleds[i])
+      end
+
+      array_lights.each do |l|
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{l}/kind": "1"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{l}/status": "Off"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{l}/turnon": "#{datetime}"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{l}/turnoff": "#{datetime}"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{l}/active": "Enable"})
+      end
+
+      array_fans.each do |f|
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{f}/kind": "2"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{f}/status": "Off"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{f}/turnon": "#{datetime}"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{f}/turnoff": "#{datetime}"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{f}/active": "Enable"})
+      end
+
+      array_powersockets.each do |p|
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{p}/kind": "3"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{p}/status": "Off"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{p}/turnon": "#{datetime}"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{p}/turnoff": "#{datetime}"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/Phong#{room_name}/#{p}/active": "Enable"})
+      end
     end
 end

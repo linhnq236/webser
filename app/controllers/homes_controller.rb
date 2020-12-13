@@ -31,7 +31,6 @@ class HomesController < ApplicationController
       response = firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/#{subcolumn}": active})
                  firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/turnon": '0000-00-00 00:00'})
                  firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/turnoff": '0000-00-00 00:00'})
-                 firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/time": '00:00'})
     else
       response = firebase.update(FIREBASE_URL, {"#{area}/#{status}/#{column}/#{subcolumn}": active})
     end
@@ -61,9 +60,9 @@ class HomesController < ApplicationController
     status = name.slice(name.size-1)
     set_status = ''
     if status == '1'
-      set_status = 'on'
+      set_status = 'On'
     else
-      set_status = 'off'
+      set_status = 'Off'
     end
     house = House.find(house_id)
     room = Room.find_by_name(room_id)
@@ -72,7 +71,7 @@ class HomesController < ApplicationController
     firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
     leds = firebase.get(FIREBASE_URL).body
     checkled_disable = leds[remove_space_upcase_string(house.name)]["Phong#{room.name}"]["led_status#{chip}"]['active']
-    if checkled_disable == 'disable'
+    if checkled_disable == 'Disable'
       render json: {status: 402}
       return false
     end

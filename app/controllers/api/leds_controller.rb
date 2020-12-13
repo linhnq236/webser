@@ -33,5 +33,32 @@ module Api
       end
       render json: {data: array_setup}
     end
+
+    def groupleds
+      information_id = params[:information_id]
+      valueselect = params[:valueselect]
+      room = Room.find_by_information_id(information_id)
+      firebase = Firebase::Client.new(FIREBASE_URL, FIREBASE_SECRET)
+      responses = firebase.get(FIREBASE_URL).body
+      house_name = remove_space_upcase_string(room.house.name)
+      room_name = "Phong#{room.name}"
+      leds = responses[house_name][room_name]
+      leds.each do |res|
+        if res[1]['kind'] == "1" && valueselect == "2" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
+        elsif res[1]['kind'] == "1" && valueselect == "3" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
+        elsif res[1]['kind'] == "2" && valueselect == "4" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
+        elsif res[1]['kind'] == "2" && valueselect == "5" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
+        elsif res[1]['kind'] == "3" && valueselect == "6" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
+        elsif res[1]['kind'] == "3" && valueselect == "7" && res[1]['active'] == 'Enable'
+          firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
+        end
+      end
+      render json: {status: 200}
+    end
   end
 end

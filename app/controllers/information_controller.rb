@@ -120,10 +120,10 @@ class InformationController < ApplicationController
     if information.update(name: "#{firstname} #{lastname}", sex: sex, birth: birth, indentifycard: indentifycard,
        daterange: daterange, placerange: placerange, phone1: phone1, phone2: phone2, email: email, permanent: permanent, start: start, deposit: deposit, note: note)
        flash[:notice] = I18n.t('mes.action_success', action: I18n.t('mes.action_update'))
-       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}?locale=#{params[:locale]}"
+       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}"
      else
        flash[:notice] =  I18n.t('mes.action_fail', action: I18n.t('mes.action_update'))
-       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}?locale=#{params[:locale]}"
+       redirect_to "/listcustomer/#{house_id}/#{room_id}/#{information_id}"
     end
   end
   def update

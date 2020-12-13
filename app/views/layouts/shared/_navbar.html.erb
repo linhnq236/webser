@@ -67,6 +67,7 @@
         <span class="menu-title"><%= I18n.t('layout.room_rental') %></span>
       </a>
     </li>
+    <% if current_user.admin == 2%>
     <li class="nav-item apps">
        <a class="nav-link apps" data-toggle="collapse" data-apps="#app" aria-expanded="false" aria-controls="auth">
          <i class="menu-icon typcn typcn-document-add"></i>
@@ -75,22 +76,29 @@
        </a>
        <div class="collapse" id="app">
          <ul class="nav flex-column sub-menu">
-           <li class="nav-item"><a class="nav-link hovernotbackground" href="<%=apps_path%>">App sliders</a></li>
-           <li class="nav-item"><a class="nav-link hovernotbackground" href="<%=regulations_path%>">App regulations</a></li>
+           <li class="nav-item"><a class="nav-link hovernotbackground" href="<%=apps_path%>"><%=t('layout.apps_sliders')%></a></li>
+           <li class="nav-item"><a class="nav-link hovernotbackground" href="<%=regulations_path%>"><%=t('layout.apps_regulations')%></a></li>
          </ul>
        </div>
      </li>
+     <% end %>
     <li class="nav-item contact">
       <a class="nav-link" data-toggle="collapse" href="<%=send_email_path%>" aria-expanded="false" aria-controls="auth">
         <i class="menu-icon typcn typcn-document-add"></i>
         <span class="menu-title"><%= I18n.t('layout.contact') %></span>
       </a>
     </li>
-    <li class="nav-item setting">
-      <a class="nav-link" data-toggle="collapse" href="<%=edit_user_registration_path%>" aria-expanded="false" aria-controls="auth">
+    <li class="nav-item settings">
+      <a class="nav-link settings" data-toggle="collapse" data-setting="#setting" aria-expanded="false" aria-controls="auth">
         <i class="menu-icon typcn typcn-document-add"></i>
-        <span class="menu-title"><%= I18n.t('layout.setting') %></span>
+        <span class="menu-title"><%= I18n.t('layout.setting') %> </span>
+        <i class="menu-arrow"></i>
       </a>
+      <div class="collapse" id="setting">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link hovernotbackground" href="<%=edit_user_registration_path%>"><%=t('layout.changepassword')%></a></li>
+        </ul>
+      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<%= destroy_user_session_path %>" data-method="delete">

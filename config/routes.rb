@@ -66,6 +66,7 @@ Rails.application.routes.draw do
     resources :leds
     post "app_send/:information_id", to: "leds#app_send_data"
     get "/setup/:room_id", to: "leds#setup"
+    post "/groupleds/:information_id", to: "leds#groupleds"
     resources :information
     post "updateInfo/:id", to: "information#updateInfo"
     get "/getOldCustomer", to: "information#getOldCustomer"
@@ -84,6 +85,7 @@ Rails.application.routes.draw do
     resources :reports
     get "/showpopup/:id", to: "reports#showpopup"
     post "/deleteId/:id", to: "reports#deleteId"
+    post "/status_feedback/:report_id/:status", to: "reports#status_feedback"
     resources :supports
     resources :services
     resources :apps

@@ -1,0 +1,8 @@
+<h1>PAYMENT OF MONEY IN <%=@paytherent&.senddate%> IS SUCCESSFULLY</h1>
+<div class="col-sm-3">Full name:<%=@paytherent.information&.name%></div>
+<div class="col-sm-3">indentify:<%=@paytherent.information&.indentifycard%></div>
+<div class="col-sm-3">Phone 1:<%=@paytherent.information&.phone1%></div>
+<div class="col-sm-3">Phone 2:<%=@paytherent.information&.phone2%></div>
+<div class="col-sm-3">House:<%=@room.house&.name%></div>
+<div class="col-sm-3">Room:<%=@room.name%></div>
+<div class="col-sm-3 h4 text-danger">Total:<%=number_to_currency_br(@paytherent.money)%> vnd</div>

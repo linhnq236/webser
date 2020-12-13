@@ -126,6 +126,10 @@ vn:
     setting: "Cài đặt"
     contact: "Liên hệ"
     apps: "Ứng dụng"
+    apps_sliders: "Trình chiếu"
+    apps_regulations: "Quy định"
+    changepassword: "Thay đổi mật khẩu"
+
   house:
     house_name: "Nhà"
     addhouse: "Tạo nhà"
@@ -176,6 +180,13 @@ vn:
     road: "Đường"
     # edit house
   room:
+    total_devices: "Tổng các thiết bị: 8"
+    device: "Các thiết bị"
+    door: "Cửa"
+    ligth: "Đèn"
+    fan: "Quạt"
+    powersocket: "Ổ cắm"
+    amount: "Số lượng"
     room_name: "Phòng"
     roomfast: "Tạo phòng nhanh"
     addroom: "Tạo phòng"
@@ -255,6 +266,11 @@ vn:
     room_chart: "Biểu đồ phòng"
     user_chart: "Biểu đồ người quản lý và khách hàng"
     countmoneypermonth: "Tiền/Tháng"
+    unpaidchart: "Biểu đồ chưa trả chi phí"
+    paidchart: "Biểu đồ đã trả chi phí"
+    paid: "Đã trả"
+    unpaid: "Chưa trả"
+    total: "Tổng thu"
   paytherents:
     room_master: "Chủ phòng"
     month: "Tháng"
@@ -337,6 +353,11 @@ vn:
     user_send: "Họ và tên"
     created_at: "Tạo ngày"
     status: "Trạng thái"
+    select: "Chọn"
+    level0: "Mới"
+    level1: "Đang xử lý"
+    level2: "Hoàn thành"
+    level3: "Đóng"
   send_email:
     contact: "Liên hệ"
     to: "Đến"
@@ -400,6 +421,10 @@ vn:
       logout: "Đăng xuât"
       email: "email"
       all: "Tất cả"
+      apps_sliders: "Trình chiếu"
+      apps_regulations: "Quy định"
+      changepassword: "thay đổi mật khẩu"
+
     reports:
       all: "Tất cả"
     home:

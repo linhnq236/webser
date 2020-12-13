@@ -23,4 +23,10 @@ class NoticeMailer < ApplicationMailer
     @paytherent = Paytherent.find(id)
     mail(to: "#{@paytherent.information&.email}" ,subject: "Overdue for payment of accommodation")
   end
+
+  def paytherent_success id
+    @paytherent = Paytherent.find(id)
+    @room = Room.find_by_information_id(id)
+    mail(to: "#{@paytherent.information&.email}" ,subject: "Payment success")
+  end
 end

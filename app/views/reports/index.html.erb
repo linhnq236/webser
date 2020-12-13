@@ -43,13 +43,19 @@
   </thead>
   <tbody>
     <%@reports.each_with_index do |report, i|%>
-      <tr>
+      <tr class="rep_report cursor text-white" data-report_id="<%=report.id%>" >
         <td class="text-center"><%= i +=1%></td>
         <td class="text-center"><%= report.title%></td>
         <td class="text-center"><%= report.information&.name%></td>
         <td class="text-center"><%= time_ago_in_words(report.created_at)%></td>
         <td class="text-center">
-          <button type="button" name="button" class="rep_report btn btn-sm text-white <%=report.mark == 0 ? "btn-danger" : "btn-primary"%>" data-report_id="<%=report.id%>" ><%=report.mark == 0 ? "Not" : "Ok"%></button>
+          <select class="report_status col-sm-6 text-center" name="status" data-report_id="<%=report.id%>">
+            <option><%=t('reports.select')%></option>
+            <option value="0" <%=report.mark == 0 ? "selected" : "" %> ><%=t('reports.level0')%></option>
+            <option value="1" <%=report.mark == 1 ? "selected" : "" %> ><%=t('reports.level1')%></option>
+            <option value="2" <%=report.mark == 2 ? "selected" : "" %> ><%=t('reports.level2')%></option>
+            <option value="3" <%=report.mark == 3 ? "selected" : "" %> ><%=t('reports.level3')%></option>
+          </select>
         </td>
       </tr>
     <% end %>

@@ -44,6 +44,8 @@ $( document ).on('turbolinks:load', function() {
           return false;
         }
         setTime(status,area, column, subcolumn);
+      }else if(subcolumn == 'kind') {
+        return false;
       }else if(subcolumn == 'active') {
         disable_enable(status,area,column,subcolumn,active);
       }else if(subcolumn == 'time'){
@@ -81,24 +83,22 @@ $( document ).on('turbolinks:load', function() {
           <td colspan="5" data-second="${index}"><i class='fa fa-university text-success'></i> ${area.toUpperCase()}/${index}</td>
         </tr>
         <tr class="chip_${area+index}">
-          <td>Name</td>
           <td class="text-center">Active</td>
+          <td class="">Kind</td>
           <td class="text-center">Status</td>
-          <td class="text-center">Auto</td>
-          <td class="text-center">Timer</td>
           <td class="text-center">Time out</td>
+          <td class="text-center">Timer</td>
         </tr>
       `;
       $.each(value, function(ind, val){
         html+= `
-        <tr class="chip_${area+index} cursor">
-          <td third_${mark} data-third="${ind}">${I18n.t(`js.home.${ind}`)}</td>
+          <tr class="chip_${area+index} cursor">
         `;
         $.each(val, function(ind1, val1){
           mark ++;
           html += `
             <td class="text-center">
-              <button class="led led${area} disable_${area+index+ind}  ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'on' ? 'bg-danger': 'bg-primary'} ${val1 == 'disable' ? 'bg-danger hasdisable': 'bg-primary'}"  data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${val1}</button>
+              <button class="led led${area} disable_${area+index+ind}  ${area+index+ind+ind1} led_turn${ind} cursor ${val1 == 'On' ? 'bg-danger': 'bg-primary'} ${val1 == 'Disable' ? 'bg-danger hasdisable': 'bg-primary'}"  data-areapin="${area+index+ind+ind1}" data-area="${area}" data-status = "${index}" data-column="${ind}" data-subcolumn="${ind1}">${capitalizeFirstLetters(kindLed(val1))}</button>
             </td>
           `
         })
@@ -110,10 +110,10 @@ $( document ).on('turbolinks:load', function() {
   }
 
   function api_led_status(status,active, area, column, subcolumn){
-    if(active == "on"){
-      setactive = "off";
+    if(active == "On"){
+      setactive = "Off";
     }else{
-      setactive = "on";
+      setactive = "On";
     }
     $.ajax({
       type: 'post',
@@ -192,10 +192,10 @@ $( document ).on('turbolinks:load', function() {
   }
   // disable or enable led
   function disable_enable(status, area, column, subcolumn, active){
-    if(active == "enable"){
-      setactive = "disable";
+    if(active == "Enable"){
+      setactive = "Disable";
     }else{
-      setactive = "enable";
+      setactive = "Enable";
     }
     $.ajax({
       type: 'post',
@@ -254,6 +254,7 @@ $( document ).on('turbolinks:load', function() {
   $(".housenameRoomname").click(function(){
     var house_room = $(this).data('house_room');
     $(`.chip_${house_room}`).slideToggle();
+    console.log(house_room);
   })
   if (gon.house_name != undefined) {
     $(".tablehouse").hide();
@@ -266,7 +267,6 @@ $( document ).on('turbolinks:load', function() {
     var html = '';
     html += `
       <option>Select</option>
-      <option value='all'>all</option>
     `;
     $.each(gon.chose_rooms, function(key,value){
       html += `
@@ -288,7 +288,7 @@ $( document ).on('turbolinks:load', function() {
       html_equiment += `
       <option>Select</option>
       `;
-      $.each(['ENABLE','DISABLE', 'LIGTH ON', 'LIGTH OFF', 'POWER SOCKET ON', 'POWER SOCKET OFF'], function(key,value){
+      $.each(['Enable','Disable', 'Ligth on', 'Ligth off','Fan on', 'Fan off', 'Power socket on', 'Power socket off'], function(key,value){
         html_equiment += `
           <option value='${key}'>${value}</option>
         `;
@@ -333,4 +333,30 @@ $( document ).on('turbolinks:load', function() {
       }
     })
   })
+
+  $(".led").each(function(){
+    $subcolumn = $(this).data('subcolumn');
+    if ($subcolumn == 'kind') {
+      $(this).removeClass();
+      $(this).replaceWith($('<div class="text-left mt-2 kind">' + this.innerHTML + '</div>'));
+    }
+  })
+  function capitalizeFirstLetters(str){
+     return str.toLowerCase().replace(/^\w|\s\w/g, function (letter) {
+         return letter.toUpperCase();
+     })
+   }
+  function kindLed(value){
+     if (value == "0") {
+       return "Door";
+     } else if(value == "1") {
+       return "Ligth";
+     }else if(value == "2"){
+       return "Fan";
+     }else if(value == "3"){
+       return "Power socket";
+     }else{
+       return value;
+     }
+   }
 })
