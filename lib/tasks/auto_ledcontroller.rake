@@ -13,13 +13,13 @@ namespace :auto_ledcontroller do
         re[1].each do |r|
           chip = r[0]
           if r[1]['turnoff'] == date
-            response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/status": "off"})
+            response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/status": "Off"})
           end
           if r[1]['turnon'] == date
-            response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/status": "on"})
+            response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/status": "On"})
           end
           # if r[1]['time'] == time
-          #   response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/status": "on"})
+          #   response = firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{chip}/status": "On"})
           # end
         end
       end
@@ -52,17 +52,17 @@ namespace :auto_ledcontroller do
     leds.each do |res|
       puts res[1]['active']
       if res[1]['kind'] == "1" && equiment_status == "2"
-        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "on"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
       elsif res[1]['kind'] == "1" && equiment_status == "3"
-        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "off"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
       elsif res[1]['kind'] == "2" && equiment_status == "4"
-        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "on"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
       elsif res[1]['kind'] == "2" && equiment_status == "5"
-        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "off"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
       elsif res[1]['kind'] == "3" && equiment_status == "6"
-        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "on"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "On"})
       elsif res[1]['kind'] == "3" && equiment_status == "7"
-        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "off"})
+        firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/status": "Off"})
       end
     end
   end

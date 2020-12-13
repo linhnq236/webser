@@ -270,6 +270,7 @@ vn:
     paidchart: "Biểu đồ đã trả chi phí"
     paid: "Đã trả"
     unpaid: "Chưa trả"
+    total: "Tổng thu"
   paytherents:
     room_master: "Chủ phòng"
     month: "Tháng"

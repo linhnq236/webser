@@ -212,8 +212,8 @@ en:
     kind: "Kind"
     phone: "Phone"
   Statisticals:
-    empty_room: "Empty room"
-    customer_room: "Customer room"
+    empty_room: "Empty"
+    customer_room: "Customer"
     customer: "Customer"
     manager: "Manager"
     admin: "Admin"
@@ -223,6 +223,7 @@ en:
     paidchart: "Paid chart"
     paid: "Paid"
     unpaid: "Unpaid"
+    total: "Total"
     countmoneypermonth: "Money per month"
   paytherents:
     room_master: "Room master"

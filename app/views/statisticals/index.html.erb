@@ -27,7 +27,16 @@
       </div>
     </div>
   </div>
+  <hr>
   <div class="row">
+    <div class="col-sm-3">
+      <div class="">
+        Mode
+      </div>
+      <div class="">
+        Year
+      </div>
+    </div>
     <div class="col-sm-3">
       <%= form_tag(statisticals_path, method: :get, id: "changeYear") do %>
         <%if params[:status] == '0' %>
@@ -42,6 +51,10 @@
     </div>
     <div class="col-sm-12">
       <% if !@paytherent_pays.nil? %>
+        <h4 class="">
+          <%=t('Statisticals.total')%>
+          <%=number_to_currency_br(@paytherent_pays.inject(0){|sum, e| sum + e.money})%> vnd
+        </h4>
         <%= bar_chart @paytherent_pays.group(:senddate).sum(:money), thousands: "." %>
         <div class="text-center">
           <%if params[:status] == '0' %>
@@ -49,8 +62,9 @@
           <%else%>
             <h4><%=t('Statisticals.paidchart')%> <%=@year%></h4>
           <%end%>
-          <%=t('Statisticals.countmoneypermonth')%>(milion/month)
+          <%# <%=t('Statisticals.countmoneypermonth')%>
         </div>
+
       <% end %>
     </div>
   </div>
