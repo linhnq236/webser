@@ -80,14 +80,14 @@ class InformationController < ApplicationController
             # services.each do |ser|
             #   InforServ.new(information_id: last_inf, service_id: ser.id, amount: 1).save
             # end
-            flash[:notice] = I18n.t('mes.add_success', name: I18n.t('room.room_name'))
+            flash[:notice] = I18n.t('mes.add_success', name: I18n.t('room.add_customer'))
             redirect_to houses_path
           else
-            flash[:notice] = I18n.t('mes.add_error', name: I18n.t('room.room_name'))
+            flash[:notice] = I18n.t('mes.add_error', name: I18n.t('room.add_customer'))
             redirect_to houses_path
           end
         else
-          flash[:notice] = I18n.t('mes.add_error', name: I18n.t('room.room_name'))
+          flash[:notice] = I18n.t('mes.add_error', name: I18n.t('room.add_customer'))
           redirect_to houses_path
         end
       else

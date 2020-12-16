@@ -192,7 +192,7 @@ vn:
     addroom: "Tạo phòng"
     pay_room: "Trả phòng"
     show_room: "Chi tiết"
-    add_customer: "Mới"
+    add_customer: "Thêm mới một khách hàng"
     edit_room: "Sửa"
     delete_room: "Xóa"
     setting: "Cài đặt"
