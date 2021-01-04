@@ -30,7 +30,7 @@ module Api
       house_name = remove_space_upcase_string(house.name)
       leds = responses[house_name][room_name]
       leds.each do |res|
-        if equiment_status == "0" && res[1]['active'] == 'Enable'
+        if equiment_status == "0" && res[1]['active'] == 'Disable'
           firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/active": "Enable"})
         elsif equiment_status == "1" && res[1]['active'] == 'Enable'
           firebase.update(FIREBASE_URL, {"#{house_name}/#{room_name}/#{res[0]}/active": "Disable"})
