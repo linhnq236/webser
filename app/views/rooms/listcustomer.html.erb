@@ -188,7 +188,7 @@
           <thead>
             <tr>
               <th class="text-center"><%=t('layout.order')%></th>
-              <th class=""><%=t('services.status')%></th>
+              <th class="text-center"><%=t('services.status')%></th>
               <th class="text-center"><%=t('house.show.name')%></th>
               <th class="text-center"><%=t('house.show.cost')%></th>
               <th class="text-center"><%=t('house.show.quantum')%></th>
@@ -219,9 +219,9 @@
                   <% service.service_id.each_with_index do |s, i|%>
                     <tr>
                       <td class="text-center"><%=i + 1%></td>
-                      <!-- <td class="text-center">
+                      <td class="text-center">
                         <input type="checkbox" checked class="form-check-input must" data-status="must">
-                      </td> -->
+                      </td>
                       <td class="text-center"><%=getServiceName(@services,s)%></td>
                       <td class="text-center"><%=number_to_currency_br(getServiceCost(@services,s))%></td>
                       <td class="text-center">
