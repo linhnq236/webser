@@ -10,14 +10,14 @@ class PaytherentsController < ApplicationController
       users = User.where(house_id: current_user.house_id, admin: 0)
       users.each do |user|
         info = Information.find_by_email(user.email)
-        paytherent = Paytherent.where(information_id: info.id).order("senddate DESC")
+        paytherent = Paytherent.where(information_id: info.id).order("id DESC")
         paytherent.each do |p|
           paytherents.push(p)
         end
       end
       @paytherents = paytherents.paginate(:page => params[:page], :per_page => ENV["DEFAULT_RENTAL_PER_PAGE"])
     else
-      @paytherents = Paytherent.all.order("senddate DESC").paginate(:page => params[:page], :per_page => ENV["DEFAULT_RENTAL_PER_PAGE"])
+      @paytherents = Paytherent.all.order("id DESC").paginate(:page => params[:page], :per_page => ENV["DEFAULT_RENTAL_PER_PAGE"])
     end
   end
 
